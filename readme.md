@@ -12,6 +12,11 @@ php artisan migrate --seed
 php artisan serve
 ```
 
+### ルート定義ファイルの追加
+```
+php artisan route:make route_name
+```
+
 ## Vue
 
 ### 初期設定
