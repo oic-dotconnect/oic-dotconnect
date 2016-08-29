@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table = 'USER';
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +42,14 @@ class User extends Authenticatable
     }
 
 
+
+    public function tag()
+    {
+        return $this->belongsToMany('App\tag','user_tag');
+    }
+    public function event()
+    {
+        return $this->belongsToMany('App\event','user_event');
+    }
 }
+
