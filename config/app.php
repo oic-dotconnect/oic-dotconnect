@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        thedevsaddam\multiple_route\multiple_routeServiceProvider::class,
 
         /*
          * Application Service Providers...

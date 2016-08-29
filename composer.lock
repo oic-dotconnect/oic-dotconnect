@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf6c9498d7886dc2c06d29ad0bba9f50",
-    "content-hash": "205d3bac84374f9c6c594422171fdb10",
+    "hash": "c4fd44a338eab9cbe9edf2d780ab23a6",
+    "content-hash": "4823aab8ca705ae140e441508d18097e",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2159,6 +2159,61 @@
                 "dump"
             ],
             "time": "2016-07-26 08:03:56"
+        },
+        {
+            "name": "thedevsaddam/multiple_route",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thedevsaddam/multiple_route.git",
+                "reference": "5c9891497dd0cbc431d67041b887bb9b99a1cba6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thedevsaddam/multiple_route/zipball/5c9891497dd0cbc431d67041b887bb9b99a1cba6",
+                "reference": "5c9891497dd0cbc431d67041b887bb9b99a1cba6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": "~5.5|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "thedevsaddam\\multiple_route\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": ":Saddam H",
+                    "email": "thedevsaddam@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/thedevsaddam",
+                    "role": "Developer"
+                }
+            ],
+            "description": "MultipleRoute generator is helpful create any number of routes for your large laravel project.",
+            "homepage": "https://github.com/thedevsaddam/multiple_route",
+            "keywords": [
+                "laravel multiple route generator",
+                "multiple_route",
+                "thedevsaddam"
+            ],
+            "time": "2016-03-17 20:29:28"
         },
         {
             "name": "vlucas/phpdotenv",
