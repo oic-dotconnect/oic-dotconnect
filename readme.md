@@ -4,6 +4,7 @@
 
 ```
 sudo composer install
+cp .env.sample .env
 php artisan migrate --seed
 ```
 
