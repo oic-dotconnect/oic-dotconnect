@@ -36,6 +36,9 @@
         </a>
       </div>
     </header>
+    <main>
+      @yield('content')
+    </main>
     <footer id="footer"></footer>
   </body>
 </html>
