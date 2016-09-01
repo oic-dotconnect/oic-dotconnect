@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/view/{name}', function ($name) {
+    return view($name);
+});
+
+Route::get('/mock/landing','MockController@landing');
+
 Route::get('auth/login/google', [
   'as' => 'sociallogin', 'uses' => 'Auth\SocialController@getGoogleAuth'
 ]);
