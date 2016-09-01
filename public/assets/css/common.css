@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+}
+
+.button {
+  border: none;
+  color: #fff;
+}
+
+/********************
+* form
+*********************/
+
+
+.form-inline {
+  display: inline-block;
+}
+
+input {
+  border-radius: 0;
+}
+
+input, button, textarea, select {
+  margin: 0;
+	padding: 0;
+	/*background: none;*/
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
