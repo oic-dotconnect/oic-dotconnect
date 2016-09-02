@@ -21,8 +21,8 @@
         </div>
         <div class="right">
             <div class="top">
-                <div class="condision">
-
+                <div class="condition">
+                    {{ $eventservice->condition($event->start_date,$event->start_time,$event->end_date,$event->end_time) }}
                 </div>
             </div>
             <div class="center">

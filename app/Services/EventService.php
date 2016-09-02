@@ -45,4 +45,31 @@ class EventService
         }
         return $field;
     }
+    public function condition($s_date,$s_time,$e_date,$e_time){
+        $dsd = date('Y-m-d',strtotime($s_date));
+        $dst = date('H:i:s',strtotime($s_time));
+        $ded = date('Y-m-d',strtotime($e_date));
+        $det = date('H:i:s',strtotime($e_time));
+
+        $nowdate = ('Y-m-d');
+        $nowtime = ('H:i:s');
+
+        if ($ded>=$nowdate) {
+            if ($det < $nowtime) {
+                $c = "開催後";
+            }else{
+                $c = "開催中";
+            }
+        }else{
+            $c = "開催中";
+        }
+        if ($dsd>=$nowdate) {
+            if ($dst>$nowtime) {
+                $c = "開催前";
+            }else{
+                $c = "開催中";
+            }
+        };
+        return $c;
+    }
 }
