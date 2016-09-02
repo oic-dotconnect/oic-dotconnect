@@ -9,7 +9,7 @@ use App\Http\Requests;
 class MockController extends Controller
 {
     public function landing(){
-      $event = [
+      $event = (Object)[
         'code' => 'abcdefg',
         'name' => 'Laravel勉強会',
         'field' => 'it',
