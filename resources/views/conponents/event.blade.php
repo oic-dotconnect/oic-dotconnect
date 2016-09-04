@@ -15,7 +15,7 @@
             {{ $event->place }}
         </div>
         <div class="field {{ $event->field }}">
-            {{ $eventservice->field($event->field) }}
+            <a href="#">{{ $eventservice->field($event->field) }}</a>
         </div>
     </div>
     <div class="right">

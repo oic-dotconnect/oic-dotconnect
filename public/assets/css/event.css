@@ -64,6 +64,9 @@
   background-color: #AA9EF7;
 }
 
+.field a {
+  color: #000000;
+}
 /*************************
 * event > right
 **************************/
