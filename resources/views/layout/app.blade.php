@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{{asset('/assets/css/color.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/header.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/footer.css')}}}" media="screen" title="no title" charset="utf-8">
+    @yield('head')
   </head>
   <body>
     <header id="header">

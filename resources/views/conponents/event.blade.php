@@ -1,6 +1,5 @@
 @inject('eventservice','App\Services\EventService')
 
-
 <div class="event">
     <div class="left">
         <div class="year">
@@ -15,13 +14,13 @@
         <div class="place">
             {{ $event->place }}
         </div>
-        <div class="field">
+        <div class="field {{ $event->field }}">
             {{ $eventservice->field($event->field) }}
         </div>
     </div>
     <div class="right">
         <div class="top">
-            <div class="condition">
+            <div class="condition finished">
                 {{ $eventservice->condition($event->start_date,$event->start_time,$event->end_date,$event->end_time) }}
             </div>
         </div>
@@ -31,11 +30,13 @@
             </div>
         </div>
         <div class="bottom">
+          <div class="tags">
             @foreach($event->tags as $tag)
-            <div class="tags">
-                {{ $tag }}
-            </div>
+                <div class="tag">
+                  <i class="fa fa-tag" aria-hidden="true"></i><a href="#">{{ $tag }}</a><i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
             @endforeach
+          </div>
         </div>
     </div>
     </div>
