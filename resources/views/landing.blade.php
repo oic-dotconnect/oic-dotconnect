@@ -10,7 +10,7 @@
         <div class="event-list">
             @foreach( $new_events as $event)
                 @include('conponents.event',['event' => $event])
-                @yield('event')
+                <!-- @yield('event') -->
             @endforeach
         </div>
     </section>
@@ -18,7 +18,7 @@
         <h1>開催予定イベント</h1>
         <div class="event-list">
             @foreach( $new_events as $event)
-                @yield('event')
+                @include('conponents.event',['event' => $event])
             @endforeach
         </div>
     </section>
