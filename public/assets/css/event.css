@@ -1,0 +1,85 @@
+/*************************
+* event
+**************************/
+
+.event {
+  padding: 4px 0;
+  border-top: solid 1px #969998;
+  border-bottom: solid 1px #969998;
+}
+
+.event:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.event > div {
+  float: left;
+  padding: 5px 10px;
+}
+
+/*************************
+* event > left
+**************************/
+.event > .left {
+  text-align: center;
+  border-right: solid 1px #969998;
+}
+
+.left .year, .left .place {
+  font-size: 12px;
+}
+
+.left .day {
+  font-weight: bold;
+}
+
+.left .time {
+  font-weight: bold;
+  font-size: x-small;
+}
+
+.left .place {
+
+}
+
+.it {
+  background-color: #A1EFFC;
+}
+
+.design {
+  background-color: #F9E19F;
+}
+
+.move {
+  background-color: #9EF7AA;
+}
+
+.game {
+  background-color: #F7AA9E;
+}
+
+.other {
+  background-color: #AA9EF7;
+}
+
+/*************************
+* event > right
+**************************/
+ .right .title {
+   font-size: 24px;
+   font-weight: bold;
+ }
+
+ /*************************
+ * condition
+ **************************/
+.right .condition {
+  display: inline-block;
+  padding: 2px;
+}
+
+.finished {
+  background-color: #E8E8E8
+}
