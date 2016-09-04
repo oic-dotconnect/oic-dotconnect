@@ -78,3 +78,23 @@
   font-size: 36px;
   margin-right: 10px;
 }
+
+.about-content:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.about-content > section {
+  float: left;
+  margin-left: 2.5%;
+  width: 30%;
+  min-height: 200px;
+}
+
+.about-content p, .about-content ul{
+  text-align: left;
+  max-width: 350px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
