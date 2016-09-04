@@ -9,7 +9,7 @@
         <h1>新着イベント</h1>
         <div class="event-list">
             @foreach( $new_events as $event)
-                @include('event',['event' => $event])
+                @include('conponents.event',['event' => $event])
                 @yield('event')
             @endforeach
         </div>

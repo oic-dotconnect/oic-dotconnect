@@ -4,13 +4,13 @@
     <div class="event">
         <div class="left">
             <div class="year">
-                {{ $eventservice->dateyear($event->start_date) }}
+                {{ $eventservice->dateYear($event->start_date) }}
             </div>
             <div class="day">
-                {{ $eventservice->dateday($event->start_date) }}
+                {{ $eventservice->dateDay($event->start_date) }}
             </div>
             <div class="time">
-                {{ $eventservice->datetime($event->start_time) }}~{{ $eventservice->datetime($event->end_time) }}
+                {{ $eventservice->dateTime($event->start_time) }}~{{ $eventservice->datetime($event->end_time) }}
             </div>
             <div class="place">
                 {{ $event->place }}
