@@ -4,6 +4,10 @@ namespace App\Services;
 
 class EventService
 {
+    public function dateSide($date){
+        return date('Y/m/d',strtotime($date));
+    }
+
     public function dateYear($date){
         return date('Y',strtotime($date));
     }
