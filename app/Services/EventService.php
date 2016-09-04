@@ -4,11 +4,11 @@ namespace App\Services;
 
 class EventService
 {
-    public function dateyear($date){
+    public function dateYear($date){
         return date('Y',strtotime($date));
     }
 
-    public function dateday($date){
+    public function dateDay($date){
         $week = array(
             '日',
             '月',
@@ -23,7 +23,7 @@ class EventService
         return $d;
     }
 
-    public function datetime($date){
+    public function dateTime($date){
         $d = date('H:i',strtotime($date));
         return $d;
     }
@@ -54,22 +54,33 @@ class EventService
         $nowdate = ('Y-m-d');
         $nowtime = ('H:i:s');
 
-        if ($ded>=$nowdate) {
+        if ($dsd>$nowdate) {
+            //開催日が今より後
+            $c = "開催前";
+            return $c;
+        }elseif($dsd==$nowdate){
+            //開催日当日
+            if ($dst>$nowtime) {
+                $c = "開催前";
+                return $c;
+            }else{
+                $c = "開催中";
+            }
+        }
+        if ($ded<$nowdate) {
+            //終了日が今より前
+            $c = "開催後";
+        }elseif($ded==$nowdate){
+            //終了日当日
             if ($det < $nowtime) {
                 $c = "開催後";
             }else{
                 $c = "開催中";
             }
         }else{
+            //開催前でなく、まだ終了日ではない
             $c = "開催中";
         }
-        if ($dsd>=$nowdate) {
-            if ($dst>$nowtime) {
-                $c = "開催前";
-            }else{
-                $c = "開催中";
-            }
-        };
         return $c;
     }
 }
