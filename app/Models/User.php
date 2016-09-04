@@ -1,20 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    protected $table = 'USER';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_code', 'name', 'email', 'student_number', 'google_id',
+        'code', 'name', 'email', 'student_number', 'google_id',
     ];
 
     /**
@@ -33,7 +32,7 @@ class User extends Authenticatable
 
     public static function create(array $data = Array()){
       return parent::create([
-        'user_code'       => substr(bcrypt($data['google_id']), -7),
+        'code'       => substr(bcrypt($data['google_id']), -7),
         'name'            => $data['name'],
         'email'           => $data['email'],
         'student_number'  => substr($data['email'], 0, 5),
