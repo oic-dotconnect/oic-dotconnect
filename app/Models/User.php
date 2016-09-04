@@ -30,7 +30,7 @@ class User extends Authenticatable
     {
         return $query->where('google_id', $google_id);
     }
-    
+
     public static function create(array $data = Array()){
       return parent::create([
         'user_code'       => substr(bcrypt($data['google_id']), -7),
@@ -43,13 +43,12 @@ class User extends Authenticatable
 
 
 
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany('App\tag','user_tag');
     }
-    public function event()
+    public function events()
     {
         return $this->belongsToMany('App\event','user_event');
     }
 }
-
