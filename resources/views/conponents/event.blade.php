@@ -1,6 +1,5 @@
 @inject('eventservice','App\Services\EventService')
 
-
 <div class="event">
     <div class="left">
         <div class="year">

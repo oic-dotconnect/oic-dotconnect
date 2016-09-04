@@ -24,7 +24,6 @@
         <div class="event-list">
             @foreach( $new_events as $event)
                 @include('conponents.event',['event' => $event])
-                <!-- @yield('event') -->
             @endforeach
         </div>
     </section>
@@ -40,5 +39,13 @@
 <div class="about-section">
     <h1 class="heading">.Linkerとは？</h1>
     イベントを開催しています
+</div>
+<div class="side">
+    <section>
+        <h1>サイド新着イベント</h1>
+        @foreach( $new_events as $event)
+            @include('conponents.side-event',['event' => $event])
+        @endforeach
+    </section>
 </div>
 @endsection
