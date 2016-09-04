@@ -51,6 +51,12 @@
           イベントやプロフィールに好きなタグを設定することで、自分に合ったイベントを探すことが出来ます。
         </p>
       </section>
+      <section>
+        <h2><i class="fa fa-search" aria-hidden="true"></i>空いてる教室を検索</h2>
+        <p>
+          授業の時間割や登録されているイベントを考慮し、空いている教室を検索することが出来るため、教室の確保が簡単に！
+        </p>
+      </section>
     </div>
 </div>
 <div class="event-section">
