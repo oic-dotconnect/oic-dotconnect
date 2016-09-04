@@ -70,3 +70,11 @@
   padding: 0 40px;
   text-align: center;
 }
+
+/*************************
+* about-content
+**************************/
+.about-content i {
+  font-size: 36px;
+  margin-right: 10px;
+}

@@ -7,6 +7,10 @@ body {
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 /********************
 * form
 *********************/
@@ -30,4 +34,12 @@ input, button, textarea, select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+}
+
+/********************
+* heading
+*********************/
+
+.heading {
+  border-bottom: solid 5px #000000;
 }

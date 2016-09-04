@@ -19,24 +19,25 @@
         </div>
     </div>
     <div class="right">
+
         <div class="top">
-            <div class="condition finished">
+            <div class="condition {{ $eventservice->conditionClass($event->start_date,$event->start_time,$event->end_date,$event->end_time) }}">
                 {{ $eventservice->condition($event->start_date,$event->start_time,$event->end_date,$event->end_time) }}
             </div>
         </div>
         <div class="center">
             <div class="title">
-                {{ $event->name }}
+                <a href="#hoge">{{ $event->name }}</a>
             </div>
         </div>
         <div class="bottom">
           <div class="tags">
             @foreach($event->tags as $tag)
                 <div class="tag">
-                  <i class="fa fa-tag" aria-hidden="true"></i><a href="#">{{ $tag }}</a><i class="fa fa-star-o" aria-hidden="true"></i>
+                  <i class="fa fa-tag" aria-hidden="true"></i><a href="#">{{ $tag }}</a><i class="fa fa-star-o star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
                 </div>
             @endforeach
           </div>
         </div>
     </div>
-    </div>
+  </div>

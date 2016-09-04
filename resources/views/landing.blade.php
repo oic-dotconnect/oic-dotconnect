@@ -8,10 +8,10 @@
 
 @section('content')
 <div class="top-image">
-  <img src="{{{asset('1.jpg')}}}" alt="" />
+  <img src="{{{asset('/img/top-image.jpg')}}}" alt="" />
   <div class="top-logo">
     <div>
-      <img src="{{{asset('logo2.png')}}}" alt="" />
+      <img src="{{{asset('/img/logo.png')}}}" alt="" />
     </div>
     <p>
       人と人を繋ぎ、輪を広げていく
@@ -38,14 +38,25 @@
 </div>
 <div class="about-section">
     <h1 class="heading">.Linkerとは？</h1>
-    イベントを開催しています
-</div>
-<div class="side">
-    <section>
-        <h1>サイド新着イベント</h1>
-        @foreach( $new_events as $event)
-            @include('conponents.side-event',['event' => $event])
-        @endforeach
-    </section>
+    <div class="about-content">
+      <section>
+        <h2><i class="fa fa-shield" aria-hidden="true"></i>初めての方へ</h2>
+        <p>
+
+        </p>
+      </section>
+      <section>
+        <h2>初めての方へ</h2>
+        <p>
+
+        </p>
+      </section>
+      <section>
+        <h2>初めての方へ</h2>
+        <p>
+
+        </p>
+      </section>
+    </div>
 </div>
 @endsection

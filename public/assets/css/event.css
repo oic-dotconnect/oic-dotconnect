@@ -67,19 +67,35 @@
 /*************************
 * event > right
 **************************/
- .right .title {
-   font-size: 24px;
-   font-weight: bold;
- }
+.right {
+}
 
- /*************************
- * condition
- **************************/
+.right .title {
+ font-size: 24px;
+ font-weight: bold;
+}
+
+.right .title a {
+  color: #000000;
+}
+/*************************
+* condition
+**************************/
 .right .condition {
   display: inline-block;
   padding: 2px;
+  min-width: 50px;
+  text-align: center;
 }
 
 .finished {
+  background-color: #E8E8E8
+}
+
+.open {
+  background-color: #E8E8E8
+}
+
+.before {
   background-color: #E8E8E8
 }
