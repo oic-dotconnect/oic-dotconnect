@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
 	protected $table = 'TAG';
+	public $timestamps = false;
 
     public function event()
     {
