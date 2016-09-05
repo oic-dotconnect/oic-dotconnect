@@ -8,12 +8,12 @@ class Event extends Model
 {
 	protected $table = 'EVENT';
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsToMany('App\tag','event_tag');
+        return $this->belongsToMany('App\Models\Tag','event_tag');
     }
-    public function user()
+    public function users()
     {
-        return $this->belongsToMany('App\user','user_event');
+        return $this->belongsToMany('App\Models\User','user_event');
     }
 }

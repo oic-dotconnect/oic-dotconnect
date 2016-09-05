@@ -44,10 +44,10 @@ class User extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\tag','user_tag');
+        return $this->belongsToMany('App\Models\Tag','user_tag');
     }
     public function events()
     {
-        return $this->belongsToMany('App\event','user_event');
+        return $this->belongsToMany('App\Models\Event','user_event');
     }
 }
