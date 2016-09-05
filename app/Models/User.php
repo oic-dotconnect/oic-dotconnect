@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public static function create(array $data = Array()){
       return parent::create([
-        'code'       => substr(bcrypt($data['google_id']), -7),
+        'code'            => substr(bcrypt($data['google_id']), -7),
         'name'            => $data['name'],
         'email'           => $data['email'],
         'student_number'  => substr($data['email'], 0, 5),
