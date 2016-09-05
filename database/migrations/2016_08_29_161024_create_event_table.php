@@ -14,7 +14,7 @@ class CreateEventTable extends Migration
     {
         Schema::create('EVENT', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
+            $table->string('code',7)->unique();
             $table->string('name');
             $table->string('field');
             $table->string('description');
@@ -24,9 +24,10 @@ class CreateEventTable extends Migration
             $table->time('end_at');
             $table->string('place');
             $table->integer('capacity');
-            $table->string('tag');
             $table->boolean('open');
-            $table->date('open_date');
+            $table->datetime('open_date');
+            $table->integer('organizer_id');
+            $table->timestamps();
         });
     }
 
