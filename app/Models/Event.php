@@ -16,4 +16,8 @@ class Event extends Model
     {
         return $this->belongsToMany('App\Models\User','user_event')->withPivot('state');
     }
+
+		public function entry_num(){
+			return $this->users()->count();
+		}
 }
