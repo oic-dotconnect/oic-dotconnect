@@ -14,6 +14,6 @@ class Event extends Model
     }
     public function users()
     {
-        return $this->belongsToMany('App\Models\User','user_event');
+        return $this->belongsToMany('App\Models\User','user_event')->withPivot('state');
     }
 }

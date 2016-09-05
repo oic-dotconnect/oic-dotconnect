@@ -19,8 +19,8 @@ class CreateUserEventTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('USER')->onDelete('cascade');
 
-            $table->boolean('entry_flug');
-            $table->string('state');
+            // $table->boolean('open_flug')->default(false);
+            $table->string('state')->default('member');
             });
     }
 

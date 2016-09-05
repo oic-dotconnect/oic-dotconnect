@@ -9,11 +9,11 @@ class Tag extends Model
 	protected $table = 'TAG';
 	public $timestamps = false;
 
-    public function event()
+    public function events()
     {
         return $this->belongsToMany('App\Models\Event','event_tag');
     }
-    public function user()
+    public function users()
     {
         return $this->belongsToMany('App\Models\User','user_event');
     }
