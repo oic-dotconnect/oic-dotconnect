@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public static function create(array $data = Array()){
       return parent::create([
-        'code'       => substr(bcrypt($data['google_id']), -7),
+        'code'            => substr(bcrypt($data['google_id']), -7),
         'name'            => $data['name'],
         'email'           => $data['email'],
         'student_number'  => substr($data['email'], 0, 5),
@@ -44,10 +44,10 @@ class User extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\tag','user_tag');
+        return $this->belongsToMany('App\Models\Tag','user_tag');
     }
     public function events()
     {
-        return $this->belongsToMany('App\event','user_event');
+        return $this->belongsToMany('App\Models\Event','user_event')->withPivot('state', 'entry');
     }
 }

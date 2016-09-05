@@ -1,19 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
 	protected $table = 'TAG';
+	public $timestamps = false;
 
-    public function event()
+    public function events()
     {
-        return $this->belongsToMany('App\event','event_tag');
+        return $this->belongsToMany('App\Models\Event','event_tag');
     }
-    public function user()
+    public function users()
     {
-        return $this->belongsToMany('App\user','user_event');
+        return $this->belongsToMany('App\Models\User','user_event');
     }
 }
