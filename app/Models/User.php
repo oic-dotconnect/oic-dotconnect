@@ -48,6 +48,6 @@ class User extends Authenticatable
     }
     public function events()
     {
-        return $this->belongsToMany('App\Models\Event','user_event')->withPivot('state');
+        return $this->belongsToMany('App\Models\Event','user_event')->withPivot('state', 'entry');
     }
 }
