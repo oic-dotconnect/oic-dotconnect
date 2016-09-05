@@ -41,5 +41,6 @@
       @yield('content')
     </main>
     <footer id="footer"></footer>
+    <script src="/assets/js/bundle.js" charset="utf-8"></script>
   </body>
 </html>
