@@ -9,7 +9,7 @@
             {{ $eventservice->dateDay($event->start_date) }}
         </div>
         <div class="time">
-            {{ $eventservice->dateTime($event->start_time) }}~{{ $eventservice->datetime($event->end_time) }}
+            {{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}
         </div>
         <div class="place">
             {{ $event->place }}
@@ -21,8 +21,8 @@
     <div class="right">
 
         <div class="top">
-            <div class="condition {{ $eventservice->conditionClass($event->start_date,$event->start_time,$event->end_date,$event->end_time) }}">
-                {{ $eventservice->condition($event->start_date,$event->start_time,$event->end_date,$event->end_time) }}
+            <div class="condition {{ $eventservice->conditionClass($event->start_date,$event->start_at,$event->end_date,$event->end_at) }}">
+                {{ $eventservice->condition($event->start_date,$event->start_at,$event->end_date,$event->end_at) }}
             </div>
         </div>
         <div class="center">
