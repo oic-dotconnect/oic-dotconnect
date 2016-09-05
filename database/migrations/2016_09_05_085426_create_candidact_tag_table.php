@@ -12,8 +12,8 @@ class CreateCandidactTagTable extends Migration
      */
     public function up()
     {
-      Schema::create('CANDIDACY＿TAG', function (Blueprint $table) {
-        $table->string('name')->unique();        
+      Schema::create('CANDIDACY_TAG', function (Blueprint $table) {
+        $table->string('name')->unique();
       });
     }
 
@@ -24,6 +24,6 @@ class CreateCandidactTagTable extends Migration
      */
     public function down()
     {
-        Schema::drop('CANDIDACY＿TAG');
+        Schema::drop('CANDIDACY_TAG');
     }
 }

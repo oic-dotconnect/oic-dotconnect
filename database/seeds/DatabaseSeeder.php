@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EventTagTableSeeder::class);
         $this->call(UserTagTableSeeder::class);
         $this->call(UserEventTableSeeder::class);
+        $this->call(CandidyTagTableSeeder::class);
     }
 }
