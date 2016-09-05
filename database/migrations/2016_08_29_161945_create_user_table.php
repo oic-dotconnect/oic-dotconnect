@@ -19,7 +19,7 @@ class CreateUserTable extends Migration
             $table->string('student_number');
             $table->string('email');
             $table->string('student_name');
-            });
+        });
 
     }
 
