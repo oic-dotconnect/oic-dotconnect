@@ -34,7 +34,7 @@
           <div class="tags">
             @foreach($event->tags as $tag)
                 <div class="tag">
-                  <i class="fa fa-tag" aria-hidden="true"></i><a href="#">{{ $tag }}</a><i class="fa fa-star-o star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-tag" aria-hidden="true"></i><a href="#">{{ $tag->name }}</a><i class="fa fa-star-o star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
                 </div>
             @endforeach
           </div>
