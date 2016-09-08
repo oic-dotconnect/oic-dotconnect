@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Event','user_event')->withPivot('state', 'entry');
     }
+
+    public function organize()
+    {
+        return $this->hasMany('App\Models\Event', 'organizer_id');
+    }
 }
