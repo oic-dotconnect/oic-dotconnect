@@ -7,3 +7,5 @@ Route::get('/mock/mypage','MockController@mypage');
 Route::get('/mock/vuetest',function(){
   return view('vuetest');
 });
+
+Route::get('/mock/organize','MockController@organize');
