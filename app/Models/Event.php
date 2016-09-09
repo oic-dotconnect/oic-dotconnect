@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
-{
+{   
+    /*  項目一覧
+    *   カラム名     型          説明              備考
+    *   id          integer    イベントのID
+    *   code        string     イベントのコード
+    *   name        string     候補タグのタグ名      
+    */
+
 	protected $table = 'EVENT';
 
     public function tags()
