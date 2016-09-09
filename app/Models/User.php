@@ -6,7 +6,19 @@ use Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
-{
+{   
+     /*  項目一覧
+    *   カラム名        型          説明                備考
+    *   id             integer    ユーザーのID         他のモデルとリレーションを張るためなどプログラム上で使用する。ユーザーを識別可能なユニークなコード
+    *   code           string     ユーザーのコード      リンクなどの表示用に用いる。ユーザーを識別可能なユニークなコード
+    *   name           string     ユーザー名      
+    *   student_number string     学籍番号
+    *   email　        string     メールアドレス    　
+    *   student_name   string     本名
+    *   introduction   text       紹介文
+    *   image_name     string     プロフィール画像の名前
+    */
+
     protected $table = "USER";
     /**
      * The attributes that are mass assignable.
