@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$data = [];
+	$data["new_events"] = \App\Models\Event::orderby('open_date','desc')->take(5)->with('Tags')->get()->each(function($event){
+			$event["entry_num"] = $event->entry_num();
+	});
+	$data["hold_events"] = \App\Models\Event::Beforehold()->take(5)->with('Tags')->orderby('start_date')->get()->each(function($event){
+			$event["entry_num"] = $event->entry_num();
+	});
+    return view('landing',$data);
 });
 
 Route::get('/view/{name}', function ($name) {
@@ -23,3 +30,5 @@ Route::get('auth/login/google', [
   'as' => 'sociallogin', 'uses' => 'Auth\SocialController@getGoogleAuth'
 ]);
 Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCallback');
+
+

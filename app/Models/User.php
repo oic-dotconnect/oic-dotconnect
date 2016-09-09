@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table = "USER";
     /**
      * The attributes that are mass assignable.
      *
@@ -49,5 +50,10 @@ class User extends Authenticatable
     public function events()
     {
         return $this->belongsToMany('App\Models\Event','user_event')->withPivot('state', 'entry');
+    }
+
+    public function organize()
+    {
+        return $this->hasMany('App\Models\Event', 'organizer_id');
     }
 }

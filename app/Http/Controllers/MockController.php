@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Models\User;
 
 class MockController extends Controller
 {
@@ -90,4 +90,12 @@ class MockController extends Controller
       return view('mypage/manage',$data);
     }
 
+    public function organize()
+    {
+      $data['user'] = User::with(['tags', 'organize' => function($query){
+        $query->with('tags');
+      }])->find(1);
+
+      return view('mypage/organize',$data);
+    }
 }

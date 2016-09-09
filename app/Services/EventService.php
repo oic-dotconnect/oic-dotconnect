@@ -42,7 +42,12 @@ class EventService
             case 'game':
                 $field = "ゲーム";
                 break;
-
+            case 'move':
+                $field = "映像";
+                break;
+            case 'other':
+                $field = "その他";
+                break;
             default:
                 $field = $f;
                 break;
@@ -55,8 +60,8 @@ class EventService
         $ded = date('Y-m-d',strtotime($e_date));
         $det = date('H:i:s',strtotime($e_time));
 
-        $nowdate = ('Y-m-d');
-        $nowtime = ('H:i:s');
+        $nowdate = date('Y-m-d');
+        $nowtime = date('H:i:s');
 
         if ($dsd>$nowdate) {
             //開催日が今より後
@@ -93,8 +98,8 @@ class EventService
         $ded = date('Y-m-d',strtotime($e_date));
         $det = date('H:i:s',strtotime($e_time));
 
-        $nowdate = ('Y-m-d');
-        $nowtime = ('H:i:s');
+        $nowdate = date('Y-m-d');
+        $nowtime = date('H:i:s');
 
         if ($dsd>$nowdate) {
             //開催日が今より後

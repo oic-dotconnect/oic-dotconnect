@@ -16,4 +16,16 @@ class Event extends Model
     {
         return $this->belongsToMany('App\Models\User','user_event')->withPivot('state');
     }
+
+	public function entry_num()
+    {
+		return $this->users()->count();
+	}
+
+    public function scopeBeforeHold($query)
+    {
+        $Today = date("Y-m-d");
+
+        return $query->where('start_date','>=',$Today);
+    }
 }
