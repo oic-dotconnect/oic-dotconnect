@@ -96,6 +96,11 @@ class MockController extends Controller
         $query->with('tags');
       }])->find(1);
 
+      /*
+      * user : ユーザー情報
+      * user->organize : 主催しているイベント一覧
+      * user->tags : お気に入りしているタグ
+      */
       return view('mypage/organize',$data);
     }
 }
