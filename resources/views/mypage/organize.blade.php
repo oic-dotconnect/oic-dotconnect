@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="left">
-    @include('mypage.user-info')
+    @include('mypage.user-info',['user' => '$user']) 
     <section>
         <h1>マイページ</h1>
         @include('mypage.my-menu')
