@@ -5,14 +5,15 @@
     </div>
     <div class="right">
         <div class="top-username">
-            yamaguchi hideyasu
+            {{ $user->name }}
         </div>
         <div class="center-tags">
             <section>
                 <h5>興味のあるタグ：</h5>
                 <div class="tags">
-                    <a href="#">laravel</a>
-                    <a href="#">IoT</a>
+                    @foreach( $user->tags as $tag)
+                        <a href="#">{{ $tag->name }}</a>
+                    @endforeach
                 </div>
             </section>
         </div>

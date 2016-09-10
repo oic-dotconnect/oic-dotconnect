@@ -3,7 +3,7 @@
 <div class="event">
     <div class="left">
         <div class="status">
-            <a href="#">非公開</a>
+            <div href="#">非公開</div>
             <a href="#">公開する</a>
         </div>
     </div>
