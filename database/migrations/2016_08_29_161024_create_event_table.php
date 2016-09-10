@@ -17,7 +17,7 @@ class CreateEventTable extends Migration
             $table->string('code',7)->unique();
             $table->string('name');
             $table->string('field');
-            $table->string('description');
+            $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
             $table->time('start_at');

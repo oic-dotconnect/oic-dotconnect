@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('student_number',5)->unique();
             $table->string('google_id')->unique();
+            $table->text('introduction')->nullable();
+            $table->string('image_name')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
