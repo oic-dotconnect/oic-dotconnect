@@ -16,7 +16,7 @@ Route::get('/', function () {
 	$data["new_events"] = \App\Models\Event::orderby('open_date','desc')->take(5)->with('Tags')->get()->each(function($event){
 			$event["entry_num"] = $event->entry_num();
 	});
-	$data["hold_events"] = \App\Models\Event::Beforehold()->take(5)->with('Tags')->orderby('start_date')->get()->each(function($event){
+	$data["hold_events"] = \App\Models\Event::Beforehold()->take(5)->with('Tags')->orderby('openig_date')->get()->each(function($event){
 			$event["entry_num"] = $event->entry_num();
 	});
     return view('landing',$data);

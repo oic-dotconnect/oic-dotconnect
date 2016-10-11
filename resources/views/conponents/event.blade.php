@@ -3,10 +3,10 @@
 <div class="event">
     <div class="left">
         <div class="year">
-            {{ $eventservice->dateYear($event->start_date) }}
+            {{ $eventservice->dateYear($event->opening_date) }}
         </div>
         <div class="day">
-            {{ $eventservice->dateDay($event->start_date) }}
+            {{ $eventservice->dateDay($event->opening_date) }}
         </div>
         <div class="time">
             {{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}
@@ -21,8 +21,8 @@
     <div class="right">
 
         <div class="top">
-            <div class="condition {{ $eventservice->conditionClass($event->start_date,$event->start_at,$event->end_date,$event->end_at) }}">
-                {{ $eventservice->condition($event->start_date,$event->start_at,$event->end_date,$event->end_at) }}
+            <div class="condition {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
+                {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
             </div>
         </div>
         <div class="center">
