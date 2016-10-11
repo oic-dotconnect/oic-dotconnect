@@ -17,10 +17,17 @@ class CreateUsersTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('student_name');
             $table->string('student_number',5)->unique();
             $table->string('google_id')->unique();
             $table->text('introduction')->nullable();
-            $table->string('image_name')->nullable();
+            $table->string('image_pass')->nullable();
+            $table->datetime('delete_at')->nullable();
+            $table->boolean('favorite_tag_notice')->default(true);
+            $table->boolean('favorite_user_notice')->default(true);
+            $table->boolean('event_join_notice')->default(true);
+            $table->boolean('event_cancel_notice')->default(true);
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

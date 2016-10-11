@@ -32,7 +32,7 @@ class Event extends Model
     }
     public function users()
     {
-        return $this->belongsToMany('App\Models\User','user_event')->withPivot('state');
+        return $this->belongsToMany('App\Models\User','user_event')->withPivot('role');
     }
 
 	public function entry_num()

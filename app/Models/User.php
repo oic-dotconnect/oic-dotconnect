@@ -44,16 +44,11 @@ class User extends Authenticatable
     }
 
     public static function create(array $data = Array()){
-      return parent::create([
-        'code'            => substr(bcrypt($data['google_id']), -7),
-        'name'            => $data['name'],
-        'email'           => $data['email'],
-        'student_number'  => substr($data['email'], 0, 5),
-        'google_id'       => $data['google_id'],
-      ]);
+      $array  = ['code' => substr(bcrypt($data['google_id']),-7),
+                'student_number' => substr($data['email'],0,5)];
+      $merged_array = array_merge($array,$data); 
+      return parent::create($merged_array);
     }
-
-
 
     public function tags()
     {
