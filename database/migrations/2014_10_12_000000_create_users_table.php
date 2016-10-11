@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('google_id')->unique();
             $table->text('introduction')->nullable();
             $table->string('image_pass')->nullable();
-            $table->datetime('delete_at')->nullable();
             $table->boolean('favorite_tag_notice')->default(true);
             $table->boolean('favorite_user_notice')->default(true);
             $table->boolean('event_join_notice')->default(true);
