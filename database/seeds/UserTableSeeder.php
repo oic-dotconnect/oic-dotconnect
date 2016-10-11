@@ -15,7 +15,8 @@ class UserTableSeeder extends Seeder
         for ($i=0; $i < 40; $i++) {
           App\Models\User::create([
             'email' => sprintf('b%04d@oic.jp', $i),
-            'name' => $faker->name(),
+            'name' => 'nickname'.$i,
+            'student_name' => $faker->name(),
             'google_id' => $faker->creditCardNumber()
           ]);
         }

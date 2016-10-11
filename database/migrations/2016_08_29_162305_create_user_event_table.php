@@ -20,7 +20,8 @@ class CreateUserEventTable extends Migration
             $table->foreign('user_id')->references('id')->on('USER')->onDelete('cascade');
 
             $table->boolean('entry')->default(true);
-            $table->string('state')->default('member');
+            $table->string('role')->default('member');
+            $table->datetime('entry_date')->nullable();
             });
     }
 
