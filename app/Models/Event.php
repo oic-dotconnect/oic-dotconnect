@@ -32,7 +32,11 @@ class Event extends Model
     }
     public function users()
     {
-        return $this->belongsToMany('App\Models\User','user_event')->withPivot('role');
+        return $this->belongsToMany('App\Models\User','user_event')->withPivot('role','created_at');
+    }
+    public function organizer()
+    {
+        return $this->hasOne('App\Models\User','id','organizer_id');
     }
 
 	public function entry_num()
@@ -46,4 +50,33 @@ class Event extends Model
 
         return $query->where('start_date','>=',$Today);
     }
+
+    public function scopeEventName($query,$eventname)
+    {
+        return $query->where('name','like','%'.$eventname.'%');
+    }
+
+    public function scopeTagName($query,$array)
+    {   
+        $tags = Tag::whereIn('name',$array)->select('id')->get();
+        $tag_ids = $tags->map(function($tag){ return $tag->id;})->toArray();
+        return $query->join('EVENT_TAG','event.id','=','event_tag.tag_id');
+        //whereIn('event_tag.tag_id',$tag_ids);
+    }
+
+    public function scopeBetweenDate($query,$startdate,$enddate)
+    {
+        return $query->whereBetWeen('opening_date',[$startdate,$enddate]);
+    }
+
+    public function scopeStatus($query,$status)
+    {
+        return $query->where('status',$status);
+    }
+
+    public function scopeEventDetail($query,$code)
+    {
+        return $query->where('code',$code);
+    }
+
 }
