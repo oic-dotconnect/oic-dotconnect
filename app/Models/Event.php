@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Event extends Model
 {   
@@ -60,8 +61,11 @@ class Event extends Model
     {   
         $tags = Tag::whereIn('name',$array)->select('id')->get();
         $tag_ids = $tags->map(function($tag){ return $tag->id;})->toArray();
-        return $query->join('EVENT_TAG','event.id','=','event_tag.tag_id');
-        //whereIn('event_tag.tag_id',$tag_ids);
+        $event_ids = DB::table('event_tag')->whereIn('tag_id',$tag_ids)->get();//タグIDからイベントIDを取ってくる
+        $event_ids = collect($event_ids)->map(function($event_tag){
+            return $event_tag->event_id;
+        })->toArray();
+        return $query->whereIn('id',$event_ids);
     }
 
     public function scopeBetweenDate($query,$startdate,$enddate)
