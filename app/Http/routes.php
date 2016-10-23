@@ -31,4 +31,6 @@ Route::get('auth/login/google', [
 ]);
 Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCallback');
 
+Route::get('/event/detail','EventController@detail');
+
 

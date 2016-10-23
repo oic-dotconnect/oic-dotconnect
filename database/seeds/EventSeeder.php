@@ -79,7 +79,7 @@ class EventSeeder extends Seeder
           'end_at' => date('H:i:s', strtotime($time.'+2 hour')),
           'place' => $faker->randomElement($room),
           'capacity' => $faker->numberBetween(10,100),
-          'status' => 'finish',
+          'status' => 'stop',
           'organizer_id' => 3,
           'open_date' => date('Y-m-d',strtotime($date.'-2 week')),
           'recruit_start_date' => date('Y-m-d',strtotime($date.'-4 week')),

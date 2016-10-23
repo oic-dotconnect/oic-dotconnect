@@ -21,7 +21,7 @@ class CreateUserEventTable extends Migration
 
             $table->boolean('entry')->default(true);
             $table->string('role')->default('member');
-            $table->datetime('entry_date')->nullable();
+            $table->timestamps();
             });
     }
 
