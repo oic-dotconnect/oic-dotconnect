@@ -49,7 +49,7 @@ class Event extends Model
     {
         $Today = date("Y-m-d");
 
-        return $query->where('start_date','>=',$Today);
+        return $query->where('opening_date','>=',$Today);
     }
 
     public function scopeEventName($query,$eventname)
