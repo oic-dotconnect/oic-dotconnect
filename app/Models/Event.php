@@ -45,11 +45,17 @@ class Event extends Model
 		return $this->users()->count();
 	}
 
+    //scope
+    public function scopeRole($query, $role)
+    {
+      return $query->where('user_event.role', $role);
+    }
+
     public function scopeBeforeHold($query)
     {
         $Today = date("Y-m-d");
 
-        return $query->where('start_date','>=',$Today);
+        return $query->where('opening_date','>=',$Today);
     }
 
     public function scopeEventName($query,$eventname)
