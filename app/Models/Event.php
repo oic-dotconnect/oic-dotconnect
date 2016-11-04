@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Event extends Model
 {   
@@ -32,7 +33,11 @@ class Event extends Model
     }
     public function users()
     {
-        return $this->belongsToMany('App\Models\User','user_event')->withPivot('role');
+        return $this->belongsToMany('App\Models\User','user_event')->withPivot('role','created_at');
+    }
+    public function organizer()
+    {
+        return $this->hasOne('App\Models\User','id','organizer_id');
     }
 
 	public function entry_num()
@@ -44,6 +49,38 @@ class Event extends Model
     {
         $Today = date("Y-m-d");
 
-        return $query->where('start_date','>=',$Today);
+        return $query->where('opening_date','>=',$Today);
     }
+
+    public function scopeEventName($query,$eventname)
+    {
+        return $query->where('name','like','%'.$eventname.'%');
+    }
+
+    public function scopeTagName($query,$array)
+    {   
+        $tags = Tag::whereIn('name',$array)->select('id')->get();
+        $tag_ids = $tags->map(function($tag){ return $tag->id;})->toArray();
+        $event_ids = DB::table('event_tag')->whereIn('tag_id',$tag_ids)->get();//タグIDからイベントIDを取ってくる
+        $event_ids = collect($event_ids)->map(function($event_tag){
+            return $event_tag->event_id;
+        })->toArray();
+        return $query->whereIn('id',$event_ids);
+    }
+
+    public function scopeBetweenDate($query,$startdate,$enddate)
+    {
+        return $query->whereBetWeen('opening_date',[$startdate,$enddate]);
+    }
+
+    public function scopeStatus($query,$status)
+    {
+        return $query->where('status',$status);
+    }
+
+    public function scopeEventDetail($query,$code)
+    {
+        return $query->where('code',$code);
+    }
+
 }
