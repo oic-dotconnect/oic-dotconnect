@@ -63,11 +63,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Event', 'organizer_id');
     }
-    
-    //ユーザーのおすすめイベントを取得する
+
+    /*ユーザーのおすすめイベントを取得する*/
     public function recommende_events()
     {
         $fav_events = $this->tags->map(function($tag){ return $tag->events; })->flatten()->map(function($event){ return $event->id; })->unique();
-        return Event::BeforeHold()->whereIn('id', $fav_events)->get();
+	    return Event::BeforeHold()->whereIn('id', $fav_events)->get();
     }
 }
