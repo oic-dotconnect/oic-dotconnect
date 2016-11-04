@@ -12,7 +12,7 @@ class TagTableSeeder extends Seeder
     public function run()
     {
         $count = 0;
-        for ($i=0; $i < 30; $i++) {
+        for ($i=0; $i < 55; $i++) {
           App\Models\Tag::create([
             'name' => 'Tag' . $count++
           ]);

@@ -16,7 +16,8 @@ class EventSeeder extends Seeder
       $fields = ['it', 'design', 'move', 'game', 'other'];
       $room = ['5A', '9D-1','3A'];
       $bool = [true, false];
-      for($i = 0; $i < 5; $i++)
+      $organizer_id = 0;
+      for($i = 0; $i < 2; $i++)
       {
         $datetime = $faker->dateTimeBetween($startDate = '-1 years', $endDate = '+1 years');
         $date = $datetime->format('Y-m-d');
@@ -32,15 +33,16 @@ class EventSeeder extends Seeder
           'place' => $faker->randomElement($room),
           'capacity' => $faker->numberBetween(10,100),
           'status' => 'open',
-          'organizer_id' => 1,
+          'organizer_id' => $organizer_id,
           'open_date' => date('Y-m-d',strtotime($date.'-2 week')),
           'recruit_start_date' => date('Y-m-d',strtotime($date.'-4 week')),
           'recruit_end_date' => date('Y-m-d',strtotime($date.'-1 week')),
           'recruit_start_time' => $time,
           'recruit_end_time' => date('H:i:s',strtotime($time.'+2 hour')),
         ]);
+        $organizer_id++;
       }
-      for($i = 0; $i < 5; $i++)
+      for($i = 0; $i < 2; $i++)
       {
         $datetime = $faker->dateTimeBetween($startDate = '-1 years', $endDate = '+1 years');
         $date = $datetime->format('Y-m-d');
@@ -56,15 +58,16 @@ class EventSeeder extends Seeder
           'place' => $faker->randomElement($room),
           'capacity' => $faker->numberBetween(10,100),
           'status' => 'close',
-          'organizer_id' => 2,
+          'organizer_id' => $organizer_id,
           'open_date' => date('Y-m-d',strtotime($date.'-2 week')),
           'recruit_start_date' => date('Y-m-d',strtotime($date.'-4 week')),
           'recruit_end_date' => date('Y-m-d',strtotime($date.'-1 week')),
           'recruit_start_time' => $time,
           'recruit_end_time' => date('H:i:s',strtotime($time.'+2 hour')),
         ]);
+        $organizer_id++;
       }
-      for($i = 0; $i < 10; $i++)
+      for($i = 0; $i < 2; $i++)
       {
         $datetime = $faker->dateTimeBetween($startDate = '-1 years', $endDate = '+1 years');
         $date = $datetime->format('Y-m-d');
@@ -80,15 +83,16 @@ class EventSeeder extends Seeder
           'place' => $faker->randomElement($room),
           'capacity' => $faker->numberBetween(10,100),
           'status' => 'stop',
-          'organizer_id' => 3,
+          'organizer_id' => $organizer_id,
           'open_date' => date('Y-m-d',strtotime($date.'-2 week')),
           'recruit_start_date' => date('Y-m-d',strtotime($date.'-4 week')),
           'recruit_end_date' => date('Y-m-d',strtotime($date.'-1 week')),
           'recruit_start_time' => $time,
           'recruit_end_time' => date('H:i:s',strtotime($time.'+2 hour')),
         ]);
+        $organizer_id++;
       }
-      for($i = 0; $i < 10; $i++)
+      for($i = 0; $i < 2; $i++)
       {
         $datetime = $faker->dateTimeBetween($startDate = '-1 years', $endDate = '+1 years');
         $date = $datetime->format('Y-m-d');
@@ -104,15 +108,16 @@ class EventSeeder extends Seeder
           'place' => $faker->randomElement($room),
           'capacity' => $faker->numberBetween(10,100),
           'status' => 'open',
-          'organizer_id' => 4,
+          'organizer_id' => $organizer_id,
           'open_date' => date('Y-m-d',strtotime($date.'-2 week')),
           'recruit_start_date' => date('Y-m-d',strtotime($date.'-4 week')),
           'recruit_end_date' => date('Y-m-d',strtotime($date.'-1 week')),
           'recruit_start_time' => $time,
           'recruit_end_time' => date('H:i:s',strtotime($time.'+2 hour')),
         ]);
+        $organizer_id++;
       }
-      for($i = 0; $i < 5; $i++)
+      for($i = 0; $i < 2; $i++)
       {
         $datetime = $faker->dateTimeBetween($startDate = '-1 years', $endDate = '+1 years');
         $date = $datetime->format('Y-m-d');
@@ -128,13 +133,14 @@ class EventSeeder extends Seeder
           'place' => $faker->randomElement($room),
           'capacity' => $faker->numberBetween(10,100),
           'status' => 'close',
-          'organizer_id' => 5,
+          'organizer_id' => $organizer_id,
           'open_date' => date('Y-m-d',strtotime($date.'-2 week')),
           'recruit_start_date' => date('Y-m-d',strtotime($date.'-4 week')),
           'recruit_end_date' => date('Y-m-d',strtotime($date.'-1 week')),
           'recruit_start_time' => $time,
           'recruit_end_time' => date('H:i:s',strtotime($time.'+2 hour')),
         ]);
+        $organizer_id++;
       }
     }
 }
