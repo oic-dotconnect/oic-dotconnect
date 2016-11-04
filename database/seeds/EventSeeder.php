@@ -10,6 +10,13 @@ class EventSeeder extends Seeder
      *
      * @return void
      */
+
+    /*
+    イベントデータ
+    laravel勉強会とUnity勉強会は開催中
+    Vue.Js勉強会とモンストは未公開
+    PhotoShop勉強会は中止
+    */
     public function run()
     {
       $faker = Faker::create('ja_JP');

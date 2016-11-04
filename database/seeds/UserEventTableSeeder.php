@@ -9,6 +9,12 @@ class UserEventTableSeeder extends Seeder
      *
      * @return void
      */
+
+    /*
+    イベントダミーデータ
+    イベントid 0~10 は開催ユーザーidが0~10
+    残りのイベントはユーザーid11以降が参加
+    */
     public function run()
     {
 
