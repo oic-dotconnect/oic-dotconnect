@@ -109,4 +109,3 @@ Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(Request $
     $data['code'] = $request->input("code");
     return view('user/user-setting-leave',$data);
 }]);
-
