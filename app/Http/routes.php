@@ -108,37 +108,24 @@ Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
     return view('user/user-entry-confirm');
 }]);
 
-// マイページ
-Route::get('/user/mypage',['as' =>'user-mypage',function(){
-    return view('user/user-mypage');
-}]);
-
 // ユーザーページ
 Route::get('/user',['as' =>'user',function(Request $request){
     $data['code'] = $request->input("code");
     return view('user/user',$data);
 }]);
 
-// お気に入りタグ編集ページ
-Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-tag',$data);
+// ログインエラーページ(OICドメインではない場合)
+Route::get('/err/login_domain',['as' => 'login_domain',function(){
+    return view('errors/err-login-domain');
 }]);
 
-// プロフィール編集ページ
-Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-profile',$data);
+// アクセスエラーページ(ログイン必須のURLにアクセスしようとした場合)
+Route::get('/err/access_noauth',['as' => 'access_noauth',function(){
+    return view('errors/err-access-noauth');
 }]);
 
-// 通知設定ページ
-Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-notice',$data);
+// イベント公開エラーページ(イベント公開時にイベント公開に必要な情報が入力されていなかった場合)
+Route::get('/err/event_open',['as' => 'event_open',function(){
+    return view('errors/err-event-open');
 }]);
 
-//　退会ページ
-Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-leave',$data);
-}]);
