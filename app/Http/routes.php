@@ -33,21 +33,54 @@ Route::get('auth/login/google', [
 ]);
 Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCallback');
 
-// イベント登録ページ
-Route::get('/event/entry',['as' =>'event-entry',function(){
-    return view('event/event-entry');
-}]);
+// ログインしている場合のみアクセスできるグループ
+Route::group(['middleware' => 'auth'], function () {
+    // イベント登録ページ
+    Route::get('/event/entry',['as' =>'event-entry',function(){
+        return view('event/event-entry');
+    }]);
 
-// イベント編集ページ
-Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('event/event-edit',$data);
-}]);
+    // イベント編集ページ
+    Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
+        $data['code'] = $request->input("code");
+        return view('event/event-edit',$data);
+    }]);
 
-// イベント管理ページ
-Route::get('/event/control',['as' =>'event-control',function(){
-    return view('event/event-control');
-}]);
+    // イベント管理ページ
+    Route::get('/event/control',['as' =>'event-control',function(){
+        return view('event/event-control');
+    }]);
+
+    // お気に入りタグ編集ページ
+    Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(Request $request){
+        $data['code'] = $request->input("code");
+        return view('user/user-setting-tag',$data);
+    }]);
+
+    // プロフィール編集ページ
+    Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(Request $request){
+        $data['code'] = $request->input("code");
+        return view('user/user-setting-profile',$data);
+    }]);
+
+    // 通知設定ページ
+    Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(Request $request){
+        $data['code'] = $request->input("code");
+        return view('user/user-setting-notice',$data);
+    }]);
+
+    //　退会ページ
+    Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(Request $request){
+        $data['code'] = $request->input("code");
+        return view('user/user-setting-leave',$data);
+    }]);
+
+    // マイページ
+    Route::get('/user/mypage',['as' =>'user-mypage',function(){
+        return view('user/user-mypage');
+    }]);
+
+});
 
 // イベント検索ページ
 Route::get('/event/search',['as' =>'event-search',function(){
