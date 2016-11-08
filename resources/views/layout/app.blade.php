@@ -11,6 +11,7 @@
     @yield('head')
   </head>
   <body>
+    <tag-checkbox-list></tag-checkbox-list>
     <header id="header">
       <div id="header-left">
         <span id="logo">.Linker</span>
@@ -41,6 +42,6 @@
       @yield('content')
     </main>
     <footer id="footer"></footer>
-    <script src="/assets/js/bundle.js" charset="utf-8"></script>
+    <script src="/js/bundle.js" charset="utf-8"></script>
   </body>
 </html>
