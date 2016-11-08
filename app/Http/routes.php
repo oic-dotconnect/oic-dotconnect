@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // イベント編集ページ
     Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
-        $data['code'] = $request->input("code");
+        $data['event_code'] = $request->input("event_code");
         return view('event/event-edit',$data);
     }]);
 
@@ -52,27 +52,23 @@ Route::group(['middleware' => 'auth'], function () {
     }]);
 
     // お気に入りタグ編集ページ
-    Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(Request $request){
-        $data['code'] = $request->input("code");
-        return view('user/user-setting-tag',$data);
+    Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(){
+        return view('user/user-setting-tag');
     }]);
 
     // プロフィール編集ページ
-    Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(Request $request){
-        $data['code'] = $request->input("code");
-        return view('user/user-setting-profile',$data);
+    Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(){
+        return view('user/user-setting-profile');
     }]);
 
     // 通知設定ページ
-    Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(Request $request){
-        $data['code'] = $request->input("code");
-        return view('user/user-setting-notice',$data);
+    Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(){
+        return view('user/user-setting-notice');
     }]);
 
     //　退会ページ
-    Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(Request $request){
-        $data['code'] = $request->input("code");
-        return view('user/user-setting-leave',$data);
+    Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(){
+        return view('user/user-setting-leave');
     }]);
 
     // マイページ
@@ -89,7 +85,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 
 // イベント詳細ページ
 Route::get('/event/detail',['as' =>'event-detail',function(Request $request){
-    $data['code'] = $request->input("code");
+    $data['event_code'] = $request->input("event_code");
     return view('event/event-detail',$data);
 }]);
 
@@ -110,7 +106,7 @@ Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
 
 // ユーザーページ
 Route::get('/user',['as' =>'user',function(Request $request){
-    $data['code'] = $request->input("code");
+    $data['user_code'] = $request->input("user_code");
     return view('user/user',$data);
 }]);
 
