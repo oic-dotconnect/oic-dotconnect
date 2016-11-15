@@ -72,9 +72,19 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
         return view('user/user-setting-leave');
     }]);
 
-    // マイページ
-    Route::get('/user/mypage',['as' =>'user-mypage',function(){
-        return view('user/user-mypage');
+    // マイページ おすすめイベント
+    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',function(){
+        return view('user/user-mypage-recommend');
+    }]);
+
+    // マイページ 参加イベント
+    Route::get('/user/mypage/join',['as' =>'user-mypage-join',function(){
+        return view('user/user-mypage-join');
+    }]);
+
+    // マイページ 開催イベント
+    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold',function(){
+        return view('user/user-mypage-hold');
     }]);
 // ②
 // });
