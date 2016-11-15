@@ -33,8 +33,9 @@ Route::get('auth/login/google', [
 ]);
 Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCallback');
 
-// ログインしている場合のみアクセスできるグループ
-Route::group(['middleware' => 'auth'], function () {
+// ログインしている場合のみアクセスできるグループ 有効にする場合①と②の下のコメントアウトを外す
+// ①
+// Route::group(['middleware' => 'auth'], function () {
     // イベント登録ページ
     Route::get('/event/entry',['as' =>'event-entry',function(){
         return view('event/event-entry');
@@ -75,8 +76,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/mypage',['as' =>'user-mypage',function(){
         return view('user/user-mypage');
     }]);
-
-});
+// ②
+// });
 
 // イベント検索ページ
 Route::get('/event/search',['as' =>'event-search',function(){
