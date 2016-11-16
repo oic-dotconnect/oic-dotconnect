@@ -33,51 +33,15 @@ import TagCheckbox from './tag-checkbox.vue'
 import _ from 'lodash'
 
 export default {
+	props: {
+		searchTags: {
+			required: true,
+			type: Array,
+		}
+	},
 	data() {
 		return {
-			favTags:[],
-			searchTags: [
-				{
-					id: 1,
-					name: "Tag0"
-				},
-				{
-					id: 2,
-					name: "Tag1"
-				},
-				{
-					id: 3,
-					name: "Tag2"
-				},
-				{
-					id: 4,
-					name: "Tag3"
-				},
-				{
-					id: 5,
-					name: "Tag4"
-				},
-				{
-					id: 6,
-					name: "Tag5"
-				},
-				{
-					id: 7,
-					name: "Tag6"
-				},
-				{
-					id: 8,
-					name: "Tag7"
-				},
-				{
-					id: 9,
-					name: "Tag8"
-				},
-				{
-					id: 10,
-					name: "Tag9"
-				}
-			]
+			favTags:[]
 		}
 	},
 	methods: {
