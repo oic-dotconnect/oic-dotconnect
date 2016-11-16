@@ -13,7 +13,6 @@
     @yield('head')
   </head>
   <body>
-    <tag-checkbox-list></tag-checkbox-list>
     <header id="header">
       <div id="header-left">
         <span id="logo">.Linker</span>
