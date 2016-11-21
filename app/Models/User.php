@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag','user_tag');
+        return $this->belongsToMany('App\Models\Tag','user_tag')->withPivot('noticed');
     }
     public function events()
     {
