@@ -1,5 +1,5 @@
 @extends('layout.app')
 
 @section('content')
-<h1>プロフィール編集ページ</h1>
+<h1>マイページ 開催イベント</h1>
 @endsection

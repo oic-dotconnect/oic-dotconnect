@@ -1,5 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-<h1>イベント管理ページ</h1>
+
+<h2>イベント公開エラー</h2>
 @endsection

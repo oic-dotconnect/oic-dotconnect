@@ -33,21 +33,61 @@ Route::get('auth/login/google', [
 ]);
 Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCallback');
 
-// イベント登録ページ
-Route::get('/event/entry',['as' =>'event-entry',function(){
-    return view('event/event-entry');
-}]);
+// ログインしている場合のみアクセスできるグループ 有効にする場合①と②の下のコメントアウトを外す
+// ①
+// Route::group(['middleware' => 'auth'], function () {
+    // イベント登録ページ
+    Route::get('/event/entry',['as' =>'event-entry',function(){
+        return view('event/event-entry');
+    }]);
 
-// イベント編集ページ
-Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('event/event-edit',$data);
-}]);
+    // イベント編集ページ
+    Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
+        $data['event_code'] = $request->input("event_code");
+        return view('event/event-edit',$data);
+    }]);
 
-// イベント管理ページ
-Route::get('/event/control',['as' =>'event-control',function(){
-    return view('event/event-control');
-}]);
+    // イベント管理ページ
+    Route::get('/event/control',['as' =>'event-control',function(){
+        return view('event/event-control');
+    }]);
+
+    // お気に入りタグ編集ページ
+    Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(){
+        return view('user/user-setting-tag');
+    }]);
+
+    // プロフィール編集ページ
+    Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(){
+        return view('user/user-setting-profile');
+    }]);
+
+    // 通知設定ページ
+    Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(){
+        return view('user/user-setting-notice');
+    }]);
+
+    //　退会ページ
+    Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(){
+        return view('user/user-setting-leave');
+    }]);
+
+    // マイページ おすすめイベント
+    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',function(){
+        return view('user/user-mypage-recommend');
+    }]);
+
+    // マイページ 参加イベント
+    Route::get('/user/mypage/join',['as' =>'user-mypage-join',function(){
+        return view('user/user-mypage-join');
+    }]);
+
+    // マイページ 開催イベント
+    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold',function(){
+        return view('user/user-mypage-hold');
+    }]);
+// ②
+// });
 
 // イベント検索ページ
 Route::get('/event/search',['as' =>'event-search',function(){
@@ -56,7 +96,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 
 // イベント詳細ページ
 Route::get('/event/detail',['as' =>'event-detail',function(Request $request){
-    $data['code'] = $request->input("code");
+    $data['event_code'] = $request->input("event_code");
     return view('event/event-detail',$data);
 }]);
 
@@ -75,37 +115,24 @@ Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
     return view('user/user-entry-confirm');
 }]);
 
-// マイページ
-Route::get('/user/mypage',['as' =>'user-mypage',function(){
-    return view('user/user-mypage');
-}]);
-
 // ユーザーページ
 Route::get('/user',['as' =>'user',function(Request $request){
-    $data['code'] = $request->input("code");
+    $data['user_code'] = $request->input("user_code");
     return view('user/user',$data);
 }]);
 
-// お気に入りタグ編集ページ
-Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-tag',$data);
+// ログインエラーページ(OICドメインではない場合)
+Route::get('/err/login_domain',['as' => 'login_domain',function(){
+    return view('errors/err-login-domain');
 }]);
 
-// プロフィール編集ページ
-Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-profile',$data);
+// アクセスエラーページ(ログイン必須のURLにアクセスしようとした場合)
+Route::get('/err/access_noauth',['as' => 'access_noauth',function(){
+    return view('errors/err-access-noauth');
 }]);
 
-// 通知設定ページ
-Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-notice',$data);
+// イベント公開エラーページ(イベント公開時にイベント公開に必要な情報が入力されていなかった場合)
+Route::get('/err/event_open',['as' => 'event_open',function(){
+    return view('errors/err-event-open');
 }]);
 
-//　退会ページ
-Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('user/user-setting-leave',$data);
-}]);
