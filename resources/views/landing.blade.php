@@ -64,7 +64,7 @@
         <h1 class="heading">新着イベント</h1>
         <div class="event-list">
             @foreach( $new_events as $event)
-                @include('conponents.event',['event' => $event])
+                @include('components.event',['event' => $event])
             @endforeach
         </div>
     </section>
@@ -72,7 +72,7 @@
         <h1 class="heading">開催予定イベント</h1>
         <div class="event-list">
             @foreach( $hold_events as $event)
-                @include('conponents.event',['event' => $event])
+                @include('components.event',['event' => $event])
             @endforeach
         </div>
     </section>

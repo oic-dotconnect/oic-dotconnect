@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "laravel/socialite": "^2.0",
         "thedevsaddam/multiple_route": "1.0",
-        "fzaninotto/faker": "v1.3.0"
+        "fzaninotto/faker": "v1.3.0",
+        "laravelcollective/html": "5.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{{asset('/assets/css/color.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/header.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/footer.css')}}}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{{{asset('/css/normalize.css')}}}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{{{asset('/css/common.css')}}}" media="screen" title="no title" charset="utf-8">
     @yield('head')
   </head>
   <body>
@@ -41,6 +43,6 @@
       @yield('content')
     </main>
     <footer id="footer"></footer>
-    <script src="/assets/js/bundle.js" charset="utf-8"></script>
+    <script src="/js/bundle.js" charset="utf-8"></script>
   </body>
 </html>
