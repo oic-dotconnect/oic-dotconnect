@@ -1,3 +1,5 @@
+{{--  マイページのプロフィール部分 --}}
+
 <div class="profile-inner">
 	<h2>プロフィール</h2>
 	<p class="profile-icon">
@@ -11,5 +13,4 @@
 	</p>
 	<p> {{ Auth::user()->introduction }}</p>
 	{!! link_to_route('user-setting-profile', 'アカウント設定ページへ') !!}
-	<!--<a href="#">アカウント設定ページへ</a>-->
 </div>
