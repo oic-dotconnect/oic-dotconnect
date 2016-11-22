@@ -71,9 +71,7 @@ Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
 }]);
 
 // ユーザー登録確認ページ
-Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
-    return view('user/user-entry-confirm');
-}]);
+Route::get('/user/entry/confirm',['as' =>'user-entry-confirm','uses' => 'UserEntryController@Confirm']);
 
 // マイページ
 Route::get('/user/mypage',['as' =>'user-mypage',function(){
@@ -109,3 +107,14 @@ Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(Request $
     $data['code'] = $request->input("code");
     return view('user/user-setting-leave',$data);
 }]);
+
+//-------------------------ユーザー登録-----------------------------------
+
+// ユーザー登録（コントローラーへ）
+Route::post('/user/entry/profile','UserEntryController@InputProfile');
+
+//ユーザーお気に入りタグ登録（コントローラーへ）
+Route::post('/user/entry/tag','UserEntryController@InputTag');
+
+Route::post('/user/create','UserEntryController@Create');
+
