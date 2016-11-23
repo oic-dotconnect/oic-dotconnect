@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::group(['middleware' => 'dev'], function () {
 // ランディングページ
 Route::get('/',['as' => 'landing', function () {
 	$data = [];
@@ -40,6 +40,9 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::get('/event/entry',['as' =>'event-entry',function(){
         return view('event/event-entry');
     }]);
+
+    // イベント登録
+    Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);
 
     // イベント編集ページ
     Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
@@ -136,3 +139,4 @@ Route::get('/err/event_open',['as' => 'event_open',function(){
     return view('errors/err-event-open');
 }]);
 
+});
