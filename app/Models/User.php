@@ -64,10 +64,27 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Event', 'organizer_id');
     }
 
+    public static function findCode($code) {
+        return self::where('code',$code)->first();
+    }
+
     /*ユーザーのおすすめイベントを取得する*/
     public function recommende_events()
     {
         $fav_events = $this->tags->map(function($tag){ return $tag->events; })->flatten()->map(function($event){ return $event->id; })->unique();
 	    return Event::BeforeHold()->whereIn('id', $fav_events)->get();
     }
+
+    /*参加したイベント*/
+    public function joined_events()
+    {    
+	    return $this->events()->Role('member')->get();
+    }
+    
+    /*開催したイベント*/
+    public function hold_events()
+    {    
+	    return $this->events()->Role('admin')->get();
+    }
+       
 }

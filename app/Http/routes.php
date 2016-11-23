@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::group(['middleware' => 'dev'], function () {
 // ランディングページ
 Route::get('/',['as' => 'landing', function () {
 	$data = [];
@@ -40,6 +40,9 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::get('/event/entry',['as' =>'event-entry',function(){
         return view('event/event-entry');
     }]);
+
+    // イベント登録
+    Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);
 
     // イベント編集ページ
     Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
@@ -73,19 +76,15 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     }]);
 
     // マイページ おすすめイベント
-    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',function(){
-        return view('user/user-mypage-recommend');
-    }]);
+    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',
+        'uses' => 'UserController@mypageRecommend'
+    ]);
 
     // マイページ 参加イベント
-    Route::get('/user/mypage/join',['as' =>'user-mypage-join',function(){
-        return view('user/user-mypage-join');
-    }]);
+    Route::get('/user/mypage/join',['as' =>'user-mypage-join','uses' => 'UserController@mypageJoin']);
 
     // マイページ 開催イベント
-    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold',function(){
-        return view('user/user-mypage-hold');
-    }]);
+    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold','uses' => 'UserController@mypageHold']);
 // ②
 // });
 
@@ -115,11 +114,11 @@ Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
     return view('user/user-entry-confirm');
 }]);
 
-// ユーザーページ
-Route::get('/user',['as' =>'user',function(Request $request){
-    $data['user_code'] = $request->input("user_code");
-    return view('user/user',$data);
-}]);
+// ユーザーページ　参加イベント
+Route::get('/user/{user_code}/join',['as' =>'user-page-join', 'uses' => 'UserController@userpageJoin']);
+
+// ユーザーページ　開催イベント
+Route::get('/user/{user_code}/hold',['as' =>'user-page-hold', 'uses' => 'UserController@userpageHold']);
 
 // ログインエラーページ(OICドメインではない場合)
 Route::get('/err/login_domain',['as' => 'login_domain',function(){
@@ -136,3 +135,4 @@ Route::get('/err/event_open',['as' => 'event_open',function(){
     return view('errors/err-event-open');
 }]);
 
+});

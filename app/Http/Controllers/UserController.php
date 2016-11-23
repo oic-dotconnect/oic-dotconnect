@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Models\User;
+use Auth;
 
 
 class UserController extends Controller
@@ -24,4 +25,37 @@ class UserController extends Controller
 
     	return response()->json($data);
     }
+
+	public function mypageRecommend() {
+		$user = Auth::user();
+		$data['events'] = $user->recommende_events();		
+        return view('user/user-mypage-recommend', $data);    
+	}
+
+	public function mypageJoin() {
+		$user = Auth::user();
+		$data['events'] = $user->joined_events();		
+        return view('user/user-mypage-join', $data);    
+	}
+
+	public function mypageHold() {
+		$user = Auth::user();
+		$data['events'] = $user->hold_events();		
+        return view('user/user-mypage-hold', $data);    
+	}
+
+	public function userpageJoin(Request $request, $userCode) {
+		$user = User::findCode($userCode);
+		$data['user'] = $user;
+		$data['events'] = $user->joined_events();		
+        return view('user/user-userpage-join', $data);    
+	}
+
+	public function userpageHold(Request $request, $userCode) {
+		$user = User::findCode($userCode);
+		$data['user'] = $user;
+		$data['events'] = $user->hold_events();		
+        return view('user/user-userpage-hold', $data);    
+	}
+
 }

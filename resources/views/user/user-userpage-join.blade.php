@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<h1>マイページ　おすすめイベント</h1>
-@include('components/my-profile')
-@inclide('components/my-tag-list', [ 'user' => Auth::user()])
+<h1>マイページ 開催イベント</h1>
+@include('components/user-profile', [ 'user' => $user ])
+@include('components/user-tag-list', [ 'tags' => Auth::user()->tags ])
 @endsection
