@@ -8,4 +8,13 @@
 <h1>マイページ 開催イベント</h1>
 @include('components/user-profile', [ 'user' => $user ])
 @include('components/user-tag-list', [ 'tags' => Auth::user()->tags ])
+
+<div>
+	@foreach ($events as $event)
+		{{ $event->name }}
+	@endforeach
+</div>
+
+{{ $events->links() }}
+
 @endsection

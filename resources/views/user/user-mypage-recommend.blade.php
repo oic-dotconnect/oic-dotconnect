@@ -7,5 +7,13 @@
 @section('content')
 <h1>マイページ　おすすめイベント</h1>
 @include('components/my-profile')
-@inclide('components/my-tag-list', [ 'user' => Auth::user()])
+@include('components/my-tag-list', [ 'tags' => Auth::user()->tags ])
+
+<div>
+	@foreach ($events as $event)
+		{{ $event->name }}
+	@endforeach
+</div>
+
+{{ $events->links() }}
 @endsection
