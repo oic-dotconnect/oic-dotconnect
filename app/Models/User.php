@@ -64,6 +64,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Event', 'organizer_id');
     }
 
+    public static function findCode($code) {
+        return self::where('code',$code)->first();
+    }
+
     /*ユーザーのおすすめイベントを取得する*/
     public function recommende_events()
     {

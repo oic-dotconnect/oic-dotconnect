@@ -114,11 +114,11 @@ Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
     return view('user/user-entry-confirm');
 }]);
 
-// ユーザーページ
-Route::get('/user',['as' =>'user',function(Request $request){
-    $data['user_code'] = $request->input("user_code");
-    return view('user/user',$data);
-}]);
+// ユーザーページ　参加イベント
+Route::get('/user/{user_code}/join',['as' =>'user-page-join', 'uses' => 'UserController@userpageJoin']);
+
+// ユーザーページ　開催イベント
+Route::get('/user/{user_code}/hold',['as' =>'user-page-hold', 'uses' => 'UserController@userpageHold']);
 
 // ログインエラーページ(OICドメインではない場合)
 Route::get('/err/login_domain',['as' => 'login_domain',function(){

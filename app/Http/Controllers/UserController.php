@@ -43,4 +43,19 @@ class UserController extends Controller
 		$data['events'] = $user->hold_events();		
         return view('user/user-mypage-hold', $data);    
 	}
+
+	public function userpageJoin(Request $request, $userCode) {
+		$user = User::findCode($userCode);
+		$data['user'] = $user;
+		$data['events'] = $user->joined_events();		
+        return view('user/user-userpage-join', $data);    
+	}
+
+	public function userpageHold(Request $request, $userCode) {
+		$user = User::findCode($userCode);
+		$data['user'] = $user;
+		$data['events'] = $user->hold_events();		
+        return view('user/user-userpage-hold', $data);    
+	}
+
 }
