@@ -76,9 +76,9 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     }]);
 
     // マイページ おすすめイベント
-    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',function(){
-        return view('user/user-mypage-recommend');
-    }]);
+    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',
+        'uses' => 'UserController@mypageRecommend'
+    ]);
 
     // マイページ 参加イベント
     Route::get('/user/mypage/join',['as' =>'user-mypage-join',function(){

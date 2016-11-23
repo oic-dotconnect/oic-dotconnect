@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Models\User;
+use Auth;
 
 
 class UserController extends Controller
@@ -24,4 +25,11 @@ class UserController extends Controller
 
     	return response()->json($data);
     }
+
+	public function mypageRecommend() {
+		$user = Auth::user();
+		$data['recommendEvent'] = $user->recommende_events();
+		
+        return view('user/user-mypage-recommend',$data);    
+	}
 }
