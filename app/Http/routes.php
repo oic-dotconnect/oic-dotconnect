@@ -81,14 +81,10 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     ]);
 
     // マイページ 参加イベント
-    Route::get('/user/mypage/join',['as' =>'user-mypage-join',function(){
-        return view('user/user-mypage-join');
-    }]);
+    Route::get('/user/mypage/join',['as' =>'user-mypage-join','uses' => 'UserController@mypageJoin']);
 
     // マイページ 開催イベント
-    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold',function(){
-        return view('user/user-mypage-hold');
-    }]);
+    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold','uses' => 'UserController@mypageHold']);
 // ②
 // });
 

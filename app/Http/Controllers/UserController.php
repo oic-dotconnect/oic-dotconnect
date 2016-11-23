@@ -28,8 +28,19 @@ class UserController extends Controller
 
 	public function mypageRecommend() {
 		$user = Auth::user();
-		$data['recommendEvent'] = $user->recommende_events();
-		
-        return view('user/user-mypage-recommend',$data);    
+		$data['events'] = $user->recommende_events();		
+        return view('user/user-mypage-recommend', $data);    
+	}
+
+	public function mypageJoin() {
+		$user = Auth::user();
+		$data['events'] = $user->joined_events();		
+        return view('user/user-mypage-join', $data);    
+	}
+
+	public function mypageHold() {
+		$user = Auth::user();
+		$data['events'] = $user->hold_events();		
+        return view('user/user-mypage-hold', $data);    
 	}
 }
