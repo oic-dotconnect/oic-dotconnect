@@ -55,10 +55,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 }]);
 
 // イベント詳細ページ
-Route::get('/event/detail',['as' =>'event-detail',function(Request $request){
-    $data['code'] = $request->input("code");
-    return view('event/event-detail',$data);
-}]);
+Route::get('/event/detail',['as' =>'event-detail','uses' => 'EventController@detail']);
 
 // プロフィール登録ページ
 Route::get('/user/entry/profile',['as' =>'user-entry-profile',function(){
@@ -116,5 +113,6 @@ Route::post('/user/entry/profile','UserEntryController@InputProfile');
 //ユーザーお気に入りタグ登録（コントローラーへ）
 Route::post('/user/entry/tag','UserEntryController@InputTag');
 
+//ユーザー登録コントローラーへ
 Route::post('/user/create','UserEntryController@Create');
 
