@@ -45,10 +45,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);
 
     // イベント編集ページ
-    Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
-        $data['event_code'] = $request->input("event_code");
-        return view('event/event-edit',$data);
-    }]);
+    Route::get('/event/{code}/edit',['as' =>'event-edit','uses' => 'EventController@edit']);
 
     // イベント管理ページ
     Route::get('/event/control',['as' =>'event-control',function(){
