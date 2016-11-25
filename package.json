@@ -29,5 +29,8 @@
     "vue-loader": "^8.2.1",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.2"
   }
 }
