@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="{{{asset('/assets/css/color.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/header.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/footer.css')}}}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{{{asset('/css/normalize.css')}}}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{{{asset('/css/common.css')}}}" media="screen" title="no title" charset="utf-8">
     @yield('head')
   </head>
   <body>
-    <tag-checkbox-list></tag-checkbox-list>
     <header id="header">
       <div id="header-left">
         <span id="logo">.Linker</span>

@@ -1,0 +1,103 @@
+
+body form{
+  vertical-align:baseline;
+}
+
+.register-step{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+}
+
+.item{
+    padding: 10px 40px;
+    box-shadow: 0px 0px 6px 1px #e6e6e6;
+}
+
+.register-form{
+    display: flex;
+    flex-direction:column;
+    margin: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 6px 1px #e6e6e6;
+}
+
+.register-form h2{
+  margin: 0 20px 0 0;
+}
+
+.register-form h3{
+  margin: 0;
+  padding: 10px 0 0 0;
+  display: inline-block;
+  float: left;
+}
+
+.register-form input{
+  margin-bottom: 10px;
+}
+
+.register-form p{
+  margin: 0;
+  padding: 5px;
+  display: inline-block;
+}
+
+.from-icon-item h2{
+    margin: 0 0 10px 0;
+}
+
+.form-item {
+  margin: 0 0 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.form-item p{ 
+  font-size: 0.5rem;
+  height: 10px;
+  border-style: solid;
+  align-items: baseline;
+}
+
+.form-icon{
+  display: flex;
+  flex-direction: row; 
+  align-items: baseline;
+}
+
+.form-icon .img{
+    margin-right: 10px;
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+
+.form-detail{
+  width: 100%;
+}
+
+.form-cat{
+  display: flex;
+  flex-direction:column;
+  margin: 0 0 20px 0;
+}
+
+.tag_page_move{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content:center;
+}
+
+.note{
+  margin-bottom: 10px; 
+}
+
+.cont{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content:space-between; 
+}
