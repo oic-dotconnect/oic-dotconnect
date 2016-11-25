@@ -28,6 +28,6 @@ class EventController extends Controller
 		$data['users'] = array_slice($users,0,$capacity);
 		$data['substitate'] = array_slice($users,$capacity);
 
-		return response()->json($data);
+		return view('event/event-detail')->with('data',$data);
 	}
 }

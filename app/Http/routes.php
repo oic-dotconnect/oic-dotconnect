@@ -94,9 +94,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 }]);
 
 // イベント詳細ページ
-
 Route::get('/event/detail',['as' =>'event-detail','uses' => 'EventController@detail']);
-
 
 // プロフィール登録ページ
 Route::get('/user/entry/profile',['as' =>'user-entry-profile',function(){
