@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag','user_tag');
+        return $this->belongsToMany('App\Models\Tag','user_tag')->withPivot('noticed');
     }
     public function events()
     {
@@ -64,10 +64,34 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Event', 'organizer_id');
     }
 
-    /*ユーザーのおすすめイベントを取得する*/
+    public static function findCode($code) {
+        return self::where('code',$code)->first();
+    }
+
+    /*ユーザーのおすすめイベントを取得する
+    *return query
+    */
+
     public function recommende_events()
     {
         $fav_events = $this->tags->map(function($tag){ return $tag->events; })->flatten()->map(function($event){ return $event->id; })->unique();
-	    return Event::BeforeHold()->whereIn('id', $fav_events)->get();
+	    return Event::BeforeHold()->whereIn('id', $fav_events);
     }
+
+    /*参加したイベント
+    *return query
+    */
+    public function joined_events()
+    {    
+	    return $this->events()->Role('member');
+    }
+    
+    /*開催したイベント
+    *return query
+    */
+    public function hold_events()
+    {    
+	    return $this->events()->Role('admin');
+    }
+       
 }
