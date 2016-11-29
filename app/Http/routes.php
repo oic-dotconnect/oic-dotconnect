@@ -128,12 +128,12 @@ Route::get('/err/event_open',['as' => 'event_open',function(){
 //-------------------------ユーザー登録-----------------------------------
 
 // ユーザー登録（コントローラーへ）
-Route::post('/user/entry/profile','UserEntryController@InputProfile');
+Route::post('/user/entry/profile',['as' => 'post-user-entry-profile','uses' =>'UserEntryController@InputProfile']);
 
 //ユーザーお気に入りタグ登録（コントローラーへ）
-Route::post('/user/entry/tag','UserEntryController@InputTag');
+Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryController@InputTag']);
 
 //ユーザー登録コントローラーへ
-Route::post('/user/create','UserEntryController@Create');
+Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
 
 });

@@ -36,7 +36,7 @@ class EventController extends Controller
 	{
 		$data['event'] = Event::EventDetail($code)->get();
 
-		return view('event/event-detail')->with('data',$data);
+		return view('event/event-edit')->with('data',$data);
 	}
 
 	public function control()
