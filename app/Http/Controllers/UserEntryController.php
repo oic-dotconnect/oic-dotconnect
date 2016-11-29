@@ -14,10 +14,15 @@ class UserEntryController extends Controller
 {
     public function InputProfile(Request $request)
     {
-
     	Session::put('profile',$request->all());
-
-    	return redirect()->route('user-entry-tag');
+		$value = $request->get('submit');
+		
+		if($value == "toTag"){	// プロフィール設定からお気に入りタグを設定する場合 
+			return redirect()->route('user-entry-tag');
+		}elseif($value == "toConfirm"){	// プロフィール設定から確認画面に行く場合
+			Session::put('tags',[]);
+			return redirect()->route('user-entry-confirm');
+		}
     }
 
     public function InputTag(Request $request)
@@ -34,7 +39,6 @@ class UserEntryController extends Controller
     	// return view('user/user-entry-confirm',$data);
 		//　Postのテスト用に変更　上が本番　下を消す		
     	return view('mock/mock-user-entry-confirm',$data);
-
     }
 
     public function Create(Request $request)
