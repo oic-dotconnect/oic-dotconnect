@@ -31,7 +31,10 @@ class UserEntryController extends Controller
     {
     	$data = $request->session()->all();
 
-    	return view('user/user-entry-confirm',$data);
+    	// return view('user/user-entry-confirm',$data);
+		//　Postのテスト用に変更　上が本番　下を消す		
+    	return view('mock/mock-user-entry-confirm',$data);
+
     }
 
     public function Create(Request $request)

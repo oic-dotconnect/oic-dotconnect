@@ -95,12 +95,18 @@ Route::get('/event/detail',['as' =>'event-detail','uses' => 'EventController@det
 
 // プロフィール登録ページ
 Route::get('/user/entry/profile',['as' =>'user-entry-profile',function(){
-    return view('user/user-entry-profile');
+    // return view('user/user-entry-profile');
+
+    // POSTテスト用　上が本番　下がテスト用mock
+    return view('mock/mock-user-entry-profile');
 }]);
 
 // お気に入りタグ登録ページ
 Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
-    return view('user/user-entry-tag');
+    // return view('user/user-entry-tag');
+    
+    // POSTテスト用　上が本番　下がテスト用mock
+    return view('mock/mock-user-entry-tag');
 }]);
 
 // ユーザー登録確認ページ
