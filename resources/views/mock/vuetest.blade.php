@@ -2,7 +2,7 @@
 
 @section('content')
 	{!! Form::open(['route' => 'posttest']) !!}
-		<tag-checkbox-list></tag-checkbox-list>
+		<tag-select></tag-select>
 		{!! Form::submit('Submit') !!}
 	{!! Form::close() !!}
 @endsection

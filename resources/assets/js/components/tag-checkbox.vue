@@ -5,31 +5,36 @@
 </template>
 
 <script>
-export default {
-	props: { 
-		tag: {}, 
-		prefix: {
-			default: ''
-		} 
-	},
-	created() {
-		this.$set( 'tag.check', false )
-	}
-}
+    export default {
+        props: {
+            tag: {},
+            prefix: {
+                default: ''
+            }
+        },
+        created() {
+            if (this.tag.check === undefined) this.$set('tag.check', false)
+        },
+        watch: {
+            "tag.check": function(val, old) {
+                if(old !== undefined) this.$dispatch('change-check', this.tag)
+            }
+        }
+    }
 </script>
 
 <style scoped>
-	input[type="checkbox"] {
-		display: none;
-	}
-
-	label {
-		display: block;
-		width: 100%;
-		padding: 2px 10px;
-	}
-
-	.checked {
-		background-color: lightgreen;
-	}
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    label {
+        display: block;
+        width: 100%;
+        padding: 2px 10px;
+    }
+    
+    .checked {
+        background-color: lightgreen;
+    }
 </style>
