@@ -48,9 +48,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::get('/event/{code}/edit',['as' =>'event-edit','uses' => 'EventController@edit']);
 
     // イベント管理ページ
-    Route::get('/event/control',['as' =>'event-control',function(){
-        return view('event/event-control');
-    }]);
+    Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
 
     // お気に入りタグ編集ページ
     Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(){
