@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 
 
 class EventController extends Controller
@@ -36,5 +37,17 @@ class EventController extends Controller
 		$data['event'] = Event::EventDetail($code)->get();
 
 		return view('event/event-edit')->with('data',$data);
+	}
+
+	public function control()
+	{
+		
+		$user = Auth::user();
+
+		$data['event'] = $user->events()->role('admin')->get();
+
+		dd($data);
+		
+		return view('event/event-control')->with('data',$data);
 	}
 }
