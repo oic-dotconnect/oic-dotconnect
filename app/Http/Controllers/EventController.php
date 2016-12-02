@@ -14,16 +14,9 @@ use App\Models\User;
 
 class EventController extends Controller
 {
-	public function detail(Request $request)
+	public function detail(Request $request,$code)
 	{
-		$code = $request -> all();
 		$capacity = Event::FindCode($code)->value('capacity');
-
-		/*$data = Event::EventDetail($code)->with(['tags','users' => function($query) {
-			$query->orderby('user_event.created_at','desc');
-		} ,'organizer'])->get();*/
-
-
 
 		$data['event'] = Event::FindCode($code)->with('organizer')->get();
 		$users = Event::FindCode($code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
