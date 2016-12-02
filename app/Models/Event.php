@@ -27,6 +27,10 @@ class Event extends Model
 
 	protected $table = 'EVENT';
 
+    protected $fillable = [
+        'code', 'name', 'field', 'description', 'opening_date','start_at','end_at','place','capacity','organizer_id','recruit_start_date','recruit_end_date','recruit_start_time','recruit_end_time'
+    ];
+
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag','event_tag');
@@ -84,7 +88,7 @@ class Event extends Model
         return $query->where('status',$status);
     }
 
-    public function scopeEventDetail($query,$code)
+    public function scopeFindCode($query,$code)
     {
         return $query->where('code',$code);
     }
