@@ -136,6 +136,6 @@ Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryC
 Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
 
 //-------------------------イベント状態変更--------------------------------
-Route::post('/event/{event_code}/status',['as' => 'event-status','uses' => 'EventController@status']);
+Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
 
 });

@@ -43,7 +43,8 @@ class EventController extends Controller
 
 	public function entry(Request $request)
 	{
-		$data = $request->all();
+		$data = $request->except('status');
+
 
 		$data['code'] = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7);
 
@@ -51,9 +52,9 @@ class EventController extends Controller
 
 		$event = Event::create($data);
 
-		if($data['status'] == 'open')
+		if($request['status'] == 'open')
 		{
-			$request = Request::create('/event/'.$event->code.'/status','POST',['status' => 'open']);
+			$request = Request::create(route('post-event-status',['event_code' => $event->code]),'POST',['status' => 'open']);
 			return Route::dispatch($request);    
 		}
 
