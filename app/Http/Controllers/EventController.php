@@ -29,14 +29,14 @@ class EventController extends Controller
 		$data['users'] = array_slice($users,0,$capacity);
 		$data['substitate'] = array_slice($users,$capacity);
 
-		return view('event/event-detail')->with('data',$data);
+		return view('event/event-detail', $data);
 	}
 
 	public function edit(Request $request,$code)
 	{
-		$data['event'] = Event::EventDetail($code)->get();
+		$data['event'] = Event::EventDetail($code)->first();
 
-		return view('event/event-edit')->with('data',$data);
+		return view('event/event-edit', $data);
 	}
 
 	public function control()
