@@ -37,9 +37,8 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 // ①
 // Route::group(['middleware' => 'auth'], function () {
     // イベント登録ページ
-    Route::get('/event/entry',['as' =>'event-entry',function(){
-        return view('event/event-entry');
-    }]);
+    Route::get('/event/entry',['as' =>'event-entry','uses' => 'EventController@entry'
+    ]);
 
     // イベント登録
     Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);
@@ -135,5 +134,8 @@ Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryC
 
 //ユーザー登録コントローラーへ
 Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
+
+//-------------------------イベント状態変更--------------------------------
+Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
 
 });
