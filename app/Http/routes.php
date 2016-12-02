@@ -47,9 +47,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::get('/event/{code}/edit',['as' =>'event-edit','uses' => 'EventController@edit']);
 
     // イベント管理ページ
-    Route::get('/event/control',['as' =>'event-control',function(){
-        return view('event/event-control');
-    }]);
+    Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
 
     // お気に入りタグ編集ページ
     Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(){
@@ -129,13 +127,13 @@ Route::get('/err/event_open',['as' => 'event_open',function(){
 //-------------------------ユーザー登録-----------------------------------
 
 // ユーザー登録（コントローラーへ）
-Route::post('/user/entry/profile','UserEntryController@InputProfile');
+Route::post('/user/entry/profile',['as' => 'post-user-entry-profile','uses' =>'UserEntryController@InputProfile']);
 
 //ユーザーお気に入りタグ登録（コントローラーへ）
-Route::post('/user/entry/tag','UserEntryController@InputTag');
+Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryController@InputTag']);
 
 //ユーザー登録コントローラーへ
-Route::post('/user/create','UserEntryController@Create');
+Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
 
 //-------------------------イベント状態変更--------------------------------
 Route::post('/event/{event_code}/status',['as' => 'event-status','uses' => 'EventController@status']);

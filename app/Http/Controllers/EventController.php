@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use Auth;
 use Route;
+use App\Models\User;
+
 
 class EventController extends Controller
 {
@@ -64,5 +66,15 @@ class EventController extends Controller
 		$status = $request->get('status');
 
 		Event::FindCode($code)->update(['status' => $status]);
+	}
+
+	public function control()
+	{
+		
+		$user = Auth::user();
+
+		$data['event'] = $user->events()->role('admin')->get();
+		
+		return view('event/event-control')->with('data',$data);
 	}
 }
