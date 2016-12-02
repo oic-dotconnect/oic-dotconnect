@@ -28,7 +28,7 @@ class Event extends Model
 	protected $table = 'EVENT';
 
     protected $fillable = [
-        'code', 'name', 'field', 'description', 'opening_date','start_at','end_at','place','capacity','organizer_id','recruit_start_date','recruit_end_date','recruit_start_time','recruit_end_time'
+        'code', 'name', 'field', 'description', 'opening_date','start_at','end_at','place','capacity','organizer_id','recruit_start_date','recruit_end_date','recruit_start_time','recruit_end_time','status'
     ];
 
     public function tags()

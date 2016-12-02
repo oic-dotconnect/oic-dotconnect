@@ -31,34 +31,38 @@ class EventController extends Controller
 		$data['users'] = array_slice($users,0,$capacity);
 		$data['substitate'] = array_slice($users,$capacity);
 
-		return view('event/event-detail')->with('data',$data);
+		return view('event/event-detail', $data);
 	}
 
 	public function edit(Request $request,$code)
 	{
-		$data['event'] = Event::FindCode($code)->get();
+		$data['event'] = Event::FindCode($code)->first();
 
-		return view('event/event-edit')->with('data',$data);
+		return view('event/event-edit', $data);
 	}
 
 	public function entry(Request $request)
 	{
-		$data = $request->except('status');
 
+		$data = $request->except('status');
 
 		$data['code'] = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7);
 
 		$data['organizer_id'] = Auth::user()->id;
 
-		$event = Event::create($data);
-
-		if($request['status'] == 'open')
+		if($request->get('status') == 'open')
 		{
+			$event = Event::create($data);
 			$request = Request::create(route('post-event-status',['event_code' => $event->code]),'POST',['status' => 'open']);
 			return Route::dispatch($request);    
 		}
+		if($request->get('status') == 'close')
+		{
+			$event = Event::create($data);
+			return redirect()->route('event-control');			
+		}
 
-		return redirect()->route('event-control');
+
 
 	}
 
@@ -67,6 +71,8 @@ class EventController extends Controller
 		$status = $request->get('status');
 
 		Event::FindCode($code)->update(['status' => $status]);
+
+		
 	}
 
 	public function control()
