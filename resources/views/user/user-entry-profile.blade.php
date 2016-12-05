@@ -23,6 +23,7 @@
       </div>      
     </div>
     <div class = "register-form">
+    {{Form::open(['route' => 'post-user-entry-profile'])}}
       <div class = "form-cat">
         <div class = "form-item">
           <h2>ニックネーム</h2>
@@ -52,7 +53,7 @@
         <textarea name="into" rows="10" cols="60">ここに感想を記入してください。</textarea>
       </div>
       <div class = "tag_page_move">
-        <button type="button">
+        <button type="submit" name="submit" value="toTag">
           お気に入りページへ
         </button>
       </div>
@@ -64,8 +65,9 @@
         <button type="button">キャンセル</button>
       </div>
       <div class = "cont_can">
-        <button type="button">確認</button>
+        <button type="submit" name="submit" value="toConfirm">確認</button>
       </div>
       </div>
+      {{Form::close()}}
     </div>
 @endsection
