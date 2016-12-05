@@ -1,5 +1,5 @@
 <template>
-	<input type="radio" name="place" :value="room.name" :id="'room-' + room.name" :checked="room.name === roomName" v-model="model">
+	<input type="radio" name="_place" :value="room.name" :id="'room-' + room.name" :checked="room.name === roomName" v-model="model">
 	<label :for="'room-' + room.name">{{ room.name }}</label>
 </template>
 
