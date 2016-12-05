@@ -9,9 +9,10 @@
 				</select>
 			</section>
 			<section class="entry-room-name">
-				<h3>教室 : {{ roomnum }}</h3>
+				<h3>教室 : {{ roomname }}</h3>
 				<div class="room-name-radios">
-					<radio v-for="room in floorRooms" :room="room" :model.sync="roomnum" :room-name="roomName"></radio>
+					<radio v-for="room in floorRooms" :room="room" :model.sync="roomname" :room-name="roomName"></radio>
+					<input type="hidden" name="place" :value="roomname">
 				</div>
 			</section>
 			<section class="entry-room-type">
