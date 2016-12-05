@@ -19,7 +19,9 @@ class Dev
     {   
         if(env('AUTH')) {
 			if(!Auth::check()) Auth::loginUsingId(1);
-		}
+		} else {
+            Auth::logout();
+        }
 
         return $next($request);
     }
