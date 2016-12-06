@@ -1,71 +1,74 @@
 @extends('layout.app')
 
 @section('head')
-	<link rel="stylesheet" href="{{{asset('/css/user-entry-profile.css')}}}" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="{{{asset('assets/css/user-entry/user-entry-common.css')}}}" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="{{{asset('assets/css/user-entry/user-entry-profile.css')}}}" media="screen" title="no title" charset="utf-8">
 @endsection
 
 @section('content')
 <div class = "wrapper">
-  	<div class = "top">
-      <h1>タイトル</h1>
-    </div>
-    <div class = "register-step">
-      <div class = "item">
-        項目１
-      </div>
-      <p>→</p>
-      <div class = "item">
-        項目２
-      </div>
-      <p>→</p>
-      <div class = "item">
-        項目３
-      </div>      
-    </div>
-    <div class = "register-form">
-      <div class = "form-cat">
-        <div class = "form-item">
-          <h2>ニックネーム</h2>
-          <p>必須</p>
-        </div>
-          <input type = "text" name = "name_input" >
-      </div>
-      <div class = "form-cat">
-        <div class = "form-item">
-          <h2>ユーザコード</h2><p>必須</p>
-        </div>
-        <input type = "text" name = "user_code_input" >
-      </div>
-      <div class = "form-cat">
-        <div class = "from-icon-item">
+  {{ Form::open([ 
+    'route' => 'post-user-entry-profile',
+    'class' => 'col register-form'
+  ])}}
+  <!-- <form class="col register-form">-->
+    <h1 class="form-title">プロフィール登録</h1>
+    <div class="row">
+      <div class="col icon-col">
+        <div class="name-title">
           <h2>アイコン</h2>
         </div>
-          <div class = "form-icon">
-            <div class = "img"></div>
-            <button type="button">参照</button>
-          </div>
-      </div>
-      <div class = "form-cat">
-        <div class = "form-item">
-          <h2>紹介文</h2>
+        <div class="icon-display">
+          <img src="http://placeimg.com/300/300/animals" alt="">
         </div>
-        <textarea name="into" rows="10" cols="60">ここに感想を記入してください。</textarea>
-      </div>
-      <div class = "tag_page_move">
-        <button type="button">
-          お気に入りページへ
-        </button>
-      </div>
-      <div class = "note">
-        <p>※ 文言</p>
-      </div>
-      <div class = "cont">
-      <div class = "cont_conf">
-        <button type="button">キャンセル</button>
-      </div>
-      <div class = "cont_can">
-        <button type="button">確認</button>
-      </div>
+        <div class="icon-form">
+          <label for="icon-file">
+            ＋  画像を選択
+          </label>
+          <input type="file" id="icon-file" style="display:none;">
+        </div>
+      </div>         
+      <div class="col name-col">
+        <div class="user-name">
+          <div class="name-title">
+            <h2>ニックネーム</h2><p>必須</p>
+          </div>
+          <div class="name-input">
+            <input type="text" class="border form-input">
+          </div>
+        </div>
+        <div class="col user-code">
+          <div class="name-title">
+            <h2>ユーザコード</h2><p>必須</p>
+        </div>
+        <div class="code-input">
+          <input type="text" class="border form-input ">
+          <div class="caution">
+              <p class="caution-mark">※文言</p>
+              <p class="caution-mark">※文言</p>
+              <p class="caution-mark">※文言</p>   
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="col introduction">
+    <div class="name-title">
+      <h2>紹介文</h2>
+    </div>
+    <div class="introduction-input">
+      <textarea class="border" rows="10" cols="60"></textarea>  
+    </div>
+  </div>
+  <div class="col info">
+    <div class="fav">
+      <input type="submit" value="お気に入りタグ登録ページへ" class="fav-register">
+      <p class="caution-mark">※文言</p>
+    </div>
+    <div class="row info">
+      <input type="button" value="キャンセル" class="cancell">
+      <input type="submit" value="確認" class="conf">      
+    </div>
+  {{ Form::close() }}
+</div>
 @endsection
