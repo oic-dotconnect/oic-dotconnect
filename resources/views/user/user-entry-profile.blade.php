@@ -1,12 +1,13 @@
 @extends('layout.app')
 
 @section('head')
-	<link rel="stylesheet" href="{{{asset('assets/css/user-entry/user-entry-common.css')}}}" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="{{{asset('assets/css/user-entry/user-entry-profile.css')}}}" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="{{{asset('css/user-entry/user-entry-common.css')}}}" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="{{{asset('css/user-entry/user-entry-profile.css')}}}" media="screen" title="no title" charset="utf-8">
 @endsection
 
 @section('content')
 <div class = "wrapper">
+  @include('components.user-entry-step', [ 'current' => 'profile' ])
   {{ Form::open([ 
     'route' => 'post-user-entry-profile',
     'class' => 'col register-form'
@@ -62,12 +63,12 @@
   </div>
   <div class="col info">
     <div class="fav">
-      <input type="submit" value="お気に入りタグ登録ページへ" class="fav-register">
+      <button type="submit" name="submit" value="toTag" class="fav-register">お気に入りタグ登録へ</button>
       <p class="caution-mark">※文言</p>
     </div>
     <div class="row info">
       <input type="button" value="キャンセル" class="cancell">
-      <input type="submit" value="確認" class="conf">      
+      <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>      
     </div>
   {{ Form::close() }}
 </div>
