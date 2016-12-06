@@ -23,7 +23,7 @@ class CreateEventTable extends Migration
             $table->time('end_at')->nullable();
             $table->string('place')->nullable();
             $table->integer('capacity')->nullable();
-            $table->string('status');
+            $table->string('status')->default('close');
             $table->datetime('open_date')->nullable();
             $table->integer('organizer_id')->nullable();
             $table->date('recruit_start_date')->nullable();
