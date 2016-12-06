@@ -28,7 +28,7 @@
   border: solid 5px #d3d3d3;
 }
 
-.icon-form input button{
+.icon-form input, .icon-form button{
     background: #EEE;
     border: 3px solid #DDD;
     color: #111;
@@ -83,7 +83,7 @@
   justify-content:space-between;;
 }
 
-.info input{
+.info input, .info button{
   border: 1px solid #DDD;
   border-radius: 5px;
   color: #FFF;
@@ -121,7 +121,6 @@
 }
 
 .conf {
- width: 100px;
  background: #F6AD3C;
 }
 
@@ -132,7 +131,7 @@
 
 .fav-register{
       background: #00AFEC;
-       width: 300px;
+      width: 300px;
 }
 
 
