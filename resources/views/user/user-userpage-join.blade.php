@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-<h1>マイページ　参加イベント</h1>
-@include('components/my-profile')
-@include('components/my-tag-list', [ 'tags' => Auth::user()->tags ])
+<h1>マイページ 開催イベント</h1>
+@include('components/user-profile', [ 'user' => $user ])
+@include('components/user-tag-list', [ 'tags' => Auth::user()->tags ])
 
 <div>
 	@foreach ($events as $event)

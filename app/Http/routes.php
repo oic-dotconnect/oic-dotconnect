@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::group(['middleware' => 'dev'], function () {
 // ランディングページ
 Route::get('/',['as' => 'landing', function () {
 	$data = [];
@@ -37,20 +37,17 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 // ①
 // Route::group(['middleware' => 'auth'], function () {
     // イベント登録ページ
-    Route::get('/event/entry',['as' =>'event-entry',function(){
-        return view('event/event-entry');
-    }]);
+    Route::get('/event/entry',['as' =>'event-entry','uses' => 'EventController@entry'
+    ]);
+
+    // イベント登録
+    Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);
 
     // イベント編集ページ
-    Route::get('/event/edit',['as' =>'event-edit',function(Request $request){
-        $data['event_code'] = $request->input("event_code");
-        return view('event/event-edit',$data);
-    }]);
+    Route::get('/event/{code}/edit',['as' =>'event-edit','uses' => 'EventController@edit']);
 
     // イベント管理ページ
-    Route::get('/event/control',['as' =>'event-control',function(){
-        return view('event/event-control');
-    }]);
+    Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
 
     // お気に入りタグ編集ページ
     Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(){
@@ -73,19 +70,15 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     }]);
 
     // マイページ おすすめイベント
-    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',function(){
-        return view('user/user-mypage-recommend');
-    }]);
+    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',
+        'uses' => 'UserController@mypageRecommend'
+    ]);
 
     // マイページ 参加イベント
-    Route::get('/user/mypage/join',['as' =>'user-mypage-join',function(){
-        return view('user/user-mypage-join');
-    }]);
+    Route::get('/user/mypage/join',['as' =>'user-mypage-join','uses' => 'UserController@mypageJoin']);
 
     // マイページ 開催イベント
-    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold',function(){
-        return view('user/user-mypage-hold');
-    }]);
+    Route::get('/user/mypage/hold',['as' =>'user-mypage-hold','uses' => 'UserController@mypageHold']);
 // ②
 // });
 
@@ -95,10 +88,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 }]);
 
 // イベント詳細ページ
-Route::get('/event/detail',['as' =>'event-detail',function(Request $request){
-    $data['event_code'] = $request->input("event_code");
-    return view('event/event-detail',$data);
-}]);
+Route::get('/event/{event_code}',['as' =>'event-detail','uses' => 'EventController@detail']);
 
 // プロフィール登録ページ
 Route::get('/user/entry/profile',['as' =>'user-entry-profile',function(){
@@ -111,15 +101,13 @@ Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
 }]);
 
 // ユーザー登録確認ページ
-Route::get('/user/entry/confirm',['as' =>'user-entry-confirm',function(){
-    return view('user/user-entry-confirm');
-}]);
+Route::get('/user/entry/confirm',['as' =>'user-entry-confirm','uses' => 'UserEntryController@Confirm']);
 
-// ユーザーページ
-Route::get('/user',['as' =>'user',function(Request $request){
-    $data['user_code'] = $request->input("user_code");
-    return view('user/user',$data);
-}]);
+// ユーザーページ　参加イベント
+Route::get('/user/{user_code}/join',['as' =>'user-page-join', 'uses' => 'UserController@userpageJoin']);
+
+// ユーザーページ　開催イベント
+Route::get('/user/{user_code}/hold',['as' =>'user-page-hold', 'uses' => 'UserController@userpageHold']);
 
 // ログインエラーページ(OICドメインではない場合)
 Route::get('/err/login_domain',['as' => 'login_domain',function(){
@@ -136,3 +124,18 @@ Route::get('/err/event_open',['as' => 'event_open',function(){
     return view('errors/err-event-open');
 }]);
 
+//-------------------------ユーザー登録-----------------------------------
+
+// ユーザー登録（コントローラーへ）
+Route::post('/user/entry/profile',['as' => 'post-user-entry-profile','uses' =>'UserEntryController@InputProfile']);
+
+//ユーザーお気に入りタグ登録（コントローラーへ）
+Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryController@InputTag']);
+
+//ユーザー登録コントローラーへ
+Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
+
+//-------------------------イベント状態変更--------------------------------
+Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
+
+});

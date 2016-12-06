@@ -1,0 +1,138 @@
+/*マイページ*/
+
+.primary {
+    flex-direction: row;
+    margin: 30px 50px;
+    box-shadow: none;
+}
+
+.profile-icon {
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+}
+
+.inner {
+    margin: 0;
+    padding: 0px;
+    width: 70%;
+    border: solid 1px;
+    border-style: none ridge ridge ridge;
+}
+
+.tag-list {
+    display: flex;
+}
+
+.tag-item {
+    width: 33.3%;
+    border: 1px solid;
+    border-style: ridge;
+}
+
+.selected {
+    border: 1px solid;
+    border-style: ridge ridge none ridge;
+}
+
+.paging {
+    margin: 0 auto;
+}
+
+.inner-side {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0px 30px 0px 0px;
+}
+
+.profile-inner {
+    border: solid 1px;
+    padding: 0% 15% 0% 15%;
+}
+
+.favorite-inner {
+    border: solid 1px;
+    margin: 20px 0px 0px 0px;
+    padding: 0% 10% 0% 10%;
+}
+
+.favorite-tag {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.result-item {
+    display: flex;
+    width: 100%;
+    padding: 15px 5px;
+    margin: 0 auto;
+    font-size: 1rem;
+    flex-direction: row;
+    border-style: none none ridge none;
+    border: solid ipx;
+}
+
+.result-date {
+    display: flex;
+    width: 16%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.result-date p {
+    margin: 0;
+}
+
+.result-state {
+    display: flex;
+    width: 15%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.date {
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+.result-field {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    background: indianred;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.state {
+    width: 90%;
+    padding: 5px 0;
+    margin: 10px auto 0;
+    text-align: center;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+.result-detail {
+    overflow: hidden;
+    display: flex;
+    width: 69%;
+    margin-left: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.result-detail p {
+    margin: 0;
+}
+
+.result-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.capacity {
+    font-size: 1.4rem;
+}

@@ -23,7 +23,7 @@ class EventSeeder extends Seeder
       $fields = ['it', 'design', 'move', 'game', 'other'];
       $room = ['5A', '9D-1','3A'];
       $bool = [true, false];
-      $organizer_id = 0;
+      $organizer_id = 1;
       for($i = 0; $i < 2; $i++)
       {
         $datetime = $faker->dateTimeBetween($startDate = '-1 years', $endDate = '+1 years');

@@ -1,4 +1,6 @@
 import Vue from 'vue'
+
+import roomChoice from './components/room-choice.vue'
 import tagSelect from './components/tag-select.vue'
 
 const app = new Vue({
@@ -7,6 +9,7 @@ const app = new Vue({
         msg: 'hello'
     },
     components: {
+        roomChoice,
         tagSelect
     }
 })
