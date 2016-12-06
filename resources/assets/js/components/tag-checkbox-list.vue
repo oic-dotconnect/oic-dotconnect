@@ -9,7 +9,7 @@
 		<div class="fav-tag-list">
 			<h3>お気に入りにするタグ</h3>
 			<div class="fav-tags">
-				<tag-checkbox v-for="tag in favTags" :tag="tag" prefix="fav"></tag-checkbox>
+				<tag-checkbox v-for="tag in sortFavTags" :tag="tag" prefix="fav"></tag-checkbox>
 			</div>
 		</div>
 		<div>
@@ -35,62 +35,104 @@
         data() {
             return {
                 favTags: [],
-                fav: [],
-                search: []
+                section: [],
             }
         },
         methods: {
-            wears: function() {
+            get_Favtag_Id: function(id) {
+                let f
+                f = this.favTags.find(function(favtag) {
+                    return favtag.id === id
+                })
+                return f
+            },
+            get_Search_Id: function(id) {
+                let s;
+                s = this.searchTags.find(function(searchtag) {
+                    return searchtag.id === id;
+                })
+                return s;
+            },
+            remove_Favtags: function(section) {
+                var fav = []
+                var search = []
+                fav.length = 0;
+                search.length = 0;
                 this.favTags.forEach((tag) => {
-                    this.fav.push(tag.id);
+                    fav.push(tag.id);
                 })
                 this.searchTags.forEach((tag) => {
-                    this.search.push(tag.id);
+                    search.push(tag.id);
                 })
-                let intersection = _.intersection(this.search, this.fav);
-                if (intersection) {
-                    intersection.forEach((section, index) => {
-                        this.favTags.forEach((favtag, index) => {
-                            if (favtag.id === section) {
-                                this.favTags.$remove(favtag);
-                            }
-                        })
-                    })
-                    console.log(this.favTags);
-                    // this.searchTags.forEach((search, index) => {
-                    //     intersection.forEach((section, index) => {
-                    //         if (search.id === section) {
-                    //             this.favTags.push(search);
-                    //         }
-                    //     })
-                    // })
-                    // this.favTags.forEach((tag, index) => {
-                    //     tag.check = true;
-                    // })
-                }
-            }
+                section = _.intersection(search, fav);
+                section.forEach((id, index) => {
+                    let f = this.get_Favtag_Id(id);
+                    if (f !== undefined) {
+                        this.favTags.$remove(f);
+                    }
+                })
+                this.$set('section', section)
+                return section
+            },
+            add_Favtags: function(section) {
+                section.forEach((id, index) => {
+                    let s = this.get_Search_Id(id);
+                    if (s !== undefined) {
+                        var deep = _.cloneDeep(s);
+                        deep.check = true
+                        this.favTags.push(deep);
+                        s.check = true;
+                    }
+                })
+            },
         },
         created() {
             getFavTags().end((err, res) => {
+                let fav = []
                 res.body.forEach((tag) => {
-                    tag.check = true
+                    let s = this.get_Search_Id(tag.id)
+                    s.check = true
                 })
-                this.$set('favTags', res.body);
-                this.wears();
+                let sec = this.remove_Favtags(this.section);
+                this.add_Favtags(sec);
 
+                (() => {
+                    let length = this.favTags.length
+                    let tag = this.get_Search_Id(1)
+                    tag.check = true
+                    console.log('かぶっているタグが追加されないか', length === this.favTags.length)
+
+                    length = this.favTags.length
+                    tag = this.get_Search_Id(2)
+                    tag.check = true
+                    console.log('かぶっていないタグが追加されたか', length < this.favTags.length)
+                })()
             });
+        },
+        computed: {
+            sortFavTags() {
+                return this.favTags.sort((a, b) => {
+                    return a.id > b.id? 1:-1
+                });
+            }
         },
         watch: {
             'searchTags': function() {
-                this.wears();
+                let sec = this.remove_Favtags(this.section)
+                this.add_Favtags(sec);
             }
         },
         events: {
             "change-check": function(tag) {
                 if (tag.check) {
-                    this.favTags.push(tag)
+                    if (!this.get_Favtag_Id(tag.id)) {
+                        this.favTags.push(tag);
+                    }
                 } else {
-                    this.favTags.$remove(tag)
+                    if (this.get_Favtag_Id(tag.id)) {
+                        let f = this.get_Favtag_Id(tag.id)
+                        this.favTags.$remove(f)
+                    }
                 }
             }
         },
