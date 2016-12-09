@@ -14,7 +14,7 @@ class EventController extends Controller
     {
     	$requests = $request -> all();
 
-    	$query = Event::Status('open')->with('tags', 'organizer');
+    	$query = Event::Status('open')->with('tags');
     	
     	if( isset($requests['q']) )
     	{
@@ -35,6 +35,10 @@ class EventController extends Controller
     	}
 
     	$data = $query->get();
+		$data = $data->map(function( $event ) {
+			$event['entry_num'] = $event->entry_num();
+			return $event;
+		});
     	return response()->json($data);
     }
 }
