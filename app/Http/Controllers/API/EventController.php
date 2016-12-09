@@ -35,6 +35,10 @@ class EventController extends Controller
     	}
 
     	$data = $query->get();
+		$data = $data->map(function( $event ) {
+			$event['entry_num'] = $event->entry_num();
+			return $event;
+		});
     	return response()->json($data);
     }
 }
