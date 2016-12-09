@@ -1,0 +1,98 @@
+.event-item {
+    display: flex;
+    width: 100%;
+    padding: 20px 15px;
+	margin-bottom: 10px;
+    box-shadow: 0px 0px 6px 1px #e6e6e6;
+    flex-direction: row;
+}
+
+.event-date {
+    display: flex;
+    width: 16%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-date .date {
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+.event-field {
+    display: flex;
+    width: 90%;
+    height: 50%;
+    margin: 0 auto;
+    background: indianred;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-state {
+    display: flex;
+    width: 15%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-state .state {
+    width: 90%;
+    padding: 5px 0;
+    margin: 10px auto 0;
+    text-align: center;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+.event-detail {
+    overflow: hidden;
+    display: flex;
+    width: 69%;
+    margin-left: 10px;
+    /*flex-direction: column;*/
+    justify-content: space-between;
+}
+
+.event-detail-left {
+    display: flex;    
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-detail-left .event-name {
+    font-size: 2rem;
+}
+
+.event-detail-left .event-name a, .event-detail-left .tag a {
+	text-decoration: none;
+	color:  #000000;
+}
+
+.event-detail-left .tag {
+    white-space: nowrap;
+}
+
+.event-detail-left .organizer {
+    font-size: 1.17rem;
+}
+
+.event-detail-left .icon{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.event-detail-right {
+    display: flex;
+    flex-direction: column-reverse;    
+    width: 12em;
+    text-align: right;
+}
+
+.event-detail-right span{
+    font-size: 2rem;
+}

@@ -1,3 +1,7 @@
+body {
+  background-color: #ffffff;
+}
+
 .heading {
   border-bottom: dotted 3px;
 }

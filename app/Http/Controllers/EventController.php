@@ -14,12 +14,12 @@ use App\Models\User;
 
 class EventController extends Controller
 {
-	public function detail(Request $request,$code)
+	public function detail(Request $request,$event_code)
 	{
-		$capacity = Event::FindCode($code)->value('capacity');
+		$capacity = Event::FindCode($event_code)->value('capacity');
 
-		$data['event'] = Event::FindCode($code)->with('organizer')->get();
-		$users = Event::FindCode($code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
+		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
+		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
 
 		$data['users'] = array_slice($users,0,$capacity);
 		$data['substitate'] = array_slice($users,$capacity);
@@ -27,9 +27,9 @@ class EventController extends Controller
 		return view('event/event-detail', $data);
 	}
 
-	public function edit(Request $request,$code)
+	public function edit(Request $request,$event_code)
 	{
-		$data['event'] = Event::FindCode($code)->first();
+		$data['event'] = Event::FindCode($event_code)->first();
 
 		return view('event/event-edit', $data);
 	}
@@ -59,11 +59,11 @@ class EventController extends Controller
 
 	}
 
-	public function status(Request $request,$code)
+	public function status(Request $request,$event_code)
 	{
 		$status = $request->get('status');
 
-		Event::FindCode($code)->update(['status' => $status]);
+		Event::FindCode($event_code)->update(['status' => $status]);
 
 		
 	}
