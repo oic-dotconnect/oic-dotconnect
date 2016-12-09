@@ -12,7 +12,15 @@ class EventService
         return date('Y',strtotime($date));
     }
 
-    public function dateDay($date){
+    public function dateMonth($date){
+        return date('m',strtotime($date));
+    }
+
+    public function dateDay($date){        
+        return date('d',strtotime($date));    
+    }
+
+    public function dateWeek($date){
         $week = array(
             '日',
             '月',
@@ -23,8 +31,7 @@ class EventService
             '土'
         );
         $weekno = date('w',strtotime($date));
-        $d = date('m/d',strtotime($date))."($week[$weekno])";
-        return $d;
+        return $week[$weekno];
     }
 
     public function dateTime($date){
