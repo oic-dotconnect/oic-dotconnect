@@ -42,7 +42,7 @@ class EventService
             case 'game':
                 $field = "ゲーム";
                 break;
-            case 'move':
+            case 'movie':
                 $field = "映像";
                 break;
             case 'other':
