@@ -11,7 +11,6 @@
 		    </form>
       </div>
       <div class="header-right">
-        {{ env('AUTH') }}
         @if( Auth::check() )
           <div class="event-action-btns">
             <a href="" class="button red">イベント管理</a>
