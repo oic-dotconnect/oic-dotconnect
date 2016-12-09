@@ -18,14 +18,14 @@ class EventController extends Controller
 	{
 		$capacity = Event::FindCode($event_code)->value('capacity');
 
-		$data['event'] = Event::FindCode($code)->with('organizer')->get();
+		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
 
-		$data['tags']Event::FindCode($code)->tags;
+		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
-		$users = Event::FindCode($code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
+		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
 
 		$data['users'] = array_slice($users,0,$capacity);
-		
+
 		$data['substitate'] = array_slice($users,$capacity);
 
 		return view('event/event-detail', $data);
