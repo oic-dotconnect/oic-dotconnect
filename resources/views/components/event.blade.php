@@ -20,7 +20,7 @@
             <div class="organizer"><img class="icon" src="{{ $event->organizer->image_pass }}" alt="">{{ $event->organizer->name }}</div>                                                                                                                             
             <div class="tag">
                 @foreach($event->tags as $tag)                
-                  <a href="#"><i class="fa fa-tag" aria-hidden="true"></i>{{ $tag->name }}<i class="fa fa-star-o star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>                
+                  <a href="{{ route('event-search',) }}"><i class="fa fa-tag" aria-hidden="true"></i>{{ $tag->name }}<i class="fa fa-star-o star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>                
                 @endforeach                
             </div>
         </div>
