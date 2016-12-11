@@ -1,13 +1,13 @@
 <template>
 	<div class="tag-lists">
-		<div class="search-tag-list">
-			<h3>検索結果</h3>
-			<div class="search-tags">                
+		<div class="tag-list">
+			<h3 class="name-title result-title">検索結果</h3>
+			<div class="result-tags">                
 				<tag-checkbox v-for="tag in searchTags" :tag.sync="tag"></tag-checkbox>
 			</div>
 		</div>
-		<div class="fav-tag-list">
-			<h3>お気に入りにするタグ</h3>
+		<div class="tag-list">
+			<h3 class="name-title selection-title">お気に入りにするタグ</h3>
 			<div class="fav-tags">
 				<tag-checkbox v-for="tag in sortFavTags" :tag="tag" prefix="fav"></tag-checkbox>
 			</div>
@@ -143,30 +143,17 @@
 </script>
 
 <style scoped>
-    .tag-lists {
+    .row {
         display: flex;
+        flex-direction: row;
+    }
+
+    .tag-list {
+        margin: 10px 0px;
+        box-shadow: 0px 0px 6px 1px #e6e6e6;
+        border-radius: 5px;
+        padding: 20px 30px;        
     }
     
-    .search-tag-list,
-    .move-btns,
-    .fav-tag-list {
-        flex: 1;
-    }
     
-    .move-btns {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .btn-corver {
-        margin: 20px;
-    }
-    
-    .search-tags,
-    .fav-tags {
-        border: solid 1px;
-        height: 300px;
-        overflow-y: scroll;
-    }
 </style>
