@@ -15,7 +15,9 @@
   <body>
     @include('components.header')
     <main>
-      @yield('content')
+      <div class = "wrapper">
+        @yield('content')
+      </div>
     </main>
     <footer id="footer"></footer>
     <script src="/js/bundle.js" charset="utf-8"></script>

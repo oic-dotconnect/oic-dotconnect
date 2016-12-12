@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-<div class = "wrapper">
   @include('components.user-entry-step', [ 'current' => 'profile' ])
   {{ Form::open([ 
     'route' => 'post-user-entry-profile',
@@ -67,9 +66,8 @@
       <p class="caution-mark">※文言</p>
     </div>
     <div class="row info">
-      <input type="button" value="キャンセル" class="cancell">
+      <a href="#" class="button cancell">キャンセル</a>
       <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>      
     </div>
   {{ Form::close() }}
-</div>
 @endsection

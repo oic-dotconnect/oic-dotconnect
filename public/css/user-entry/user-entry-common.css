@@ -1,6 +1,6 @@
 .register-form{
   margin-top: 0; 
-  box-shadow: 0px 0px 6px 1px #e6e6e6;
+  /*box-shadow: 0px 0px 6px 1px #e6e6e6;*/
   border-radius: 5px;
   padding:30px 50px ;
 }
@@ -83,20 +83,6 @@
   justify-content:space-between;;
 }
 
-.info input, .info button{
-  border: 1px solid #DDD;
-  border-radius: 5px;
-  color: #FFF;
-  padding: 6px;
-  box-shadow: 2px 1px #0075A9;
-  letter-spacing: 5px;
-  Word-break:break-all;
-  font-size: 1rem;
-}
-
-
-
-
 .introduction{  
   padding: 0 20px;
 }
@@ -122,11 +108,6 @@
 
 .conf {
  background: #F6AD3C;
-}
-
-.cancell {
-   width: 150px;
-    background: #bbb;
 }
 
 .fav-register{
