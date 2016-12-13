@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Session;
-
+use App\AwsUploader;
 use App\Models\User;
+
+use Auth;
 
 class UserEntryController extends Controller
 {
     public function InputProfile(Request $request)
     {
     	Session::put('profile',$request->all());
+		$icon = $request->file('icon');
+		Session::put('icon', $icon);
+		
 		$value = $request->get('submit');
 		
 		if($value == "toTag"){	// プロフィール設定からお気に入りタグを設定する場合 
@@ -57,7 +62,8 @@ class UserEntryController extends Controller
     	$user = User::create($UserProfire);
 
     	$user->tags()->attach($TagIds);
-
+		$icon = $request->sesion()->get("icon");
+		$user->iconUp($icon);
         return redirect()->route('user-mypage-recommend');
     }
 

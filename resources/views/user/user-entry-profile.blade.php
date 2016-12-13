@@ -9,7 +9,8 @@
   @include('components.user-entry-step', [ 'current' => 'profile' ])
   {{ Form::open([
     'route' => 'post-user-entry-profile',
-    'class' => 'col register-form'
+    'class' => 'col register-form',
+    'files' => true
   ])}}
   <!-- <form class="col register-form">-->
     <h1 class="form-title">プロフィール登録</h1>
@@ -25,7 +26,7 @@
           <label for="icon-file">
             ＋  画像を選択
           </label>
-          <input type="file" id="icon-file" style="display:none;"　name="icon">
+          {!! Form::file("icon", [ "id"  => "icon-file"]) !!}          
         </div>
       </div>
       <div class="col name-col">
