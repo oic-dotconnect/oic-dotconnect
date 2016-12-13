@@ -12,16 +12,7 @@ use Illuminate\Http\Request;
 */
 Route::group(['middleware' => 'dev'], function () {
 // ランディングページ
-Route::get('/',['as' => 'landing', function () {
-	$data = [];
-	$data["new_events"] = \App\Models\Event::orderby('open_date','desc')->take(5)->with('Tags')->get()->each(function($event){
-			$event["entry_num"] = $event->entry_num();
-	});
-	$data["hold_events"] = \App\Models\Event::Beforehold()->take(5)->with('Tags')->orderby('openig_date')->get()->each(function($event){
-			$event["entry_num"] = $event->entry_num();
-	});
-    return view('landing',$data);
-}]);
+Route::get('/',['as' => 'landing', 'uses' => 'LandingController@index']);
 
 Route::get('/view/{name}', function ($name) {
     return view($name);
