@@ -16,3 +16,8 @@ Route::post('/mock/posttest',[ 'as' => 'posttest', function(Request $request) {
 }]);
 
 Route::get('/mock/organize','MockController@organize');
+Route::group(['middleware' => 'dev'], function () {
+  Route::get('/mock/pagelist',function() {
+    return view('mock.page-list');
+  });
+});
