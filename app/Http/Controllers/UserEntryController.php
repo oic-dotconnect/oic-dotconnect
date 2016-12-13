@@ -57,5 +57,14 @@ class UserEntryController extends Controller
     	$user = User::create($UserProfire);
 
     	$user->tags()->attach($TagIds);
+
+        return redirect()->route('user-mypage-recommend');
+    }
+
+    public function Cancel(Request $request)
+    {
+        $request->session()->flush();
+
+        return redirect()->route('landing');
     } 
 }

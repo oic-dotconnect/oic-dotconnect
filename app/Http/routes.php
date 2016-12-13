@@ -135,6 +135,9 @@ Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryC
 //ユーザー登録コントローラーへ
 Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
 
+//ユーザー登録キャンセル
+Route::get('user/entry/cancel',['as' => 'user-entry-cancel','uses' => 'UserEntryController@Cancel']);
+
 //-------------------------イベント状態変更--------------------------------
 Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
 
