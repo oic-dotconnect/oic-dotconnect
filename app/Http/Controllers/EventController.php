@@ -16,6 +16,8 @@ class EventController extends Controller
 {
 	public function detail(Request $request,$event_code)
 	{
+		$user = Auth::user();
+
 		$capacity = Event::FindCode($event_code)->value('capacity');
 
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
@@ -27,6 +29,23 @@ class EventController extends Controller
 		$data['users'] = array_slice($users,0,$capacity);
 
 		$data['substitate'] = array_slice($users,$capacity);
+
+		
+		if(Event::FindCode($event_code)->first()->organizer_id == $user->id)
+		{
+			//このイベントの主催者がログインユーザーならここ
+		}
+		else 
+		{
+			$userIds = Event::FindCode($event_code)->first()->users->map(function($user){return $user->id;});
+			if(in_array($user->id,$userIds)){
+				//このイベントにログインユーザーが参加しているならここ
+			} else {
+				//このイベントにログインユーザーが参加していないならここ
+			}
+			
+		}
+		
 
 		return view('event/event-detail', $data);
 	}
