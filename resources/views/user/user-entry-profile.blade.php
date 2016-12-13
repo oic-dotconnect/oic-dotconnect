@@ -7,7 +7,7 @@
 
 @section('content')
   @include('components.user-entry-step', [ 'current' => 'profile' ])
-  {{ Form::open([ 
+  {{ Form::open([
     'route' => 'post-user-entry-profile',
     'class' => 'col register-form',
     'files' => true
@@ -28,7 +28,7 @@
           </label>
           {!! Form::file("icon", [ "id"  => "icon-file"]) !!}          
         </div>
-      </div>         
+      </div>
       <div class="col name-col">
         <div class="user-name">
           <div class="name-title">
@@ -47,7 +47,7 @@
           <div class="caution">
               <p class="caution-mark">※文言</p>
               <p class="caution-mark">※文言</p>
-              <p class="caution-mark">※文言</p>   
+              <p class="caution-mark">※文言</p>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
       <h2>紹介文</h2>
     </div>
     <div class="introduction-input">
-      <textarea class="border" rows="10" cols="60" name="introduction"></textarea>  
+      <textarea class="border" rows="10" cols="60" name="introduction"></textarea>
     </div>
   </div>
   <div class="col info">
@@ -68,7 +68,7 @@
     </div>
     <div class="row info">
       <a href="#" class="button cancell">キャンセル</a>
-      <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>      
+      <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>
     </div>
   {{ Form::close() }}
 @endsection

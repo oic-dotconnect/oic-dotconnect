@@ -1,5 +1,70 @@
 @extends('layout.app')
 
 @section('content')
-<h1>お気に入りタグ編集ページ</h1>
+    <div class="wrapper">
+        <div class="top">
+            <h1>アカウント設定</h1>
+        </div>
+        <!-- top -->
+        <div class="state">
+        </div>
+        <div class="primary">
+            <div class="inner">
+                <div class="tag-group">
+                    <ul class="tag-list">
+                        <li class="tag-item">プロフィール</li>
+                        <li class="tag-item selected">お気に入りタグ</li>
+                        <li class="tag-item">メール通知</li>
+                        <li class="tag-item">退会</li>
+                    </ul>
+                    <!-- tag-list -->
+                </div>
+                <!-- tag-group -->
+                <div class="acount-config">
+                    <div class="tag-search">
+                        <h2>お気に入りタグ</h2>
+                        タグ検索：<input type="text" name="search-input">
+                    </div>
+                    <!--tag-search-->
+                    <div class="candidate-tag-list">
+                        <h2>候補タグ一覧</h2>
+                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
+                    </div>
+                    <!--candidate-tag-list-->
+                    <div class="add-candidate-tag-list">
+                        <h2>追加するタグ一覧</h2>
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                    </div>
+                    <div class="add-candidate-tag-list">
+                        <h2>お気に入りタグ一覧</h2>
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
+                    </div>
+
+
+                    <div class="btn-group">
+                        <button>キャンセル</button>
+                        <button>変更</button>
+                    </div>
+                    <!-- btn-group -->
+                </div>
+                <!--acount-config-->
+            </div>
+            <!-- inner -->
+        </div>
+        <!-- primary -->
+    </div>
+    <!-- wrapper -->
+    {{Auth::user()->tags}}
 @endsection
