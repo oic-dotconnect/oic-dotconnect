@@ -50,24 +50,16 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
 
     // お気に入りタグ編集ページ
-    Route::get('/user/setting/tag',['as' =>'user-setting-tag',function(){
-        return view('user/user-setting-tag');
-    }]);
+    Route::get('/user/setting/tag',['as' =>'user-setting-tag','uses' => 'UserController@editFavoriteTags']);
 
     // プロフィール編集ページ
-    Route::get('/user/setting/profile',['as' =>'user-setting-profile',function(){
-        return view('user/user-setting-profile');
-    }]);
+    Route::get('/user/setting/profile',['as' =>'user-setting-profile','uses' => 'UserController@editProfile']);
 
     // 通知設定ページ
-    Route::get('/user/setting/notice',['as' =>'user-setting-notice',function(){
-        return view('user/user-setting-notice');
-    }]);
+    Route::get('/user/setting/notice',['as' =>'user-setting-notice','uses' => 'UserController@editNotice']);
 
     //　退会ページ
-    Route::get('/user/setting/leave',['as' =>'user-setting-leave',function(){
-        return view('user/user-setting-leave');
-    }]);
+    Route::get('/user/setting/leave',['as' =>'user-setting-leave','uses' => 'UserController@editLeave']);
 
     // マイページ おすすめイベント
     Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',
@@ -137,5 +129,12 @@ Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryControl
 
 //-------------------------イベント状態変更--------------------------------
 Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
+
+//-------------------------ユーザー情報変更--------------------------------
+Route::post('/user/setting/profile',['as' => 'post-user-setting-profile','uses' => 'UserController@saveProfile']);
+
+Route::post('/user/setting/tag',['as' => 'post-user-setting-tag','uses' => 'UserController@saveFavoriteTags']);
+
+Route::post('/user/setting/notice',['as'  => 'post-user-setting-notice','uses' => 'UserController@saveNotice']);
 
 });
