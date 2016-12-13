@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Session;
 use App\AwsUploader;
 use App\Models\User;
+use App\Models\Tag;
 
 use Auth;
 use Image;
@@ -23,8 +24,6 @@ class UserEntryController extends Controller
 		Session::put('icon', $icon->getRealPath());
     	Session::put('profile',$request->except("icon","submit"));		
 		
-		
-
 		$value = $request->get('submit');
 		
 		if($value == "toTag"){	// プロフィール設定からお気に入りタグを設定する場合 
@@ -45,8 +44,9 @@ class UserEntryController extends Controller
     public function Confirm(Request $request)
     {
     	$data = $request->session()->all();
-		// dd($data["icon"]);
-
+		$data["tags"] = Tag::whereIn('id',$data["tags"])->get()->map(function($tag) {
+			return $tag->name;
+		});
     	return view('user/user-entry-confirm',$data);
     }
 
