@@ -16,13 +16,13 @@ class EventController extends Controller
 {
 	public function detail(Request $request,$event_code)
 	{
-		$user = Auth::user();
+		$user = Auth::User();
 
 		$capacity = Event::FindCode($event_code)->value('capacity');
 
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
 
-		$data['tags'] = Event::FindCode($event_code)->first()->tags;
+		$data['tags'] = Event::FindCode($event_code)->tags;
 
 		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
 
@@ -34,14 +34,17 @@ class EventController extends Controller
 		if(Event::FindCode($event_code)->first()->organizer_id == $user->id)
 		{
 			//このイベントの主催者がログインユーザーならここ
+			echo('a');
 		}
 		else 
 		{
-			$userIds = Event::FindCode($event_code)->first()->users->map(function($user){return $user->id;});
+			$userIds = Event::FindCode($event_code)->first()->users->map(function($user){return $user->id;})->toArray();
 			if(in_array($user->id,$userIds)){
 				//このイベントにログインユーザーが参加しているならここ
+				echo('b');
 			} else {
 				//このイベントにログインユーザーが参加していないならここ
+				echo('c');
 			}
 			
 		}
