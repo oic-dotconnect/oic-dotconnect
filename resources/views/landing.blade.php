@@ -2,7 +2,6 @@
 
 @section('head')
 <link rel="stylesheet" href="{{{asset('css/landing.css')}}}" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="{{{asset('css/event.css')}}}" media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet" href="{{{asset('/assets/css/tag.css')}}}" media="screen" title="no title" charset="utf-8">
 @endsection
 

@@ -10,6 +10,10 @@ use App\Models\User;
 use App\Models\Event;
 use Auth;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 
 class UserController extends Controller
 {
@@ -57,6 +61,82 @@ class UserController extends Controller
 		$data['user'] = $user;
 		$data['events'] = $user->hold_events()->paginate(10);		
         return view('user/user-userpage-hold', $data);    
+	}
+
+	public function editProfile()
+	{
+		$data = Auth::user();
+
+		return view('user/user-setting-profile',$data);
+	}
+
+	public function editFavoriteTags()
+	{
+		return view('user/user-setting-tag');
+	}
+
+	public function editNotice()
+	{
+		$data['userNotice'] = Auth::user();
+
+		$data['tagNotice'] = Auth::user()->tags()->get();
+
+		return view('user/user-setting-notice',$data);
+	}
+
+	public function editLeave()
+	{
+		return view('user/user-setting-leave');
+	}
+
+	public function saveProfile(Request $request)
+	{
+		$user = Auth::user();
+
+		$data = $request->all();
+
+		$user->update($data);
+
+		return redirect()->route('user-mypage-recommend');
+	}
+
+	public function saveFavoriteTags(Request $request)
+	{
+		$newTagIds = $request->get('tags');
+
+		$user = Auth::user();
+
+		$user->tags()->detach();
+
+		$user->tags()->attach($newTagIds);
+
+		return redirect()->route('user-mypage-recommend');
+	}
+
+	public function saveNotice(Request $request)
+	{
+		$notices = $request->all();
+
+		$user = Auth::user();
+
+		$eventJoinNoticed = isset($notices['eventjoinnotice']);
+		$user->update(['event_join_notice' => $eventJoinNoticed]);
+
+		$eventCancelNoticed = isset($notices['eventcancelnotice']);
+		$user->update(['event_cancel_notice' => $eventCancelNoticed]);
+		
+		$favoriteTagNoticed = isset($notices['favoritetagnotice']);
+		$user->update(['favorite_tag_notice' => $favoriteTagNoticed]);
+
+		dd($notices,$eventJoinNoticed);
+
+		/*foreach($notices['tags'] as $value)
+		{
+			$user->tags()->update(['favorite_tag_notice' => $favoriteTagNoticed]);			
+		}*/
+		
+
+
 	}
 
 }

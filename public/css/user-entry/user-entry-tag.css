@@ -1,0 +1,102 @@
+.register-form .search{
+  margin: 20px 20px 0 20px;
+}
+
+.register-form .mark{
+  flex: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form .search-button{
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    color: #FFF;
+    padding: 6px;
+    box-shadow: 2px 1px #0075A9;
+    letter-spacing: 5px;
+    Word-break: break-all;
+    font-size: 1rem;
+    width: 100px;
+    background: #00A95F;
+    width: 15%;
+}
+
+.register-form .input{
+  margin-top: 0;
+  flex: 8;
+}
+
+.register-form .form-input{
+  margin-top: 0;
+  margin-right: 10px;
+}
+
+.candidate-title .name-title {
+  border-color: #AC6A00;
+}
+.selection-title .name-title {
+  border-color: #B7AA00;
+}
+
+.tag-list{
+  margin: 10px 10px 0 10px;
+  box-shadow: 0px 0px 6px 1px #e6e6e6;
+  border-radius: 5px;
+  padding:10px 30px 20px 30px;
+}
+.candidate-tag-list{
+  padding-left:10px;
+}
+.selection-tag-list{
+  padding-left: 10px;
+}
+
+.tag-list .row{
+  margin-top: 0;
+}
+
+.tag-list li{
+  display: inline-block;
+}
+
+.checkbox {
+  margin:10px 10px 0 0;
+  display: none;
+  box-sizing: border-box;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  position: relative;
+  display: inline-block;
+  padding: 12px 12px 12px 42px;
+  border-radius: 8px;
+  background-color: #f6f7f8;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.checkbox:before {
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 21px;
+  display: block;
+  margin-top: -7px;
+  width: 5px;
+  height: 9px;
+  border-right: 3px solid #53b300;
+  border-bottom: 3px solid #53b300;
+  content: '';
+  opacity: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+input[type=checkbox]:checked + .checkbox:before {
+  opacity: 1;
+}
+
+input[type=checkbox]{
+ display: none; 
+}
