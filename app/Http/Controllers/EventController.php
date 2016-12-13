@@ -11,7 +11,6 @@ use Auth;
 use Route;
 use App\Models\User;
 
-
 class EventController extends Controller
 {
 	public function detail(Request $request,$event_code)
@@ -80,5 +79,31 @@ class EventController extends Controller
 		$data['event'] = $user->events()->role('admin')->get();
 		
 		return view('event/event-control')->with('data',$data);
+	}
+
+	public function join(Request $request,$event_code)
+	{
+		$user = Auth::User();
+
+		$eventId = Event::FindCode($event_code)->select('id')->get();
+
+		$user->events()->attach($eventId);
+
+		$redirectUrl = $request->session()->get('_previous.url');
+
+		return redirect($redirectUrl);
+	}
+
+	public function cancel(Request $request,$event_code)
+	{
+		$user = Auth::User();
+
+		$eventId = Event::FindCode($event_code)->select('id')->get();
+
+		$user->events()->detach($eventId);
+
+		$redirectUrl = $request->session()->get('_previous.url');
+
+		return redirect($redirectUrl);
 	}
 }

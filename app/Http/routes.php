@@ -138,4 +138,8 @@ Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryControl
 //-------------------------イベント状態変更--------------------------------
 Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
 
+//-------------------------イベント参加・参加キャンセル------------------------
+Route::post('event/{event_code}/join',['as' => 'post-event-join','uses' => 'EventController@join']);
+
+Route::post('event/{event_code}/cancel',['as' => 'post-event-cancel','uses' => 'EventController@cancel']);
 });
