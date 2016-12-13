@@ -9,16 +9,20 @@ use App\Http\Requests;
 use Session;
 use App\AwsUploader;
 use App\Models\User;
+use App\Models\Tag;
 
 use Auth;
+use Image;
+use Crypt;
 
 class UserEntryController extends Controller
-{
+{ 
     public function InputProfile(Request $request)
     {
-    	Session::put('profile',$request->all());
-		$icon = $request->file('icon');
-		Session::put('icon', $icon);
+		
+		$icon = $request->file('icon')->move("cacheimg");		
+		Session::put('icon', $icon->getRealPath());
+    	Session::put('profile',$request->except("icon","submit"));		
 		
 		$value = $request->get('submit');
 		
@@ -32,7 +36,7 @@ class UserEntryController extends Controller
 
     public function InputTag(Request $request)
     {
-    	Session::put('tags',$request->get('tags'));
+    	Session::put('tags',$request->get('tags'));		
 
     	return redirect()->route('user-entry-confirm');
     }
@@ -40,7 +44,9 @@ class UserEntryController extends Controller
     public function Confirm(Request $request)
     {
     	$data = $request->session()->all();
-
+		$data["tags"] = Tag::whereIn('id',$data["tags"])->get()->map(function($tag) {
+			return $tag->name;
+		});
     	return view('user/user-entry-confirm',$data);
     }
 
@@ -62,7 +68,7 @@ class UserEntryController extends Controller
     	$user = User::create($UserProfire);
 
     	$user->tags()->attach($TagIds);
-		$icon = $request->sesion()->get("icon");
+		$icon = Session::get("icon");		
 		$user->iconUp($icon);
         return redirect()->route('user-mypage-recommend');
     }

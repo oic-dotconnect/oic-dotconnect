@@ -22,6 +22,10 @@ body form{
   margin-top: auto;
 }
 
+#icon-file {
+  display: none;
+}
+
 .user-code{
   margin-top: 30px;
 }
