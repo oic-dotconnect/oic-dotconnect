@@ -25,13 +25,13 @@
       <div class = "form-cat">
         <div class = "form-item">
           <h2 class = "form-header">ニックネーム</h2>
-          <p class="form-info">{{$profile["name_input"]}}</p>
+          <p class="form-info">{{$profile["name"]}}</p>
         </div>
       </div>
       <div class = "form-cat">
         <div class = "form-item">
           <h2 class = "form-header">ユーザコード</h2>
-          <p class="form-info">{{$profile["user_code_input"]}}</p>
+          <p class="form-info">{{$profile["code"]}}</p>
         </div>
       </div>
       <div class = "form-cat">
@@ -39,14 +39,14 @@
           <h2 class = "form-header">アイコン</h2>
         </div>
         <div class = "form-icon">
-          <div class = "img"></div>
+          <img src="{{ explode('public',$icon)[1] }}" alt="">
         </div>
       </div>
       <div class = "form-cat">
         <div class = "form-item">
           <h2 class = "form-header">紹介文</h2>
         </div>
-        <p class="form-info">{{$profile["into"]}}</p>
+        <p class="form-info">{{$profile["introduction"]}}</p>
       </div>
       <div class="form-page-move">
         <button type="button">プロフィール編集</button>
@@ -68,7 +68,9 @@
         <button type="button">キャンセル</button>
       </div>
       <div class = "cont_can">
-        <button type="button">登録</button>
+      {{ Form::open(['route' => 'post-user-create'])}}
+        <button type="submit">登録</button>
+      {{ Form::close()}}
     </div>
   </div>
 @endsection

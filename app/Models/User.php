@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Hash;
 use Image; 
+use File;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\AwsUploader;
 
@@ -97,8 +98,8 @@ class User extends Authenticatable
 	    return $this->events()->Role('admin');
     }
 
-    public function iconUp($file){
-        $image = Image::make($file->path());
+    public function iconUp($file_path){
+        $image = Image::make($file_path);
         $width = $image->width();
         $height = $image->height();
 
@@ -121,6 +122,7 @@ class User extends Authenticatable
 
         $result['icon_min'] = AwsUploader::up("icons/" . $this->code . "/icon_min.png", public_path('icon_min.png'));
         $result['icon'] = AwsUploader::up("icons/" . $this->code . "/icon.png", public_path('icon.png'));
+        if(File::exists($file_path)) File::delete($file_path);
 
         return $result;
         return null;        
