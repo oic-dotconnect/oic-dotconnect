@@ -175,5 +175,4 @@
         <!-- div.person-group -->
     </div>
     <!-- div.secondary -->
-    {{$event}}
 @endsection
