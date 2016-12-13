@@ -25,8 +25,8 @@
 <section>
 	<h2>ユーザー設定</h2>
 	<ul>	
-		<li><a href="{{ route('user-setting-tag') }}">プロフィール設定</a></li>
-		<li><a href="{{ route('user-setting-profile') }}">お気に入りタグ設定</a></li>
+		<li><a href="{{ route('user-setting-profile') }}">プロフィール設定</a></li>
+		<li><a href="{{ route('user-setting-tag') }}">お気に入りタグ設定</a></li>
 		<li><a href="{{ route('user-setting-notice') }}">通知設定</a></li>
 		<li><a href="{{ route('user-setting-leave') }}">退会</a></li>
 	</ul>
