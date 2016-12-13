@@ -124,6 +124,11 @@ Route::get('user/entry/cancel',['as' => 'user-entry-cancel','uses' => 'UserEntry
 //-------------------------イベント状態変更--------------------------------
 Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
 
+//-------------------------イベント参加・参加キャンセル------------------------
+Route::post('event/{event_code}/join',['as' => 'post-event-join','uses' => 'EventController@join']);
+
+Route::post('event/{event_code}/cancel',['as' => 'post-event-cancel','uses' => 'EventController@cancel']);
+
 //-------------------------ユーザー情報変更--------------------------------
 Route::post('/user/setting/profile',['as' => 'post-user-setting-profile','uses' => 'UserController@saveProfile']);
 
