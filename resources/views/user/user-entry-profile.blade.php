@@ -7,7 +7,7 @@
 
 @section('content')
   @include('components.user-entry-step', [ 'current' => 'profile' ])
-  {{ Form::open([ 
+  {{ Form::open([
     'route' => 'post-user-entry-profile',
     'class' => 'col register-form'
   ])}}
@@ -25,16 +25,16 @@
           <label for="icon-file">
             ＋  画像を選択
           </label>
-          <input type="file" id="icon-file" style="display:none;">
+          <input type="file" id="icon-file" style="display:none;"　name="icon">
         </div>
-      </div>         
+      </div>
       <div class="col name-col">
         <div class="user-name">
           <div class="name-title">
             <h2>ニックネーム</h2><p>必須</p>
           </div>
           <div class="name-input">
-            <input type="text" class="border form-input" name = "name_input">
+            <input type="text" class="border form-input" name="name">
           </div>
         </div>
         <div class="col user-code">
@@ -42,11 +42,11 @@
             <h2>ユーザコード</h2><p>必須</p>
         </div>
         <div class="code-input">
-          <input type="text" class="border form-input" name = "user_code_input">
+          <input type="text" class="border form-input " name="code">
           <div class="caution">
               <p class="caution-mark">※文言</p>
               <p class="caution-mark">※文言</p>
-              <p class="caution-mark">※文言</p>   
+              <p class="caution-mark">※文言</p>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
       <h2>紹介文</h2>
     </div>
     <div class="introduction-input">
-      <textarea class="border" rows="10" cols="60" name="into"></textarea>  
+      <textarea class="border" rows="10" cols="60" name="introduction"></textarea>
     </div>
   </div>
   <div class="col info">
@@ -67,7 +67,7 @@
     </div>
     <div class="row info">
       <a href="#" class="button cancell">キャンセル</a>
-      <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>      
+      <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>
     </div>
   {{ Form::close() }}
 @endsection

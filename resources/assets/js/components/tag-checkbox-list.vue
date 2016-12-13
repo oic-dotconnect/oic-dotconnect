@@ -95,18 +95,6 @@
                 })
                 let sec = this.remove_Favtags(this.section);
                 this.add_Favtags(sec);
-
-                (() => {
-                    let length = this.favTags.length
-                    let tag = this.get_Search_Id(1)
-                    tag.check = true
-                    console.log('かぶっているタグが追加されないか', length === this.favTags.length)
-
-                    length = this.favTags.length
-                    tag = this.get_Search_Id(2)
-                    tag.check = true
-                    console.log('かぶっていないタグが追加されたか', length < this.favTags.length)
-                })()
             });
         },
         computed: {
