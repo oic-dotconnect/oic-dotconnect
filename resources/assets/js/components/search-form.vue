@@ -10,7 +10,9 @@
                 <div>
                     <div class="result-list">
                         <h2>検索結果</h2>
-                        <event-item :event-list.sync="searchEvent" :refine.sync="refine" :sort.sync="sort"></event-item>
+                        <ul>
+                            <event-item v-for="event in changeEvent" :event="event"></event-item>
+                        </ul>
                     </div>
                     <!-- result-list -->
                     <div class="result-controle">
@@ -58,8 +60,83 @@
             return {
                 searchEvent: [],
                 refine: '',
-                sort: ''
+                sort: '',
             }
         },
+        computed: {
+            changeEvent() {
+                let change = [];
+                let start = [];
+                let finish = [];
+                let self = this;
+                if (this.refine) {
+                    change = this.searchEvent.filter(function(event) {
+                        return event.field === self.refine
+                    })
+                } else {
+                    change = this.searchEvent
+                }
+                if (this.sort) {
+                    change[0].created_at = "2016-11-03 17:19:19"
+                    if (this.sort === 'near') {
+                        let today = new Date();
+                        today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+                        change.map(function(val) {
+                            var date = val.opening_date
+                            if (date > today) {
+                                start.push(val)
+                            } else {
+                                finish.push(val)
+                            }
+                        })
+                        start.sort(function(val1, val2) {
+                            var val1 = val1.opening_date;
+                            var val2 = val2.opening_date;
+                            if (val1 > val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                        finish.sort(function(val1, val2) {
+                            var val1 = val1.opening_date;
+                            var val2 = val2.opening_date;
+                            if (val1 < val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                        change = start.concat(finish);
+                    } else if (this.sort === 'new') {
+                        change = change.sort(function(val1, val2) {
+                            var val1 = val1.created_at;
+                            var val2 = val2.created_at;
+                            if (val1 < val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                    } else {
+                        change = change.sort(function(val1, val2) {
+                            var val1 = val1.created_at;
+                            var val2 = val2.created_at;
+                            if (val1 > val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                    }
+                }
+                return change
+            }
+        },
+        watch: {
+            'searchEvent': function() {
+                console.log(this.searchEvent)
+            }
+        }
     }
 </script>
