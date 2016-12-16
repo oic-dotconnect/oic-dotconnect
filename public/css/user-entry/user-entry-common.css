@@ -1,0 +1,174 @@
+.register-form{
+  margin-top: 0; 
+  /*box-shadow: 0px 0px 6px 1px #e6e6e6;*/
+  border-radius: 5px;
+  padding:30px 50px ;
+}
+
+.name-col{       
+  flex: 3;
+  padding: 0 20px;
+}
+
+.icon-col{
+  flex: 2;
+  padding: 0 20px;
+}
+
+.icon-display{
+  margin: 20px auto 0 auto;
+  width: 200px;
+  height: 200px;
+}
+
+.icon-display img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: solid 5px #d3d3d3;
+}
+
+.icon-form input, .icon-form button{
+    background: #EEE;
+    border: 3px solid #DDD;
+    color: #111;
+    width: 100px;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.register-form{
+  margin-bottom: 20px;
+}
+
+.col h2 + p{
+  margin-left: 10px;
+  color: red;
+  display: inline;
+  font-size: small;
+}
+
+.name-title{
+  display: flex;
+}
+
+.name-title h2{
+  display: inline;
+}
+
+.register-form .form-input{
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 5px 5px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.introduction-input{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.introduction-input textarea{
+    width: 80%;
+    margin-left: 10px;
+    padding: 5px 5px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+.info{
+  margin-top: 20px;
+  display: flex;
+  justify-content:space-between;;
+}
+
+.introduction{  
+  padding: 0 20px;
+}
+
+.name-title{
+  border-bottom: dotted 2px;
+}
+
+.icon-col .name-title{
+  border-color: #A40000;
+}
+
+.user-name .name-title{
+  border-color: #B7AA00;
+}
+
+.user-code .name-title{
+  border-color: #007130;
+}
+.introduction .name-title{
+  border-color: #004986;
+}
+
+.conf {
+ background: #F6AD3C;
+}
+
+.fav-register{
+      background: #00AFEC;
+      width: 300px;
+}
+
+
+.row{
+  margin-top: 20px;
+}
+
+.register-form h2
+{
+  padding-left: 5px;
+}
+
+.register-step{
+    width: 95%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+    align-items: center;
+}
+
+.item{
+    flex: 2;
+    text-align: center;
+    padding: 20px 10px;
+    box-shadow: 0px 0px 6px 1px #e6e6e6;
+    border-radius: 5px;
+    border: solid 1.2px #187FC4;
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 5px 1px 3px rgba(0,,0,0.5);
+}
+
+.item.active{
+  color: white; 
+  background: #54C3F1;
+}
+
+.fa{
+  flex: 0.5;
+  text-align: center;
+}
+
+.form-item {
+  margin: 0 0 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-item p{ 
+  font-size: 0.7rem;
+  color: red;
+  align-items: baseline;
+}
+
+.fa-arrow-right:before {
+content: "\f061";
+}

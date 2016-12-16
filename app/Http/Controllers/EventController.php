@@ -11,32 +11,50 @@ use Auth;
 use Route;
 use App\Models\User;
 
-
 class EventController extends Controller
 {
-	public function detail(Request $request)
+	public function detail(Request $request,$event_code)
 	{
-		$code = $request -> all();
-		$capacity = Event::FindCode($code)->value('capacity');
+		$user = Auth::User();
 
-		/*$data = Event::EventDetail($code)->with(['tags','users' => function($query) {
-			$query->orderby('user_event.created_at','desc');
-		} ,'organizer'])->get();*/
+		$capacity = Event::FindCode($event_code)->value('capacity');
 
+		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
 
+		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
-		$data['event'] = Event::FindCode($code)->with('organizer')->get();
-		$users = Event::FindCode($code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
+		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
 
 		$data['users'] = array_slice($users,0,$capacity);
+
 		$data['substitate'] = array_slice($users,$capacity);
+
+		
+		if(Event::FindCode($event_code)->first()->organizer_id == $user->id)
+		{
+			//このイベントの主催者がログインユーザーならここ
+			echo('a');
+		}
+		else 
+		{
+			$userIds = Event::FindCode($event_code)->first()->users->map(function($user){return $user->id;})->toArray();
+			if(in_array($user->id,$userIds)){
+				//このイベントにログインユーザーが参加しているならここ
+				echo('b');
+			} else {
+				//このイベントにログインユーザーが参加していないならここ
+				echo('c');
+			}
+			
+		}
+		
 
 		return view('event/event-detail', $data);
 	}
 
-	public function edit(Request $request,$code)
+	public function edit(Request $request,$event_code)
 	{
-		$data['event'] = Event::FindCode($code)->first();
+		$data['event'] = Event::FindCode($event_code)->first();
 
 		return view('event/event-edit', $data);
 	}
@@ -66,11 +84,11 @@ class EventController extends Controller
 
 	}
 
-	public function status(Request $request,$code)
+	public function status(Request $request,$event_code)
 	{
 		$status = $request->get('status');
 
-		Event::FindCode($code)->update(['status' => $status]);
+		Event::FindCode($event_code)->update(['status' => $status]);
 
 		
 	}
@@ -83,5 +101,31 @@ class EventController extends Controller
 		$data['event'] = $user->events()->role('admin')->get();
 		
 		return view('event/event-control')->with('data',$data);
+	}
+
+	public function join(Request $request,$event_code)
+	{
+		$user = Auth::User();
+
+		$eventId = Event::FindCode($event_code)->select('id')->get();
+
+		$user->events()->attach($eventId);
+
+		$redirectUrl = $request->session()->get('_previous.url');
+
+		return redirect($redirectUrl);
+	}
+
+	public function cancel(Request $request,$event_code)
+	{
+		$user = Auth::User();
+
+		$eventId = Event::FindCode($event_code)->select('id')->get();
+
+		$user->events()->detach($eventId);
+
+		$redirectUrl = $request->session()->get('_previous.url');
+
+		return redirect($redirectUrl);
 	}
 }

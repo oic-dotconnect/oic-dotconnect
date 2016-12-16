@@ -1,43 +1,31 @@
 @inject('eventservice','App\Services\EventService')
 
-<div class="event">
-    <div class="left">
-        <div class="year">
-            {{ $eventservice->dateYear($event->opening_date) }}
-        </div>
-        <div class="day">
-            {{ $eventservice->dateDay($event->opening_date) }}
-        </div>
-        <div class="time">
-            {{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}
-        </div>
-        <div class="place">
-            {{ $event->place }}
-        </div>
-        <div class="field {{ $event->field }}">
-            <a href="#">{{ $eventservice->field($event->field) }}</a>
-        </div>
+<div class="event-item">
+    <div class="event-date">
+        <p>{{ $eventservice->dateYear($event->opening_date) }}年/{{ $eventservice->dateMonth($event->opening_date) }}月</p>
+        <p class="date">{{ $eventservice->dateDay($event->opening_date) }}({{ $eventservice->dateWeek($event->opening_date) }})</p>
+        <p>{{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}</p>
     </div>
-    <div class="right">
-
-        <div class="top">
-            <div class="condition {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
-                {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
+    <!-- result-date -->
+    <div class="event-state">
+        <span class="event-field {{ $event->field }}"><p>{{ $eventservice->field($event->field) }}</p></span>
+        <p class="state {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
+            {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
+        </p>
+    </div>
+    <!-- result-state -->
+    <div class="event-detail">
+        <div class="event-detail-left">
+            <div class="event-name"><a href="{{ route('event-detail', [ 'event_code' => $event->code ]) }}">{{ $event->name }}</a></div>
+            <div class="organizer"><img class="icon" src="{{ $event->organizer->image_pass }}" alt="">{{ $event->organizer->name }}</div>                                                                                                                             
+            <div class="tag">
+                @foreach($event->tags as $tag)                
+                  <a href="{{ route('event-search',[ 'tags' => $tag->name ]) }}"><i class="fa fa-tag" aria-hidden="true"></i>{{ $tag->name }}</a>                
+                @endforeach                
             </div>
         </div>
-        <div class="center">
-            <div class="title">
-                <a href="#hoge">{{ $event->name }}</a>
-            </div>
-        </div>
-        <div class="bottom">
-          <div class="tags">
-            @foreach($event->tags as $tag)
-                <div class="tag">
-                  <i class="fa fa-tag" aria-hidden="true"></i><a href="#">{{ $tag->name }}</a><i class="fa fa-star-o star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-            @endforeach
-          </div>
+        <div class="event-detail-right">
+            <span class="capacity">{{ $event->entry_num() }}/{{ $event->capacity }}人</span>
         </div>
     </div>
-  </div>
+</div>

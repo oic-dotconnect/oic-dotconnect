@@ -1,0 +1,91 @@
+
+body form{
+  vertical-align:baseline;
+}
+
+.form-icon{
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-end;
+}
+
+.icon-form{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.icon-col{
+  padding-right: 0 50px;
+}
+
+.icon-form{
+  margin-top: auto;
+}
+
+#icon-file {
+  display: none;
+}
+
+.user-code{
+  margin-top: 30px;
+}
+
+.introduction{
+  padding-top: 20px;
+}
+
+.fav{
+  text-align: center;
+}
+
+.caution{
+  padding-bottom: 20px;
+}
+
+.caution-mark {
+  margin: 0;
+  margin-top: 5px;
+  padding-left: 15px;
+  font-size: 0.8rem;
+  color: red;
+}
+
+label{
+  color: white;  
+  background-color: #A40035;
+  padding: 6px;
+  border-radius: 5px;
+  text-shadow: 0px 1px 5px rgba(0,0,0,0.85),0px 0px 5px rgba(0,0,0,1);
+  box-shadow: 2px 1px #0075A9;
+  letter-spacing: 5px;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .item{
+    font-size: 0.8rem;
+    flex: 3;
+  }
+}
+
+/* 568pxä»¥ä¸‹ */
+@media screen and (max-width: 568px) {
+  .wrapper{
+    display: flex;
+    justify-content:center; 
+  }
+  .item{ 
+   padding: 5px 10px;
+  }
+  .register-form input{
+    margin-left: 0;
+    width: 100%;
+  }
+  .form-icon .img{
+    margin-left: 0;
+  }
+  .register-form textarea{
+    width: 100%;
+  }
+
+}

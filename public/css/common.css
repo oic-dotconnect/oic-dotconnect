@@ -4,23 +4,44 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 14px;
+}    
+
 body {
+    margin: 0;
     background: lightgray;
     font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
 h2 {
-    margin: 0;
+    font-size: 1.5rem;
 }
 
 h3 {
-    margin: 0;
+    font-size: 1.17rem;
 }
 
 h4 {
-    margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
+
+h5 {
+    font-size:0.83rem;
+}
+
+h6 {
+    font-size:0.67rem;
+}
+
 
 ul {
     padding: 0;
@@ -40,12 +61,14 @@ td {
     padding: 0;
 }
 
-input {
-    border: 1px solid;
+input, textarea {
+    border:solid 1px #aab2bd;
+    border-radius: 4px;
 }
 
-
-/* input要素に対する指定 */
+h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 0px;
+}
 
 .text {
     width: 30%;
@@ -73,11 +96,11 @@ p {
     display: flex;
     max-width: 1060px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 50px;
     margin: 20px auto;
     background: white;
     flex-direction: column;
-    box-shadow: 0px 0px 6px 1px #e6e6e6;
+    /*box-shadow: 0px 0px 6px 1px #e6e6e6;*/
     box-sizing: border-box;
 }
 
@@ -93,6 +116,10 @@ p {
     width: 100%;
     padding: 10px 0;
     border-bottom: 3px solid black;
+}
+
+h1.form-title{
+    margin: 0;
 }
 
 
@@ -111,7 +138,7 @@ p {
 .inner {
     display: flex;
     width: 100%;
-    padding: 0 20px;
+    padding: 0;
     margin: 40px 0;
     background-color: white;
     flex-direction: column;
@@ -124,18 +151,11 @@ p {
     display: flex;
     flex-direction: row;
     width: 90%;
-    margin: 0 auto 30px;
+    margin: 0 auto;
 }
 
 
 /* form-header */
-
-h2.form-header {
-    margin: 10px 0;
-    padding-left: 5px;
-    font-size: 1.3rem;
-}
-
 
 /* tableの設定 */
 
@@ -168,68 +188,37 @@ h2.form-header {
     margin-right: 20px;
 }
 
+.row{
+    display: flex;
+    flex-direction:row;
+    }
 
-/* 768px以下 */
-
-@media screen and (max-width: 768px) {
-    .wrapper {
-        max-width: 768px;
-    }
-    .field {
-        width: calc(25vmin - 60px);
-        height: calc(18vmin - 60px);
-    }
-    .table {
-        width: 100%;
-    }
-    .table_title {
-        width: 20%;
-    }
+.col{
+    display: flex;
+    flex-direction:column;
+    margin-top: 20px;
 }
 
-
-/* 568px以下 */
-
-@media screen and (max-width: 568px) {
-    .wrapper {
-        max-width: 568px;
-        padding: 0 10px;
-    }
-    .primary {
-        width: 100%;
-        margin: 0;
-    }
-    .secondary {
-        width: 100%;
-        flex-direction: column;
-    }
-    .table {
-        border-top: 1px solid #999;
-    }
-    .table_title {
-        display: block;
-        width: 100%;
-        padding: 0 10px;
-    }
-    .table_title p {
-        font-weight: 500;
-    }
-    .table_summary {
-        display: block;
-        border-top: none;
-        border-bottom: none;
-        width: 100%;
-    }
+.button {
+    border:solid 1px #aab2bd;
+    border-radius: 4px;
+    color: #ffffff;
 }
 
-@media screen and(max-width:375) {
-    .wrapper {
-        max-width: 375px;
-    }
+.info button, .button{
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  color: #FFF;
+  padding: 6px;
+  box-shadow: 2px 1px #0075A9;
+  letter-spacing: 5px;
+  Word-break:break-all;
+  font-size: 1rem;
+  text-align: center;
 }
 
-@media screen and(max-width:320px) {
-    .wrapper {
-        max-width: 320px;
-    }
+.cancell {
+    width: 150px;
+    background: #bbb;
 }
+

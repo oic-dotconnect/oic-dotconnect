@@ -12,16 +12,7 @@ use Illuminate\Http\Request;
 */
 Route::group(['middleware' => 'dev'], function () {
 // ランディングページ
-Route::get('/',['as' => 'landing', function () {
-	$data = [];
-	$data["new_events"] = \App\Models\Event::orderby('open_date','desc')->take(5)->with('Tags')->get()->each(function($event){
-			$event["entry_num"] = $event->entry_num();
-	});
-	$data["hold_events"] = \App\Models\Event::Beforehold()->take(5)->with('Tags')->orderby('openig_date')->get()->each(function($event){
-			$event["entry_num"] = $event->entry_num();
-	});
-    return view('landing',$data);
-}]);
+Route::get('/',['as' => 'landing', 'uses' => 'LandingController@index']);
 
 Route::get('/view/{name}', function ($name) {
     return view($name);
@@ -44,7 +35,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);
 
     // イベント編集ページ
-    Route::get('/event/{code}/edit',['as' =>'event-edit','uses' => 'EventController@edit']);
+    Route::get('/event/{event_code}/edit',['as' =>'event-edit','uses' => 'EventController@edit']);
 
     // イベント管理ページ
     Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
@@ -80,7 +71,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 }]);
 
 // イベント詳細ページ
-Route::get('/event/detail',['as' =>'event-detail','uses' => 'EventController@detail']);
+Route::get('/event/{event_code}',['as' =>'event-detail','uses' => 'EventController@detail']);
 
 // プロフィール登録ページ
 Route::get('/user/entry/profile',['as' =>'user-entry-profile',function(){
@@ -127,8 +118,16 @@ Route::post('/user/entry/tag',['as' =>'post-user-entry-tag','uses' =>'UserEntryC
 //ユーザー登録コントローラーへ
 Route::post('/user/create',['as' =>'post-user-create','uses' =>'UserEntryController@Create']);
 
+//ユーザー登録キャンセル
+Route::get('user/entry/cancel',['as' => 'user-entry-cancel','uses' => 'UserEntryController@Cancel']);
+
 //-------------------------イベント状態変更--------------------------------
 Route::post('/event/{event_code}/status',['as' => 'post-event-status','uses' => 'EventController@status']);
+
+//-------------------------イベント参加・参加キャンセル------------------------
+Route::post('event/{event_code}/join',['as' => 'post-event-join','uses' => 'EventController@join']);
+
+Route::post('event/{event_code}/cancel',['as' => 'post-event-cancel','uses' => 'EventController@cancel']);
 
 //-------------------------ユーザー情報変更--------------------------------
 Route::post('/user/setting/profile',['as' => 'post-user-setting-profile','uses' => 'UserController@saveProfile']);
