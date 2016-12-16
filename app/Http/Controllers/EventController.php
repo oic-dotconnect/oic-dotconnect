@@ -21,7 +21,7 @@ class EventController extends Controller
 
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
 
-		$data['tags'] = Event::FindCode($event_code)->tags;
+		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
 		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
 
