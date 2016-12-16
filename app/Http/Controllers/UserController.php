@@ -128,14 +128,13 @@ class UserController extends Controller
 		$favoriteTagNoticed = isset($notices['favoritetagnotice']);
 		$user->update(['favorite_tag_notice' => $favoriteTagNoticed]);
 
-		dd($notices,$eventJoinNoticed);
+		$requestTags = $request->get('tags');
 
-		/*foreach($notices['tags'] as $value)
-		{
-			$user->tags()->update(['favorite_tag_notice' => $favoriteTagNoticed]);			
-		}*/
-		
+		$user->getPivotTags($user->id)->update(['noticed' => false]);
 
+		$user->getPivotTags($user->id)->whereIn('tag_id',$requestTags)->update(['noticed' => true]);
+
+		return redirect()->route('user-mypage-recommend');
 
 	}
 
