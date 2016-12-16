@@ -6,6 +6,7 @@
     </div>
     <!-- div.top -->
     <div class="primary">
+      @yield('hold')
         <div class="inner">
             <div class="heading">
                 <div class="field">
@@ -117,7 +118,7 @@
             </table>
             <!-- table.recruitment-table -->
             <div class="subscription">
-                <button type="button">申し込み</button>
+              @yield('subscription')
             </div>
             <!-- div.subscription -->
         </div>
