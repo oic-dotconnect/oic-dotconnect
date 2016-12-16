@@ -6,8 +6,8 @@
     </div>
     <!-- div.top -->
     <div class="primary">
-      @yield('hold')
         <div class="inner">
+          <div>@yield('hold')</div>
             <div class="heading">
                 <div class="field">
                     <p>{{$event[0]->field}}</p>
