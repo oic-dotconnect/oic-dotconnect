@@ -33,23 +33,23 @@ class EventController extends Controller
 		if(Event::FindCode($event_code)->first()->organizer_id == $user->id)
 		{
 			//このイベントの主催者がログインユーザーならここ
-			echo('a');
+			return view('event/event-detail-hold', $data);
 		}
 		else 
 		{
 			$userIds = Event::FindCode($event_code)->first()->users->map(function($user){return $user->id;})->toArray();
 			if(in_array($user->id,$userIds)){
 				//このイベントにログインユーザーが参加しているならここ
-				echo('b');
+				return view('event/event-detail-join',$data);
 			} else {
 				//このイベントにログインユーザーが参加していないならここ
-				echo('c');
+				return view('event/event-detail-viewer',$data);
 			}
 			
 		}
 		
 
-		return view('event/event-detail', $data);
+		return view('event/event-detail-guest', $data);
 	}
 
 	public function edit(Request $request,$event_code)
