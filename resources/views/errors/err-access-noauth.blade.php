@@ -1,6 +1,18 @@
-@extends('layout.app')
+@extends('errors.err-layout')
 
-@section('content')
+@section('err-title')
+アクセスエラー
+@endsection
 
-<h2>アクセスエラーページ　ログインしてアクセスしてね</h2>
+@section('err-wording')
+<p>
+  このページはログインしないと見ることができません。 Googleアカウントでログインしてください。
+</p>
+@endsection
+
+@section("err-btn")
+<a href="#">ログイン</a>
+<div class="paging">
+    <a href="#">トップへ戻る</a>
+</div>
 @endsection
