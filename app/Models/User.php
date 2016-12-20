@@ -47,6 +47,8 @@ class User extends Authenticatable
         return $query->where('google_id', $google_id);
     }
 
+
+
     public static function create(array $data = Array()){
       $array  = ['code' => substr(bcrypt($data['google_id']),-7),
                 'student_number' => substr($data['email'],0,5)];
@@ -98,6 +100,11 @@ class User extends Authenticatable
 	    return $this->events()->Role('admin');
     }
 
+    public function getPivotTags($user_id)
+    {
+        return $this->tags()->newPivotStatement()->where('user_id', $user_id);
+    }
+
     public function iconUp($file_path){
         $image = Image::make($file_path);
         $width = $image->width();
@@ -135,4 +142,5 @@ class User extends Authenticatable
     public function iconMinPath(){
         return "https://s3-ap-northeast-1.amazonaws.com/linker/icons/" . $this->code . "/icon_min.png";
     } 
+
 }
