@@ -1,6 +1,18 @@
-@extends('layout.app')
+@extends('errors.err-layout')
 
-@section('content')
+@section('err-title')
+ログインエラー
+@endsection
 
-<h2>ログインエラー　OICドメインでログインしてね</h2>
+@section('err-wording')
+<p>
+  指定のGoogleアカウントではログインできません。<br> oic.jpまたはoic.ac.jpのGoogleアカウントでログインして下さい。
+</p>
+@endsection
+
+@section("err-btn")
+<a href="#">ログイン</a>
+<div class="paging">
+  <a href="#">トップへ戻る</a>
+</div>
 @endsection

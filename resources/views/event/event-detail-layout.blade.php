@@ -7,6 +7,7 @@
     <!-- div.top -->
     <div class="primary">
         <div class="inner">
+          <div>@yield('hold')</div>
             <div class="heading">
                 <div class="field">
                     <p>{{$event[0]->field}}</p>
@@ -117,7 +118,7 @@
             </table>
             <!-- table.recruitment-table -->
             <div class="subscription">
-                <button type="button">申し込み</button>
+              @yield('subscription')
             </div>
             <!-- div.subscription -->
         </div>
