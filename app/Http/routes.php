@@ -28,8 +28,9 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 // ①
 // Route::group(['middleware' => 'auth'], function () {
     // イベント登録ページ
-    Route::get('/event/entry',['as' =>'event-entry','uses' => 'EventController@entry'
-    ]);
+    Route::get('/event/entry',['as' =>'event-entry','uses' => function(){
+        return view('event/event-entry');
+    }]);
 
     // イベント登録
     Route::post('/event/entry', ['as' => 'post-event-entry', 'uses' => 'EventController@entry']);

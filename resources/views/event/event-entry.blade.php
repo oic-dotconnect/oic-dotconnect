@@ -34,6 +34,8 @@
                 <div class="entry-tag">
                     <h2 class="form-header">タグ</h2>
                     <input class="entry-input" type="text">
+                    <input type="hidden" name="tags[]" value="1">
+                    <input type="hidden" name="tags[]" value="2">
                 </div>
                 <!-- entry-tag -->
                 <div class="entry-date">
