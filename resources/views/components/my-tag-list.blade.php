@@ -3,9 +3,9 @@
 		<h2>お気に入りタグ</h2>
 	</div>
 	<div class="favorite-tag">
-		@foreach($tags as $tag)
-			{!! link_to_route('event-search', $tag->name, [ 'tags' => [ $tag->name ] ]) !!}
-		@endforeach
+	@foreach($tags as $tag)
+		@include('components.tag', [ 'tag' => $tag ])
+	@endforeach
 	</div>
 	<!-- favorite-tag -->
 	<div><a href="#">もっとみる</a></div>
