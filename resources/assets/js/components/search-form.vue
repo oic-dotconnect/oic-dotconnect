@@ -1,7 +1,7 @@
 <template>
     <div class="primary">
         <div class="inner">
-            <event-search :search-event.sync="searchEvent"></event-search>
+            <event-search :search-event.sync="searchEvent" :title.sync="title" :tag.sync="tag"></event-search>
         </div>
     </div>
     <div class="secondary">
@@ -10,7 +10,9 @@
                 <div>
                     <div class="result-list">
                         <h2>検索結果</h2>
-                        <event-item :event-list.sync="searchEvent" :refine.sync="refine" :sort.sync="sort"></event-item>
+                        <ul>
+                            <event-item v-for="event in pagingEvent" :event="event"></event-item>
+                        </ul>
                     </div>
                     <!-- result-list -->
                     <div class="result-controle">
@@ -42,6 +44,7 @@
                 </div>
             </div>
             <!-- search-result -->
+            <page-nav :page-num.sync="page" :length="changeEvent.length" :disp-item.sync="dispItem"></page-nav>
         </div>
     </div>
 </template>
@@ -49,17 +52,115 @@
 <script>
     import eventSearch from './event-search.vue'
     import eventItem from './event-item.vue'
+    import pageNav from './page-nav.vue'
     export default {
         components: {
             eventSearch,
-            eventItem
+            eventItem,
+            pageNav
+        },
+        props: {
+            title: '',
+            tag: '',
         },
         data() {
             return {
                 searchEvent: [],
                 refine: '',
-                sort: ''
+                sort: '',
+                page: '0',
+                dispItem: '3',
             }
+        },
+        computed: {
+            changeEvent() {
+                let change = [];
+                let start = [];
+                let finish = [];
+                let self = this;
+
+                if (this.refine) {
+                    change = this.searchEvent.filter(function(event) {
+                        return event.field === self.refine
+                    })
+                    console.log("1", this.searchEvent)
+                } else {
+                    change = this.searchEvent
+                    console.log("2", this.searchEvent)
+                }
+                if (this.sort) {
+                    change[0].created_at = "2016-11-03 17:19:19"
+                    if (this.sort === 'near') {
+                        let today = new Date();
+                        today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+                        change.forEach(function(val) {
+                            var date = val.opening_date
+                            if (date > today) {
+                                start.push(val)
+                            } else {
+                                finish.push(val)
+                            }
+                        })
+                        start.sort(function(val1, val2) {
+                            var val1 = val1.opening_date;
+                            var val2 = val2.opening_date;
+                            if (val1 > val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                        finish.sort(function(val1, val2) {
+                            var val1 = val1.opening_date;
+                            var val2 = val2.opening_date;
+                            if (val1 < val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                        change = start.concat(finish);
+                        console.log("3", start, finish)
+                    } else if (this.sort === 'new') {
+                        change = change.sort(function(val1, val2) {
+                            var val1 = val1.created_at;
+                            var val2 = val2.created_at;
+                            if (val1 < val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                    } else {
+                        change = change.sort(function(val1, val2) {
+                            var val1 = val1.created_at;
+                            var val2 = val2.created_at;
+                            if (val1 > val2) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        })
+                        console.log("computed", change)
+                    }
+                }
+
+                return change
+            },
+            pagingEvent() {
+                let pageEvents = []
+                let change = this.changeEvent;
+                let start = this.page * this.dispItem
+                let finish = (this.page + 1) * this.dispItem
+                    //console.log(start, finish)
+                console.log("page", change)
+                for (; start < finish; start++) {
+                    if (start >= change.length) break;
+                    pageEvents.push(change[start])
+                        //console.log(change)
+                }
+                return pageEvents
+            },
         },
     }
 </script>

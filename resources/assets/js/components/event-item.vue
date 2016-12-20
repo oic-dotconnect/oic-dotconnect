@@ -1,5 +1,4 @@
 <template>
-    <ul v-for="event in changeEvent">
         <li class="event-item">
             <div class="event-date">
                 <p>{{formatDate(event.opening_date,'Y/M')}}</p>
@@ -22,7 +21,6 @@
                 </div>
             </div>
         </li>
-    </ul>
 </template>
 
 <script>
@@ -32,9 +30,7 @@
             tag,
         },
         props: {
-            eventList: [],
-            refine: '',
-            sort: '',
+            event: [],
         },
         data() {
             return {
@@ -70,16 +66,13 @@
             },
             formatStates(date) {
                 let str
-                let dateSplit = date.split("-");
-                let opendate = new Date(dateSplit[0], dateSplit[1], dateSplit[2]);
+                let opendate = this.dateFormat(date)
+                let today = new Date();
 
                 var dateZellFill = function(number) {
                     return ("0" + number).substr(-2);
                 }
 
-                opendate = dateZellFill(opendate.getFullYear()) + '' + dateZellFill((opendate.getMonth() + 1)) + '' + dateZellFill(opendate.getDate())
-
-                let today = new Date();
                 today = dateZellFill(today.getFullYear()) + '' + dateZellFill((today.getMonth() + 1)) + '' + dateZellFill(today.getDate())
 
                 if (today < opendate) {
@@ -93,42 +86,18 @@
 
                 return str;
             },
-            filterEvent() {
-                var self = this;
-                let f = [];
-                if (this.refine) {
-                    f = this.eventList.filter(function(event) {
-                        return event.field === self.refine
-                    })
-                    return f
-                } else {
-                    return this.eventList
+            dateFormat(date) {
+                let dateSplit = date.split("-");
+                let opendate = new Date(dateSplit[0], dateSplit[1], dateSplit[2]);
+
+                var dateZellFill = function(number) {
+                    return ("0" + number).substr(-2);
                 }
-            },
-            sortEvent(filter, sort) {
-                let today = new Date();
-                let f;
-                let opendate = filter.forEach((event) => {
-                        f.push(event.opening_date);
-                    })
-                    //let dateSplit = filter.opening_date.split("-");
-                    //let opendate = new Date(dateSplit[0], dateSplit[1], dateSplit[2]);
-                console.log(f, today)
+
+                opendate = dateZellFill(opendate.getFullYear()) + '' + dateZellFill((opendate.getMonth() + 1)) + '' + dateZellFill(opendate.getDate())
+
+                return opendate
             },
         },
-        computed: {
-            changeEvent() {
-                var self = this;
-                let f = this.filterEvent()
-                    // let s;
-                    // this.sortEvent(f, this.sort);
-                return f;
-            }
-        },
-        watch: {
-            eventList() {
-                console.log(this.eventList)
-            }
-        }
     }
 </script>
