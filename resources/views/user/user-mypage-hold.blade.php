@@ -1,5 +1,5 @@
 @extends('user.user-mypage-layout')
 
-@section('mypage-name')
-マイページ　開催イベント
+@section('event-tab')
+  @include('components/my-event-tab',['current' => 'hold'])
 @endsection
