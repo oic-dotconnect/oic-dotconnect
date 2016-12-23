@@ -1,5 +1,5 @@
 @extends('user.user-userpage-layout')
 
-@section('userpage-name')
-ユーザーページ　参加イベント
+@section('event-tab')
+  @include('components/user-event-tab',['current' => 'join','user_code' => $user->code])
 @endsection
