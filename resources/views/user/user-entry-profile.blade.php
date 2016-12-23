@@ -19,16 +19,10 @@
         <div class="name-title">
           <h2>アイコン</h2>
         </div>
-        <div class="icon-display">
-          <img src="http://placeimg.com/300/300/animals" alt="">
-        </div>
-        <div class="icon-form">
-          <label for="icon-file">
-            ＋  画像を選択
-          </label>
-          {!! Form::file("icon", [ "id"  => "icon-file"]) !!}
-          <input type="hidden" name="old_icon" value={{$icon}}>          
-        </div>
+        <div>
+          <img-show old-image={{explode('public',$icon)[1]}}></img-show>
+          <input type="hidden" name="old_icon" value={{$icon}}> 
+        </div>        
       </div>
       <div class="col name-col">
         <div class="user-name">
