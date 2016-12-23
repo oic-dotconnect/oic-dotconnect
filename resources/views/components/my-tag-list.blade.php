@@ -1,13 +1,12 @@
-<div class="favorite-inner">
-	<div>
-		<h2>お気に入りタグ</h2>
-	</div>
-	<div class="favorite-tag">
-		@foreach($tags as $tag)
-			{!! link_to_route('event-search', $tag->name, [ 'tags' => [ $tag->name ] ]) !!}
-		@endforeach
-	</div>
-	<!-- favorite-tag -->
-	<div><a href="#">もっとみる</a></div>
-	<div>{!! link_to_route('user-setting-tag', 'お気に入りタグ編集ページへ') !!}</div>
+<div class="row item-box my-fav-tag">
+  <div class="tag-list">
+    <h2>お気に入りタグ一覧</h2>
+    <div class="candidate-tag-list">
+      @foreach($tags as $tag)
+        <a href="{{ route('event-search',[ 'tags' => $tag->name ]) }}" class="tag">{{ $tag->name }}</a>
+      @endforeach
+    </div>
+  </div>
+  <div><a href="#">もっとみる</a></div>
+  <div>{!! link_to_route('user-setting-tag', 'お気に入りタグ編集ページへ') !!}</div>
 </div>

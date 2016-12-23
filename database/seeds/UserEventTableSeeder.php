@@ -39,7 +39,11 @@ class UserEventTableSeeder extends Seeder
         $z++;
             }
         }
-
+        $user = App\Models\User::find(1);
+        App\Models\Event::all()->each(function( $event ) use($user){
+            $user->events()->attach($event->id, [ 'role' => 'admin' ]);
+            $user->events()->attach($event->id, [ 'role' => 'member' ]);
+        });
       /*App\Models\Event::all()->map(function($event){
         $user_count = App\Models\User::count();
         $faker = Faker\Factory::create('ja_JP');

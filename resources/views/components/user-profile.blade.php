@@ -1,15 +1,18 @@
 {{--  ユーザ-ページのプロフィール部分 --}}
-
-<div class="profile-inner">
-	<h2>プロフィール</h2>
-	<p class="profile-icon">
-		<img src={{ $user->image_pass }} alt="">
-	</p>
-	<h3>
-		<p>{{ $user->name }}</p>
-	</h3>
-	<p>
-		<h5>{{ $user->code }}</h5>
-	</p>
-	<p> {{ $user->introduction }}</p>
+<div class="col item-box my-prof">
+  <h2>プロフィール</h2>
+  <div class="icon-display">
+    <img src={{ $user->image_pass }} alt="">
+  </div>
+  <div class="user-name">
+    <div class="name">
+      <p class="input-info">{{ $user->name }}</p>
+    </div>
+    <div class="code">
+      <p class="input-info">{{ $user->code }}</p>
+    </div>
+    <div class="introduction">
+      {{ $user->introduction }}
+    </div>
+  </div>
 </div>

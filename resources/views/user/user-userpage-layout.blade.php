@@ -5,20 +5,22 @@
 @endsection
 
 @section('content')
-<div class="wrapper">
-  <div class="top">
-    <h1>@yield("userpage-name")</h1>
+<div class="row my-page">
+  <div class="col my-info">
+    @include('components/user-profile', [ 'user' => $user ])
+    @include('components/user-tag-list', [ 'tags' => $user->tags ])
   </div>
-  @include('components/user-profile', [ 'user' => $user ])
-  @include('components/user-tag-list', [ 'tags' => Auth::user()->tags ])
-
-  <div>
-    @foreach ($events as $event)
-      {{ $event->name }}
-    @endforeach
+  <div class="col my-event">
+  @yield("event-tab")
+    <div class="col event-list">
+      @foreach( $events as $event)
+        @include('components.event',['event' => $event])
+      @endforeach
+      <div class="">
+        {{$events->links()}}
+      </div>
+    </div>
   </div>
-
-  {{ $events->links() }}
 </div>
 
 @endsection

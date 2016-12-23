@@ -18,9 +18,9 @@
         <div class="event-detail-left">
             <div class="event-name"><a href="{{ route('event-detail', [ 'event_code' => $event->code ]) }}">{{ $event->name }}</a></div>
             <div class="organizer"><img class="icon" src="{{ $event->organizer->image_pass }}" alt="">{{ $event->organizer->name }}</div>                                                                                                                             
-            <div class="tag">
-                @foreach($event->tags as $tag)                
-                  <a href="{{ route('event-search',[ 'tags' => $tag->name ]) }}"><i class="fa fa-tag" aria-hidden="true"></i>{{ $tag->name }}</a>                
+            <div class="tags">
+                @foreach($event->tags as $tag)
+                  @include('components.tag', [ 'tag' => $tag ])
                 @endforeach                
             </div>
         </div>

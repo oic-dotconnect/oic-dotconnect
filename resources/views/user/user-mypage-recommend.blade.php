@@ -1,5 +1,5 @@
 @extends('user.user-mypage-layout')
 
-@section('mypage-name')
-マイページ　おすすめイベント
+@section('event-tab')
+  @include('components/my-event-tab',['current' => 'recommend'])
 @endsection
