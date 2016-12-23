@@ -5,6 +5,7 @@ import tagSelect from './components/tag-select.vue'
 import searchForm from './components/search-form.vue'
 import tagChoice from './components/event-entry-tag.vue'
 import imgShow from './components/img-show.vue'
+import texteditor from './components/ckeditor.vue'
 
 const app = new Vue({
     el: 'body',
@@ -16,6 +17,7 @@ const app = new Vue({
         tagSelect,
         searchForm,
         tagChoice,
-        imgShow
+        imgShow,
+        texteditor
     }
 })

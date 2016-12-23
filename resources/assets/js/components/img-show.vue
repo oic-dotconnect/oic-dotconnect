@@ -63,7 +63,6 @@
         height: 200px;
         border-radius: 50%;
         overflow: hidden;
-        border: solid 5px #d3d3d3;
     }
     
     .icon-back {
