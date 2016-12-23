@@ -14,13 +14,42 @@ use App\Models\Tag;
 use Auth;
 use Image;
 use Crypt;
+use File;
+
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserEntryController extends Controller
 { 
     public function InputProfile(Request $request)
     {
+        if($request->hasFile('icon'))
+        {
+            if($request->has('old_icon')) File::delete($request->get('old_icon'));
+
+            $icon = $request->file('icon')->move("cacheimg");   
+        }
+        else if($request->has('old_icon'))
+        {
+            $path = $request->get('old_icon');
+
+            $imageName = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,5);
+
+            $icon = new UploadedFile($path,$imageName,null,null,null,true);
+            $icon = $icon->move("cacheimg");
+        }
+        else
+        {  
+            $path = base_path('public/assets/img/default_icon.png');
+            $copyPath = base_path('public/assets/img/default_icon_copy.png');
+            $imageName = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,5);
+            File::copy($path,$copyPath);
+            $icon = new UploadedFile($copyPath,$imageName,null,null,null,true);
+            $icon = $icon->move("cacheimg");   
+        }
+
+
 		
-		$icon = $request->file('icon')->move("cacheimg");		
+			
 		Session::put('icon', $icon->getRealPath());
     	Session::put('profile',$request->except("icon","submit"));		
 		
@@ -79,4 +108,33 @@ class UserEntryController extends Controller
 
         return redirect()->route('landing');
     } 
+
+    public function ShowEditProfile(Request $request)
+    {
+        $data['name'] = $request->session()->get('profile.name');
+        $data['code'] = $request->session()->get('profile.code');
+        $data['introduction'] = $request->session()->get('profile.introduction');
+        $data['icon'] = $request->session()->get('icon');
+
+        if(isset($data['name']) == false)
+        {
+            $data['name'] = "";
+        }
+        if(isset($data['code']) == false)
+        {
+            $data['code'] = "";
+        }
+        if(isset($data['introduction']) == false)
+        {
+            $data['introduction'] = "";
+        }
+        if(isset($data['icon']) == false)
+        {
+            $data['icon'] = "";
+        }
+
+        //dd($request->session()->all());
+
+        return view('user/user-entry-profile',$data);
+    }
 }

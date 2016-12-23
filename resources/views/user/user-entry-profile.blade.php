@@ -26,7 +26,8 @@
           <label for="icon-file">
             ＋  画像を選択
           </label>
-          {!! Form::file("icon", [ "id"  => "icon-file"]) !!}          
+          {!! Form::file("icon", [ "id"  => "icon-file"]) !!}
+          <input type="hidden" name="old_icon" value={{$icon}}>          
         </div>
       </div>
       <div class="col name-col">
@@ -35,7 +36,7 @@
             <h2>ニックネーム</h2><p>必須</p>
           </div>
           <div class="name-input">
-            <input type="text" class="border form-input" name="name">
+            <input type="text" class="border form-input" name="name" value={{$name}}>
           </div>
         </div>
         <div class="col user-code">
@@ -43,7 +44,7 @@
             <h2>ユーザコード</h2><p>必須</p>
         </div>
         <div class="code-input">
-          <input type="text" class="border form-input " name="code">
+          <input type="text" class="border form-input " name="code" value={{$code}}>
           <div class="caution">
               <p class="caution-mark">※文言</p>
               <p class="caution-mark">※文言</p>
@@ -58,7 +59,9 @@
       <h2>紹介文</h2>
     </div>
     <div class="introduction-input">
-      <textarea class="border" rows="10" cols="60" name="introduction"></textarea>
+      <textarea class="border" rows="10" cols="60" name="introduction">
+        {{$introduction}}
+      </textarea>
     </div>
   </div>
   <div class="col info">
