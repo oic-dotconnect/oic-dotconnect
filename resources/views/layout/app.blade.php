@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{{asset('/css/header.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/css/event.css')}}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{{asset('/assets/css/footer.css')}}}" media="screen" title="no title" charset="utf-8">
+    <script src="http://cdn.ckeditor.com/4.5.6/full-all/ckeditor.js"></script>
     @yield('head')
   </head>
   <body>
