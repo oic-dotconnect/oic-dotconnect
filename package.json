@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.2",
-    "superagent": "^3.1.0"
+    "superagent": "^3.1.0",
+    "vue-strap": "^1.1.34"
   }
 }
