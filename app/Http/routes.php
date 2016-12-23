@@ -75,9 +75,7 @@ Route::get('/event/search',['as' =>'event-search',function(){
 Route::get('/event/{event_code}',['as' =>'event-detail','uses' => 'EventController@detail']);
 
 // プロフィール登録ページ
-Route::get('/user/entry/profile',['as' =>'user-entry-profile',function(){
-    return view('user/user-entry-profile');
-}]);
+Route::get('/user/entry/profile',['as' =>'user-entry-profile','uses' => 'UserEntryController@ShowEditProfile']);
 
 // お気に入りタグ登録ページ
 Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
