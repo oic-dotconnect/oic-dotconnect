@@ -3,7 +3,8 @@ import Vue from 'vue'
 import roomChoice from './components/room-choice.vue'
 import tagSelect from './components/tag-select.vue'
 import searchForm from './components/search-form.vue'
-import eventEntryTag from './components/event-entry-tag.vue'
+import tagChoice from './components/event-entry-tag.vue'
+import imgShow from './components/img-show.vue'
 
 const app = new Vue({
     el: 'body',
@@ -14,6 +15,7 @@ const app = new Vue({
         roomChoice,
         tagSelect,
         searchForm,
-        eventEntryTag
+        tagChoice,
+        imgShow
     }
 })
