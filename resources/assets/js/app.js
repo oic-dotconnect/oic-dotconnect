@@ -3,6 +3,7 @@ import Vue from 'vue'
 import roomChoice from './components/room-choice.vue'
 import tagSelect from './components/tag-select.vue'
 import searchForm from './components/search-form.vue'
+import eventEntryTag from './components/event-entry-tag.vue'
 
 const app = new Vue({
     el: 'body',
@@ -12,6 +13,7 @@ const app = new Vue({
     components: {
         roomChoice,
         tagSelect,
-        searchForm
+        searchForm,
+        eventEntryTag
     }
 })
