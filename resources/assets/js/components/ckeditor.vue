@@ -1,6 +1,6 @@
 <template>
 	<div class="ckeditor">
-			<textarea class="ckeditor__textarea" name="ckeditor" id="ckeditor" v-ckeditor="editorcontent" :editorcontent="editorcontent" debounce="100"></textarea>
+			<textarea class="ckeditor__textarea" name="description" id="ckeditor" v-ckeditor="editorcontent" :editorcontent="editorcontent" debounce="100"></textarea>
 	</div>
 </template>
 
