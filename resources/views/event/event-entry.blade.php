@@ -105,21 +105,19 @@
                 <div class="entry-description">
                     <h2 class="form-header">説明</h2>
                     <div class="entry-description-group">
-                        <div class="entry-description-radio">
+                        <!--<div class="entry-description-radio">
                             <input type="radio" name="editer" value="">
                             <p>リッチテキストエディタ</p>
-                        </div>
+                        </div>-->
                         <!-- entry-description-radio -->
-                        <div class="entry-description-radio">
+                        <!--<div class="entry-description-radio">
                             <input type="radio" name="editer" value="">
                             <p>Markdown</p>
-                        </div>
+                        </div>-->
                         <!-- entry-description-radio -->
                     </div>
                     <!-- entry-description-group -->
-                    <div class="entry-description-aria">
-                        <input type="textaria" name="description">
-                    </div>
+                    <texteditor></texteditor>
                 </div>
                 <!-- entry-description -->
             <button type="submit" name="status" value="close">下書きを保存する</button>
