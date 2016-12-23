@@ -2,7 +2,7 @@
 
 @section('content')
 	{!! Form::open(['route' => 'posttest']) !!}
-		<search-form></search-from>
+		<event-entry-tag></event-entry-tag>
 		{!! Form::submit('Submit') !!}
 	{!! Form::close() !!}
 @endsection
