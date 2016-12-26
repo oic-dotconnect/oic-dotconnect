@@ -66,7 +66,6 @@
     }
     
     .icon-back {
-        position: absolute;
         width: 100%;
         height: 100%;
         border-radius: 50%;
@@ -74,6 +73,17 @@
     
     .icon-form {
         margin-top: 20px;
+        display: inline-block;
+        width: 100%;
         text-align: center;
+    }
+
+    .icon-form label {
+        color: white;
+        background-color: #A40035;
+        padding: 6px;
+        border-radius: 5px;
+        font-size: 1rem;
+        display: inline-block;    
     }
 </style>
