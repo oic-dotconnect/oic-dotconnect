@@ -3,47 +3,53 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Socialite;
 use Validator;
+use Session;
 
 class SocialController extends Controller
 {
 
-  public function getGoogleAuth(){
+  public function getGoogleAuth(Request $request){
+    Session::put('redirect_route',$request->input('redirect_route'));
     return Socialite::driver('google')->redirect();
   }
 
   public function getGoogleAuthCallback(){
     try {
-      $guser = Socialite::driver('google')->user();
+      $guest = Socialite::driver('google')->user();
     } catch (Exception $e) {
       return $e;
     }
 
-    if(!$guser){
+    if(!$guest){
       return 'hoge';
     }
 
     $data = [
-      'email'     => $guser->email,
-      'name'      => $guser->name,
-      'google_id' => $guser->id,
+      'email'     => $guest->email,
+      'student_name' => $guest->name,
+      'google_id' => $guest->id,
     ];
 
     $oicValidator = Validator::make($data, ['email' => 'oic']);
-    $uniqueValdator = Validator::make($data, ['email' => 'unique:users,email']);
+    $uniqueValdator = Validator::make($data, ['email' => 'unique:USER,email']);
 
     if( !$oicValidator->fails() ){
       if( $uniqueValdator->fails() ){
         /*既にユーザー登録されている場合*/
         $user = User::Google($data['google_id'])->first();
-        Auth::login($user);
+        Auth::login($user);        
+        if (Session::has('redirect_route')) return redirect()->route(Session::pull('redirext_route'));
+        return redirect()->route('user-mypage-recommend');
+
       } else {
         /*ユーザー登録されていない場合*/
-        $user = User::create($data);
-        Auth::login($user);
+        Session::put('google', $data);
+        return redirect()->route('user-entry-profile');
       }
     } else {
       /*oicドメインでなかった場合*/
