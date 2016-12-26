@@ -11,11 +11,15 @@
     'route' => 'post-user-entry-tag',
     'class' => 'register-form'
   ])}}
+  <h1 class="user-entry-title">お気に入りタグ登録</h1>
 	<tag-select></tag-select>
-	<div class="info">
-		{{--<a href="{{ route('user-entry-cancel') }}" class="button">キャンセル</a></a>--}}
-		<a href="#" class="button cancell">キャンセル</a></a>
-		<button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>
+	<div class="row info">	
+		<div class="info-left">
+			<a href="#" class="button cancell left">キャンセル</a>
+		</div>
+		<div class="info-right">
+			<button type="submit" name="submit" value="toConfirm" class="conf button right">入力確認へ</button>
+		</div>			
 	</div>
 {{ Form::close() }}
 @endsection
