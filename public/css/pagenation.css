@@ -1,0 +1,20 @@
+.pagination {
+	text-align: center
+}
+
+.page-item {
+	display: inline-block;
+	border: solid 1px lightgray;
+	border-radius: 5px;
+	width: 32px;
+	height: 32px;
+}
+
+.page-item a {
+	line-height: 32px;
+}
+
+.page-item.active {
+	background-color: #187FC4;
+	color: #ffffff;
+}
