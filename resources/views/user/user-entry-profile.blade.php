@@ -7,7 +7,7 @@
 
 @section('content')
   @include('components.user-entry-step', [ 'current' => 'profile' ])
-  <h1 class="form-title">プロフィール登録</h1>
+  <h1 class="user-entry-title">プロフィール登録</h1>
   {{ Form::open([
     'route' => 'post-user-entry-profile',
     'class' => 'row register-form',
@@ -63,7 +63,7 @@
             <button type="submit" name="submit" value="toTag" class="fav-register button">お気に入りタグ登録へ</button>
             <p class="caution-mark">※文言</p>
           </div>
-          <div class="row info">
+          <div class="row">
             <div class="info-left">
               <a href="#" class="button cancell left">キャンセル</a>
             </div>
