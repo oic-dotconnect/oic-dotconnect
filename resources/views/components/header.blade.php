@@ -17,7 +17,7 @@
             <a href="" class="button light-gray">イベント作成</a>
           </div>
           <div class="icon">
-            <img src="http://placekitten.com/640/340">
+            <img src="{{ Auth::user()->iconMinPath() }}">
           </div>        
         @else 
           <a href="{{ route('sociallogin') }}" class="login-btn">
