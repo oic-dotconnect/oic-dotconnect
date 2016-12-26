@@ -7,21 +7,6 @@
   display: none;
 }
 
-.icon-col .name-title{
-  border-color: #A40000;
-}
-
-.user-name .name-title{
-  border-color: #B7AA00;
-}
-
-.user-code .name-title{
-  border-color: #007130;
-}
-.introduction .name-title{
-  border-color: #004986;
-}
-
 .name-col{       
   flex: 3;
   margin-left: 20px;
@@ -49,10 +34,6 @@
 
 .fav{
   text-align: center;
-}
-
-.caution{
-  
 }
 
 .caution-mark {
