@@ -94,8 +94,7 @@ p {
 
 .wrapper {
     display: flex;
-    max-width: 1060px;
-    width: 100%;
+    width: 1060px;
     padding: 0 50px;
     margin: 20px auto;
     background: white;
