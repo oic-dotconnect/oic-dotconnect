@@ -192,27 +192,19 @@ h1.form-title{
     }
 
 .col{
+    flex: 1;
     display: flex;
     flex-direction:column;
-    margin-top: 20px;
 }
 
 .button {
     border:solid 1px #aab2bd;
-    border-radius: 4px;
+    border-radius: 5px;
     color: #ffffff;
-}
-
-.info button, .button{
-  border: 1px solid #DDD;
-  border-radius: 5px;
-  color: #FFF;
-  padding: 6px;
-  box-shadow: 2px 1px #0075A9;
-  letter-spacing: 5px;
-  Word-break:break-all;
-  font-size: 1rem;
-  text-align: center;
+    display: inline-block;
+    text-align: center;
+    padding: 6px;
+    font-size: 1rem;
 }
 
 .cancell {
@@ -231,15 +223,56 @@ h1.form-title{
     cursor: pointer;
 }
 
+
+.icon > img {
+    border: solid 3px #d3d3d3;
+    border-radius: 50%;
+}
+
+.input-form.required h2::after {
+    content: "必須";
+    display: inline-block;
+    font-size: small;
+    color: red;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+/*-----------------box-------------------*/
 .box{  
   border: solid 1px lightgray;
   background-color: #ffffff;
   box-shadow: 0px 0px 6px 1px #e6e6e6;
   border-radius: 5px;
   width: 100%;
+  padding: 20px;
 }
 
-.icon > img {
-    border: solid 3px #d3d3d3;
-    border-radius: 50%;
+.box-title {
+    margin: -20px -20px 0 -20px;
+    padding: 10px 10px;
+}
+
+.box-title.red {
+    background-color: #F9F2F2;
+    border-bottom:solid 2px #750303;
+}
+
+.box-title.blue {
+    background-color: #F2F3F7;
+    border-bottom:solid 2px #030377;
+}
+
+.box-title.green {
+    background-color: #EDF2ED;
+    border-bottom:solid 2px #037A03;
+}
+
+.box-title.yellow {
+    background-color: #F7F7F2;
+    border-bottom:solid 2px #627703;
+}
+
+.box-content {
+    
 }
