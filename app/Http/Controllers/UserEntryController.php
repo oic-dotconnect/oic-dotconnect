@@ -52,13 +52,6 @@ class UserEntryController extends Controller
 
     public function Create(Request $request)
     {
-    	//開発時のダミーデータ
-    	$dummygoogle = ['email'=>'b9999@oic.jp',
-    					'student_name'=> 'gsgjbjhgg',
-    					'google_id'=>'dajkj1890ufdaj3eqjkfda'];
-    	Session::put('google',$dummygoogle);
-    	//ここまで
-
     	$Sessiondata = $request->session()->all();
 
     	$UserProfire = array_merge($Sessiondata['google'],$Sessiondata['profile']);
@@ -70,6 +63,8 @@ class UserEntryController extends Controller
     	$user->tags()->attach($TagIds);
 		$icon = Session::get("icon");		
 		$user->iconUp($icon);
+		Auth::login($user);
+		if (Session::has('redirect_route')) return redirect()->route(Session::pull('redirext_route'));		
         return redirect()->route('user-mypage-recommend');
     }
 
