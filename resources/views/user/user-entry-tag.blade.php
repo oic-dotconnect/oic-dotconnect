@@ -6,20 +6,22 @@
 @endsection
 
 @section('content')
-@include('components.user-entry-step', [ 'current' => 'favtag' ])
-{{ Form::open([ 
-    'route' => 'post-user-entry-tag',
-    'class' => 'register-form'
-  ])}}
-  <h1 class="user-entry-title">お気に入りタグ登録</h1>
-	<tag-select></tag-select>
-	<div class="row info">	
-		<div class="info-left">
-			<a href="#" class="button cancell left">キャンセル</a>
-		</div>
-		<div class="info-right">
-			<button type="submit" name="submit" value="toConfirm" class="conf button right">入力確認へ</button>
-		</div>			
+	<div class="wrapper">
+		@include('components.user-entry-step', [ 'current' => 'favtag' ])
+		{{ Form::open([ 
+			'route' => 'post-user-entry-tag',
+			'class' => 'register-form'
+		])}}
+		<h1 class="user-entry-title">お気に入りタグ登録</h1>
+			<tag-select></tag-select>
+			<div class="row info">	
+				<div class="info-left">
+					<a href="#" class="button cancell left">キャンセル</a>
+				</div>
+				<div class="info-right">
+					<button type="submit" name="submit" value="toConfirm" class="conf button right">入力確認へ</button>
+				</div>			
+			</div>
+		{{ Form::close() }}
 	</div>
-{{ Form::close() }}
 @endsection
