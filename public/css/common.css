@@ -222,8 +222,9 @@ h1.form-title{
     cursor: pointer;
 }
 
-
 .icon > img {
+    width: 100%;
+    height: 100%;
     border: solid 3px #d3d3d3;
     border-radius: 50%;
 }
@@ -270,6 +271,11 @@ h1.form-title{
 .box-title.yellow {
     background-color: #F7F7F2;
     border-bottom:solid 2px #627703;
+}
+
+.box-title.purple {
+    background-color: #F2EFF4;
+    border-bottom:solid 2px #63427C;
 }
 
 .box-content {
