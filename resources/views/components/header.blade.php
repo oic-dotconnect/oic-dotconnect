@@ -17,10 +17,10 @@
             <a href="" class="button light-gray">イベント作成</a>
           </div>
           <div class="icon">
-            <img src="http://placekitten.com/640/340">
+            <img src="{{ Auth::user()->iconMinPath() }}">
           </div>        
         @else 
-          <a href="{{ route('user-entry-profile') }}" class="login-btn">
+          <a href="{{ route('sociallogin') }}" class="login-btn">
             <i class="fa fa-google" aria-hidden="true"></i>
             <span>ログイン / 新規登録</span>
           </a>
