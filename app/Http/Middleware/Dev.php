@@ -17,10 +17,12 @@ class Dev
      */
     public function handle($request, Closure $next, $guard = null)
     {   
-        if(env('AUTH')) {
-			if(!Auth::check()) Auth::loginUsingId(1);
-		} else {
-            Auth::logout();
+        if(env('DEV')){
+            if(env('AUTH')) {
+                if(!Auth::check()) Auth::loginUsingId(1);
+            } else {
+                Auth::logout();
+            }
         }
 
         return $next($request);

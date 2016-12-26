@@ -20,7 +20,11 @@
           <h2>アイコン</h2>
         </div>
         <div>
-          <img-show old-image={{explode('public',$icon)[1]}}></img-show>
+          @if($icon === "")
+            <img-show old-image=""></img-show>  
+          @else
+            <img-show old-image={{explode('public',$icon)[1]}}></img-show>
+          @endif
           <input type="hidden" name="old_icon" value={{$icon}}> 
         </div>        
       </div>

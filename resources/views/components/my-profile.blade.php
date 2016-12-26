@@ -2,7 +2,7 @@
 <div class="col item-box my-prof">
   <h2>プロフィール</h2>
   <div class="icon-display">
-    <img src={{ Auth::user()->image_pass }} alt="">
+    <img src={{ Auth::user()->iconPath() }} alt="">
   </div>
   <div class="user-name">
     <div class="name">
