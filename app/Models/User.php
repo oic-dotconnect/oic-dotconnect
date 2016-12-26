@@ -121,15 +121,17 @@ class User extends Authenticatable
             $crop_img = $image->crop($small_len, $small_len, 0, floor($diff_len/2));
         }
 
-        $icon_min = $crop_img->resize(64,64);
         $icon = $crop_img->resize(200, 200);
-        
-        $icon_min->save(public_path('icon_min.png'),90);
         $icon->save(public_path('icon.png'),90);
+
+        $icon_min = $crop_img->resize(64,64);
+        $icon_min->save(public_path('icon_min.png'),90);
 
         $result['icon_min'] = AwsUploader::up("icons/" . $this->code . "/icon_min.png", public_path('icon_min.png'));
         $result['icon'] = AwsUploader::up("icons/" . $this->code . "/icon.png", public_path('icon.png'));
         if(File::exists($file_path)) File::delete($file_path);
+        if(File::exists(public_path('icon.png'))) File::delete(public_path('icon.png'));
+        if(File::exists(public_path('icon_min.png'))) File::delete(public_path('icon_min.png'));
 
         return $result;
         return null;        
