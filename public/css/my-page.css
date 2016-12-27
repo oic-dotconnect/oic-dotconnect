@@ -9,15 +9,13 @@
   margin:20px 0;   
 }
 
-.my-info h2 {
-  margin-top: 0px;
-  padding: 10px 10px;
-  background-color: #FCF7F4;
-  width: 100%;
+.my-prof {
+  display: inline-block;
 }
 
 .my-fav-tag-content, .my-prof-content {
-  padding: 20px 10px;
+  margin: 0 auto;
+  margin-top: 20px; 
 }
 /**/
 .my-info{
@@ -35,9 +33,8 @@
 }
 
 .account-move{
-  margin-top: 10px;
-  text-align: center;
-  padding: 10px 20px;
+  margin-top: 20px;
+  text-align: center;  
 }
 .account-move-button{
     border: 1px solid #DDD;

@@ -13,7 +13,7 @@
       </div>
       <div class="col my-event">
       @yield("event-tab")
-        <div class="col event-list">
+        <div class="col event-list box">
           @foreach( $events as $event)
             @include('components.event',['event' => $event])
           @endforeach

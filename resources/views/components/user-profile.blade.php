@@ -1,6 +1,6 @@
 {{--  ユーザ-ページのプロフィール部分 --}}
 <div class="col box my-prof">
-  <h2>プロフィール</h2>
+  <h2 class="box-title red">プロフィール</h2>
   <div class="my-prof-content">
     <div class="icon-display">
       <div class="icon">
