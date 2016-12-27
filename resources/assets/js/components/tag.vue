@@ -1,5 +1,5 @@
 <template>
-    <a href=""><i class="fa fa-tag" aria-hidden="true"></i>{{tag.name}}</a><wbr>
+    <a class="tag" href="">{{tag.name}}</a><wbr>
 </template>
 
 <script>
