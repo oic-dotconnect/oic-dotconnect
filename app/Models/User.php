@@ -5,6 +5,7 @@ namespace App\Models;
 use Hash;
 use Image; 
 use File;
+use DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\AwsUploader;
 
@@ -47,14 +48,22 @@ class User extends Authenticatable
         return $query->where('google_id', $google_id);
     }
 
-
-
     public static function create(array $data = Array()){
       $array  = ['code' => substr(bcrypt($data['google_id']),-7),
                 'student_number' => substr($data['email'],0,5)];
       $merged_array = array_merge($array,$data); 
       return parent::create($merged_array);
     }
+
+    protected $appends = ['icon_url', 'icon_min_url']; 
+
+    public function getIconUrlAttribute(){
+        return "https://s3-ap-northeast-1.amazonaws.com/linker/icons/" . $this->code . "/icon.png";
+    }
+
+    public function getIconMinUrlAttribute(){
+        return "https://s3-ap-northeast-1.amazonaws.com/linker/icons/" . $this->code . "/icon_min.png";
+    } 
 
     public function tags()
     {

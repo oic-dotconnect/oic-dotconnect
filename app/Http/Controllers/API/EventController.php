@@ -14,7 +14,7 @@ class EventController extends Controller
     {
     	$requests = $request -> all();
 
-    	$query = Event::Status('open')->with('tags');
+    	$query = Event::Status('open')->with('tags', 'organizer');
     	
     	if( isset($requests['q']) )
     	{
