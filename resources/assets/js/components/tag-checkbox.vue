@@ -34,32 +34,36 @@
     }
 
     .checkbox {
-        margin: 10px 10px 0 0;
+        /*margin: 10px 10px 0 0;*/
+        padding-left: 24px;
         display: none;
         box-sizing: border-box;
         -webkit-transition: background-color 0.2s linear;
         transition: background-color 0.2s linear;
         position: relative;
         display: inline-block;
-        padding: 12px 12px 12px 42px;
         border-radius: 8px;
         background-color: #f6f7f8;
         vertical-align: middle;
         cursor: pointer;
     }
 
+    .tag input[type="checkbox"]:checked + .checkbox:before{
+        opacity: 1;
+    }
+
     .checkbox:before {
         -webkit-transition: opacity 0.2s linear;
         transition: opacity 0.2s linear;
         position: absolute;
-        top: 50%;
-        left: 21px;
+        top: 9px;
+        left: 10px;
         display: block;
         margin-top: -7px;
         width: 5px;
         height: 9px;
-        border-right: 3px solid #53b300;
-        border-bottom: 3px solid #53b300;
+        border-right: 1px solid #53b300;
+        border-bottom: 1px solid #53b300;
         content: '';
         opacity: 0;
         -webkit-transform: rotate(45deg);

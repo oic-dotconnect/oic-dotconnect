@@ -1,21 +1,7 @@
 
 /**/
-.col.my-info{
+.col.my-info, .col.my-event, .col.my-prof{
   margin-top: 0; 
-}
-.col.my-event{
-  margin-top: 0; 
-}
-.col.my-prof{
-  margin-top: 0; 
-}
-
-/**/
-.item-box{
-  box-shadow: 0px 0px 6px 1px #e6e6e6;
-  border-radius: 5px;
-  width: 100%;
-  padding: 20px 10px;
 }
 
 /**/
@@ -23,13 +9,21 @@
   margin:20px 0;   
 }
 
+.my-prof {
+  display: inline-block;
+}
+
+.my-fav-tag-content, .my-prof-content {
+  margin: 0 auto;
+  margin-top: 20px; 
+}
 /**/
 .my-info{
     margin-right: 20px;
     flex: 2;
 }
 .icon-display{
-  margin-top: 10px;
+  margin-top: 10px;  
 }
 .introduction{
     border: solid 1px;
@@ -39,36 +33,20 @@
 }
 
 .account-move{
-  margin-top: 10px;
-  text-align: center;
+  margin-top: 20px;
+  text-align: center;  
 }
-input.account-move-button{
+.account-move-button{
     border: 1px solid #DDD;
     border-radius: 5px;
     color: #FFF;
-    padding: 6px;
-    letter-spacing: 5px;
-    Word-break: break-all;
     font-size: 1rem;
     background-color: #A40035;
+    padding: 10px 20px;
 }
 
 .my-fav-tag{
     margin-top: 20px;
-}
-.tag {
-    margin: 10px 10px 0 0;
-    display: none;
-    box-sizing: border-box;
-    -webkit-transition: background-color 0.2s linear;
-    transition: background-color 0.2s linear;
-    position: relative;
-    display: inline-block;
-    padding: 12px;
-    border-radius: 8px;
-    background-color: #f6f7f8;
-    vertical-align: middle;
-    cursor: pointer;
 }
 
 .pagenav-list{
@@ -109,10 +87,12 @@ ul.pagenav li a:hover {
   display: flex;
   justify-content: center;
   flex: 1;
+  border: solid 1px lightgray;
+  background-color: #ffffff;
   box-shadow: 0px 0px 6px 1px #e6e6e6;
   border-radius: 5px 5px 0 0;
 }
-a{
+.event-tab-item a{
   padding: 10px 20px;
 }
 
@@ -125,11 +105,12 @@ a.active {
 }
 
 .event-list{
-    margin: 0;
-    margin-bottom: 20px;
-    box-shadow: 0px 0px 6px 1px #e6e6e6;
+    margin: 0;    
+    padding: 20px;
+    
     border-radius: 0 0 5px 5px ;
     width: 100%;
+    height: 100%;
 }
 .result-item{
   margin-top:20px;

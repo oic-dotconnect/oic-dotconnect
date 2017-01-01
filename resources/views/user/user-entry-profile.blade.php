@@ -6,70 +6,76 @@
 @endsection
 
 @section('content')
-  @include('components.user-entry-step', [ 'current' => 'profile' ])
-  {{ Form::open([
-    'route' => 'post-user-entry-profile',
-    'class' => 'col register-form',
-    'files' => true
-  ])}}
-  <!-- <form class="col register-form">-->
-    <h1 class="form-title">プロフィール登録</h1>
-    <div class="row">
-      <div class="col icon-col">
-        <div class="name-title">
-          <h2>アイコン</h2>
+  <div class="wrapper">
+    @include('components.user-entry-step', [ 'current' => 'profile' ])
+    <h1 class="user-entry-title">プロフィール登録</h1>
+    {{ Form::open([
+      'route' => 'post-user-entry-profile',
+      'class' => 'row register-form',
+      'files' => true
+    ])}}
+      <div class="col">
+
+        <div class="row" style="margin-bottom:20px">
+          <div class="col icon-col box input-form">        
+            <h2 class="box-title red">アイコン</h2>        
+            <div class="box-content">
+              @if($icon === "")
+                <img-show old-image=""></img-show>  
+              @else
+                <img-show old-image={{explode('public',$icon)[1]}}></img-show>
+              @endif
+              <input type="hidden" name="old_icon" value={{$icon}}> 
+            </div>        
+          </div>
+          <div class="col name-col">
+            <div class="user-name box input-form required">          
+              <h2 class="box-title yellow">ニックネーム</h2>          
+              <div class="name-input">
+                <input type="text" class="border form-input" name="name" value={{$name}}>
+              </div>
+            </div>
+            <div class="user-code box input-form required">          
+              <h2 class="box-title green">ユーザコード</h2>        
+              <div class="code-input">
+                <input type="text" class="border form-input " name="code" value={{$code}}>
+                <div class="caution">
+                    <p class="caution-mark">※文言</p>
+                    <p class="caution-mark">※文言</p>
+                    <p class="caution-mark">※文言</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          @if($icon === "")
-            <img-show old-image=""></img-show>  
-          @else
-            <img-show old-image={{explode('public',$icon)[1]}}></img-show>
-          @endif
-          <input type="hidden" name="old_icon" value={{$icon}}> 
-        </div>        
+
+        <div class="introduction box">    
+          <h2 class="box-title blue">紹介文</h2>    
+          <div class="introduction-input">
+            <textarea class="border" rows="10" cols="60" name="introduction">
+              {{$introduction}}
+            </textarea>
+          </div>
+        </div>
+
+        <div class="row info">
+          <div class="col">
+            <div class="fav">
+              <button type="submit" name="submit" value="toTag" class="fav-register button">お気に入りタグ登録へ</button>
+              <p class="caution-mark">※文言</p>
+            </div>
+            <div class="row">
+              <div class="info-left">
+                <a href="#" class="button cancell left">キャンセル</a>
+              </div>
+              <div class="info-right">
+                <button type="submit" name="submit" value="toConfirm" class="conf button right">入力確認へ</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col name-col">
-        <div class="user-name">
-          <div class="name-title">
-            <h2>ニックネーム</h2><p>必須</p>
-          </div>
-          <div class="name-input">
-            <input type="text" class="border form-input" name="name" value={{$name}}>
-          </div>
-        </div>
-        <div class="col user-code">
-          <div class="name-title">
-            <h2>ユーザコード</h2><p>必須</p>
-        </div>
-        <div class="code-input">
-          <input type="text" class="border form-input " name="code" value={{$code}}>
-          <div class="caution">
-              <p class="caution-mark">※文言</p>
-              <p class="caution-mark">※文言</p>
-              <p class="caution-mark">※文言</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- <form class="col register-form">-->
+    {{ Form::close() }}
   </div>
-  <div class="col introduction">
-    <div class="name-title">
-      <h2>紹介文</h2>
-    </div>
-    <div class="introduction-input">
-      <textarea class="border" rows="10" cols="60" name="introduction">
-        {{$introduction}}
-      </textarea>
-    </div>
-  </div>
-  <div class="col info">
-    <div class="fav">
-      <button type="submit" name="submit" value="toTag" class="fav-register">お気に入りタグ登録へ</button>
-      <p class="caution-mark">※文言</p>
-    </div>
-    <div class="row info">
-      <a href="#" class="button cancell">キャンセル</a>
-      <button type="submit" name="submit" value="toConfirm" class="conf">入力確認へ</button>
-    </div>
-  {{ Form::close() }}
 @endsection

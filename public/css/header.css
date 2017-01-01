@@ -1,8 +1,14 @@
 .header {
 	background-color: #187FC4;
+	min-width: 1060px;
+}
+
+.header-inner {
+	margin: 0 auto;
+	width: 1060px;
 	display: flex;
 	align-items: center;
-	padding: 10px 20px;
+	padding: 10px 0px;
 }
 
 .header-left, .header-center, .header-right {
@@ -10,7 +16,7 @@
 }
 
 
-.logo {
+.logo a{
 	color: #ffffff;
 	font-size: 32px;
 }
@@ -22,7 +28,7 @@
 
 .search-form input {
 	font-size: 1rem;
-	padding: 6px 0;
+	padding: 8px 0;
 	min-width: 250px;
 	border: solid 1px #aab2bd;
 	border-radius: 5px 0px 0px 5px;
@@ -50,8 +56,10 @@
 
 .header-right .event-action-btns a {
 	/*display: inline-block;*/
+	text-decoration: underline;
+	color: #ffffff;
 	padding: 10px 8px;;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	flex: 1;
 }
 

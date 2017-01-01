@@ -1,1 +1,1 @@
-<a href="{{ route('event-search',[ 'tags' => $tag->name ]) }}">{{ $tag->name }}</a>
+<a class="tag" href="{{ route('event-search',[ 'tags' => $tag->name ]) }}">{{ $tag->name }}</a>
