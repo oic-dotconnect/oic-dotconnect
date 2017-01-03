@@ -8,7 +8,7 @@
     </div>
     <!-- result-date -->
     <div class="event-state">
-        <span class="event-field {{ $event->field }}"><p>{{ $eventservice->field($event->field) }}</p></span>
+        <div class="event-field event-top {{ $event->field }}">{{ $eventservice->field($event->field) }}</div>
         <p class="state {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
             {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
         </p>
@@ -16,8 +16,10 @@
     <!-- result-state -->
     <div class="event-detail">
         <div class="event-detail-left">
-            <div class="event-name"><a href="{{ route('event-detail', [ 'event_code' => $event->code ]) }}">{{ $event->name }}</a></div>
-            <div class="organizer"><img class="icon" src="{{ $event->organizer->image_pass }}" alt="">{{ $event->organizer->name }}</div>                                                                                                                             
+            <div class="event-top">
+                <div class="event-name"><a href="{{ route('event-detail', [ 'event_code' => $event->code ]) }}">{{ $event->name }}</a></div>
+                <div class="organizer"><img class="icon" src="{{ $event->organizer->image_pass }}" alt="">{{ $event->organizer->name }}</div>                                                                                                                             
+            </div>
             <div class="tags">
                 @foreach($event->tags as $tag)
                   @include('components.tag', [ 'tag' => $tag ])

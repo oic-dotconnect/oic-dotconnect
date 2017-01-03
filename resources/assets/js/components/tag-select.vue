@@ -1,5 +1,4 @@
-<template>    
-    <h1 style="margin-bottom: 20px">お気に入りタグ登録</h1>
+<template>        
     <tag-search :result-tags.sync="resultTags"></tag-search>
     <tag-checkbox-list :search-tags="resultTags"></tag-checkbox-list>    
 </template>

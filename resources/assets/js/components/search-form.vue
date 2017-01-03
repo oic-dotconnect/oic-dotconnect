@@ -1,53 +1,74 @@
 <template>
-    <div class="primary">
-        <div class="inner">
-            <event-search :search-event.sync="searchEvent" :title.sync="title" :tag.sync="tag"></event-search>
-        </div>
+    <div class="box">    
+        <h2 class="box-title red">検索条件</h2>   
+        <event-search :search-event.sync="searchEvent" :title.sync="title" :tag.sync="tag"></event-search>       
     </div>
-    <div class="secondary">
-        <div class="inner">
-            <div class="search-result">
-                <div>
-                    <div class="result-list">
-                        <h2>検索結果</h2>
-                        <ul>
-                            <event-item v-for="event in pagingEvent" :event="event"></event-item>
-                        </ul>
-                    </div>
-                    <!-- result-list -->
-                    <div class="result-controle">
-                        <div class="refine">                        
-                            <h3>絞り込み条件</h3>                                                                   
-                            <section class="refine-field">
-                                <h4>分野</h4>
-                                <div>
-                                    <input type="radio" name="field" id="field-it" value="it" v-model="refine"><label for="field-it">IT</label>
-                                    <input type="radio" name="field" id="field-game" value="game" v-model="refine"><label for="field-game">ゲーム</label>
-                                    <input type="radio" name="field" id="field-design" value="design" v-model="refine"><label for="field-design">デザイン</label><br>
-                                    <input type="radio" name="field" id="field-move" value="move" v-model="refine"><label for="field-move">映像</label>                        
-                                    <input type="radio" name="field" id="field-other" value="other" v-model="refine"><label for="field-other">その他</label>
-                                </div>
-                            </section>  
-                        </div>
-                        <!-- refine -->
-                        <div class="sort">                            
-                            <h3>並び替え</h3>
-                            <div>
-                                <input type="radio" name="sort" id="sort-hold-near" value="near" v-model="sort"><label for="sort-hold-near">開催日が近い順</label><br>
-                                <input type="radio" name="sort" id="sort-entry-new" value="new" v-model="sort"><label for="sort-entry-new">登録日が新しい順</label><br>
-                                <input type="radio" name="sort" id="sort-entry-old" value="old" v-model="sort"><label for="sort-entry-old">登録日が古い順</label>
-                            </div>                                                        
-                        </div>
-                        <!-- sort -->
-                    </div>
-                    <!-- result-controle -->
-                </div>
-            </div>
-            <!-- search-result -->
+    <hr>
+    <div class="row search-result">
+        <div class="col result-list box">
+            <h2 class="box-title yellow">検索結果</h2>
+            <ul class="result-event-list">
+                <event-item v-for="event in pagingEvent" :event="event"></event-item>
+            </ul>
             <page-nav :page-num.sync="page" :length="changeEvent.length" :disp-item.sync="dispItem"></page-nav>
         </div>
-    </div>
+        <!-- result-list -->
+        <div class="col result-controle">
+            <div class="refine box">                        
+                <h2 class="box-title green">絞り込み</h2>
+                <section class="refine-field">
+                    <h4>分野</h4>
+                    <div>
+                        <input type="radio" name="field" id="field-it" value="it" v-model="refine"><label for="field-it">IT</label>
+                        <input type="radio" name="field" id="field-game" value="game" v-model="refine"><label for="field-game">ゲーム</label>
+                        <input type="radio" name="field" id="field-design" value="design" v-model="refine"><label for="field-design">デザイン</label><br>
+                        <input type="radio" name="field" id="field-move" value="move" v-model="refine"><label for="field-move">映像</label>                        
+                        <input type="radio" name="field" id="field-other" value="other" v-model="refine"><label for="field-other">その他</label>
+                    </div>
+                </section>                  
+            </div>
+            <!-- refine -->
+            <div class="sort box">                            
+                <h2 class="box-title blue">並び替え</h2>
+                <div class="sorts">
+                    <input type="radio" name="sort" id="sort-hold-near" value="near" v-model="sort"><label for="sort-hold-near">開催日が近い順</label><br>
+                    <input type="radio" name="sort" id="sort-entry-new" value="new" v-model="sort"><label for="sort-entry-new">登録日が新しい順</label><br>
+                    <input type="radio" name="sort" id="sort-entry-old" value="old" v-model="sort"><label for="sort-entry-old">登録日が古い順</label>
+                </div>                                                        
+            </div>
+            <!-- sort -->
+        </div>
+        <!-- result-controle -->
+    </div>    
+    <!-- search-result -->
 </template>
+
+<style scoped>
+    .search-result {
+        margin-top: 50px;
+    }
+
+    .result-list {
+        flex: 3;
+    }
+
+    .result-event-list {
+        margin-top: 20px;
+        height: 1000px;
+    }
+
+    .result-controle{
+        margin-left: 30px;
+    }
+
+    .sorts{
+        margin-top: 20px;
+    }
+
+    .refine{
+        margin-bottom: 20px;
+    }
+</style>
 
 <script>
     import eventSearch from './event-search.vue'

@@ -5,5 +5,8 @@
 @endsection
 
 @section('content')
-	<search-form></search-form>
+	<div class="wrapper">
+		<h1 style="margin-bottom: 20px;">イベント検索</h1>
+		<search-form></search-form>
+	</div>
 @endsection

@@ -31,6 +31,13 @@ class Event extends Model
         'code', 'name', 'field', 'description', 'opening_date','start_at','end_at','place','capacity','organizer_id','recruit_start_date','recruit_end_date','recruit_start_time','recruit_end_time','status'
     ];
 
+    protected $appends = ['detail_url']; 
+
+    public function getDetailUrlAttribute()
+    {
+        return route('event-detail', [ 'event_code' => $this->code ]);
+    }
+
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag','event_tag');
