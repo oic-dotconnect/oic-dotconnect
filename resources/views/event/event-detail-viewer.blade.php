@@ -1,4 +1,4 @@
 @extends('event.event-detail-layout')
 @section('subscription')
-  <button type="button">申し込み</button>
+  <button type="button" class="button join">参加する</button>
 @endsection
