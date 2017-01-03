@@ -23,13 +23,15 @@ class EventController extends Controller
 
 		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
-		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get()->toArray();
+		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get();
 
-		$data['users'] = array_slice($users,0,$capacity);
+		$data['users'] = $users->take($capacity);
 
-		$data['substitate'] = array_slice($users,$capacity);
+		$data['substitate'] = $users->splice($capacity);
 
-		
+		if($user === null){
+			return view('event/event-detail-guest', $data);
+		} else 
 		if(Event::FindCode($event_code)->first()->organizer_id == $user->id)
 		{
 			//このイベントの主催者がログインユーザーならここ
