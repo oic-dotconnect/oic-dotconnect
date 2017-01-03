@@ -1,181 +1,159 @@
 @extends('layout.app')
 
+@inject('eventservice','App\Services\EventService')
+
+@section('head')
+    <link rel="stylesheet" href="{{{asset('css/event-detail.css')}}}" media="screen" title="no title" charset="utf-8">
+@endsection
+
 @section('content')
     <div class="wrapper">
-        <div class="top">
-            <h1>イベント詳細</h1>
-        </div>
-        <!-- div.top -->
-        <div class="primary">
-            <div class="inner">
-            <div>@yield('hold')</div>
-                <div class="heading">
-                    <div class="field">
-                        <p>{{$event[0]->field}}</p>
-                    </div>
-                    <!-- div.field -->
+      <div class="event-box">
+        <div class="box">
+          <div class="inner">
+            <div class="heading">
+              <div class="filed-box">
+                  <div class="field {{ $event->field }}">
+                      <p>{{ $eventservice->field($event->field) }}</p>
+                  </div>
+                <!-- div.field -->
+              </div>
+                  <div class="event-detail-header">
                     <div class="title">
-                        <p>{{$event[0]->name}}</p>
+                        <p>{{ $event->name }}</p>
                     </div>
                     <!-- div.title -->
-                </div>
-                <!-- div.heading -->
-                <table class="detail-table table">
-                    <tr class="tag">
-                        <th class="table_title">
-                            <p>タグ</p>
-                        </th>
-                        <!-- th -->
-                        <td class="table_summary">
+                    <div class="tags">
                         @foreach ($tags as $tag)
-                            <p>{{ $tag->name }}</p>
-                        @endforeach
-                        </td>
-                        <!-- td -->
-                    </tr>
-                    <!-- tr.tag -->
-                    <tr class="organizer">
-                        <th class="table_title">
-                            <p>主催者</p>
-                        </th>
-                        <!-- th -->
-                        <td class="table_summary">
-                            <div class="person">
-                                <p class="icon"></p>
-                                <p>{{ $event[0]->organizer->name }}</p>
-                            </div>
-                        </td>
-                        <!-- td -->
-                    </tr>
-                    <!-- tr.organizer -->
-                    <tr class="event-date">
-                        <th class="table_title">
-                            <p>開催日</p>
-                        </th>
-                        <!-- th -->
-                        <td class="table_summary">
-                        <p>{{$event[0]->opening_date}} - {{$event[0]->start_at}} - {{$event[0]->end_at}}</p>
-                        </td>
-                        <!-- td -->
-                    </tr>
-                    <!-- tr.event-date -->
-                    <tr class="place">
-                        <th class="table_title">
-                            <p>開催教室</p>
-                        </th>
-                        <td class="table_summary">
-                            <p>{{$event[0]->place}}</p>
-                        </td>
-                    </tr>
-                    <!-- tr.place -->
-                </table>
-                <!-- table.detail-table -->
-                <table class="recruitment-table table">
-                    <tr class="recritment" rowspan="2">
-                        <th class="table_title">
-                            <div class="recritment-title">
-                                <p>募集期間</p>
-                            </div>
-                            <!-- div.recritment-title -->
-                            <div class="none">
-                                <p>&nbsp;</p>
-                            </div>
-                            <!-- div -->
-                        </th>
-                        <!-- th -->
-                        <td class="table_summary">
-                            <div class="recritment-start">
-                                <p>開始日</p>
-                                <p>{{ $event[0]->recruit_start_date }}</p>
-                                <p>-</p>
-                                <p>{{ $event[0]->recruit_start_time }}</p>
-                            </div>
-                            <!-- div.recritment-end -->
-                            <div class="recritment-end">
-                                <p>終了日</p>
-                                <p>{{ $event[0]->recruit_end_date }}</p>
-                                <p>-</p>
-                                <p>{{ $event[0]->recruit_end_time }}</p>
-                            </div>
-                            <!-- div.recritment-end -->
-                        </td>
-                        <!-- td -->
-                    </tr>
-                    <!-- tr.recritment -->
-                    <tr class="capacity">
-                        <th class="table_title">
-                            <p>定員</p>
-                        </th>
-                        <!-- th -->
-                        <td class="table_summary">
-                            <p>現在</p>
-                            <p>/</p>
-                            <p>最大</p>
-                            <p>{{ $event[0]->capacity }}人</p>
-                        </td>
-                        <!-- td -->
-                    </tr>
-                    <!-- tr.capacity -->
-                </table>
-                <!-- table.recruitment-table -->
-                <div class="subscription">
-                @yield('subscription')
-                </div>
-                <!-- div.subscription -->
+                            @include('components.tag', [ 'tag' => $tag ])
+                        @endforeach                      
+                    </div>
+                    <!-- div.tags -->
+                  </div>
             </div>
-            <!-- div.detail -->
+            <!-- div.heading -->
+            <table class="event-detail-table table">
+              <tr>
+                <th>
+                <div class="th-box">
+                  <div class="icon-box">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  </div>
+                  <p>主催者：</p>
+                </div>
+                </th>
+                <td class="td-box user">
+                  <div class="icon"><img src="{{ $event->organizer->iconMinUrl }}"></div>
+                  <p>{{ $event->organizer->name }}</p>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                <div class="th-box">
+                  <div class="icon-box">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  </div>
+                  <p>開催日：</p>
+                </div>
+                </th>
+                <td><p>{{ $eventservice->dateYear($event->opening_date) }}/{{ $eventservice->dateMonth($event->opening_date) }}/{{ $eventservice->dateDay($event->opening_date) }} {{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}</p></td>
+              </tr>
+              <tr>
+                <th>
+                <div class="th-box">
+                  <div class="icon-box">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  </div>
+                  <p>開催教室：</p>
+                </div>
+                </th>
+                <td>{{$event->place}}</td>
+              </tr>
+              <tr>
+                <th>
+                <div class="th-box">
+                  <div class="icon-box">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                  <p>募集期間：</p>
+                </div>
+                </th>
+                <td>
+                  <div class="td-box event-start">
+                    <p>募集開始：{{ $eventservice->dateYear($event->recruit_start_date) }}/{{ $eventservice->dateMonth($event->recruit_start_date) }}/{{ $eventservice->dateDay($event->recruit_start_date) }} {{ $eventservice->dateTime($event->recruit_start_time) }}</p>                    
+                  </div>                
+                  <div class="td-box event-end">
+                      <p>募集終了：{{ $eventservice->dateYear($event->recruit_end_date) }}/{{ $eventservice->dateMonth($event->recruit_end_date) }}/{{ $eventservice->dateDay($event->recruit_end_date) }} {{ $eventservice->dateTime($event->recruit_end_time) }}</p>     
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                <div class="th-box">
+                    <div class="icon-box">
+                      <i class="fa fa-users" aria-hidden="true"></i>
+                    </div>
+                    <p>定員：</p>
+                </div>
+                </th>
+                <td>
+                  <div class="td-box">                    
+                    <p>{{ $event->entry_num() }}</p>
+                    <p>/</p>                    
+                    <p>{{ $event->capacity }}</p>
+                    <p>人</p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div class="event-entry">
+              @yield('subscription')
+            </div>
+          </div>
         </div>
-        <!-- div.primary -->
         <div class="secondary">
+          <div  class="box description-box">
+            <h2 class="box-title red">イベント説明</h2>
             <div class="description">
-                <div id="editor_area" class="group_inner clearfix">
-                {{ $event[0]->description }}
-                </div>
+                {!! $event->description !!}
             </div>
-            <!-- div.description -->
-            <div class="person-group">
-                <div class="participant">
-                    <div class="participant-title">
-                        <p class="list-title">参加者一覧</p>
-                        <p class="amount">人数</p>
+          </div>
+          <!-- div.description -->
+          <div class="user-group">
+            <div class="participant box">              
+            <h3 class="box-title green">参加者一覧 <span class="amount">{{ count($users) }}人</span></h3>                              
+              <!-- div.participant -->
+              <div class="participant-list">
+                @foreach($users as $user)                    
+                    <div class="user">
+                        <div class="icon"><img src="{{ $user->icon_min_url }}"></div>
+                        <div>{{ $user->name }}</div>
                     </div>
-                    <!-- div.participant -->
-                    <div class="participant-list">
-                        <div class="person">
-                            <p class="icon"></p>
-                            <p>名前</p>
-                        </div>
-                        <!-- div.person -->
-
-                    </div>
-                    <!-- div.participant-list -->
-                    <div class="more">
-                        <i class="fa fa-caret-down fa-2x fa-color" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <!-- div.participant -->
-                <div class="substitate">
-                    <div class="substitate-title">
-                        <p class="list-title">補欠者一覧</p>
-                        <p class="amount">人数</p>
-                    </div>
-                    <!-- div.substitate-title -->
-                    <div class="substitate-list">
-                        <div class="person">
-                            <p class="icon"></p>
-                            <p>名前</p>
-                        </div>
-                        <!-- div.person -->
-                    </div>
-                    <!-- div.substitate-list -->
-                    <div class="more">
-                        <i class="fa fa-caret-down fa-2x fa-color" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <!-- div.substitate -->
+                @endforeach                
+              </div>
+              <!-- div.participant-list -->
             </div>
-            <!-- div.person-group -->
+            <!-- div.participant -->
+            <div class="substitate box">
+              <h3 class="box-title green">補欠者一覧 <span class="amount">{{ count($substitate) }}人</span></h3>                              
+              <!-- div.substitate-title -->
+              <div class="substitate-list">
+                 @foreach($substitate as $user)
+                    <div class="user">
+                        <div class="icon"><img src="{{ $user->iconMinUrl }}"></div>
+                        <div>{{ $user->name }}</div>
+                    </div>
+                @endforeach     
+              </div>
+              <!-- div.substitate-list -->              
+            </div>
+            <!-- div.substitate -->
+          </div>
+          <!-- div.user-group -->
         </div>
         <!-- div.secondary -->
+      </div>
+      <!-- div.eventbox -->
     </div>
+    <!-- div.wrapper -->
 @endsection

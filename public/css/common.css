@@ -142,17 +142,6 @@ h1.form-title{
     flex-direction: column;
 }
 
-
-/* 補足部分 */
-
-.secondary {
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin: 0 auto;
-}
-
-
 /* form-header */
 
 /* tableの設定 */
