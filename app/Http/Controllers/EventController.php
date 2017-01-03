@@ -19,7 +19,7 @@ class EventController extends Controller
 
 		$capacity = Event::FindCode($event_code)->value('capacity');
 
-		$data['event'] = Event::FindCode($event_code)->with('organizer')->get();
+		$data['event'] = Event::FindCode($event_code)->with('organizer')->first();
 
 		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
