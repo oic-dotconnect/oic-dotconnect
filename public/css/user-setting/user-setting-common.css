@@ -1,0 +1,25 @@
+.user-setting-title {
+	margin-bottom: 20px;
+}
+
+.user-setting-menu {
+	display: flex;
+	justify-content: space-around;
+	border-bottom: solid 4px #d3d3d3;
+	margin-bottom: 20px;
+}
+
+.menu-item {
+	width: 100%;
+	margin-bottom: -4px;	
+	text-align: center;
+	padding: 10px;
+}
+
+.menu-item a {
+	color: black;
+}
+
+.menu-item.selected {
+	border-bottom: solid 4px #105482;
+}

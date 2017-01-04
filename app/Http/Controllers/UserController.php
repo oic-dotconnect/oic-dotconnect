@@ -65,7 +65,7 @@ class UserController extends Controller
 
 	public function editProfile()
 	{
-		$data = Auth::user();
+		$data['user'] = Auth::user();
 
 		return view('user/user-setting-profile',$data);
 	}
@@ -92,9 +92,9 @@ class UserController extends Controller
 	public function saveProfile(Request $request)
 	{
 		$user = Auth::user();
-
 		$data = $request->all();
-
+		$icon = $request->file('icon');		
+		if($icon !== null) $user->iconUp($icon->getPathName());
 		$user->update($data);
 
 		return redirect()->route('user-mypage-recommend');
