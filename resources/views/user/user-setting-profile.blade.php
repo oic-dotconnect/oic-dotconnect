@@ -10,7 +10,8 @@
 @section('content')
   <div class = "wrapper">  
     <h1 class="user-setting-title">ユーザー設定</h1>
-    @include('components/user-setting-menu', [ 'current' => 'notice' ])    
+    @include('components/user-setting-menu', [ 'current' => 'profile' ])    
+    <h2 class="user-setting-sub-title">プロフィール設定</h2>
     {{ Form::open([
       'route' => 'post-user-setting-profile',
       'class' => 'row register-form',
@@ -57,7 +58,7 @@
                 <a href="{{ route('user-mypage-recommend') }}" class="button cancell left">キャンセル</a>
               </div>
               <div class="info-right">                
-                <button type="submit" class="conf button right">変更</button>
+                <button type="submit" class="change button right">変更</button>
               </div>
             </div>
           </div>
