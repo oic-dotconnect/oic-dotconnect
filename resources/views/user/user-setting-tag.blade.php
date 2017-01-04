@@ -10,7 +10,7 @@
         </div>
         <div class="primary">
             <div class="inner">
-                @include('components/user-setting-menu', [ 'current' => 'notice' ])                
+                @include('components/user-setting-menu', [ 'current' => 'tag' ])                
                 <div class="acount-config">
                     <div class="tag-search">
                         <h2>お気に入りタグ</h2>

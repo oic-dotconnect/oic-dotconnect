@@ -10,7 +10,7 @@
 @section('content')
   <div class = "wrapper">  
     <h1 class="user-setting-title">ユーザー設定</h1>
-    @include('components/user-setting-menu', [ 'current' => 'notice' ])    
+    @include('components/user-setting-menu', [ 'current' => 'profile' ])    
     {{ Form::open([
       'route' => 'post-user-setting-profile',
       'class' => 'row register-form',

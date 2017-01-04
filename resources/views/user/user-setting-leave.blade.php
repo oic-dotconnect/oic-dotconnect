@@ -2,6 +2,6 @@
 
 @section('content')
 <h1>退会ページ</h1>
-@include('components/user-setting-menu', [ 'current' => 'notice' ])
+@include('components/user-setting-menu', [ 'current' => 'leave' ])
 @endsection
 
