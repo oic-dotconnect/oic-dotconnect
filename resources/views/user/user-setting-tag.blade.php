@@ -6,61 +6,25 @@
 
 @section('content')
     <div class="wrapper">
-        <h1 class="user-setting-title">ユーザー設定</h1>
-        <div class="top">
-            <h1>アカウント設定</h1>
-        </div>
-        <!-- top -->
-        <div class="state">
-        </div>
-        <div class="primary">
-            <div class="inner">
-                @include('components/user-setting-menu', [ 'current' => 'tag' ])                
-                <div class="acount-config">
-                    <div class="tag-search">
-                        <h2>お気に入りタグ</h2>
-                        タグ検索：<input type="text" name="search-input">
+        <h1 class="user-setting-title">ユーザー設定</h1>        
+        @include('components/user-setting-menu', [ 'current' => 'tag' ])      
+        {{ Form::open([ 
+			'route' => 'post-user-setting-tag',
+			'class' => 'register-form'
+		])}}          
+            <h2 class="user-setting-sub-title">お気に入りタグ設定</h2>
+            <tag-select></tag-select>
+            <div class="row info">
+                <div class="col">          
+                    <div class="row">
+                        <div class="info-left">
+                            <a href="{{ route('user-mypage-recommend') }}" class="button cancell left">キャンセル</a>
+                        </div>
+                        <div class="info-right">                
+                            <button type="submit" class="change button right">変更</button>
+                        </div>
                     </div>
-                    <!--tag-search-->
-                    <div class="candidate-tag-list">
-                        <h2>候補タグ一覧</h2>
-                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="candidate-item" value="タグ名">タグ名
-                    </div>
-                    <!--candidate-tag-list-->
-                    <div class="add-candidate-tag-list">
-                        <h2>追加するタグ一覧</h2>
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                    </div>
-                    <div class="add-candidate-tag-list">
-                        <h2>お気に入りタグ一覧</h2>
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                        <input type="checkbox" name="タグ名" class="add-candidate-item" value="タグ名">タグ名
-                    </div>
-
-
-                    <div class="btn-group">
-                        <button>キャンセル</button>
-                        <button>変更</button>
-                    </div>
-                    <!-- btn-group -->
                 </div>
-                <!--acount-config-->
             </div>
-            <!-- inner -->
-        </div>
-        <!-- primary -->
-    </div>
-    <!-- wrapper -->
-    {{Auth::user()->tags}}
+        {{ Form::close() }}
 @endsection
