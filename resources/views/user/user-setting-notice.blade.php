@@ -8,16 +8,7 @@
         </div>
         <div class="primary">
             <div class="inner">
-                <div class="tag-group">
-                    <ul class="tag-list">
-                        <li class="tag-item">プロフィール</li>
-                        <li class="tag-item">お気に入りタグ</li>
-                        <li class="tag-item selected">メール通知</li>
-                        <li class="tag-item">退会</li>
-                    </ul>
-                    <!-- tag-list -->
-                </div>
-                <!-- tag-group -->
+                @include('components/user-setting-menu', [ 'current' => 'notice' ])
                 <div class="acount-config">
                     <div class="withdrawal">
                         <h2>メール通知</h2>

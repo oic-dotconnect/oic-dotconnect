@@ -1,7 +1,7 @@
 <header class="header">
       <div class="header-inner">
         <div class="header-left">
-          <span class="logo"><a href="">.Linker</a></span>
+          <span class="logo"><a href="{{ route('landing') }}">.Linker</a></span>
         </div>
         <div class="header-center">
           <form class="search-form">
@@ -14,12 +14,14 @@
         <div class="header-right">
           @if( Auth::check() )
             <div class="event-action-btns">
-              <a href="" class="red">イベント管理</a>
-              <a href="" class="light-gray">イベント作成</a>
+              <a href="{{ route('event-control') }}" class="red">イベント管理</a>
+              <a href="{{ route('event-entry') }}" class="light-gray">イベント作成</a>
             </div>
-            <div class="icon">
-              <img src="{{ Auth::user()->iconMinPath() }}">
-            </div>        
+            <a href="{{ route('user-mypage-recommend') }}">
+              <div class="icon">
+                <img src="{{ Auth::user()->iconMinPath() }}">
+              </div>        
+            </a>
           @else 
             <a href="{{ route('sociallogin') }}" class="login-btn">
               <i class="fa fa-google" aria-hidden="true"></i>
