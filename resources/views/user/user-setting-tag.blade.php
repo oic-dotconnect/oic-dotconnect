@@ -1,7 +1,12 @@
 @extends('layout.app')
 
+@section('head')
+  <link rel="stylesheet" href="{{{asset('css/user-setting/user-setting-common.css')}}}" media="screen" title="no title" charset="utf-8">  
+@endsection
+
 @section('content')
     <div class="wrapper">
+        <h1 class="user-setting-title">ユーザー設定</h1>
         <div class="top">
             <h1>アカウント設定</h1>
         </div>
