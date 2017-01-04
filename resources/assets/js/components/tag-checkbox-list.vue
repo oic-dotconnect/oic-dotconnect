@@ -7,7 +7,7 @@
 			</div>
 		</div>
 		<div class="tag-list box">
-			<h2 class="box-title blue">お気に入りにするタグ</h2>
+			<h2 class="box-title blue">お気に入りタグ</h2>
 			<div class="fav-tags">
 				<tag-checkbox v-for="tag in sortFavTags" :tag="tag" prefix="fav"></tag-checkbox>
 			</div>
