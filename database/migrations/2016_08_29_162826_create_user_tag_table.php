@@ -18,7 +18,7 @@ class CreateUserTagTable extends Migration
 
             $table->integer('tag_id')->unsigned()->index();
             $table->foreign('tag_id')->references('id')->on('TAG')->onDelete('cascade');
-            $table->boolean('noticed')->default(false);
+            $table->boolean('noticed')->default(true);
 
             });
     }
