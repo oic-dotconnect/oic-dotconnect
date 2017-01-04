@@ -18,7 +18,35 @@
     <main>      
       @yield('content')      
     </main>
-    <footer id="footer"></footer>
+    <footer id="footer">
+      <div class="footer-content">
+        <div class="link-group">
+          <div class="link-group-heading">イベント</div>
+          <ul class="link-items">
+            <li><a href="{{ route('event-entry') }}">イベント登録</a></li>
+            <li><a href="{{ route('event-search') }}">イベント検索</a></li>
+            <li><a href="{{ route('event-control') }}">イベント管理</a></li>
+          </ul>
+        </div>
+        <div class="link-group">
+          <div class="link-group-heading">ユーザー</div>
+          <ul class="link-items">
+            <li><a href="{{ route('user-mypage-recommend') }}">マイページ</a></li>
+            <li><a href="{{ route('user-setting-profile') }}">プロフィール設定</a></li>
+            <li><a href="{{ route('user-setting-tag') }}">お気に入りタグ設定</a></li>
+            <li><a href="{{ route('user-setting-notice') }}">メール通知設定</a></li>
+            <li><a href="#">ログアウト</a></li>
+          </ul>
+        </div>
+        <div class="link-group">
+          <div class="link-group-heading">OICリンク</div>
+          <ul class="link-items">
+            <li><a>公式ホームページ</a></li>          
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom"></div>
+    </footer>
     <script src="/js/bundle.js" charset="utf-8"></script>
   </body>
 </html>

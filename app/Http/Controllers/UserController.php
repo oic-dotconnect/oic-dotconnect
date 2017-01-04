@@ -65,7 +65,7 @@ class UserController extends Controller
 
 	public function editProfile()
 	{
-		$data = Auth::user();
+		$data['user'] = Auth::user();
 
 		return view('user/user-setting-profile',$data);
 	}
@@ -77,10 +77,8 @@ class UserController extends Controller
 
 	public function editNotice()
 	{
-		$data['userNotice'] = Auth::user();
-
-		$data['tagNotice'] = Auth::user()->tags()->get();
-
+		$data['user'] = Auth::user();
+	
 		return view('user/user-setting-notice',$data);
 	}
 
@@ -92,9 +90,9 @@ class UserController extends Controller
 	public function saveProfile(Request $request)
 	{
 		$user = Auth::user();
-
 		$data = $request->all();
-
+		$icon = $request->file('icon');		
+		if($icon !== null) $user->iconUp($icon->getPathName());
 		$user->update($data);
 
 		return redirect()->route('user-mypage-recommend');
@@ -116,19 +114,19 @@ class UserController extends Controller
 	public function saveNotice(Request $request)
 	{
 		$notices = $request->all();
-
+		// dd($notices);
 		$user = Auth::user();
 
-		$eventJoinNoticed = isset($notices['eventjoinnotice']);
+		$eventJoinNoticed = isset($notices['notice-join']);
 		$user->update(['event_join_notice' => $eventJoinNoticed]);
 
-		$eventCancelNoticed = isset($notices['eventcancelnotice']);
+		$eventCancelNoticed = isset($notices['notice-cancel']);
 		$user->update(['event_cancel_notice' => $eventCancelNoticed]);
 		
-		$favoriteTagNoticed = isset($notices['favoritetagnotice']);
-		$user->update(['favorite_tag_notice' => $favoriteTagNoticed]);
+		$regularNoticed = isset($notices['notice-regular']);
+		$user->update(['regular_notice' => $regularNoticed]);
 
-		$requestTags = $request->get('tags');
+		$requestTags = array_keys($notices['tag-notice']);
 
 		$user->getPivotTags($user->id)->update(['noticed' => false]);
 

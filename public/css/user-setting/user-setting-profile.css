@@ -1,0 +1,53 @@
+.icon-col{
+  padding-right: 0 50px;
+  flex: 2;
+}
+
+#icon-file {
+  display: none;
+}
+
+.name-col{       
+  flex: 3;
+  margin-left: 20px;
+}
+
+.user-code{
+  margin-top: 30px;
+}
+
+.introduction{
+  padding-top: 20px;
+}
+
+.introduction-input{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.introduction-input textarea{
+    width: 90%;
+    margin-left: 10px;    
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.fav{
+  text-align: center;
+}
+
+.caution-mark {
+  margin: 0;
+  margin-top: 5px;
+  padding-left: 15px;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.user-code p {
+	font-size: 1.2rem;
+	margin: 0px;
+	margin-top: 20px;
+	margin-left: 10px;
+
+}

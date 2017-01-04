@@ -9,6 +9,7 @@ html {
 }    
 
 body {
+    position: relative;
     margin: 0;
     background-color:  #F5FAFD;
     font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
@@ -94,8 +95,7 @@ p {
 
 .wrapper {
     display: flex;
-    width: 1060px;
-    padding: 0 50px;
+    width: 1060px;    
     margin: 20px auto; 
     flex-direction: column;
     /*box-shadow: 0px 0px 6px 1px #e6e6e6;*/
@@ -269,4 +269,41 @@ h1.form-title{
 
 .box-content {
     
+}
+
+main {
+    min-height: calc(100vh - 270px);
+}
+
+#footer {    
+    background-color: #082B42;
+    height: 200px;
+    padding-top: 20px;
+    margin-top: 60px;
+}
+
+.footer-content{
+    width: 1060px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+}
+
+.footer-content a {
+    color: white;
+}
+
+.link-group {
+    width: 150px;
+    margin-right: 20px;
+}
+
+.link-group-heading {
+    font-size: 1.2rem;
+    border-bottom: solid 1px white;
+    margin-bottom: 8px;
+}
+
+.link-items {
+    margin-left: 10px;    
 }
