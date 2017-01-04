@@ -2,6 +2,10 @@
 	margin-bottom: 20px;
 }
 
+.user-setting-sub-title {
+	margin-bottom: 10px;
+}
+
 .user-setting-menu {
 	display: flex;
 	justify-content: space-around;
@@ -22,4 +26,28 @@
 
 .menu-item.selected {
 	border-bottom: solid 4px #105482;
+}
+
+.info {
+  margin-top: 40px;
+}
+
+.info-left, .info-right {
+  width: 50%;
+}
+
+.info-left {
+  text-align: left;
+}
+
+.info-right {
+  text-align: right;
+}
+
+.info .button {
+  min-width: 150px;
+}
+
+.change {
+	background: #F6AD3C;
 }
