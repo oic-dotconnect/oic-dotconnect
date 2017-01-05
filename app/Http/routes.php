@@ -54,9 +54,10 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::get('/user/setting/leave',['as' =>'user-setting-leave','uses' => 'UserController@editLeave']);
 
     // マイページ おすすめイベント
-    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend',
-        'uses' => 'UserController@mypageRecommend'
-    ]);
+    Route::get('/user/mypage/',['as' =>'user-mypage','uses' => 'UserController@mypageRecommend']);
+
+    // マイページ おすすめイベント
+    Route::get('/user/mypage/recommend',['as' =>'user-mypage-recommend','uses' => 'UserController@mypageRecommend']);
 
     // マイページ 参加イベント
     Route::get('/user/mypage/join',['as' =>'user-mypage-join','uses' => 'UserController@mypageJoin']);
@@ -84,6 +85,9 @@ Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
 
 // ユーザー登録確認ページ
 Route::get('/user/entry/confirm',['as' =>'user-entry-confirm','uses' => 'UserEntryController@Confirm']);
+
+//ユーザーページ
+Route::get('/user/{user_code}', ['as' =>'user-page', 'uses' => 'UserController@userpageJoin']);
 
 // ユーザーページ　参加イベント
 Route::get('/user/{user_code}/join',['as' =>'user-page-join', 'uses' => 'UserController@userpageJoin']);
