@@ -61,19 +61,14 @@ body {
 
 .event-section {
   padding: 0 40px;
+  display: flex;
+  margin: 0 auto;
 }
 
-.event-section:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.event-section > section{
-  float: left;
-  width: 50%;
+.event-section > section{   
   padding: 10px;
   box-sizing: border-box;
+  flex: 1;
 }
 
 .event-list > .event {
@@ -86,6 +81,7 @@ body {
 .about-section {
   padding: 0 40px;
   text-align: center;
+  margin: 0 auto;
   margin-top: 60px;
 }
 
