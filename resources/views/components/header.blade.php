@@ -4,12 +4,12 @@
           <span class="logo"><a href="{{ route('landing') }}">.Linker</a></span>
         </div>
         <div class="header-center">
-          <form class="search-form">
+          {{ Form::open(['route' => 'event-search', 'method' => 'GET', 'class' => 'search-form'])}}          
             <div class="input">
-              <input type="text" name="name" value="" placeholder="Web">
+              <input type="text" name="title" value="" placeholder="Web">
             </div>
             <button type="submit" class="search-btn button orange">検索</button>        
-          </form>
+          {{ Form::close() }}
         </div>
         <div class="header-right">
           @if( Auth::check() )

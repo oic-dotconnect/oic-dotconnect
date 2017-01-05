@@ -1,7 +1,7 @@
 <template>
     <div class="box">    
         <h2 class="box-title red">検索条件</h2>   
-        <event-search :search-event.sync="searchEvent" :title.sync="title" :tag.sync="tag"></event-search>       
+        <event-search :search-event.sync="searchEvent" :_title="title" :_tag="tag"></event-search>       
     </div>
     <hr>
     <div class="row search-result">
@@ -81,8 +81,8 @@
             pageNav
         },
         props: {
-            title: '',
-            tag: '',
+            title: {},
+            tag: {},
         },
         data() {
             return {
