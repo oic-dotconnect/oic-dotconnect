@@ -13,7 +13,7 @@
 			'class' => 'register-form'
 		])}}          
             <h2 class="user-setting-sub-title">お気に入りタグ設定</h2>
-            <tag-select></tag-select>
+            <tag-select user-code="{{ $user->code }}"></tag-select>
             <div class="row info">
                 <div class="col">          
                     <div class="row">

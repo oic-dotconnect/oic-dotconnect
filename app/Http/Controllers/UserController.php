@@ -71,8 +71,9 @@ class UserController extends Controller
 	}
 
 	public function editFavoriteTags()
-	{
-		return view('user/user-setting-tag');
+	{	
+		$data['user'] = Auth::user();
+		return view('user/user-setting-tag', $data);
 	}
 
 	public function editNotice()

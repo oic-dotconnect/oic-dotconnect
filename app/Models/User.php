@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     public static function create(array $data = Array()){
-      $array  = ['code' => substr(bcrypt($data['google_id']),-7),
+      $array  = ['code' => substr(md5(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7),
                 'student_number' => substr($data['email'],0,5)];
       $merged_array = array_merge($array,$data); 
       return parent::create($merged_array);
