@@ -1,7 +1,7 @@
 import request from 'superagent';
 
 export const getFavTags = (q) => {
-    return request.get('/api/candidacy_tags/').query({ q: 1 })
+    return request.get(`/api/user/${q}/favorite_tags`)
 
 }
 

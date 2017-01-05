@@ -30,6 +30,9 @@
             searchTags: {
                 required: true,
                 type: Array,
+            },
+            userCode: {
+
             }
         },
         data() {
@@ -87,15 +90,17 @@
             },
         },
         created() {
-            getFavTags().end((err, res) => {
-                let fav = []
-                res.body.forEach((tag) => {
-                    let s = this.get_Search_Id(tag.id)
-                    s.check = true
-                })
-                let sec = this.remove_Favtags(this.section);
-                this.add_Favtags(sec);
-            });
+            if(this.userCode !== undefined) {
+                getFavTags(this.userCode).end((err, res) => {
+                    let fav = []
+                    res.body.forEach((tag) => {
+                        let s = this.get_Search_Id(tag.id)
+                        s.check = true
+                    })
+                    let sec = this.remove_Favtags(this.section);
+                    this.add_Favtags(sec);
+                });
+            }
         },
         computed: {
             sortFavTags() {
