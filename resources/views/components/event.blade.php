@@ -18,7 +18,7 @@
         <div class="event-detail-left">
             <div class="event-top">
                 <div class="event-name"><a href="{{ route('event-detail', [ 'event_code' => $event->code ]) }}">{{ $event->name }}</a></div>
-                <div class="organizer"><img class="icon" src="{{ $event->organizer->image_pass }}" alt="">{{ $event->organizer->name }}</div>                                                                                                                             
+                <div class="organizer"><a href="{{ route('user-page-join', [ 'user_code' => $event->organizer->code ]) }}"><img class="icon" src="{{ $event->organizer->icon_min_url }}" alt="">{{ $event->organizer->name }}</a></div>
             </div>
             <div class="tags">
                 @foreach($event->tags as $tag)

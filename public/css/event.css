@@ -97,6 +97,6 @@
     font-size: 2rem;
 }
 
-.tag {
+.tag, .organizer a{
     color: #000000;
 }
