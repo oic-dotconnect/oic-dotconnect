@@ -90,6 +90,9 @@ p {
     display: flex;
 }
 
+.title {
+    margin-bottom: 20px;
+}
 
 /* 大枠の設定 この中に要素を追加していく*/
 
@@ -200,6 +203,14 @@ h1.form-title{
     background: #bbb;
 }
 
+.save {
+
+}
+
+.conf, .open {
+    background: #F6AD3C;
+}
+
 .tag {
     margin: 4px 4px 0 0;
     display: none;
@@ -238,7 +249,7 @@ h1.form-title{
 }
 
 .box-title {
-    margin: -20px -20px 0 -20px;
+    margin: -20px -20px 20px -20px;
     padding: 10px 10px;
 }
 
@@ -248,23 +259,38 @@ h1.form-title{
 }
 
 .box-title.blue {
-    background-color: #F2F3F7;
-    border-bottom:solid 2px #030377;
+    background-color: #F4F5FC;
+    border-bottom:solid 2px #3E4677;
 }
 
 .box-title.green {
-    background-color: #EDF2ED;
-    border-bottom:solid 2px #037A03;
+    background-color: #F5FCF4;
+    border-bottom:solid 2px #46773E;
 }
 
 .box-title.yellow {
-    background-color: #F7F7F2;
-    border-bottom:solid 2px #627703;
+    background-color: #FBFCF4;
+    border-bottom:solid 2px #71773E;
 }
 
 .box-title.purple {
-    background-color: #F2EFF4;
-    border-bottom:solid 2px #63427C;
+    background-color: #F6F4FC;
+    border-bottom:solid 2px #4A3E77;
+}
+
+.box-title.orange {
+    background-color: #FCF6F4;
+    border-bottom: solid 2px #BA5634;
+}
+
+.box-title.cyan {
+    background-color: #F4FBFC;
+    border-bottom: solid 2px #3E7177;
+}
+
+.box-title.pink {
+    background-color: #FCF4F9;
+    border-bottom: solid 2px #773E62;
 }
 
 .box-content {
@@ -306,4 +332,26 @@ main {
 
 .link-items {
     margin-left: 10px;    
+}
+
+
+/*info*/
+.info {
+  margin-top: 40px;
+}
+
+.info-left, .info-right {
+  width: 50%;
+}
+
+.info-left {
+  text-align: left;
+}
+
+.info-right {
+  text-align: right;
+}
+
+.info .button {
+  min-width: 150px;
 }

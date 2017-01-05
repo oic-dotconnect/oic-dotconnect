@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Tag;
 use Auth;
 use Route;
 use App\Models\User;
@@ -21,6 +22,7 @@ class EventController extends Controller
 
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->first();
 
+		
 		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
 		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get();
@@ -28,7 +30,7 @@ class EventController extends Controller
 		$data['users'] = $users->take($capacity);
 
 		$data['substitate'] = $users->splice($capacity);
-
+		
 		if($user === null){
 			return view('event/event-detail-guest', $data);
 		} else 
@@ -64,22 +66,34 @@ class EventController extends Controller
 	public function entry(Request $request)
 	{
 
-		$data = $request->except('status');
-
+		$data = $request->except(['status', 'tags']);		
 		$data['code'] = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7);
 
 		$data['organizer_id'] = Auth::user()->id;
+		
+		$tags = $request->has('tags')? $request->get('tags') : []; 
+		$event = Event::create($data);		
+		
+		foreach($tags as $tag){
+			$t = Tag::where('name', $tag)->first();
+			if(count($t)){
+				$event->tags()->attach($t->id);
+			} else {
+				$new_tag = Tag::create([
+					'name' => $tag
+				]);
+				$event->tags()->attach($new_tag->id);
+			}
+		}
 
 		if($request->get('status') == 'open')
 		{
-			$event = Event::create($data);
 			$request = Request::create(route('post-event-status',['event_code' => $event->code]),'POST',['status' => 'open']);
 			return Route::dispatch($request);    
-		}
+		} else 
 		if($request->get('status') == 'close')
-		{
-			$event = Event::create($data);
-			return redirect()->route('event-control');			
+		{							
+			return redirect()->route('event-detail', [ 'event_code' => $event->code ]);			
 		}
 
 
@@ -90,9 +104,10 @@ class EventController extends Controller
 	{
 		$status = $request->get('status');
 
-		Event::FindCode($event_code)->update(['status' => $status]);
+		$event = Event::FindCode($event_code)->first();
+		$event->update(['status' => $status]);
 
-		
+		return redirect()->route('event-detail', [ 'event_code' => $event->code ]);	
 	}
 
 	public function control()

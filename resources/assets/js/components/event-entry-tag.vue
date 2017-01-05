@@ -1,34 +1,31 @@
 <template>
-    <div>
-        <h4>タグ</h4>
+    <div>        
         <typeahead placeholder="例:php"
                     key=""
                     async="/api/candidacy_tags?q="
                     template-name="typeahead-github-template"
                     :template="customTemplate"
                     :value.sync="q"
-                    :on-hit="tagClick">
-        </typeahead>
-        <p>選択したタグ</p>
+                    :on-hit="tagClick"
+                    value-key="name">
+        </typeahead>        
         <div class="event-entry-tag-list">
             <div class="event-entry-tag" v-for="tag in tags">
-                <span class="event-entry-tag-item" for="{{tag.name}}" @click="removeTag(tag.id)">
+                <span class="event-entry-tag-item" for="{{tag.name}}" @click="removeTag(tag.name)">
                     {{tag.name}}
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </span>
             </div>
         </div>
         <div>
-            <input type="hidden" name="tags[]" v-for="tag in tags" :value="tag.id">
+            <input type="hidden" name="tags[]" v-for="tag in tags" :value="tag.name">
         </div>
     </div>
 </template>
 
 
 <script>
-    import {
-        typeahead
-    } from 'vue-strap'
+    import typeahead from './typeahead.vue'
     import tag from './tag.vue'
     import Vue from 'vue'
     import $ from 'jquery'
@@ -53,15 +50,19 @@
             }
         },
         methods: {
-            tagAdd(item) {
-                let t = this.tags.find((tag) => {
-                    return tag.name === item.name
-                })
-                if (t === undefined) this.tags.push(item);
+            tagAdd(item) {                
+                let t
+                if(this.tags.length > 0) {
+                    t = this.tags.find((tag) => {
+                        console.log(tag, item);                    
+                        return tag.name === item.name
+                    })                    
+                }
+                if (t === undefined) this.tags.push(item);                
             },
-            removeTag(id) {
+            removeTag(name) {
                 let result = this.tags.find((tag) => {
-                    return tag.id === id
+                    return tag.name === name
                 })
                 this.tags.$remove(result)
             },
@@ -70,13 +71,13 @@
                 this.$children[0].reset();
                 //window.open(items.html_url, '_blank')
             },
-        },
+        },        
     }
 </script>
 
 <style>
     .event-entry-tag-list {
-        height: 70px;
+        height: 35px;
     }
     
     .event-entry-tag {
@@ -91,7 +92,7 @@
         transition: background-color 0.2s linear;
         position: relative;
         display: inline-block;
-        padding: 12px 15px;
+        padding: 4px 4px;
         border-radius: 8px;
         background-color: #f6f7f8;
         vertical-align: middle;
@@ -99,26 +100,40 @@
     }
     
     .event-entry-tag-item i {
-        margin-left: 10px;
+        margin-left: 5px;
     }
-    
+
+    .form-control {
+        font-size: 1.2rem;
+    }
+
     .dropdown-menu {
         position: absolute;
         display: flex;
         flex-direction: column;
         z-index: 2;
+        border: solid 1px lightgray;
+        box-shadow: 0px 0px 6px 1px #e6e6e6;
     }
     
-    .dropdown-menu a {
-        display: none;
+    .dropdown-menu li {        
         box-sizing: border-box;
         -webkit-transition: background-color 0.2s linear;
         transition: background-color 0.2s linear;
         position: relative;
         display: inline-block;
-        padding: 10px 24px;
-        background-color: #f6f7f8;
+        padding: 8px;
         vertical-align: middle;
-        cursor: pointer;
+        cursor: pointer;        
+        box-shadow: 0px 0px 6px 1px #e6e6e6;
     }
+
+    .dropdown-menu li:not(.active){
+        background-color: #ffffff;
+    }
+
+    .dropdown-menu .active {
+        background-color: #d3d3d3;
+    }
+
 </style>

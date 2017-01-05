@@ -15,6 +15,8 @@ class Tag extends Model
 	protected $table = 'TAG';
 	public $timestamps = false;
 
+    protected $fillable = [ 'name' ];
+
     public function candidacy_tags()
     {
         return $this->hasOne('App\Models\Candidy_tag','tag_id');
