@@ -1,0 +1,68 @@
+.box {
+	margin-bottom: 20px;
+}
+
+.top-left {
+	flex: 3;
+	margin-right: 20px;
+}
+
+.top-right {
+	flex: 1;
+}
+
+/*イベント名*/
+.entry-event-name input{
+	font-size: 1.7rem;
+	width: 30em;
+}
+
+/*開催日*/
+.entry-date {
+	flex: 1;
+}
+
+.entry-opendate-time {
+	display: flex;
+}
+
+.entry-opendate-starttime {
+	margin-right: 10px;
+}
+
+/*募集期間*/
+.entry-recruitment {
+	flex: 1;
+}
+
+.entry-recruitmen-group {
+	display: flex;
+}
+
+.entry-recruitmen-group h3 {
+	margin: 0;
+}
+
+.entry-recruitmen-start-date, .entry-recruitmen-end-date {
+	margin-right: 10px;
+}
+
+/*定員*/
+.entry-capcity-input {
+	width: 3em;
+	font-size: 1.2rem;
+}
+
+/*info*/
+.info {
+	margin-top: 20px;
+}
+
+.info-top {
+	text-align: right;
+}
+
+.info-bottom {
+	margin-top: 60px;
+	display: flex;
+}
