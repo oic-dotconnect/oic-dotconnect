@@ -1,6 +1,5 @@
 <template>
-	 <div class="entry-room">
-		<h2 class="form-header">開催場所</h2>
+	 <div class="entry-room">		
 		<div class="sections">
 			<section class="entry-room-floar">
 				<h3>階数</h3>
@@ -34,7 +33,14 @@
 import radio from './radio.vue'
 
 export default {
-	props: [ 'floorNum', 'roomName' ],
+	props: {
+		floorNum: {
+			default : '2',
+		},
+		roomName: {
+			default: '2A',
+		}
+	},
 	data() {
 		return {
 			floors: [
@@ -168,29 +174,35 @@ export default {
 
 <style scoped>
 
+h3 {
+	margin: 0;
+}
+
 .sections {
 	margin-left: 15px;
+	display: flex;
 }
 
 .entry-room-floar, .entry-room-type, .room-name-radios{
-	margin-bottom: 10px;
+	margin-right: 20px;
 }
 
 .room-type-radios {
 	display: inline-block;
 	border: solid 1px #a6a6a6;
+	border-width: 1px;
 	border-radius: 5px;
-	background-color: #f8f8f8;
-	padding: 0px 2px;
+	padding: 0px 2px;	
+	background-color: #ffffff;
 }
 
 .room-name-radios {
 	display: inline-block;
 	border: solid 1px #a6a6a6;
+	border-width: 1px;
 	border-radius: 5px;
-	padding: 0px 2px;
-	padding-top:3px;
-	background-color: #f8f8f8;
+	padding: 1px 2px;	
+	background-color: #ffffff;
 }
 
 .radio {
