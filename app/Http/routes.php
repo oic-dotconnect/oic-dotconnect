@@ -67,9 +67,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 // });
 
 // イベント検索ページ
-Route::get('/event/search',['as' =>'event-search',function(){
-    return view('event/event-search');
-}]);
+Route::get('/event/search',['as' =>'event-search','uses' => 'EventController@search']);
 
 // イベント詳細ページ
 Route::get('/event/{event_code}',['as' =>'event-detail','uses' => 'EventController@detail']);

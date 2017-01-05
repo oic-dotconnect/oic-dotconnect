@@ -145,4 +145,10 @@ class EventController extends Controller
 
 		return redirect($redirectUrl);
 	}
+
+	public function search(Request $request) {
+		$data['tag'] = $request->has('tags')? $request->get('tags') : '';
+		$data['title'] = $request->has('title')? $request->get('title') : '';
+		return view('event/event-search', $data);
+	}
 }

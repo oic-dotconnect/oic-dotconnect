@@ -20,7 +20,9 @@
     } from '../api.js'
     export default {
         props: {
-            searchEvent: [],
+            searchEvent: {},
+            _title: {},
+            _tag: {},
         },
         data() {
             return {
@@ -38,6 +40,8 @@
             }
         },
         created() {
+            this.$set('title', this._title)
+            this.$set('tag', this._tag)
             getEvent(this.title, this.tag, this.start, this.end).end((err, res) => {
                 this.$set('searchEvent', res.body)
             })
