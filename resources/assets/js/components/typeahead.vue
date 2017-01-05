@@ -113,7 +113,7 @@ export default {
         this.items = this.primitiveData
         this.showDropdown = this.items.length > 0
       }
-	  this.current = 0
+	  this.current = -1
       if (this.async) this.query()
     },
     query() {
@@ -151,6 +151,11 @@ export default {
 	},
     hit (e) {	  
       e.preventDefault()
+	  if(this.items.length === 0 || this.current === -1){
+		this.onHit({
+			name: this.value
+		}, this)  
+	  } else 
 	  if(this.selectItem === this.value || this.selectItem[this.valueKey] === this.value){	
       	this.onHit(this.selectItem, this)
 	  } else {

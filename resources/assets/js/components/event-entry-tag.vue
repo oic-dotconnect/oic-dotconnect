@@ -50,9 +50,7 @@
             }
         },
         methods: {
-            tagAdd(item) {
-                console.log(item);
-                
+            tagAdd(item) {                
                 let t
                 if(this.tags.length > 0) {
                     t = this.tags.find((tag) => {
@@ -60,9 +58,7 @@
                         return tag.name === item.name
                     })                    
                 }
-                if (t === undefined) this.tags.push(item);
-                console.log(this.tags);
-                
+                if (t === undefined) this.tags.push(item);                
             },
             removeTag(name) {
                 let result = this.tags.find((tag) => {
