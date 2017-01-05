@@ -87,9 +87,7 @@
     padding: 10px;
     width:80%;
 }
-.event-detail-table .td-box{
-    display: flex;
-    align-items: center;
+.event-detail-table .td-box{    
 }
 .th-box{
     display: flex;
@@ -172,15 +170,21 @@
 }
 
 .user {
-    padding: 5px 10px;
-    display: flex;
-    width: 100%;
-    align-items: center;
+    padding: 5px 10px;   
+    width: 100%;    
     box-sizing: border-box;
 }
 
 .user .icon {
-    margin-right: 5px;
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;    
+}
+
+.user a{
+    display: flex;
+    align-items: center;
+    color: black;
 }
 
 .participant-list .user:not(:last-child), .substitate-list .user:not(:last-child) {    

@@ -43,8 +43,9 @@
                 </div>
                 </th>
                 <td class="td-box user">
-                  <div class="icon"><img src="{{ $event->organizer->iconMinUrl }}"></div>
-                  <p>{{ $event->organizer->name }}</p>
+                  <a href="{{ route('user-page-join', [ 'user_code' => $event->organizer->code ]) }}" class="user-name">
+                    <div class="icon"><img src="{{ $event->organizer->iconMinUrl }}"></div>
+                  {{ $event->organizer->name }}</a>
                 </td>
               </tr>
               <tr>
@@ -98,10 +99,7 @@
                 </th>
                 <td>
                   <div class="td-box">                    
-                    <p>{{ $event->entry_num() }}</p>
-                    <p>/</p>                    
-                    <p>{{ $event->capacity }}</p>
-                    <p>人</p>
+                    <div>{{ $event->entry_num() }}/{{ $event->capacity }}人</div>                    
                   </div>
                 </td>
               </tr>
@@ -126,8 +124,9 @@
               <div class="participant-list">
                 @foreach($users as $user)                    
                     <div class="user">
+                      <a href="{{ route('user-page-join', [ 'user_code' => $user->code ]) }}" class="user-name">
                         <div class="icon"><img src="{{ $user->icon_min_url }}"></div>
-                        <div>{{ $user->name }}</div>
+                      {{ $user->name }}</a>
                     </div>
                 @endforeach                
               </div>
@@ -140,8 +139,9 @@
               <div class="substitate-list">
                  @foreach($substitate as $user)
                     <div class="user">
-                        <div class="icon"><img src="{{ $user->iconMinUrl }}"></div>
-                        <div>{{ $user->name }}</div>
+                      <a href="{{ route('user-page-join', [ 'user_code' => $user->code ]) }}" class="user-name">
+                        <div class="icon"><img src="{{ $user->icon_min_url }}"></div>
+                      {{ $user->name }}</a>
                     </div>
                 @endforeach     
               </div>
