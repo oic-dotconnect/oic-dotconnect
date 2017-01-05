@@ -88,7 +88,6 @@ class EventController extends Controller
 
 		if($request->get('status') == 'open')
 		{
-			dd('fuga');
 			$request = Request::create(route('post-event-status',['event_code' => $event->code]),'POST',['status' => 'open']);
 			return Route::dispatch($request);    
 		} else 
