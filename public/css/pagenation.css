@@ -2,7 +2,7 @@
 	text-align: center
 }
 
-.page-item {
+.page-item, .pagination li{
 	display: inline-block;
 	border: solid 1px lightgray;
 	border-radius: 5px;
@@ -10,11 +10,11 @@
 	height: 32px;
 }
 
-.page-item a {
+.page-item a, .pagination a,  .pagination span{
 	line-height: 32px;
 }
 
-.page-item.active {
+.page-item.active, .pagination .active {
 	background-color: #187FC4;
 	color: #ffffff;
 }
