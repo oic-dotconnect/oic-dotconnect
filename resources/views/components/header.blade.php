@@ -17,11 +17,21 @@
               <a href="{{ route('event-control') }}" class="red">イベント管理</a>
               <a href="{{ route('event-entry') }}" class="light-gray">イベント作成</a>
             </div>
-            <a href="{{ route('user-mypage-recommend') }}">
-              <div class="icon">
+            <header-icon>
+              <div class="icon" slot="icon">
                 <img src="{{ Auth::user()->iconMinPath() }}">
-              </div>        
-            </a>
+              </div>
+              <div slot="menu" class="user-menu-item"><a href="{{ route('user-mypage') }}">マイページ</a></div>
+              <div slot="menu" class="user-menu-item"><a href="{{ route('user-setting-profile') }}">ユーザー設定</a></div>  
+              <div slot="menu" class="user-menu-item"><a href="{{ route('logout') }}">ログアウト</a></div>    
+            </header-icon>           
+            <script type="text/x-template" id="menu-template">
+              <div class="menu" style="position:absolute">                  
+                <div >マイページ</div>
+                <div >ユーザー設定</div>
+                <div >ログアウト</div>            
+              </div>
+            </script>     
           @else 
             <a href="{{ route('sociallogin') }}" class="login-btn">
               <i class="fa fa-google" aria-hidden="true"></i>
