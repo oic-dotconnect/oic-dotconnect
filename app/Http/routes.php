@@ -64,6 +64,9 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 
     // マイページ 開催イベント
     Route::get('/user/mypage/hold',['as' =>'user-mypage-hold','uses' => 'UserController@mypageHold']);
+
+    // ログアウト
+    Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
 // ②
 // });
 

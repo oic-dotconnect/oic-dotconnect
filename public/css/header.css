@@ -1,6 +1,8 @@
 .header {
 	background-color: #187FC4;
 	min-width: 1060px;
+	z-index: 1;
+    position: relative;
 }
 
 .header-inner {
@@ -52,6 +54,7 @@
 	display: flex;
 	border-radius: 5px;
 	overflow: hidden;
+	margin-right: 50px;
 }
 
 .header-right .event-action-btns a {
@@ -63,9 +66,6 @@
 	flex: 1;
 }
 
-.header-right .icon {
-	margin-left: 50px;
-}
 
 .header-right .icon > img{
 	border: solid 3px #d3d3d3;
@@ -73,6 +73,25 @@
 	width: 48px;
 	height: 48px;
 
+}
+
+.menu {
+	width: 100px;
+	background-color: #ffffff;		
+	border: solid 1px lightgray;
+}
+
+.user-menu-item {
+	display: none;
+	padding: 5px;
+}
+
+.user-menu-item a {
+	color: black;
+}
+
+.user-menu-item:not(:last-child) {
+	border-bottom: solid 1px lightgray;
 }
 
 /*----login-btn-------------------*/

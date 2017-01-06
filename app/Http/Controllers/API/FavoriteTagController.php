@@ -11,9 +11,7 @@ class FavoriteTagController extends Controller
 {
     public function index(Request $request, $code)
     {
-      	$data = User::FindCode($code)->first()->tags()->get();
-
+      	$data = User::FindCode($code)->tags;        
       	return response()->json($data);
-
     }
 }
