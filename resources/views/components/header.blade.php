@@ -24,14 +24,7 @@
               <div slot="menu" class="user-menu-item"><a href="{{ route('user-mypage') }}">マイページ</a></div>
               <div slot="menu" class="user-menu-item"><a href="{{ route('user-setting-profile') }}">ユーザー設定</a></div>  
               <div slot="menu" class="user-menu-item"><a href="{{ route('logout') }}">ログアウト</a></div>    
-            </header-icon>           
-            <script type="text/x-template" id="menu-template">
-              <div class="menu" style="position:absolute">                  
-                <div >マイページ</div>
-                <div >ユーザー設定</div>
-                <div >ログアウト</div>            
-              </div>
-            </script>     
+            </header-icon>                       
           @else 
             <a href="{{ route('sociallogin') }}" class="login-btn">
               <i class="fa fa-google" aria-hidden="true"></i>
