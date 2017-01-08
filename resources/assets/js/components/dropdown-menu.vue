@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style>		
-	.menu > .menu-item{
+	.menu > .user-menu-item{
 		display: block !important;		
 	}	 
 </style>
