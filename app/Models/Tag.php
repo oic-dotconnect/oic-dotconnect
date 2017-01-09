@@ -29,4 +29,10 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Models\User','user_tag');
     }
+
+    protected $appends = ['search_url']; 
+
+    public function getSearchUrlAttribute(){
+        return route('event-search', ['tags' => $this->name ]);
+    }
 }

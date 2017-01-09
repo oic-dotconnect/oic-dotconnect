@@ -55,7 +55,7 @@ class User extends Authenticatable
       return parent::create($merged_array);
     }
 
-    protected $appends = ['icon_url', 'icon_min_url']; 
+    protected $appends = ['icon_url', 'icon_min_url', 'userpage_url']; 
 
     public function getIconUrlAttribute(){
         return "https://s3-ap-northeast-1.amazonaws.com/linker/icons/" . $this->code . "/icon.png";
@@ -63,6 +63,10 @@ class User extends Authenticatable
 
     public function getIconMinUrlAttribute(){
         return "https://s3-ap-northeast-1.amazonaws.com/linker/icons/" . $this->code . "/icon_min.png";
+    } 
+
+    public function getUserpageUrlAttribute(){
+        return route('user-page', [ 'user_code' => $this->code ]);
     } 
 
     public function tags()

@@ -17,7 +17,7 @@
         <div class="event-detail-left">
             <div class="event-top">
                 <div class="event-name"><a :href="event.detail_url">{{event.name}}</a></div>
-                <div class="organizer"><img class="icon" :src="event.organizer.icon_min_url" alt="">{{ event.organizer.name }}</div>
+                <div class="organizer"><a :href="event.organizer.userpage_url"><img class="icon" :src="event.organizer.icon_min_url" alt="">{{ event.organizer.name }}</a></div>
             </div>
            <div class="tags">
                 <tag v-for="tag in event.tags" :tag="tag"></tag>
