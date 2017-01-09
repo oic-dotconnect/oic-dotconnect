@@ -90,7 +90,7 @@
                 refine: '',
                 sort: '',
                 page: '0',
-                dispItem: '3',
+                dispItem: '10',
             }
         },
         computed: {
