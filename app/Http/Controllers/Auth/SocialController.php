@@ -14,7 +14,7 @@ class SocialController extends Controller
 {
 
   public function getGoogleAuth(Request $request){
-    Session::put('redirect_route',$request->input('redirect_route'));
+    Session::put('redirect_url',$request->input('redirect_url'));
     return Socialite::driver('google')->redirect();
   }
 
@@ -43,7 +43,7 @@ class SocialController extends Controller
         /*既にユーザー登録されている場合*/
         $user = User::Google($data['google_id'])->first();
         Auth::login($user);        
-        if (Session::has('redirect_route')) return redirect()->route(Session::pull('redirext_route'));
+        if (Session::has('redirect_url')) return redirect()->to(Session::pull('redirect_url'));
         return redirect()->route('user-mypage-recommend');
 
       } else {
