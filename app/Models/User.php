@@ -110,7 +110,7 @@ class User extends Authenticatable
     */
     public function hold_events()
     {    
-	    return $this->events()->Role('admin');
+	    return $this->organize();
     }
 
     public function getPivotTags($user_id)
