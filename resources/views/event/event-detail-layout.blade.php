@@ -61,7 +61,13 @@
                   <p>開催日：</p>
                 </div>
                 </th>
-                <td><p>{{ $eventservice->dateYear($event->opening_date) }}/{{ $eventservice->dateMonth($event->opening_date) }}/{{ $eventservice->dateDay($event->opening_date) }} {{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}</p></td>
+                <td>
+                  @if( isset($event->opening_date) )
+                    <p>{{ $eventservice->dateYear($event->opening_date) }}/{{ $eventservice->dateMonth($event->opening_date) }}/{{ $eventservice->dateDay($event->opening_date) }} {{ $eventservice->dateTime($event->start_at) }}~{{ $eventservice->datetime($event->end_at) }}</p>
+                  @else 
+                    <p>未設定</p>
+                  @endif
+                </td>
               </tr>
               <tr>
                 <th>
@@ -85,10 +91,18 @@
                 </th>
                 <td>
                   <div class="td-box event-start">
-                    <p>募集開始：{{ $eventservice->dateYear($event->recruit_start_date) }}/{{ $eventservice->dateMonth($event->recruit_start_date) }}/{{ $eventservice->dateDay($event->recruit_start_date) }} {{ $eventservice->dateTime($event->recruit_start_time) }}</p>                    
+                    @if( isset($event->recruit_start_date) )
+                      <p>募集開始：{{ $eventservice->dateYear($event->recruit_start_date) }}/{{ $eventservice->dateMonth($event->recruit_start_date) }}/{{ $eventservice->dateDay($event->recruit_start_date) }} {{ $eventservice->dateTime($event->recruit_start_time) }}</p>                    
+                    @else 
+                      <p>募集開始：未設定</p>
+                    @endif
                   </div>                
                   <div class="td-box event-end">
+                    @if( isset($event->recruit_end_date) )
                       <p>募集終了：{{ $eventservice->dateYear($event->recruit_end_date) }}/{{ $eventservice->dateMonth($event->recruit_end_date) }}/{{ $eventservice->dateDay($event->recruit_end_date) }} {{ $eventservice->dateTime($event->recruit_end_time) }}</p>     
+                    @else 
+                      <p>募集終了：未設定</p>
+                    @endif
                   </div>
                 </td>
               </tr>
@@ -102,8 +116,12 @@
                 </div>
                 </th>
                 <td>
-                  <div class="td-box">                    
-                    <div>{{ $event->entry_num() }}/{{ $event->capacity }}人</div>                    
+                  <div class="td-box">
+                    @if( isset($event->capacity) )
+                      <div>{{ $event->entry_num() }}/{{ $event->capacity }}人</div>                    
+                    @else 
+                      <div>未設定</div>
+                    @endif
                   </div>
                 </td>
               </tr>
@@ -117,7 +135,9 @@
           <div  class="box description-box">
             <h2 class="box-title red">イベント説明</h2>
             <div class="description">
+              @if( isset($event->description) )
                 {!! $event->description !!}
+              @endif
             </div>
           </div>
           <!-- div.description -->
