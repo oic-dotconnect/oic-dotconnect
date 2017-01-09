@@ -31,7 +31,7 @@
             <div class="sort box">                            
                 <h2 class="box-title blue">並び替え</h2>
                 <div class="sorts">
-                    <input type="radio" name="sort" id="sort-hold-near" value="near" v-model="sort"><label for="sort-hold-near">開催日が近い順</label><br>
+                    <input type="radio" name="sort" id="sort-hold-near" value="near" v-model="sort" checked><label for="sort-hold-near">開催日が近い順</label><br>
                     <input type="radio" name="sort" id="sort-entry-new" value="new" v-model="sort"><label for="sort-entry-new">登録日が新しい順</label><br>
                     <input type="radio" name="sort" id="sort-entry-old" value="old" v-model="sort"><label for="sort-entry-old">登録日が古い順</label>
                 </div>                                                        
@@ -43,7 +43,7 @@
     <!-- search-result -->
 </template>
 
-<style scoped>
+<style>
     .search-result {
         margin-top: 50px;
     }
@@ -103,11 +103,9 @@
                 if (this.refine) {
                     change = this.searchEvent.filter(function(event) {
                         return event.field === self.refine
-                    })
-                    console.log("1", this.searchEvent)
+                    })                    
                 } else {
-                    change = this.searchEvent
-                    console.log("2", this.searchEvent)
+                    change = this.searchEvent                    
                 }
                 if (this.sort) {
                     change[0].created_at = "2016-11-03 17:19:19"
@@ -140,8 +138,7 @@
                                 return -1;
                             }
                         })
-                        change = start.concat(finish);
-                        console.log("3", start, finish)
+                        change = start.concat(finish);                        
                     } else if (this.sort === 'new') {
                         change = change.sort(function(val1, val2) {
                             var val1 = val1.created_at;
@@ -161,8 +158,7 @@
                             } else {
                                 return -1;
                             }
-                        })
-                        console.log("computed", change)
+                        })                        
                     }
                 }
 
@@ -173,12 +169,11 @@
                 let change = this.changeEvent;
                 let start = this.page * this.dispItem
                 let finish = (this.page + 1) * this.dispItem
-                    //console.log(start, finish)
-                console.log("page", change)
+                
                 for (; start < finish; start++) {
                     if (start >= change.length) break;
                     pageEvents.push(change[start])
-                        //console.log(change)
+                
                 }
                 return pageEvents
             },

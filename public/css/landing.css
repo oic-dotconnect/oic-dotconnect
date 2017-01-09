@@ -4,6 +4,7 @@ body {
 
 .heading {
   border-bottom: dotted 3px;
+  margin-bottom: 20px;
 }
 
 /*************************
@@ -121,4 +122,12 @@ body {
   max-width: 350px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.about-content ul {
+  margin-left: 60px;
+}
+
+.about-content li {
+  list-style:  circle
 }

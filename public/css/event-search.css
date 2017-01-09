@@ -6,9 +6,17 @@
 .inner {
     margin: 20px 0;
 }
+.search-form form {
+    width: 100%;
+}
+.search-button {
+    text-align: center;
+    margin-top: 40px;
+}
 
-.search {
-    border-bottom: 1px solid #f1f1f1;
+.button.search {
+    width: 150px;
+    background-color: #187FC4;
 }
 
 .search-item {
