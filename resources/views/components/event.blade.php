@@ -9,9 +9,15 @@
     <!-- result-date -->
     <div class="event-state">
         <div class="event-field event-top {{ $event->field }}">{{ $eventservice->field($event->field) }}</div>
-        <p class="state {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
-            {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
-        </p>
+        @if($event->status === 'stop')
+            <p class="state stop">
+                中止
+            </p>
+        @else 
+            <p class="state {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
+                {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
+            </p>
+        @endif
     </div>
     <!-- result-state -->
     <div class="event-detail">
