@@ -50,7 +50,7 @@ class UserController extends Controller
 	}
 
 	public function userpageJoin(Request $request, $userCode) {
-		if(Auth::user()->code === $userCode) return redirect()->route('user-mypage-join');
+		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-join');
 		$user = User::findCode($userCode);
 		$data['user'] = $user;
 		$data['events'] = $user->joined_events()->paginate(10);		
@@ -58,7 +58,7 @@ class UserController extends Controller
 	}
 
 	public function userpageHold(Request $request, $userCode) {
-		if(Auth::user()->code === $userCode) return redirect()->route('user-mypage-hold');
+		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-hold');
 		$user = User::findCode($userCode);
 		$data['user'] = $user;
 		$data['events'] = $user->hold_events()->paginate(10);		
