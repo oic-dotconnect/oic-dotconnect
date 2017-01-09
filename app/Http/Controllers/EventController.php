@@ -18,18 +18,21 @@ class EventController extends Controller
 	{
 		$user = Auth::User();
 
-		$capacity = Event::FindCode($event_code)->value('capacity');
+		$capacity = Event::FindCode($event_code)->first()->capacity;
 
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->first();
-
-		
+	
 		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
 		$users = Event::FindCode($event_code)->first()->users()->orderby('user_event.created_at','desc')->get();
 
-		$data['users'] = $users->take($capacity);
-
-		$data['substitate'] = $users->splice($capacity);
+		if( $capacity !== '' ){
+			$data['users'] = $users->take($capacity);
+			$data['substitate'] = $users->splice($capacity);
+		} else {
+			$data['users'] = [];
+			$data['substitate'] = [];
+		}
 		
 		if($user === null){
 			return view('event/event-detail-guest', $data);
