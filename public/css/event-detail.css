@@ -19,8 +19,7 @@
 }
 .field {
     display: flex;
-    align-items: center;
-    background-color: #C7000B;
+    align-items: center;    
     border-radius: 5px;
     width: 107px;
     height: 107px;

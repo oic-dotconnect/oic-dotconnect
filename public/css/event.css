@@ -9,7 +9,8 @@
 
 .event-date {
     display: flex;
-    width: 16%;
+    width: 90px;
+    margin-right: 10px;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -21,9 +22,10 @@
 
 .event-field {
     display: flex;
-    width: 90%;
+    width: 80px;
+    height: 80px;
     margin: 0 auto;
-    background: indianred;
+    color: #ffffff;    
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
@@ -31,17 +33,32 @@
 
 .event-state {
     display: flex;
-    width: 15%;
+    width: 80px;
+    margin-right: 10px;
     flex-direction: column;
+    justify-content: space-around
 }
 
 .event-state .state {
-    width: 90%;
+    width: 80px;
     padding: 5px 0;
     margin: 10px auto 0;
     text-align: center;
-    border: 1px solid;
+    color: #ffffff;
     box-sizing: border-box;
+}
+
+/*state 状態*/
+.state.finished {
+    background-color: #aaaaaa;
+}
+
+.state.before {
+    background-color: #F0B55E;
+}
+
+.state.open {
+    background-color: #FF6600;
 }
 
 .event-top {
@@ -63,7 +80,8 @@
 }
 
 .event-detail-left .event-name {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    height: 56px;
 }
 
 .event-detail-left .event-name a, .event-detail-left .tag a {
@@ -88,14 +106,14 @@
 }
 
 .event-detail-right {
-    width: 150px;
+    width: 80px;
     display: flex;
     flex-direction: column-reverse;    
     text-align: right;
 }
 
 .event-detail-right span{
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .tag, .organizer a{
