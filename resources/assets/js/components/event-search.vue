@@ -1,5 +1,5 @@
 <template>
-    <div class="search">
+    <div class="search-form">
         <form action="">
             <h2>タイトル</h2>
             <input type="text" v-model="title">
@@ -7,8 +7,8 @@
             <input type="text" v-model="tag">
             <h2>開催日</h2>
             <input type="date" v-model="start">~<input type="date" v-model="end">
-            <div class="search-btn">
-                <button type="button" class="button blue" @click="search">検索</button>
+            <div class="search-button">
+                <button type="button" class="button search" @click="search">検索</button>
             </div>
         </form>
     </div>

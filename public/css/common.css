@@ -355,3 +355,24 @@ main {
 .info .button {
   min-width: 150px;
 }
+
+/*field　分野*/
+.it {    
+    background-color: #00AFEC;
+}
+
+.game {
+    background-color: #EA5532;
+}
+
+.movie {
+    background-color: #F6AD3C;
+}
+
+.design {
+    background-color: #E85298;
+}
+
+.other {
+    background-color: #A64A97;
+}
