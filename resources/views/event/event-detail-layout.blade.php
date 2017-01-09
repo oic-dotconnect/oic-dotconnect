@@ -9,27 +9,31 @@
 @section('content')
     <div class="wrapper">
       <div class="event-box">
+        @yield('hold')            
         <div class="box">
           <div class="inner">
+            @if($event->status === 'stop')
+              <div class="stop-message">このイベントは中止されました。</div>
+            @endif
             <div class="heading">
               <div class="filed-box">
                   <div class="field {{ $event->field }}">
                       <p>{{ $eventservice->field($event->field) }}</p>
                   </div>
                 <!-- div.field -->
+              </div>                  
+              <div class="event-detail-header">
+                <div class="title">
+                    <p>{{ $event->name }}</p>
+                </div>
+                <!-- div.title -->
+                <div class="tags">
+                    @foreach ($tags as $tag)
+                        @include('components.tag', [ 'tag' => $tag ])
+                    @endforeach                      
+                </div>
+                <!-- div.tags -->
               </div>
-                  <div class="event-detail-header">
-                    <div class="title">
-                        <p>{{ $event->name }}</p>
-                    </div>
-                    <!-- div.title -->
-                    <div class="tags">
-                        @foreach ($tags as $tag)
-                            @include('components.tag', [ 'tag' => $tag ])
-                        @endforeach                      
-                    </div>
-                    <!-- div.tags -->
-                  </div>
             </div>
             <!-- div.heading -->
             <table class="event-detail-table table">
@@ -104,7 +108,7 @@
                 </td>
               </tr>
             </table>
-            <div class="event-entry">
+            <div class="event-entry">              
               @yield('subscription')
             </div>
           </div>

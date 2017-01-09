@@ -199,16 +199,20 @@ h1.form-title{
     font-size: 1rem;
 }
 
-.cancell {
+button[disabled] {
     background: #bbb;
 }
 
-.save {
+.cancell {
+    background-color: #E5004F;
+}
 
+.save, .edit {
+    background-color: #8FC31F
 }
 
 .conf, .open {
-    background: #F6AD3C;
+    background: #F39800;
 }
 
 .tag {
@@ -251,6 +255,8 @@ h1.form-title{
 .box-title {
     margin: -20px -20px 20px -20px;
     padding: 10px 10px;
+    width: calc(100% + 40px);    
+    box-sizing: border-box;
 }
 
 .box-title.red {

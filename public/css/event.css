@@ -61,6 +61,12 @@
     background-color: #FF6600;
 }
 
+.state.stop {
+    background-color: #EF5F62;
+}
+
+
+
 .event-top {
     min-height: 70px;
 }

@@ -1,5 +1,5 @@
 <template>
-    <a class="tag" href="">{{tag.name}}</a><wbr>
+    <a class="tag" :href="tag.search_url">{{tag.name}}</a><wbr>
 </template>
 
 <script>

@@ -95,9 +95,41 @@ class EventController extends Controller
 		{							
 			return redirect()->route('event-detail', [ 'event_code' => $event->code ]);			
 		}
+	}
+
+	public function postEdit(Request $request, $event_code)
+	{
+
+		$data = $request->except(['status', 'tags', '_token', '_place', 'roomType']);				
+		$event = Event::findCode($event_code)->first();		
+		$event->update($data);
+
+		$tags = $request->has('tags')? $request->get('tags') : []; 
 
 
+		$_tags = [];
+		foreach($tags as $tag){
+			$t = Tag::where('name', $tag)->first();
+			if(count($t)){
+				$_tags[] = $t->id;
+			} else {
+				$new_tag = Tag::create([
+					'name' => $tag
+				]);
+				$_tags[] = $new_tag->id;
+			}
+		}		
+		$event->tags()->sync($_tags);
 
+		if($request->get('status') == 'open')
+		{
+			$request = Request::create(route('post-event-status',['event_code' => $event->code]),'POST',['status' => 'open']);
+			return Route::dispatch($request);    
+		} else 
+		if($request->get('status') == 'close')
+		{							
+			return redirect()->route('event-detail', [ 'event_code' => $event->code ]);			
+		}
 	}
 
 	public function status(Request $request,$event_code)

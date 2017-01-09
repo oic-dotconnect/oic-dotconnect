@@ -41,6 +41,7 @@
             typeahead: typeahead,
             tag
         },
+        props: [ 'value' ],
         data() {
             return {
                 customTemplate: '{{item.name}}',
@@ -49,12 +50,22 @@
                 q: ''
             }
         },
+        created() {            
+            if( this.value) {
+                let tags = this.value.split(',')
+                tags = tags.map((name) => {
+                    return {
+                        name 
+                    }
+                })
+                this.$set('tags', tags)
+            }
+        },
         methods: {
             tagAdd(item) {                
                 let t
                 if(this.tags.length > 0) {
-                    t = this.tags.find((tag) => {
-                        console.log(tag, item);                    
+                    t = this.tags.find((tag) => {                        
                         return tag.name === item.name
                     })                    
                 }

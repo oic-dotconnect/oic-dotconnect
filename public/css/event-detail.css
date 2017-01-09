@@ -113,22 +113,9 @@
     display: flex;
     justify-content: center;
 }
-.event-entry input.entry-button{
-    background: #F6AD3C;
-    color: #fff;
-    width: 30%;
-    height: 50px;
-    padding: 5px 0;
-    border: solid 1px #D28300;
-    border-radius: 5px;
-    letter-spacing: 5px;
-    Word-break: break-all;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: background-color 0.2s linear; */
-}
-.event-entry input.entry-button:hover{
-    background-color:#F39800;
+
+.event-entry .button {
+    min-width: 150px;
 }
 
 .description-box {
@@ -228,4 +215,33 @@
 
 .join {
     background-color: #F6AD3C;
+}
+
+/*主催者メニュー*/
+.hold-menu {
+  margin-bottom: 20px;
+}
+
+.hold-event-status {
+    font-size: 1.2rem
+}
+
+.hold-menu-content {
+    display: flex;
+    align-items: center;
+}
+
+.hold-event-control {
+     margin-left: auto;
+}
+
+.hold-event-control form, .hold-event-control {
+    display: inline-block;
+}
+
+.stop-message {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
