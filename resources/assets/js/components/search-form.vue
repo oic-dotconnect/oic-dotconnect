@@ -53,8 +53,7 @@
     }
 
     .result-event-list {
-        margin-top: 20px;
-        height: 1000px;
+        margin-top: 20px;        
     }
 
     .result-controle{
