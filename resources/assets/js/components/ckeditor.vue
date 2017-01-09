@@ -1,6 +1,6 @@
 <template>
-	<div class="ckeditor">
-			<textarea class="ckeditor__textarea" name="description" id="ckeditor" v-ckeditor="editorcontent" :editorcontent="editorcontent" debounce="100"></textarea>
+	<div class="ckeditor">        
+        <textarea class="ckeditor__textarea" name="description" id="ckeditor" v-ckeditor="editorcontent" :editorcontent="editorcontent" debounce="100" ></textarea>
 	</div>
 </template>
 
@@ -14,27 +14,26 @@
                 twoWay: true,
                 params: ['editorcontent'],
                 setupEditor() {
-                    var self = this
-                    console.log(self.Format);
+                    var self = this                    
                     CKEDITOR.replace(self.el.id, {
-                            toolbarGroups: [{
-                                name: 'basicstyles'
-                            }, {
-                                name: 'list'
-                            }, {
-                                name: 'align'
-                            }, {
-                                name: 'styles'
-                            }, {
-                                name: 'insert'
-                            }, {
-                                name: 'undo'
-                            }, ],
-                            removeButtons: 'Styles,Subscript,Superscript,Image,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe'
-                        }),
-                        CKEDITOR.instances[self.el.id].on('change', () => {
-                            self.set(CKEDITOR.instances[self.el.id].getData())
-                        })
+                        toolbarGroups: [{
+                            name: 'basicstyles'
+                        }, {
+                            name: 'list'
+                        }, {
+                            name: 'align'
+                        }, {
+                            name: 'styles'
+                        }, {
+                            name: 'insert'
+                        }, {
+                            name: 'undo'
+                        }, ],
+                        removeButtons: 'Styles,Subscript,Superscript,Image,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe'
+                    })
+                    CKEDITOR.instances[self.el.id].on('change', () => {
+                        self.set(CKEDITOR.instances[self.el.id].getData())
+                    })                                                                    
                 },
                 bind() {
                     this.vm.$nextTick(this.setupEditor.bind(this))
@@ -57,6 +56,10 @@
                 editorcontent: ''
             }
         },
+        created(){
+            this.$set('editorcontent', this.value)
+        },
+        props: [ 'value' ]
     }
 </script>
 
