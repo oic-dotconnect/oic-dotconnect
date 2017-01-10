@@ -71,11 +71,11 @@ class User extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag','user_tag')->withPivot('noticed');
+        return $this->belongsToMany('App\Models\Tag','USER_TAG')->withPivot('noticed');
     }
     public function events()
     {
-        return $this->belongsToMany('App\Models\Event','user_event')->withPivot('role','entry');
+        return $this->belongsToMany('App\Models\Event','USER_EVENT')->withPivot('role','entry');
     }
 
     public function organize()
