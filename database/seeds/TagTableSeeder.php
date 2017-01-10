@@ -11,10 +11,14 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 0;
-        for ($i=0; $i < 55; $i++) {
+        $json = file_get_contents(__DIR__ . '/../mock-data/mock-tag.json');
+        if ($json === false) {
+          throw new \RuntimeException('file not found.');
+        }
+        $tags = json_decode($json, true);
+        foreach ($tags as $tag) {
           App\Models\Tag::create([
-            'name' => 'Tag' . $count++
+            'name' => $tag
           ]);
         }
     }
