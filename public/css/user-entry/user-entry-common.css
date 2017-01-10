@@ -1,0 +1,83 @@
+.user-entry-title {
+  margin-bottom: 20px;
+}
+
+.register-form .form-input{
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 5px 5px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.fav-register{
+      background: #00AFEC;
+      width: 300px;
+}
+
+.register-step{
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+    align-items: center;
+}
+
+.register-step-item{
+    flex: 2;
+    text-align: center;
+    padding: 20px 10px;    
+    background-color: #ededed;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;    
+}
+
+.register-step-item.active{
+  /*color: white; */
+  background: #00AFEC;
+}
+
+.fa{
+  flex: 0.5;
+  text-align: center;
+}
+
+.form-item {
+  margin: 0 0 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-item p{ 
+  font-size: 0.7rem;
+  color: red;
+  align-items: baseline;
+}
+
+.fa-arrow-right:before {
+content: "\f061";
+}
+
+.info {
+  margin-top: 40px;
+}
+
+.info-left, .info-right {
+  width: 50%;
+}
+
+.info-left {
+  text-align: left;
+}
+
+.info-right {
+  text-align: right;
+}
+
+.info .button {
+  min-width: 150px;
+}

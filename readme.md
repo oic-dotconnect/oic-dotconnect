@@ -5,12 +5,19 @@
 ```
 sudo composer install
 cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
 php artisan migrate --seed
 ```
 
 ### 起動
 ```
 php artisan serve
+```
+
+### ルート定義ファイルの追加
+```
+php artisan route:make route_name
 ```
 
 ## Vue

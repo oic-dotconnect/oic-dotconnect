@@ -1,0 +1,35 @@
+.conf-profile, .conf-tag {
+  margin-bottom: 60px;
+}
+
+.candidate-tag-list{
+  margin-top: 20px;
+}
+
+.page-move{
+  margin-top: 20px;
+  text-align: end;
+}
+
+.prof-move{
+  width: 300px;
+  background-color: #0097DB;
+}
+
+.tag-move{
+  width: 300px;
+  background-color: #009140;
+}
+
+.input-info{
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px 5px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: #EAEAEA;
+}
+
+.introduction .input-info{
+  height: 200px;
+}

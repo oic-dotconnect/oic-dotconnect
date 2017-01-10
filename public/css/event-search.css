@@ -1,0 +1,81 @@
+/* イベント検索 */
+.primary {
+    box-shadow: none;
+}
+
+.inner {
+    margin: 20px 0;
+}
+.search-form form {
+    width: 100%;
+}
+.search-button {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.button.search {
+    width: 150px;
+    background-color: #187FC4;
+}
+
+.search-item {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.refine-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.refine-item {
+    display: flex;
+    margin: 15px 14px;
+    font-size: 1.2rem;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-result > div {
+    display: flex;
+}
+
+.result-list {
+    width: calc(100% - 200px)
+}
+
+.result-controle {
+    width: 200px;
+}
+
+
+.result-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.capacity {
+    font-size: 1.4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .primary {
+        margin: 0;
+    }
+    .table_title {
+        width: 30%;
+    }
+    .table_summary {
+        width: 70%;
+    }
+    .result-item {
+        font-size: 9px;
+        font-size: .9rem;
+    }
+    .capacity {
+        font-size: 11px;
+        font-size: 1.1rem;
+    }
+}

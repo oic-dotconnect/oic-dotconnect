@@ -1,0 +1,384 @@
+/* 共通 */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}    
+
+body {
+    position: relative;
+    margin: 0;
+    background-color:  #F5FAFD;
+    font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+h5 {
+    font-size:0.83rem;
+}
+
+h6 {
+    font-size:0.67rem;
+}
+
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+td {
+    padding: 0;
+}
+
+input, textarea {
+    border:solid 1px #aab2bd;
+    border-radius: 4px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 0px;
+}
+
+.text {
+    width: 30%;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    text-indent: 15px;
+}
+
+.text-big {
+    width: 80%;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+/* 大枠の設定 この中に要素を追加していく*/
+
+.wrapper {
+    display: flex;
+    width: 1060px;    
+    margin: 20px auto; 
+    flex-direction: column;
+    /*box-shadow: 0px 0px 6px 1px #e6e6e6;*/
+    box-sizing: border-box;
+}
+
+
+/* 最上部　タイトル部分 */
+
+.top {
+    width: 100%;
+    background: white;
+}
+
+.top h1 {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 3px solid black;
+}
+
+h1.form-title{
+    margin: 0;
+}
+
+
+/* メイン部分 */
+
+.primary {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 6px 1px #e6e6e6;
+}
+
+
+/* メイン部分　中 */
+
+.inner {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 40px 0;
+    background-color: white;
+    flex-direction: column;
+}
+
+/* form-header */
+
+/* tableの設定 */
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table_title {
+    width: 20%;
+    text-align: left;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+
+.table_title p {
+    font-size: 1.4rem;
+}
+
+.table_summary {
+    width: 82%;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+
+.table_summary p {
+    float: left;
+    font-size: 1.2rem;
+    margin-right: 20px;
+}
+
+.row{
+    display: flex;
+    flex-direction:row;
+    }
+
+.col{
+    flex: 1;
+    display: flex;
+    flex-direction:column;
+}
+
+.button {
+    border:solid 1px #aab2bd;
+    border-radius: 5px;
+    color: #ffffff;
+    display: inline-block;
+    text-align: center;
+    padding: 6px;
+    font-size: 1rem;
+}
+
+button[disabled] {
+    background: #bbb;
+}
+
+.cancell {
+    background-color: #E5004F;
+}
+
+.save, .edit {
+    background-color: #8FC31F
+}
+
+.conf, .open {
+    background: #F39800;
+}
+
+.tag {
+    margin: 4px 4px 0 0;
+    display: none;
+    box-sizing: border-box;   
+    display: inline-block;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: #f6f7f8;    
+    cursor: pointer;
+}
+
+.icon > img {
+    width: 100%;
+    height: 100%;
+    border: solid 3px #d3d3d3;
+    border-radius: 50%;
+}
+
+.input-form.required h2::after {
+    content: "必須";
+    display: inline-block;
+    font-size: small;
+    color: red;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+/*-----------------box-------------------*/
+.box{  
+  border: solid 1px lightgray;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 6px 1px #e6e6e6;
+  border-radius: 5px;
+  width: 100%;
+  padding: 20px;
+}
+
+.box-title {
+    margin: -20px -20px 20px -20px;
+    padding: 10px 10px;
+    width: calc(100% + 40px);    
+    box-sizing: border-box;
+}
+
+.box-title.red {
+    background-color: #F9F2F2;
+    border-bottom:solid 2px #750303;
+}
+
+.box-title.blue {
+    background-color: #F4F5FC;
+    border-bottom:solid 2px #3E4677;
+}
+
+.box-title.green {
+    background-color: #F5FCF4;
+    border-bottom:solid 2px #46773E;
+}
+
+.box-title.yellow {
+    background-color: #FBFCF4;
+    border-bottom:solid 2px #71773E;
+}
+
+.box-title.purple {
+    background-color: #F6F4FC;
+    border-bottom:solid 2px #4A3E77;
+}
+
+.box-title.orange {
+    background-color: #FCF6F4;
+    border-bottom: solid 2px #BA5634;
+}
+
+.box-title.cyan {
+    background-color: #F4FBFC;
+    border-bottom: solid 2px #3E7177;
+}
+
+.box-title.pink {
+    background-color: #FCF4F9;
+    border-bottom: solid 2px #773E62;
+}
+
+.box-content {
+    
+}
+
+main {
+    min-height: calc(100vh - 270px);
+}
+
+#footer {    
+    background-color: #082B42;
+    height: 200px;
+    padding-top: 20px;
+    margin-top: 60px;
+}
+
+.footer-content{
+    width: 1060px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+}
+
+.footer-content a {
+    color: white;
+}
+
+.link-group {
+    width: 150px;
+    margin-right: 20px;
+}
+
+.link-group-heading {
+    font-size: 1.2rem;
+    border-bottom: solid 1px white;
+    margin-bottom: 8px;
+}
+
+.link-items {
+    margin-left: 10px;    
+}
+
+
+/*info*/
+.info {
+  margin-top: 40px;
+}
+
+.info-left, .info-right {
+  width: 50%;
+}
+
+.info-left {
+  text-align: left;
+}
+
+.info-right {
+  text-align: right;
+}
+
+.info .button {
+  min-width: 150px;
+}
+
+/*field　分野*/
+.it {    
+    background-color: #00AFEC;
+}
+
+.game {
+    background-color: #EA5532;
+}
+
+.movie {
+    background-color: #F6AD3C;
+}
+
+.design {
+    background-color: #E85298;
+}
+
+.other {
+    background-color: #A64A97;
+}
