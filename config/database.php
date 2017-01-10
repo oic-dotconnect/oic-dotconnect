@@ -60,8 +60,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => $host,
-            'port' => $port,
+            'host' => $host,            
             'database' => $database,
             'username' => $username,
             'password' => $password,
