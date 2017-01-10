@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('ja_JP');
-        for ($i=0; $i < 40; $i++) {
+        for ($i=1; $i < 40; $i++) {
           App\Models\User::create([
             'email' => sprintf('b%04d@oic.jp', $i),
             'name' => 'nickname'.$i,

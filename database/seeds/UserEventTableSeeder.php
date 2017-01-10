@@ -18,8 +18,8 @@ class UserEventTableSeeder extends Seeder
     public function run()
     {
 
-        $z=0;
-        for($i=0;$i<11;$i++){
+        $z=1;
+        for($i=1;$i<11;$i++){
             DB::table('USER_EVENT')->insert([
                 'event_id' => $i,
                 'user_id' => $z,
@@ -29,8 +29,8 @@ class UserEventTableSeeder extends Seeder
             }
 
         $z=6;
-        for($i=0;$i<11;$i++){
-            for($j=0;$j<5;$j++){
+        for($i=1;$i<11;$i++){
+            for($j=1;$j<5;$j++){
         DB::table('USER_EVENT')->insert([
             'event_id' => $i,
             'user_id' => $z,
