@@ -20,7 +20,7 @@ class UserEventTableSeeder extends Seeder
 
         $z=0;
         for($i=0;$i<11;$i++){
-            DB::table('user_event')->insert([
+            DB::table('USER_EVENT')->insert([
                 'event_id' => $i,
                 'user_id' => $z,
                 'role' => 'admin'
@@ -31,7 +31,7 @@ class UserEventTableSeeder extends Seeder
         $z=6;
         for($i=0;$i<11;$i++){
             for($j=0;$j<5;$j++){
-        DB::table('user_event')->insert([
+        DB::table('USER_EVENT')->insert([
             'event_id' => $i,
             'user_id' => $z,
             'role' => 'member'

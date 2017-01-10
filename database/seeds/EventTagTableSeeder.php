@@ -15,7 +15,7 @@ class EventTagTableSeeder extends Seeder
       $z=0;
       for($i=0;$i<11;$i++){
         for($j=0;$j<5;$j++){
-        DB::table('event_tag')->insert([
+        DB::table('EVENT_TAG')->insert([
           'event_id'=> $i,
           'tag_id' => $z
           ]);
