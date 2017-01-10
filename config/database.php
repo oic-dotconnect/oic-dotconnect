@@ -1,5 +1,11 @@
 <?php
-
+$url = parse_url(env("DATABASE_URL"));
+$scheme = isset($url['scheme'])? $url['scheme'] : env('DB_CONNECTION', 'mysql');
+$host = isset($url['host'])? $url['host'] : env('DB_HOST', 'localhost');
+$port = isset($url['port'])? $url['port'] :env('DB_PORT', '5432');
+$database = isset($url['path'])? substr($url["path"], 1) :env('DB_DATABASE', 'forge');
+$username = isset($url['user'])? $url['user'] : env('DB_USERNAME', 'forge');
+$password = isset($url['pass'])? $url['pass'] : env('DB_PASSWORD', '');
 return [
 
     /*
@@ -26,7 +32,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => $scheme,
 
     /*
     |--------------------------------------------------------------------------
@@ -68,11 +74,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => $host,
+            'port' => $port,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
