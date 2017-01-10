@@ -80,7 +80,7 @@ class EventSeeder extends Seeder
         $date = $datetime->format('Y-m-d');
         $time = $datetime->format('H:i:s');
         App\Models\Event::create([
-          'code' => array_reduce(range(1, 8), function($p){ return $p.str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz')[0]; }),
+          'code' => array_reduce(range(1, 7), function($p){ return $p.str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz')[0]; }),
           'name' => 'PhotoShop勉強会' . $i,
           'field' => 'design',
           'description' => '<h1>説明</h1>',
