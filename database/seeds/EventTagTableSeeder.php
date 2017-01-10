@@ -12,7 +12,7 @@ class EventTagTableSeeder extends Seeder
      */
     public function run()
     {
-      $z=0;
+      $z=1;
       for($i=1;$i<11;$i++){
         for($j=1;$j<5;$j++){
         DB::table('EVENT_TAG')->insert([
