@@ -25,7 +25,7 @@
           <ul class="link-items">
             <li><a href="{{ route('event-entry') }}">イベント登録</a></li>
             <li><a href="{{ route('event-search') }}">イベント検索</a></li>
-            <li><a href="{{ route('event-control') }}">イベント管理</a></li>
+            <li><a href="{{ route('user-event-control') }}">イベント管理</a></li>
           </ul>
         </div>
         <div class="link-group">
