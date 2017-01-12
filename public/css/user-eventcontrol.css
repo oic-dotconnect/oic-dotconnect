@@ -1,0 +1,112 @@
+.control-eventitem .button {
+	padding: 2px 6px;
+	border-radius: 2px;
+}
+
+.control-eventitem {
+	display: flex;
+	margin-bottom: 10px;
+	box-shadow: 0px 0px 6px 1px #e6e6e6;	
+}
+
+.control-eventitem-left, .control-eventitem-center, .control-eventitem-right {		
+	border-left: solid 1px #e6e6e6;
+}
+
+.control-eventitem-left-content, .control-eventitem-center-content, .control-eventitem-right-content {
+	padding: 10px 20px;
+	height: 100%;
+}
+
+.control-eventitem-left-content {	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+} 
+
+/*イベント状態*/
+.control-eventitem-status {
+	width: 70px;
+	text-align: center;
+	padding: 4px;	
+	color: #ffffff;	
+}
+
+.control-eventitem-status.close {
+	background-color: #009944;
+}
+
+.control-eventitem-status.open {
+	background-color: #F39800;
+}
+
+.control-eventitem-status.stop {
+	background-color: #494949;
+}
+
+/*管理イベントアイテム　center*/
+.control-eventitem-center-content {
+	display: flex;
+}
+
+/*管理イベントアイテム　center-left*/
+.control-eventitem-center-left {	
+	text-align: center;
+	margin-right: 10px;
+}
+
+/*イベント分野*/
+.control-eventitem-field{
+	width: 60px;
+	height: 60px;	
+	line-height: 60px;
+	color: #ffffff;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+/*イベント*/
+.control-eventitem-condition{
+	color: #ffffff;
+	padding: 2px;
+}
+
+.control-eventitem-condition.before{
+	background-color: #F0B55E;
+}
+
+.control-eventitem-condition.finished{
+	background-color: #aaaaaa;
+}
+
+/*管理イベントアイテム　center-right*/
+.control-eventitem-center-right {	
+	width: 400px;
+}
+
+.control-eventitem-name {
+	font-size: 24px;
+	height: 38px;
+	margin-bottom: 10px;
+}
+
+.control-eventitem-name a {
+	color: #000000;
+}
+
+.control-eventitem-opening-date, .control-eventitem-entry-num {
+	color: #494949;
+} 
+
+.control-eventitem-right {
+	margin-left: auto;
+}
+
+.control-eventitem-right-content {
+	display: flex;
+	flex-direction: column;	
+}
+
+.control-eventitem-right .button {
+	margin-bottom: 10px;
+}
