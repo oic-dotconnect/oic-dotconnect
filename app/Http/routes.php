@@ -42,7 +42,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::post('/event/{event_code}/edit', ['as' => 'post-event-edit', 'uses' => 'EventController@postEdit']);
     
     // イベント管理ページ
-    Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
+    Route::get('/user/eventcontrol',['as' =>'user-event-control','uses' => 'userController@eventControl']);
 
     // お気に入りタグ編集ページ
     Route::get('/user/setting/tag',['as' =>'user-setting-tag','uses' => 'UserController@editFavoriteTags']);

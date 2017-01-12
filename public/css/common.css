@@ -203,15 +203,15 @@ button[disabled] {
     background: #bbb;
 }
 
-.cancell {
+.button.cancell, .button.delete {
     background-color: #E5004F;
 }
 
-.save, .edit {
+.button.save, .button.edit {
     background-color: #8FC31F
 }
 
-.conf, .open {
+.button.conf, .button.open {
     background: #F39800;
 }
 

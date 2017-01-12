@@ -61,7 +61,7 @@ class UserController extends Controller
 		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-hold');
 		$user = User::findCode($userCode);
 		$data['user'] = $user;
-		$data['events'] = $user->hold_events()->paginate(10);		
+		$data['events'] = $user->hold_events()->paginate(10);
         return view('user/user-userpage-hold', $data);    
 	}
 
@@ -144,4 +144,11 @@ class UserController extends Controller
 		return redirect()->route('landing');
 	}
 
+	public function eventControl(){
+		$user = Auth::user();
+		$data['user'] = $user;
+		$data['organize_event'] = $user->organize()->orderBy('opening_date', 'DESC')->paginate(10);
+
+		return view('user.user-eventcontrol', $data);
+	}
 }

@@ -137,4 +137,13 @@ class EventService
         }
         return $c;
     }
+
+    public function status($event) {
+        $status_name = [
+            'open' => '公開中',
+            'close' => '下書き',
+            'stop' => '中止'
+        ];
+        return $status_name[$event->status];
+    }
 }
