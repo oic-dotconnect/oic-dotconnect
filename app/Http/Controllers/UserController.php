@@ -144,4 +144,11 @@ class UserController extends Controller
 		return redirect()->route('landing');
 	}
 
+	public function eventControl(){
+		$user = Auth::user();
+		$data['user'] = $user;
+		$data['organize_event'] = $user->organize;
+
+		return view('user.user-eventcontrol', $data);
+	}
 }
