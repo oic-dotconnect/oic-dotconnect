@@ -33,6 +33,15 @@
                 <input type="text" class="border form-input" name="name" value={{ $user->name }}>
               </div>
             </div>
+            @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('name') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
             <div class="user-code box input-form">          
               <h2 class="box-title green">ユーザコード</h2>        
               <div class="code-input">
@@ -49,6 +58,15 @@
               {{ $user->introduction }}
             </textarea>
           </div>
+          @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('introduction') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
         </div>
 
         <div class="row info">

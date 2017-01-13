@@ -13,6 +13,8 @@ use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Http\Requests\UserSettingProfileRequest;
+
 
 
 class UserController extends Controller
@@ -90,7 +92,7 @@ class UserController extends Controller
 		return view('user/user-setting-leave');
 	}
 
-	public function saveProfile(Request $request)
+	public function saveProfile(UserSettingProfileRequest $request)
 	{
 		$user = Auth::user();
 		$data = $request->all();

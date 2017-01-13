@@ -31,12 +31,5 @@
 @endsection
 
 @section('subscription')
-@if ($event->status == "open")
-<button type="button" disabled="disabled" class="button join">参加する</button>
-@elseif ($event->field == "close")
-{{ Form::open(['route' => ['post-event-join', $event->code] ]) }}
-	<button type="submit" class="button join" >参加する</button>
-{{ Form::close() }}
-@endif
-
+@include('components.event-detail-button', [ 'current' => 'hold' ])
 @endsection

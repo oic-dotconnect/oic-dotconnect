@@ -118,7 +118,7 @@ class User extends Authenticatable
         return $this->tags()->newPivotStatement()->where('user_id', $user_id);
     }
 
-    public function iconUp($file_path){
+    public function iconUp($file_path, $delete = true){
         $image = Image::make($file_path);
         $width = $image->width();
         $height = $image->height();
@@ -142,7 +142,10 @@ class User extends Authenticatable
 
         $result['icon_min'] = AwsUploader::up("icons/" . $this->code . "/icon_min.png", public_path('icon_min.png'));
         $result['icon'] = AwsUploader::up("icons/" . $this->code . "/icon.png", public_path('icon.png'));
-        if(File::exists($file_path)) File::delete($file_path);
+        if($delete){
+            if(File::exists($file_path)) File::delete($file_path);
+        }
+
         if(File::exists(public_path('icon.png'))) File::delete(public_path('icon.png'));
         if(File::exists(public_path('icon_min.png'))) File::delete(public_path('icon_min.png'));
 
