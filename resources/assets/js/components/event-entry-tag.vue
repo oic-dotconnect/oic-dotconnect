@@ -8,7 +8,8 @@
                     :value.sync="q"
                     :on-hit="tagClick"
                     value-key="name">
-        </typeahead>        
+        </typeahead>
+        <div class="error">{{ error }}</div>
         <div class="event-entry-tag-list">
             <div class="event-entry-tag" v-for="tag in tags">
                 <span class="event-entry-tag-item" for="{{tag.name}}" @click="removeTag(tag.name)">
@@ -46,8 +47,8 @@
             return {
                 customTemplate: '{{item.name}}',
                 tags: [],
-                //asynchronous: '{{item.formatted_address}}',
-                q: ''
+                q: '',
+                error: '',
             }
         },
         created() {
@@ -65,14 +66,19 @@
             tagAdd(item) {
                 let t;
                 if (!this.isAllSpace(item.name)) {
-                    if (item.name.length > 1) {
+                    if (item.name.length > 1 && item.name.length < 20) {
+                        this.error = ''
                         if (this.tags.length > 0) {
                             t = this.tags.find((tag) => {
                                 return tag.name === item.name
                             })
                         }
                         if (t === undefined) this.tags.push(item);
+                    } else {
+                        this.error = '※ 2文字以上19文字以内で入力してください'
                     }
+                } else {
+                    this.error = '※ 空白以外の文字を入力してください'
                 }
             },
             removeTag(name) {
@@ -153,5 +159,10 @@
     
     .dropdown-menu .active {
         background-color: #d3d3d3;
+    }
+    
+    .error {
+        font-size: 1.2rem;
+        color: red;
     }
 </style>
