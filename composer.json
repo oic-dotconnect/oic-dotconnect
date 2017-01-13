@@ -11,8 +11,7 @@
         "fzaninotto/faker": "v1.6.0",
         "laravelcollective/html": "5.2.*",
         "intervention/image": "^2.3",
-        "aws/aws-sdk-php-laravel": "~3.0",
-        "gd": "*",
+        "aws/aws-sdk-php-laravel": "~3.0",     
         "ext-gd": "*"
     },
     "require-dev": {
