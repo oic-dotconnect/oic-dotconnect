@@ -40,9 +40,7 @@
               <div class="code-input">
                 <input type="text" class="border form-input " name="code" value={{$code}}>
                 <div class="caution">
-                    <p class="caution-mark">※文言</p>
-                    <p class="caution-mark">※文言</p>
-                    <p class="caution-mark">※文言</p>
+                    <p class="caution-mark">※ユーザーコードは登録後変更できません</p>                    
                 </div>
               </div>
             </div>
