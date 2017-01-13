@@ -109,8 +109,9 @@
             <div class="entry-description-group">               
             </div>
             <!-- entry-description-group -->
-            <texteditor value={{ $event->description }}>                
-            </texteditor>
+            <textarea class="description-form" name="description" rows="10" cols="60">
+                {{ $event->description }}
+            </textarea>            
         </div>
         <!-- entry-description -->
     <div class="info">

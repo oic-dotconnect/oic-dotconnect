@@ -107,8 +107,8 @@
             <h2 class="form-header box-title pink">説明</h2>
             <div class="entry-description-group">               
             </div>
-            <!-- entry-description-group -->
-            <texteditor></texteditor>
+            <!-- entry-description-group -->            
+            <textarea class="description-form" name="description" rows="10" cols="60"></textarea> 
         </div>
         <!-- entry-description -->
     <div class="info">
