@@ -59,7 +59,8 @@ class UserEntryController extends Controller
 		if($value == "toTag"){	// プロフィール設定からお気に入りタグを設定する場合 
 			return redirect()->route('user-entry-tag');
 		}elseif($value == "toConfirm"){	// プロフィール設定から確認画面に行く場合
-			Session::put('tags',[]);
+			if($request->session()->get('tags') != null){}
+                else{Session::put('tags',[]);}
 			return redirect()->route('user-entry-confirm');
 		}
     }
