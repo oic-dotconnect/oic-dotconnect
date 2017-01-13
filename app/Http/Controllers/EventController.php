@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller; 
 use App\Http\Requests;
+use App\Http\Requests\EventEntryRequest;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Tag;
 use Auth;
 use Route;
 use App\Models\User;
+use Validator;
 
 class EventController extends Controller
 {
@@ -137,6 +139,27 @@ class EventController extends Controller
 
 	public function status(Request $request,$event_code)
 	{
+		if($request->get('status') == 'open')
+		{
+			$validator = new EventEntryRequest();
+
+			$rules = $validator->rules();
+
+			$messages = $validator->messages();
+
+			$event = Event::FindCode($event_code)->first();
+
+			//dd($request->all(),$rules,$event->toArray());
+
+			$validatorResult = Validator::make($event->toArray(), $rules,$messages);
+
+			if ($validatorResult->fails()) {
+            return redirect()->route('event_open')
+                        ->withErrors($validatorResult)
+                        ->withInput();
+        	}
+		}
+
 		$status = $request->get('status');
 
 		$event = Event::FindCode($event_code)->first();

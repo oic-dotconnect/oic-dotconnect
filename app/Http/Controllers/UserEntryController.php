@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UserEntryRequest;
 
 use Session;
 use App\AwsUploader;
@@ -20,7 +21,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserEntryController extends Controller
 { 
-    public function InputProfile(Request $request)
+    public function InputProfile(UserEntryRequest $request)
     {
         if($request->hasFile('icon'))
         {

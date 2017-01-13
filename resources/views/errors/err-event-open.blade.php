@@ -8,12 +8,10 @@
 <p>
   公開に必要な情報が入力されていません。 以下の項目を入力してください。
 </p>
-<ul>
-  <li>開催日</li>
-  <li>空き教室</li>
-  <li>開始日</li>
-  <li>定員</li>
-</ul>
+{{dd($errors)}}
+@foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+@endforeach
 @endsection
 
 @section("err-btn")
