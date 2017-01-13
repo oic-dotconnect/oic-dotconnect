@@ -42,7 +42,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::post('/event/{event_code}/edit', ['as' => 'post-event-edit', 'uses' => 'EventController@postEdit']);
     
     // イベント管理ページ
-    Route::get('/user/eventcontrol',['as' =>'user-event-control','uses' => 'userController@eventControl']);
+    Route::get('/user/eventcontrol',['as' =>'user-event-control','uses' => 'UserController@eventControl']);
 
     // お気に入りタグ編集ページ
     Route::get('/user/setting/tag',['as' =>'user-setting-tag','uses' => 'UserController@editFavoriteTags']);
@@ -142,5 +142,10 @@ Route::post('/user/setting/profile',['as' => 'post-user-setting-profile','uses' 
 Route::post('/user/setting/tag',['as' => 'post-user-setting-tag','uses' => 'UserController@saveFavoriteTags']);
 
 Route::post('/user/setting/notice',['as'  => 'post-user-setting-notice','uses' => 'UserController@saveNotice']);
+
+//ユーザー登録時の必須項目がなかった時のルート（変更してください
+Route::get('/err/503',['as' => '503',function(){
+    return view('errors/503');
+}]);
 
 });

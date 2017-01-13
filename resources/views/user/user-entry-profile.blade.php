@@ -33,12 +33,30 @@
               <h2 class="box-title yellow">ニックネーム</h2>          
               <div class="name-input">
                 <input type="text" class="border form-input" name="name" value={{$name}}>
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('name') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
               </div>
             </div>
             <div class="user-code box input-form required">          
               <h2 class="box-title green">ユーザコード</h2>        
               <div class="code-input">
                 <input type="text" class="border form-input " name="code" value={{$code}}>
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('code') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
                 <div class="caution">
                     <p class="caution-mark">※文言</p>
                     <p class="caution-mark">※文言</p>
@@ -55,6 +73,15 @@
             <textarea class="border" rows="10" cols="60" name="introduction">
               {{$introduction}}
             </textarea>
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('introduction') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
           </div>
         </div>
 
