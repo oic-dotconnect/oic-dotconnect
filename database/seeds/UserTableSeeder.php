@@ -37,7 +37,7 @@ class UserTableSeeder extends Seeder
         try {
           $new_user->iconUp(base_path('/database/mock-data/icon/' . $new_user->code . '.png') , false);
         } catch(Exception $e) {
-          dd(storage_path('icon/' . $new_user->code . '.png'));
+          // dd(storage_path('icon/' . $new_user->code . '.png'));
         }
         
 
