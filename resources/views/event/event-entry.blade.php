@@ -113,7 +113,7 @@
         <!-- entry-description -->
     <div class="info">
         <div class="info-top">
-            <button type="submit" name="status" value="close" class="button">下書きを保存する</button>
+            <button type="submit" name="status" value="close" class="button save">下書きを保存する</button>
         </div>
         <div class="info-bottom">
             <div class="info-left">
