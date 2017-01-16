@@ -54,6 +54,10 @@ class UserController extends Controller
 	public function userpageJoin(Request $request, $userCode) {
 		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-join');
 		$user = User::findCode($userCode);
+		if(is_null($user)){	//ユーザーが見つからなかった時のエラー回避処理
+			return view('errors/404');
+		}
+
 		$data['user'] = $user;
 		$data['events'] = $user->joined_events()->paginate(10);		
         return view('user/user-userpage-join', $data);    
@@ -62,6 +66,9 @@ class UserController extends Controller
 	public function userpageHold(Request $request, $userCode) {
 		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-hold');
 		$user = User::findCode($userCode);
+		if(is_null($user)){	//ユーザーが見つからなかった時のエラー回避処理
+			return view('errors/404');
+		}
 		$data['user'] = $user;
 		$data['events'] = $user->hold_events()->paginate(10);
         return view('user/user-userpage-hold', $data);    

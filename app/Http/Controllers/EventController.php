@@ -19,8 +19,11 @@ class EventController extends Controller
 	public function detail(Request $request,$event_code)
 	{
 		$user = Auth::User();
-
-		$capacity = Event::FindCode($event_code)->first()->capacity;
+		try{	//イベントが見つからなかった時のエラー回避処理
+			$capacity = Event::FindCode($event_code)->first()->capacity;
+		}catch(\Exception $e){
+			return view('errors/404');
+		}
 
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->first();
 	
