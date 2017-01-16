@@ -45,7 +45,9 @@
 	<div class="control-eventitem-right">
 		<div class="control-eventitem-right-content">
 			<a href="{{ route('event-edit', ['event_code' => $event->code]) }}" class="button edit">編集する</a>
-			<a href="" class="button delete">削除する</a>
+			{{ Form::open([ 'route' => ['event-delete', $event->code]  ]) }}
+				<button type="submit" class="button delete">削除する</button>
+			{{ Form::close() }}
 		</div>
 	</div>
 </div>

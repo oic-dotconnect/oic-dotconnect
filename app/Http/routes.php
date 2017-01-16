@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
     //　退会
     Route::post('/user/leave', ['as' => 'user-leave', 'uses' => 'UserController@leave']);
 
+    // イベント
+    Route::post('/event/{event_code}/delete', ['as' => 'event-delete', 'uses' => 'EventController@delete']);
 // ②
 });
 
