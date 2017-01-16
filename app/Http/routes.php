@@ -70,6 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // ログアウト
     Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
+
+    //　退会
+    Route::post('/user/leave', ['as' => 'user-leave', 'uses' => 'UserController@leave']);
+
 // ②
 });
 

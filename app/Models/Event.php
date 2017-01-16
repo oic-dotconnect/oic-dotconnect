@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
 
 class Event extends Model
 {   
+    use SoftDeletes;
     /*  項目一覧
     *   カラム名        型          説明              備考
     *   id             integer    イベントのID       他のモデルとリレーションを張るためなどプログラム上で使用する。イベントを識別可能なユニークなコード

@@ -160,4 +160,10 @@ class UserController extends Controller
 
 		return view('user.user-eventcontrol', $data);
 	}
+
+	public function leave(){
+		$user = Auth::user();
+		$user->delete();
+		return redirect()->route('landing');
+	}
 }

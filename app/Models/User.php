@@ -7,11 +7,13 @@ use Image;
 use File;
 use DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\AwsUploader;
 
 
 class User extends Authenticatable
 {   
+    use SoftDeletes;
      /*  項目一覧
     *   カラム名        型          説明                備考
     *   id             integer    ユーザーのID         他のモデルとリレーションを張るためなどプログラム上で使用する。ユーザーを識別可能なユニークなコード
