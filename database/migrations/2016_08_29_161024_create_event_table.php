@@ -31,6 +31,7 @@ class CreateEventTable extends Migration
             $table->time('recruit_start_time')->nullable();
             $table->time('recruit_end_time')->nullable();
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

@@ -52,7 +52,7 @@ class EventSeeder extends Seeder
             $new_event->users()->attach($id);
           }
         } catch(Exception $e){
-          dd($event,$e);
+          // dd($event,$e);
         }
         
       }
