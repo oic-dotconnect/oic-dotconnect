@@ -212,4 +212,10 @@ class EventController extends Controller
 		$data['title'] = $request->has('title')? $request->get('title') : '';
 		return view('event/event-search', $data);
 	}
+
+	public function delete($event_code){
+		$event = Event::FindCode($event_code)->first();
+		$event->delete();
+		return redirect()->route('user-event-control');	
+	}
 }
