@@ -19,9 +19,10 @@
                 <section class="refine-field">
                     <h4>分野</h4>
                     <div>
+                        <input type="radio" name="field" id="field-all" value="all" v-model="refine" checked><label for="field-all">全て</label>
                         <input type="radio" name="field" id="field-it" value="it" v-model="refine"><label for="field-it">IT</label>
-                        <input type="radio" name="field" id="field-game" value="game" v-model="refine"><label for="field-game">ゲーム</label>
-                        <input type="radio" name="field" id="field-design" value="design" v-model="refine"><label for="field-design">デザイン</label><br>
+                        <input type="radio" name="field" id="field-game" value="game" v-model="refine"><label for="field-game">ゲーム</label><br>
+                        <input type="radio" name="field" id="field-design" value="design" v-model="refine"><label for="field-design">デザイン</label>
                         <input type="radio" name="field" id="field-move" value="move" v-model="refine"><label for="field-move">映像</label>                        
                         <input type="radio" name="field" id="field-other" value="other" v-model="refine"><label for="field-other">その他</label>
                     </div>
@@ -99,7 +100,7 @@
                 let finish = [];
                 let self = this;
 
-                if (this.refine) {
+                if (this.refine !== 'all') {                    
                     change = this.searchEvent.filter(function(event) {
                         return event.field === self.refine
                     })                    
