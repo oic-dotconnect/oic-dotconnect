@@ -138,11 +138,17 @@ class UserController extends Controller
 		$regularNoticed = isset($notices['notice-regular']);
 		$user->update(['regular_notice' => $regularNoticed]);
 
+		if(isset($notices['tag-notice'])){
 		$requestTags = array_keys($notices['tag-notice']);
 
 		$user->getPivotTags($user->id)->update(['noticed' => false]);
 
 		$user->getPivotTags($user->id)->whereIn('tag_id',$requestTags)->update(['noticed' => true]);
+		}
+		else
+		{
+			$user->getPivotTags($user->id)->update(['noticed' => false]);
+		}
 
 		return redirect()->route('user-mypage-recommend');
 
