@@ -110,3 +110,7 @@
 .control-eventitem-right .button {
 	margin-bottom: 10px;
 }
+
+.button {
+	width: auto;
+}
