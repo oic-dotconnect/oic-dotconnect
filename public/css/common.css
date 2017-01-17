@@ -197,6 +197,7 @@ h1.form-title{
     text-align: center;
     padding: 6px;
     font-size: 1rem;
+    width: 150px;
 }
 
 button[disabled] {
@@ -381,4 +382,9 @@ main {
 
 .other {
     background-color: #A64A97;
+}
+
+/**/
+.marginB20 {
+    margin-bottom: 20px;
 }

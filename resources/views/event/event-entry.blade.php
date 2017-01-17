@@ -117,7 +117,7 @@
         </div>
         <div class="info-bottom">
             <div class="info-left">
-                <a href="#mypage" class="button cancell">キャンセル</a>
+                <a href="{{route('user-mypage')}}" class="button cancell">キャンセル</a>
             </div>
             <div class="info-right">
                 <button type="submit" name="status" value="open" class="button open">公開</button>
