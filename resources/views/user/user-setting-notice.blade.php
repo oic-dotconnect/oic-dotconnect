@@ -35,7 +35,7 @@
                         </div>
                         <div class="notice-form">
                             <div class="notice-check">
-                                <input type="checkbox" id="notice-regular" name="notice-regular" {{ $user->regular_notice? 'checked': '' }}><label for="notice-reglar">定期通知</label>
+                                <input type="checkbox" id="notice-regular" name="notice-regular" {{ $user->regular_notice? 'checked': '' }}><label for="notice-regular">定期通知</label>
                             </div>
                         </div>
                     </div>
