@@ -25,7 +25,7 @@ class UserEntryRequest extends Request
     {
         return [
             'name' => 'required|max:20',
-            'code' => 'required|regex:/^[a-zA-Z0-9_-]+$/|unique:USER,code|max:7',
+            'code' => 'required|regex:/^[a-zA-Z0-9_-]+$/|unique:USER,code|max:20',
             'introduction' => 'max:200'
         ];
     }

@@ -59,6 +59,8 @@
                   @endif
                 <div class="caution">
                     <p class="caution-mark">※ユーザーコードは登録後変更できません</p>                    
+                    <p class="caution-mark">※使用できる文字は英数字(-)(_)のみです。</p>
+                    <p class="caution-mark">※20文字以内</p>
                 </div>
               </div>
             </div>
@@ -71,6 +73,9 @@
             <textarea class="border" rows="10" cols="60" name="introduction">
               {{$introduction}}
             </textarea>
+            <div class="caution">
+              <p class="caution-mark">※200文字以内</p>
+            </div>
                   @if (count($errors) > 0)
                     <div class="alert alert-danger">
                       <ul>
