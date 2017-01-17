@@ -22,8 +22,7 @@
       <i class="fa fa-google" aria-hidden="true"></i>
       <span>ログイン / 新規登録</span>
     </a>
-  @elseif($current === 'hold') <!-- 開催者が見た状態 -->
-    {{ $eventservice->isBetweenRecruit($event) }}
+  @elseif($current === 'hold') <!-- 開催者が見た状態 -->    
     @if ($event->status == "open")
       @if( $eventservice->isBetweenRecruit($event) )        
         <button type="button" disabled="disabled" class="button join">参加する</button>
