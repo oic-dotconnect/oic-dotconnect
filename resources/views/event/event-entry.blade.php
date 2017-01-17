@@ -99,7 +99,7 @@
         <!-- entry-room -->
         <div class="entry-capcity box">
             <h2 class="form-header box-title cyan">定員</h2>
-            <input class="entry-input entry-capcity-input" type="number" name="capacity">
+            <input class="entry-input entry-capcity-input" type="number" min="1" name="capacity">
             <span>人</span>
         </div>
         <!-- entry-capcity -->

@@ -100,7 +100,7 @@
         <!-- entry-room -->
         <div class="entry-capcity box">
             <h2 class="form-header box-title cyan">定員</h2>
-            <input class="entry-input entry-capcity-input" type="number" name="capacity" value={{ $event->capacity }}>
+            <input class="entry-input entry-capcity-input" id="capcity" type="number" min="1" name="capacity" value={{ $event->capacity }}>
             <span>人</span>
         </div>
         <!-- entry-capcity -->
@@ -246,7 +246,7 @@
                 <!-- entry-recruitment -->
                 <div class="entry-capcity">
                     <h2 class="form-header">定員</h2>
-                    <input class="entry-input entry-capcity-input" type="text" value={{ $event->capacity }}>
+                    <input class="entry-input entry-capcity-input" id="capcity" type="number" min="1" value={{ $event->capacity }}>
                     <span>人</span>
                 </div>
                 <!-- entry-capcity -->
