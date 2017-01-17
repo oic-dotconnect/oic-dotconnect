@@ -198,6 +198,7 @@ h1.form-title{
     padding: 6px;
     font-size: 1rem;
     width: 150px;
+    cursor: pointer;
 }
 
 button[disabled] {
@@ -313,6 +314,7 @@ main {
     height: 200px;
     padding-top: 20px;
     margin-top: 60px;
+    min-width: 1060px;
 }
 
 .footer-content{
