@@ -75,6 +75,10 @@
 	background-color: #F0B55E;
 }
 
+.control-eventitem-condition.open{
+	background-color: #FF6600;
+}
+
 .control-eventitem-condition.finished{
 	background-color: #aaaaaa;
 }
