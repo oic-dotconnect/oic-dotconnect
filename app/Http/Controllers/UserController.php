@@ -35,7 +35,7 @@ class UserController extends Controller
 
 	public function mypageRecommend() {
 		$user = Auth::user();
-		$data['events'] = $user->recommende_events()->paginate(10);	
+		$data['events'] = $user->recommende_events()->where('organizer_id','!=',$user->id)->paginate(10);	
         return view('user/user-mypage-recommend', $data);    
 	}
 
