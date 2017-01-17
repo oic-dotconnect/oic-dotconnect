@@ -24,8 +24,9 @@ class EventController extends Controller
 		}catch(\Exception $e){
 			return view('errors/404');
 		}
-
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->first();
+		$order   = array("\r\n", "\n", "\r");
+		$data['event']->description = str_replace($order, '<br>', $data['event']->description);	
 	
 		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
@@ -67,6 +68,7 @@ class EventController extends Controller
 	public function edit(Request $request,$event_code)
 	{
 		$data['event'] = Event::FindCode($event_code)->first();
+		$data['event']->description = str_replace('<br>', '\r' ,$data['event']->description);	
 
 		return view('event/event-edit', $data);
 	}
@@ -77,10 +79,10 @@ class EventController extends Controller
 		$data = $request->except(['status', 'tags']);		
 		$data['code'] = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7);
 
-		$data['organizer_id'] = Auth::user()->id;
-		
+		$data['organizer_id'] = Auth::user()->id;	
+	
 		$tags = $request->has('tags')? $request->get('tags') : []; 
-		$event = Event::create($data);		
+		$event = Event::create($data);
 		
 		foreach($tags as $tag){
 			$t = Tag::where('name', $tag)->first();
@@ -109,7 +111,9 @@ class EventController extends Controller
 	{
 
 		$data = $request->except(['status', 'tags', '_token', '_place', 'roomType']);				
-		$event = Event::findCode($event_code)->first();		
+		$event = Event::findCode($event_code)->first();						
+
+		dd($data['description']);
 		$event->update($data);
 
 		$tags = $request->has('tags')? $request->get('tags') : []; 
