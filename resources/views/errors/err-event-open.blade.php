@@ -16,7 +16,5 @@
 
 @section("err-btn")
 <a href="#">編集ページへ</a>
-<div class="paging">
-  <a href="#">トップへ戻る</a>
-</div>
+<a href="{{ route('landing') }}" class="button save">トップへ戻る</a>
 @endsection

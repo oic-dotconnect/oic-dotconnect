@@ -53,7 +53,7 @@ class SocialController extends Controller
       }
     } else {
       /*oicドメインでなかった場合*/
-      return 'oicドメインでなかった';
+      return view('errors.err-login-domain');
     }
 
   }
