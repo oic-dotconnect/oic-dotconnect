@@ -92,7 +92,7 @@
           <div class="col">
             <div class="fav">
               <button type="submit" name="submit" value="toTag" class="fav-register button">お気に入りタグ登録へ</button>
-              <p class="caution-mark">※文言</p>
+              <p class="caution-mark">※お気に入りタグは登録後、ユーザー設定から登録・変更できます。</p>
             </div>
             <div class="row">
               <div class="info-left">
