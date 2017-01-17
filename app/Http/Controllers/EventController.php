@@ -111,9 +111,7 @@ class EventController extends Controller
 	{
 
 		$data = $request->except(['status', 'tags', '_token', '_place', 'roomType']);				
-		$event = Event::findCode($event_code)->first();						
-
-		dd($data['description']);
+		$event = Event::findCode($event_code)->first();								
 		$event->update($data);
 
 		$tags = $request->has('tags')? $request->get('tags') : []; 

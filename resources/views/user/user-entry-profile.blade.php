@@ -70,9 +70,7 @@
         <div class="introduction box">    
           <h2 class="box-title blue">紹介文</h2>    
           <div class="introduction-input">
-            <textarea class="border" rows="10" cols="60" name="introduction">
-            {{$introduction}}
-            </textarea>
+            <textarea class="border" rows="10" cols="60" name="introduction">{{$introduction}}</textarea>
             <div class="caution">
               <p class="caution-mark">※200文字以内</p>
             </div>
