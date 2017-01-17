@@ -143,9 +143,19 @@ class EventController extends Controller
 	public function status(Request $request,$event_code)
 	{		
 		$status = $request->get('status');
+		$open_date = date('Y-m-d');
 
 		$event = Event::FindCode($event_code)->first();
 		$event->update(['status' => $status]);
+
+		if($status == 'open')
+		{
+			$event = Event::FindCode($event_code)->first();
+
+			$event->open_date = $open_date;
+
+			$event->save();
+		}
 
 		return redirect()->route('event-detail', [ 'event_code' => $event->code ]);	
 	}
