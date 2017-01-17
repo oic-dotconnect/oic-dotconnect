@@ -141,28 +141,7 @@ class EventController extends Controller
 	}
 
 	public function status(Request $request,$event_code)
-	{
-		if($request->get('status') == 'open')
-		{
-			$validator = new EventEntryRequest();
-
-			$rules = $validator->rules();
-
-			$messages = $validator->messages();
-
-			$event = Event::FindCode($event_code)->first();
-
-			//dd($request->all(),$rules,$event->toArray());
-
-			$validatorResult = Validator::make($event->toArray(), $rules,$messages);
-
-			if ($validatorResult->fails()) {
-            return redirect()->route('event_open')
-                        ->withErrors($validatorResult)
-                        ->withInput();
-        	}
-		}
-
+	{		
 		$status = $request->get('status');
 
 		$event = Event::FindCode($event_code)->first();
