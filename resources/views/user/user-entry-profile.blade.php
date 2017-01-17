@@ -96,7 +96,7 @@
             </div>
             <div class="row">
               <div class="info-left">
-                <a href="#" class="button cancell left">キャンセル</a>
+                <a href="{{ route('user-entry-cancel') }}" class="button cancell left">キャンセル</a>
               </div>
               <div class="info-right">
                 <button type="submit" name="submit" value="toConfirm" class="conf button right">入力確認へ</button>
