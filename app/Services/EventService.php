@@ -146,4 +146,12 @@ class EventService
         ];
         return $status_name[$event->status];
     }
+
+    public function isBetweenRecruit($event) {
+        // dd($event->recruit_end_date . ' ' . $event->recruit_end_time);
+        $rStartDate = date('Y-m-d H:i:s', strtotime($event->recruit_start_date . ' ' . $event->recruit_start_time));
+        $rEndDate = date('Y-m-d H:i:s', strtotime($event->recruit_end_date . ' ' . $event->recruit_end_time));
+        $toDay = date("Y-m-d H:i:s");        
+        return strtotime($rStartDate) <= strtotime($toDay) && strtotime($rEndDate) >= strtotime($toDay);
+    }
 }
