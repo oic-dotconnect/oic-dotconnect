@@ -40,6 +40,7 @@
 .search-btn {
 	padding: 6px;
 	border-radius: 0px 5px 5px 0px;
+	width: 42px;
 	/*border: solid 1px #aab2bd;*/
 }
 
