@@ -17,6 +17,11 @@
       <div class="introduction">
         {{ $user->introduction }}
       </div>
+      @if( Auth::user()->isFavorite($user) )
+        <a class="button button-orange d-block block-center mt-20" href="{{ route('remove-favorite-user', [ 'user_code' => $user->code ]) }}">フォローを解除する</a>        
+      @else
+        <a class="button button-orange d-block block-center mt-20" href="{{ route('add-favorite-user', [ 'user_code' => $user->code ]) }}">フォローする</a>
+      @endif
     </div>
   </div>
 </div>

@@ -85,6 +85,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Event', 'organizer_id');
     }
 
+    public function favoriteUsers()
+    {
+        return $this->belongsToMany('App\Models\User', 'FAVORITE_USER', 'user1_id', 'user2_id');
+    }
+
     public static function findCode($code) {
         return self::where('code',$code)->first();
     }
@@ -162,5 +167,15 @@ class User extends Authenticatable
     public function iconMinPath(){
         return "https://s3-ap-northeast-1.amazonaws.com/linker/icons/" . $this->code . "/icon_min.png";
     } 
+
+    /*ユーザーをお気に入りにしているか*/
+    public function isFavorite(User $user){
+        $user = $this->favoriteUsers()->where('code', $user->code)->get();
+        if (!$user->isEmpty()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
