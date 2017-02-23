@@ -2,7 +2,7 @@
 
 @if($event->status === 'stop') <!-- イベント中止状態 -->
   <button type="button" disabled="disabled" class="button join">中止イベント</button>
-@elseif($eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) === 'finished')
+@elseif($eventservice->conditionClass($event) === 'finished')
   <button type="button" disabled="disabled" class="button join">終了</button>
 @else
   @if($current === 'join') <!-- 参加状態 -->

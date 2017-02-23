@@ -25,8 +25,8 @@
 				<div class="control-eventitem-field {{ $event->field }}">
 					{{ $eventservice->field($event->field) }}
 				</div>
-				<div class="control-eventitem-condition {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
-						{{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
+				<div class="control-eventitem-condition {{ $eventservice->conditionClass($event) }}">
+						{{ $eventservice->condition($event) }}
 				</div>
 			</div>
 			<div class="control-eventitem-center-right">
