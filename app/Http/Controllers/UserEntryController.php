@@ -20,7 +20,7 @@ use File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserEntryController extends Controller
-{ 
+{     
     public function InputProfile(UserEntryRequest $request)
     {
         if($request->hasFile('icon'))
@@ -84,6 +84,17 @@ class UserEntryController extends Controller
     public function Create(Request $request)
     {
     	$Sessiondata = $request->session()->all();
+
+        /*
+        * ユーザー作成に必要なデータがセッションにない場合はGoogleの認証にリダイレクトする
+        */
+        if( !$request->session()->has('google') 
+            && !$request->session()->has('profile') 
+            && !$request->session()->has('icon') 
+        ) {
+            return redirect()->route('sociallogin');
+        }
+        
 
     	$UserProfire = array_merge($Sessiondata['google'],$Sessiondata['profile']);
 
