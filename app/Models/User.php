@@ -7,11 +7,13 @@ use Image;
 use File;
 use DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\AwsUploader;
 
 
 class User extends Authenticatable
 {   
+    use SoftDeletes;
      /*  項目一覧
     *   カラム名        型          説明                備考
     *   id             integer    ユーザーのID         他のモデルとリレーションを張るためなどプログラム上で使用する。ユーザーを識別可能なユニークなコード
@@ -71,11 +73,11 @@ class User extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag','user_tag')->withPivot('noticed');
+        return $this->belongsToMany('App\Models\Tag','USER_TAG')->withPivot('noticed');
     }
     public function events()
     {
-        return $this->belongsToMany('App\Models\Event','user_event')->withPivot('role','entry');
+        return $this->belongsToMany('App\Models\Event','USER_EVENT')->withPivot('role','entry');
     }
 
     public function organize()
@@ -118,7 +120,7 @@ class User extends Authenticatable
         return $this->tags()->newPivotStatement()->where('user_id', $user_id);
     }
 
-    public function iconUp($file_path){
+    public function iconUp($file_path, $delete = true){
         $image = Image::make($file_path);
         $width = $image->width();
         $height = $image->height();
@@ -142,7 +144,10 @@ class User extends Authenticatable
 
         $result['icon_min'] = AwsUploader::up("icons/" . $this->code . "/icon_min.png", public_path('icon_min.png'));
         $result['icon'] = AwsUploader::up("icons/" . $this->code . "/icon.png", public_path('icon.png'));
-        if(File::exists($file_path)) File::delete($file_path);
+        if($delete){
+            if(File::exists($file_path)) File::delete($file_path);
+        }
+
         if(File::exists(public_path('icon.png'))) File::delete(public_path('icon.png'));
         if(File::exists(public_path('icon_min.png'))) File::delete(public_path('icon_min.png'));
 

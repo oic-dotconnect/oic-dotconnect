@@ -99,7 +99,7 @@
         <!-- entry-room -->
         <div class="entry-capcity box">
             <h2 class="form-header box-title cyan">定員</h2>
-            <input class="entry-input entry-capcity-input" type="number" name="capacity">
+            <input class="entry-input entry-capcity-input" type="number" min="1" name="capacity">
             <span>人</span>
         </div>
         <!-- entry-capcity -->
@@ -107,17 +107,17 @@
             <h2 class="form-header box-title pink">説明</h2>
             <div class="entry-description-group">               
             </div>
-            <!-- entry-description-group -->
-            <texteditor></texteditor>
+            <!-- entry-description-group -->            
+            <textarea class="description-form" name="description" rows="10" cols="60"></textarea> 
         </div>
         <!-- entry-description -->
     <div class="info">
         <div class="info-top">
-            <button type="submit" name="status" value="close" class="button">下書きを保存する</button>
+            <button type="submit" name="status" value="close" class="button save">下書きを保存する</button>
         </div>
         <div class="info-bottom">
             <div class="info-left">
-                <a href="#mypage" class="button cancell">キャンセル</a>
+                <a href="{{route('user-mypage')}}" class="button cancell">キャンセル</a>
             </div>
             <div class="info-right">
                 <button type="submit" name="status" value="open" class="button open">公開</button>

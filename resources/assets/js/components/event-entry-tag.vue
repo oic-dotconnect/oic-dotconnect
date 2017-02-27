@@ -8,7 +8,8 @@
                     :value.sync="q"
                     :on-hit="tagClick"
                     value-key="name">
-        </typeahead>        
+        </typeahead>
+        <div class="error">{{ error }}</div>
         <div class="event-entry-tag-list">
             <div class="event-entry-tag" v-for="tag in tags">
                 <span class="event-entry-tag-item" for="{{tag.name}}" @click="removeTag(tag.name)">
@@ -41,35 +42,44 @@
             typeahead: typeahead,
             tag
         },
-        props: [ 'value' ],
+        props: ['value'],
         data() {
             return {
                 customTemplate: '{{item.name}}',
                 tags: [],
-                //asynchronous: '{{item.formatted_address}}',
-                q: ''
+                q: '',
+                error: '',
             }
         },
-        created() {            
-            if( this.value) {
+        created() {
+            if (this.value) {
                 let tags = this.value.split(',')
                 tags = tags.map((name) => {
                     return {
-                        name 
+                        name
                     }
                 })
                 this.$set('tags', tags)
             }
         },
         methods: {
-            tagAdd(item) {                
-                let t
-                if(this.tags.length > 0) {
-                    t = this.tags.find((tag) => {                        
-                        return tag.name === item.name
-                    })                    
+            tagAdd(item) {
+                let t;
+                if (!this.isAllSpace(item.name)) {
+                    if (item.name.length > 1 && item.name.length < 20) {
+                        this.error = ''
+                        if (this.tags.length > 0) {
+                            t = this.tags.find((tag) => {
+                                return tag.name === item.name
+                            })
+                        }
+                        if (t === undefined) this.tags.push(item);
+                    } else {
+                        this.error = '※ 2文字以上19文字以内で入力してください'
+                    }
+                } else {
+                    this.error = '※ 空白以外の文字を入力してください'
                 }
-                if (t === undefined) this.tags.push(item);                
             },
             removeTag(name) {
                 let result = this.tags.find((tag) => {
@@ -80,9 +90,13 @@
             tagClick(items) {
                 this.tagAdd(items)
                 this.$children[0].reset();
-                //window.open(items.html_url, '_blank')
             },
-        },        
+            isAllSpace(str) {
+                return Array.from(str).every((c) => {
+                    return c.charCodeAt() === 32 || c.charCodeAt() === 12288
+                })
+            }
+        },
     }
 </script>
 
@@ -113,11 +127,11 @@
     .event-entry-tag-item i {
         margin-left: 5px;
     }
-
+    
     .form-control {
         font-size: 1.2rem;
     }
-
+    
     .dropdown-menu {
         position: absolute;
         display: flex;
@@ -127,7 +141,7 @@
         box-shadow: 0px 0px 6px 1px #e6e6e6;
     }
     
-    .dropdown-menu li {        
+    .dropdown-menu li {
         box-sizing: border-box;
         -webkit-transition: background-color 0.2s linear;
         transition: background-color 0.2s linear;
@@ -135,16 +149,20 @@
         display: inline-block;
         padding: 8px;
         vertical-align: middle;
-        cursor: pointer;        
+        cursor: pointer;
         box-shadow: 0px 0px 6px 1px #e6e6e6;
     }
-
-    .dropdown-menu li:not(.active){
+    
+    .dropdown-menu li:not(.active) {
         background-color: #ffffff;
     }
-
+    
     .dropdown-menu .active {
         background-color: #d3d3d3;
     }
-
+    
+    .error {
+        font-size: 1.2rem;
+        color: red;
+    }
 </style>

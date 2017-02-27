@@ -19,9 +19,10 @@
                 <section class="refine-field">
                     <h4>分野</h4>
                     <div>
+                        <input type="radio" name="field" id="field-all" value="all" v-model="refine" checked><label for="field-all">全て</label>
                         <input type="radio" name="field" id="field-it" value="it" v-model="refine"><label for="field-it">IT</label>
-                        <input type="radio" name="field" id="field-game" value="game" v-model="refine"><label for="field-game">ゲーム</label>
-                        <input type="radio" name="field" id="field-design" value="design" v-model="refine"><label for="field-design">デザイン</label><br>
+                        <input type="radio" name="field" id="field-game" value="game" v-model="refine"><label for="field-game">ゲーム</label><br>
+                        <input type="radio" name="field" id="field-design" value="design" v-model="refine"><label for="field-design">デザイン</label>
                         <input type="radio" name="field" id="field-move" value="move" v-model="refine"><label for="field-move">映像</label>                        
                         <input type="radio" name="field" id="field-other" value="other" v-model="refine"><label for="field-other">その他</label>
                     </div>
@@ -47,24 +48,24 @@
     .search-result {
         margin-top: 50px;
     }
-
+    
     .result-list {
         flex: 3;
     }
-
+    
     .result-event-list {
-        margin-top: 20px;        
-    }
-
-    .result-controle{
-        margin-left: 30px;
-    }
-
-    .sorts{
         margin-top: 20px;
     }
-
-    .refine{
+    
+    .result-controle {
+        margin-left: 30px;
+    }
+    
+    .sorts {
+        margin-top: 20px;
+    }
+    
+    .refine {
         margin-bottom: 20px;
     }
 </style>
@@ -99,15 +100,14 @@
                 let finish = [];
                 let self = this;
 
-                if (this.refine) {
+                if (this.refine !== 'all') {
                     change = this.searchEvent.filter(function(event) {
                         return event.field === self.refine
-                    })                    
+                    })
                 } else {
-                    change = this.searchEvent                    
+                    change = this.searchEvent
                 }
                 if (this.sort) {
-                    change[0].created_at = "2016-11-03 17:19:19"
                     if (this.sort === 'near') {
                         let today = new Date();
                         today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
@@ -122,7 +122,7 @@
                         start.sort(function(val1, val2) {
                             var val1 = val1.opening_date;
                             var val2 = val2.opening_date;
-                            if (val1 > val2) {
+                            if (val1 < val2) {
                                 return 1;
                             } else {
                                 return -1;
@@ -131,13 +131,13 @@
                         finish.sort(function(val1, val2) {
                             var val1 = val1.opening_date;
                             var val2 = val2.opening_date;
-                            if (val1 < val2) {
+                            if (val1 > val2) {
                                 return 1;
                             } else {
                                 return -1;
                             }
                         })
-                        change = start.concat(finish);                        
+                        change = start.concat(finish);
                     } else if (this.sort === 'new') {
                         change = change.sort(function(val1, val2) {
                             var val1 = val1.created_at;
@@ -157,7 +157,7 @@
                             } else {
                                 return -1;
                             }
-                        })                        
+                        })
                     }
                 }
 
@@ -168,11 +168,11 @@
                 let change = this.changeEvent;
                 let start = this.page * this.dispItem
                 let finish = (this.page + 1) * this.dispItem
-                
+
                 for (; start < finish; start++) {
                     if (start >= change.length) break;
                     pageEvents.push(change[start])
-                
+
                 }
                 return pageEvents
             },

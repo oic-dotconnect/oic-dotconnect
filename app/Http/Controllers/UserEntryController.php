@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UserEntryRequest;
 
 use Session;
 use App\AwsUploader;
@@ -20,7 +21,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserEntryController extends Controller
 { 
-    public function InputProfile(Request $request)
+    public function InputProfile(UserEntryRequest $request)
     {
         if($request->hasFile('icon'))
         {
@@ -58,7 +59,8 @@ class UserEntryController extends Controller
 		if($value == "toTag"){	// プロフィール設定からお気に入りタグを設定する場合 
 			return redirect()->route('user-entry-tag');
 		}elseif($value == "toConfirm"){	// プロフィール設定から確認画面に行く場合
-			Session::put('tags',[]);
+			if($request->session()->get('tags') != null){}
+                else{Session::put('tags',[]);}
 			return redirect()->route('user-entry-confirm');
 		}
     }

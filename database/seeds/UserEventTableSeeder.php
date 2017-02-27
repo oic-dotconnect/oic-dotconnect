@@ -18,9 +18,9 @@ class UserEventTableSeeder extends Seeder
     public function run()
     {
 
-        $z=0;
-        for($i=0;$i<11;$i++){
-            DB::table('user_event')->insert([
+        $z=1;
+        for($i=1;$i<11;$i++){
+            DB::table('USER_EVENT')->insert([
                 'event_id' => $i,
                 'user_id' => $z,
                 'role' => 'admin'
@@ -29,15 +29,13 @@ class UserEventTableSeeder extends Seeder
             }
 
         $z=6;
-        for($i=0;$i<11;$i++){
-            for($j=0;$j<5;$j++){
-        DB::table('user_event')->insert([
-            'event_id' => $i,
-            'user_id' => $z,
-            'role' => 'member'
-            ]);
-        $z++;
-            }
+        for($i=1;$i<11;$i++){            
+            DB::table('USER_EVENT')->insert([
+                'event_id' => $i,
+                'user_id' => $i,
+                'role' => 'member'
+                ]);
+            $z++;            
         }
         $user = App\Models\User::find(1);
         App\Models\Event::all()->each(function( $event ) use($user){

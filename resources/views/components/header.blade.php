@@ -14,7 +14,7 @@
         <div class="header-right">
           @if( Auth::check() )
             <div class="event-action-btns">
-              <a href="{{ route('event-control') }}" class="red">イベント管理</a>
+              <a href="{{ route('user-event-control') }}" class="red">イベント管理</a>
               <a href="{{ route('event-entry') }}" class="light-gray">イベント作成</a>
             </div>
             <header-icon>

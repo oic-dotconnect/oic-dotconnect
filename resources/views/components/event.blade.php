@@ -13,9 +13,9 @@
             <p class="state stop">
                 中止
             </p>
-        @else 
-            <p class="state {{ $eventservice->conditionClass($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}">
-                {{ $eventservice->condition($event->opening_date,$event->start_at,$event->end_date,$event->end_at) }}
+        @else
+            <p class="state {{ $eventservice->conditionClass($event) }}">
+                {{ $eventservice->condition($event) }}
             </p>
         @endif
     </div>

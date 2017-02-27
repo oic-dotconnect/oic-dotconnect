@@ -1,6 +1,5 @@
 <?php
-$url = parse_url(env("DATABASE_URL"));
-$scheme = isset($url['scheme'])? $url['scheme'] : env('DB_CONNECTION', 'mysql');
+$url = parse_url(env("CLEARDB_DATABASE_URL"));
 $host = isset($url['host'])? $url['host'] : env('DB_HOST', 'localhost');
 $port = isset($url['port'])? $url['port'] :env('DB_PORT', '5432');
 $database = isset($url['path'])? substr($url["path"], 1) :env('DB_DATABASE', 'forge');
@@ -32,7 +31,7 @@ return [
     |
     */
 
-    'default' => $scheme,
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -60,11 +59,10 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => $host,            
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

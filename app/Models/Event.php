@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
 
 class Event extends Model
 {   
+    use SoftDeletes;
     /*  項目一覧
     *   カラム名        型          説明              備考
     *   id             integer    イベントのID       他のモデルとリレーションを張るためなどプログラム上で使用する。イベントを識別可能なユニークなコード
@@ -40,11 +42,11 @@ class Event extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag','event_tag');
+        return $this->belongsToMany('App\Models\Tag','EVENT_TAG');
     }
     public function users()
     {
-        return $this->belongsToMany('App\Models\User','user_event')->withPivot('role','created_at');
+        return $this->belongsToMany('App\Models\User','USER_EVENT')->withPivot('role','created_at');
     }
     public function organizer()
     {

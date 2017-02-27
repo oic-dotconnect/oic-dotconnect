@@ -26,7 +26,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 
 // ログインしている場合のみアクセスできるグループ 有効にする場合①と②の下のコメントアウトを外す
 // ①
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     // イベント登録ページ
     Route::get('/event/entry',['as' =>'event-entry','uses' => function(){
         return view('event/event-entry');
@@ -42,7 +42,7 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
     Route::post('/event/{event_code}/edit', ['as' => 'post-event-edit', 'uses' => 'EventController@postEdit']);
     
     // イベント管理ページ
-    Route::get('/event/control',['as' =>'event-control','uses' => 'EventController@control']);
+    Route::get('/user/eventcontrol',['as' =>'user-event-control','uses' => 'UserController@eventControl']);
 
     // お気に入りタグ編集ページ
     Route::get('/user/setting/tag',['as' =>'user-setting-tag','uses' => 'UserController@editFavoriteTags']);
@@ -70,25 +70,37 @@ Route::get('auth/login/callback/google', 'Auth\SocialController@getGoogleAuthCal
 
     // ログアウト
     Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
+
+    //　退会
+    Route::post('/user/leave', ['as' => 'user-leave', 'uses' => 'UserController@leave']);
+
+    // イベント
+    Route::post('/event/{event_code}/delete', ['as' => 'event-delete', 'uses' => 'EventController@delete']);
 // ②
-// });
+});
+
+Route::group(['middleware' => 'guest'], function () {
+    if (Auth::check()) {
+        return Redirect::to('/');
+    }else{
+        // プロフィール登録ページ
+        Route::get('/user/entry/profile',['as' =>'user-entry-profile','uses' => 'UserEntryController@ShowEditProfile']);
+
+        // お気に入りタグ登録ページ
+        Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
+            return view('user/user-entry-tag');
+        }]);
+
+        // ユーザー登録確認ページ
+        Route::get('/user/entry/confirm',['as' =>'user-entry-confirm','uses' => 'UserEntryController@Confirm']);
+    }
+});
 
 // イベント検索ページ
 Route::get('/event/search',['as' =>'event-search','uses' => 'EventController@search']);
 
 // イベント詳細ページ
 Route::get('/event/{event_code}',['as' =>'event-detail','uses' => 'EventController@detail']);
-
-// プロフィール登録ページ
-Route::get('/user/entry/profile',['as' =>'user-entry-profile','uses' => 'UserEntryController@ShowEditProfile']);
-
-// お気に入りタグ登録ページ
-Route::get('/user/entry/tag',['as' =>'user-entry-tag',function(){
-    return view('user/user-entry-tag');
-}]);
-
-// ユーザー登録確認ページ
-Route::get('/user/entry/confirm',['as' =>'user-entry-confirm','uses' => 'UserEntryController@Confirm']);
 
 //ユーザーページ
 Route::get('/user/{user_code}', ['as' =>'user-page', 'uses' => 'UserController@userpageJoin']);
@@ -142,5 +154,10 @@ Route::post('/user/setting/profile',['as' => 'post-user-setting-profile','uses' 
 Route::post('/user/setting/tag',['as' => 'post-user-setting-tag','uses' => 'UserController@saveFavoriteTags']);
 
 Route::post('/user/setting/notice',['as'  => 'post-user-setting-notice','uses' => 'UserController@saveNotice']);
+
+//ユーザー登録時の必須項目がなかった時のルート（変更してください
+Route::get('/err/503',['as' => '503',function(){
+    return view('errors/503');
+}]);
 
 });

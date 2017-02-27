@@ -14,7 +14,7 @@ class UserTagTableSeeder extends Seeder
       App\Models\User::all()->map(function($user){
         $tag_count = App\Models\Tag::count();
         $faker = Faker\Factory::create('ja_JP');
-        for ($i=0; $i < $faker->numberBetween(2,$tag_count); $i++) {
+        for ($i=1; $i < $faker->numberBetween(2,$tag_count); $i++) {
           $user->tags()->attach($i);
         }
       });
