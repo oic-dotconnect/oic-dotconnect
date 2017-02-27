@@ -20,7 +20,7 @@ class SocialController extends Controller
 
   public function getGoogleAuthCallback(){
     try {
-      $guest = Socialite::driver('google')->user();
+      $guest = Socialite::driver('google')->stateless()->user();
     } catch (Exception $e) {
       return $e;
     }
