@@ -12,7 +12,8 @@
         "laravelcollective/html": "5.2.*",
         "intervention/image": "^2.3",
         "aws/aws-sdk-php-laravel": "~3.0",     
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "vlucas/valitron": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

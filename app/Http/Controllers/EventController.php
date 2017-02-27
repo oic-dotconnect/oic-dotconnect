@@ -13,6 +13,7 @@ use Auth;
 use Route;
 use App\Models\User;
 use Validator;
+use Valitron;
 
 class EventController extends Controller
 {
@@ -154,7 +155,31 @@ class EventController extends Controller
 		{
 			$event = Event::FindCode($event_code)->first();
 
+			$validator = new EventEntryRequest();
+
+			$rules = $validator->rules();
+
+			$messages = $validator->messages();
+
+			$validatorResult = Validator::make($event->toArray(), $rules,$messages);
+
+			$errors = $validatorResult->errors();
+
+			if ($validatorResult->fails()) {
+
+				$event->status = 'close';
+
+				$event->save();
+
+           		return redirect()->route('event_open')
+                        	->withErrors($errors)
+                        	->withInput();
+        		}
+
+
 			$event->open_date = $open_date;
+
+			$event->status = $status;
 
 			$event->save();
 		}
