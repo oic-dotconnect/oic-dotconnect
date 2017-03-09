@@ -1,0 +1,11 @@
+@mixin mediaSP {
+    @media (max-width:568px){
+         @content;
+    }
+}
+
+@mixin mediaPC {
+    @media (min-width:568px){
+         @content;
+    }
+}
