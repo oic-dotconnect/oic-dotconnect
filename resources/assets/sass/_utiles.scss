@@ -14,10 +14,12 @@
     @include mediaPC() {
         width: 1060px;
         padding: 50px;
+        box-sizing: border-box;
     }
 
     @include mediaSP() {
         width: 100%;
         padding: 10px;
+        box-sizing: border-box;
     }
 }
