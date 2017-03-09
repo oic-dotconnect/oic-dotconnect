@@ -5,3 +5,5 @@ Homestead.yaml
 Homestead.json
 .env
 /public/js/bundle.js
+/public/css/app.css
+/public/css/app.css.map
