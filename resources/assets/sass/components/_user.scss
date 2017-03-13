@@ -1,0 +1,30 @@
+.user {
+    display: flex;    
+    &__icon {
+        border: solid #d3d3d3;
+        border-radius: 100%;
+        @include mediaPC() {
+            width: 36px;
+            height: 36px;
+            margin-right: 20px;
+        }
+        @include mediaSP() {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            border-width: 2px;
+        }
+    }
+    &__name {
+        color: $font;        
+        @include mediaPC() {
+            font-size: 18px;
+            padding: 5px 0;        
+        }
+
+        @include mediaSP() {
+            font-size: 14px;
+            padding: 2px 0;        
+        }
+    }
+}
