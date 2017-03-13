@@ -1,2 +1,5 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
+@import "./_normalize.scss";
+@import "./_utiles.scss";
+@import "./pages/_header.scss";
+@import "./pages/_landing.scss"

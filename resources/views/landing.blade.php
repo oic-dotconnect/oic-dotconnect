@@ -1,32 +1,30 @@
 @extends('layout.app')
 
-@section('head')
-<link rel="stylesheet" href="{{{asset('css/landing.css')}}}" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="{{{asset('/assets/css/tag.css')}}}" media="screen" title="no title" charset="utf-8">
-@endsection
-
 @section('content')
-<div class="top-image">
-  <img src="{{{asset('/assets/img/top-img.jpg')}}}" alt="" />
-  <div class="top-logo">
-    <div>
-      <img src="{{{asset('/assets/img/logo.png')}}}" alt="" />
+<div class="eyecatch">
+    <img src="{{{asset('/assets/img/top-img.jpg')}}}" class="eyecatch-background" alt="" />
+    <div class="eyecatch-content">
+        <img src="{{{asset('/assets/img/logo.png')}}}" class="eyecatch-content__logo" alt="" />
+        <p class="eyecatch-content__text" >人と人を繋ぎ、輪を広げていく</p>
+        {{ Form::open(['route' => 'event-search', 'method' => 'GET', 'class' => 'eyecatch-content__search_form'])}}          
+            <input type="text" class="eyecatch-content__search_form--input" name="title" value="" placeholder="Web">
+            <button type="submit" class="eyecatch-content__search_form--btn">検索</button>        
+        {{ Form::close() }}
+        <!-- eyecatch-content__search_form -->
     </div>
-    <p>
-      人と人を繋ぎ、輪を広げていく
-    </p>
-  </div>
+    <!-- /eyecatch-cotent -->
 </div>
-<div class="about-section">
-    <h1 class="heading">.Linkerとは？</h1>
-    <div class="about-content">
-      <section>
-        <h2><i class="fa fa-shield" aria-hidden="true"></i>初めての方へ</h2>
-        <p>
+<!-- /eyecatch -->
+<section class="about">
+    <h2 class="about-heading">.Linkerとは？</h2>
+    <ul class="about-list">
+      <li class="about-list__item">
+        <h3 class="about-list__item--title"><i class="fa fa-shield" aria-hidden="true"></i>初めての方へ</h2>
+        <div class="about-list__item--text">
           このサービスは学内のイベントを管理するためのサービスです。
           イベントを開催、参加することで他コースの学生や先輩、後輩との繋がれる環境を提供します。
-        </p>
-      </section>
+        </div>
+      </li>
       <section>
         <h2><i class="fa fa-users" aria-hidden="true"></i>三人寄れば文殊の知恵</h2>
         <p>
@@ -56,8 +54,8 @@
           授業の時間割や登録されているイベントを考慮し、空いている教室を検索することが出来るため、教室の確保が簡単に！
         </p>
       </section>
-    </div>
-</div>
+    </ul>
+</section>
 <div class="event-section">
     <section>
         <h1 class="heading">新着イベント</h1>

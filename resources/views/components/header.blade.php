@@ -1,36 +1,33 @@
 <header class="header">
-      <div class="header-inner">
-        <div class="header-left">
-          <span class="logo"><a href="{{ route('landing') }}">.Linker</a></span>
+    <div class="header-inner">
+        <div class="header-inner__item">
+            <h1 class="header-inner__item--logo"><a href="{{ route('landing') }}">.Linker</a></h1>
         </div>
-        <div class="header-center">
-          {{ Form::open(['route' => 'event-search', 'method' => 'GET', 'class' => 'search-form'])}}          
-            <div class="input">
-              <input type="text" name="title" value="" placeholder="Web">
-            </div>
-            <button type="submit" class="search-btn button orange">検索</button>        
-          {{ Form::close() }}
-        </div>
-        <div class="header-right">
-          @if( Auth::check() )
+        <!-- /header-inner__item -->
+        <div class="header-inner__item">
+            @if( Auth::check() )
             <div class="event-action-btns">
-              <a href="{{ route('user-event-control') }}" class="red">イベント管理</a>
-              <a href="{{ route('event-entry') }}" class="light-gray">イベント作成</a>
+                <a href="{{ route('user-event-control') }}" class="red">イベント管理</a>
+                <a href="{{ route('event-entry') }}" class="light-gray">イベント作成</a>
             </div>
             <header-icon>
-              <div class="icon" slot="icon">
-                <img src="{{ Auth::user()->iconMinPath() }}">
-              </div>
-              <div slot="menu" class="user-menu-item"><a href="{{ route('user-mypage') }}">マイページ</a></div>
-              <div slot="menu" class="user-menu-item"><a href="{{ route('user-setting-profile') }}">ユーザー設定</a></div>  
-              <div slot="menu" class="user-menu-item"><a href="{{ route('logout') }}">ログアウト</a></div>    
+                <div class="icon" slot="icon">
+                    <img src="{{ Auth::user()->iconMinPath() }}">
+                </div>
+                <div slot="menu" class="user-menu-item"><a href="{{ route('user-mypage') }}">マイページ</a></div>
+                <div slot="menu" class="user-menu-item"><a href="{{ route('user-setting-profile') }}">ユーザー設定</a></div>  
+                <div slot="menu" class="user-menu-item"><a href="{{ route('logout') }}">ログアウト</a></div>    
             </header-icon>                       
-          @else 
-            <a href="{{ route('sociallogin') }}" class="login-btn">
-              <i class="fa fa-google" aria-hidden="true"></i>
-              <span>ログイン / 新規登録</span>
+            @else 
+            <a href="{{ route('sociallogin') }}" class="header-inner__item--login">
+                <i class="fa fa-google" aria-hidden="true"></i>
+                <span>ログイン / 新規登録</span>
             </a>
-          @endif
+            <!-- /header-inner__item--login -->
+            @endif
         </div>
-      </div>
-    </header>
+        <!-- /header-inner__item -->
+    </div>
+    <!-- /.headerInner -->    
+</header>
+<!-- /.header -->

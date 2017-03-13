@@ -1,0 +1,76 @@
+.header {
+    background-color: #187FC4;
+    width: 100%;
+    &-inner {
+        display: flex;
+        @include mediaPC {
+            max-width: 1280px;
+            padding: 20px 40px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+        &__item {
+            width: 33.333%;
+            display: flex;
+            align-items: center;
+            &--logo {
+                margin: 0;
+                a {
+                    font-size: 42px;
+                    color: white;
+                    font-weight: 100;
+                }
+            }
+            &--login {
+                position: relative;
+                display: flex;
+                width: 43%;
+                padding: 7.5px 0;
+                margin-left: auto;
+                border-radius: 5px;
+                background: #DD4B39;
+                i {
+                    position: absolute;
+                    top: 50%;
+                    left: 5%;
+                    transform: translate(0, -50%);
+                    font-size: 24px;
+                    color: white;
+                }
+                span {
+                    display: block;
+                    width: 100%;
+                    font-size: 15px;
+                    padding: 8.5px 8px;
+                    color: white;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    /* 1 */
+    font: inherit;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+}
