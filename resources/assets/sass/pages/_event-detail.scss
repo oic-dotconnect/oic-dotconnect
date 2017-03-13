@@ -1,0 +1,206 @@
+.event-detail {
+    @include wrapper;
+    display: flex;
+    flex-wrap: wrap;
+    @include mediaSP() {
+        .panel {
+            margin-bottom: 10px;
+        }
+    }
+    &__top {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        @include mediaPC() {
+            padding: 40px;
+        }
+        @include mediaSP() {
+            padding: 10px;            
+        }
+    }    
+    .message {        
+        width: 100%;
+        padding: 5px;
+        background-color: #E6E9ED;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    &__field {        
+        text-align: center;
+        border-radius: 4px;
+        color: #FFFFFF;
+        @include mediaPC() {
+            width: 140px;
+            padding: 15px 20px;
+            margin-right: 20px;
+            font-size: 23px;    
+        }
+
+        @include mediaSP() {
+            width: 50px;
+            margin-right: 10px;
+        }
+        &--game {
+            background-color: $game;
+        }
+        &--it {
+            background-color: $it;
+        }
+        &--design {
+            background-color: $design;
+        }
+
+        &--movie {
+            background-color: $movie;            
+        }
+
+        &--other {
+            background-color: $other;
+        }
+    }
+
+    &__title {                
+        @include mediaPC() {
+            width: calc(100% - 160px);
+            font-size: 42px;
+        }
+        @include mediaSP() {
+            width: calc(100% - 60px);
+        }        
+    }
+
+    &__tags {        
+        @include mediaPC() {
+            margin-left: 160px;
+            width: calc(100% - 160px);
+            margin-bottom: 100px;
+        }
+
+        @include mediaSP() {
+            margin-left: 60px;
+            width: calc(100% - 60px);
+            margin-bottom: 30px;
+        }
+    }
+
+    &__organizer {
+        width: 100%;
+        display: flex;
+        .organizer { 
+            padding: 10px 0;           
+        }
+    }
+
+    &__opening-date {
+        width: 100%;
+        display: flex;
+        .detail-body {
+            padding: 18px 0;
+        }
+    }
+
+    &__place {
+        width: 100%;
+        display: flex;
+        .detail-body {
+            padding: 18px 0;
+        }
+    }
+    
+    &__recruit {
+        width: 100%;
+        display: flex;
+        .detail-body {
+            padding: 18px 0;
+        }
+    }
+
+    &__joiner {
+        width: 100%;
+        display: flex;
+        .detail-body {
+            padding: 18px 0;
+        }
+    }
+
+    &__action {
+        width: 100%;
+        text-align: center;
+    }
+
+    &__description {
+        @include mediaPC() {
+            width: calc(65% - 20px);
+            margin-right: 20px;
+        }
+
+        @include mediaSP() {
+            width: 100%;
+            order: 2;
+        }
+    }
+    &__participants {
+        @include mediaPC() {
+            width: 35%;
+            .joiner-list {
+                width: 100%;
+            }
+        }
+        @include mediaSP() {
+            width: 100%;
+            display: flex;  
+            order: 1;          
+            .panel-body {
+                padding: 5px 10px;
+            }
+            .joiner-list {
+                width: 50%;
+                .panel-body {
+                    display: flex;                    
+                }
+                .user__icon {                                
+                    margin-right: 4px;
+                    &::last-child {
+                        margin-right: 0px;
+                    }
+                }
+            }
+            .user__name {
+                display: none;
+            }
+        }        
+    }
+
+    .detail-label {
+        text-align: center;
+        @include mediaPC() {
+            width: 140px;
+            margin-right: 20px;
+        }
+
+        @include mediaSP() {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 60px;
+            margin-right: 10px;
+        }
+        &__icon {
+            @include mediaPC() {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .detail-body {
+        @include mediaPC() {            
+            width: calc(100% - 160px);
+        }
+    }
+
+    .btn {
+        width: 150px;
+    }
+}

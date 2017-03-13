@@ -1,2 +1,20 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootflat/css/site.min.css";
+@import "./_utiles.scss";
+@import "./_values.scss";
+@import "./components/_index.scss";
+@import "./components/_buttons.scss";
 
+body {
+    background-color: #F1F2F6;
+}
+
+// colors
+.red {
+    background-color: #DA4453;    
+}
+.red.light {
+    background-color: #ED5565;
+}
+
+@import "./pages/_event-detail.scss";
