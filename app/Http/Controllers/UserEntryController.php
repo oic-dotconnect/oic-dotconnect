@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserEntryRequest;
 
-use App\Preg;
-
 use Session;
 use App\AwsUploader;
 use App\Models\User;
