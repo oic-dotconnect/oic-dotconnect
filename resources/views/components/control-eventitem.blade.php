@@ -9,7 +9,7 @@
 			<div class="control-eventitem-action">
 				@if( $event->status === 'open')
 					{{ Form::open([ 'route' => [ 'post-event-status', $event->code ]]) }}
-							<button type="submit" class="button cancell" name="status" value="stop">中止する</button>
+							<button type="submit" class="button stop" name="status" value="stop">中止する</button>
 					{{ Form::close() }}
 				@elseif($event->status === 'close') 
 					{{ Form::open([ 'route' => [ 'post-event-status', $event->code ]]) }}
