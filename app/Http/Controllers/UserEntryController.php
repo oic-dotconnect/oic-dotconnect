@@ -16,6 +16,7 @@ use Auth;
 use Image;
 use Crypt;
 use File;
+use Validator;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -119,10 +120,34 @@ class UserEntryController extends Controller
 
     public function ShowEditProfile(Request $request)
     {
+
         $data['name'] = $request->session()->get('profile.name');
         $data['code'] = $request->session()->get('profile.code');
         $data['introduction'] = $request->session()->get('profile.introduction');
         $data['icon'] = $request->session()->get('icon');
+
+        if(isset($data['name']) == false)
+        {
+            $data['name'] = preg_replace('/[ｱ-ﾝﾞﾟ]/u','',$request->session()->get('google.student_name'));
+        }
+
+        if(isset($data['code']) == false)
+        {
+            $rule = [
+                'code' => 'unique:USER,code'
+            ];
+
+            do{
+            $defaultCode['code'] = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'),0,7);
+
+            $validatorResult = Validator::make($defaultCode, $rule);
+
+            }while($validatorResult == false);
+
+            $data['code'] = $defaultCode['code'];
+
+            
+        }
 
         if(isset($data['name']) == false)
         {
