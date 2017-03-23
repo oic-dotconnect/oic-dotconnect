@@ -32,7 +32,7 @@
             <div class="user-name box input-form required">          
               <h2 class="box-title yellow">ニックネーム</h2>          
               <div class="name-input">
-                <input type="text" class="border form-input" name="name" value={{$name}}>
+                <input type="text" class="border form-input" name="name" value="{{$name}}">
                   @if (count($errors) > 0)
                     <div class="alert alert-danger">
                       <ul>
