@@ -138,15 +138,11 @@ class UserEntryController extends Controller
             ];
 
             do{
-            $defaultCode['code'] = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'),0,7);
-
-            $validatorResult = Validator::make($defaultCode, $rule);
-
+                $defaultCode['code'] = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'),0,7);
+                $validatorResult = Validator::make($defaultCode, $rule)->fails();
             }while($validatorResult == false);
 
             $data['code'] = $defaultCode['code'];
-
-            
         }
 
         if(isset($data['name']) == false)
