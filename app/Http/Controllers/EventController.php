@@ -13,7 +13,6 @@ use Auth;
 use Route;
 use App\Models\User;
 use Validator;
-use Valitron;
 
 class EventController extends Controller
 {
