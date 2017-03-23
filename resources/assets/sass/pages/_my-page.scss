@@ -73,6 +73,10 @@
         @include mediaSP() {
             width: 100%;
         }
+
+        .fav-tags {
+            line-height: 25px;
+        }
     }
 
     .user-event-area {
