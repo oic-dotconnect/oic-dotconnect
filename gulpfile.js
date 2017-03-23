@@ -19,9 +19,8 @@ elixir(function(mix) {
         files: [
             {
                 match: [
-                    "resources/assets/sass/**/*/scss",
-                    "resources/assets/js/**/*.js",
-                    "resources/assets/js/**/*.vue",
+                    "public/css/app.css",
+                    "public/js/bundle.js",
                     "resources/views/**/*.blade.php"
                 ]
             }
