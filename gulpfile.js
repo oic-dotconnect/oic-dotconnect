@@ -15,6 +15,16 @@ elixir(function(mix) {
     mix.sass('app.scss');
     mix.webpack('./app/assets/js/app.js');
     mix.browserSync({
-        proxy: 'localhost:8000' 
+        proxy: 'localhost:8000',
+        files: [
+            {
+                match: [
+                    "resources/assets/sass/**/*/scss",
+                    "resources/assets/js/**/*.js",
+                    "resources/assets/js/**/*.vue",
+                    "resources/views/**/*.blade.php"
+                ]
+            }
+        ]
     });
 });
