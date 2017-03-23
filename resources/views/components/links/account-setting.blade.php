@@ -1,0 +1,1 @@
+<a href={{ route("user-setting-profile") }} class="btn to-account-setting">アカウント設定ページへ</a>

@@ -24,3 +24,8 @@
         box-sizing: border-box;
     }
 }
+
+@mixin icon {
+    border: solid #d3d3d3;
+    border-radius: 100%;
+}
