@@ -1,0 +1,88 @@
+.my-page {
+    @include wrapper;
+    display: flex;
+    flex-wrap: wrap;
+    .heading {
+        width: 100%;
+    }
+    .user-profile-area {
+        @include mediaPC() {
+            width: calc(50% - 10px);
+            margin-right: 20px;
+        }
+
+        @include mediaSP() {
+            width: 100%;
+        }
+        .user-info {       
+            &__icon {
+                float: left;            
+                .icon {
+                    @include mediaPC() {
+                        width: 100px;
+                        height: 100px;
+                        margin-bottom: 20px;
+                    }
+                    @include mediaSP() {
+                        width: 48px;
+                        height: 48px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+            &__name {
+                float: right;
+                @include mediaPC() {
+                    margin-top: 25px;
+                    width: calc(100% - 120px);
+                    font-size: 24px;
+                }
+                @include mediaSP() {
+                    width: calc(100% - 58px);
+                }
+            }
+            &__code {
+                float: right;
+                color: #AAB2BD;
+                @include mediaPC() {
+                    width: calc(100% - 120px);
+                    font-size: 16px;
+                }
+                @include mediaSP() {
+                    width: calc(100% - 58px);
+                }     
+            }
+
+            &__introduction {
+                margin-bottom: 20px;
+                width: 100%;
+                clear: both;
+            }
+
+            .user-action-area {
+                text-align: center;                
+            }
+        }
+    }
+
+    .user-fav-tags-area {
+         @include mediaPC() {
+            width: calc(50% - 10px);
+        }
+
+        @include mediaSP() {
+            width: 100%;
+        }
+    }
+
+    .user-event-area {
+        .nav-justified > li, .nav-tabs.nav-justified > li {
+           display: table-cell;
+           width: 1%;
+        }
+        width: 100%;
+        .tab-content {
+            min-height: 100px;
+        }
+    }
+}

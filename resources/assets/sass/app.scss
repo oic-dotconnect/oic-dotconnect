@@ -1,5 +1,5 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "node_modules/bootflat/css/site.min.css";
+@import "node_modules/bootflat/bootflat/scss/bootflat.scss";
 @import "./_utiles.scss";
 @import "./_values.scss";
 @import "./components/_index.scss";
@@ -7,6 +7,10 @@
 
 body {
     background-color: #F1F2F6;
+}
+
+.icon {
+    @include icon;
 }
 
 // colors
@@ -17,4 +21,28 @@ body {
     background-color: #ED5565;
 }
 
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 26px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
 @import "./pages/_event-detail.scss";
+@import "./pages/_my-page.scss";

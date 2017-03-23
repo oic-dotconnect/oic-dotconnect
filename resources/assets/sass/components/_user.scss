@@ -1,8 +1,7 @@
 .user {
     display: flex;    
     &__icon {
-        border: solid #d3d3d3;
-        border-radius: 100%;
+        @include icon;
         @include mediaPC() {
             width: 36px;
             height: 36px;
