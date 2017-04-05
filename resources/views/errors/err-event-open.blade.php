@@ -14,6 +14,6 @@
 @endsection
 
 @section("err-btn")
-<a href="#">編集ページへ</a>
+<a href="{{ route('event-edit', ['event_code' => $code]) }}">編集ページへ</a>
 <a href="{{ route('landing') }}" class="button save">トップへ戻る</a>
 @endsection

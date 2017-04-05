@@ -171,7 +171,7 @@ class EventController extends Controller
 
 				$event->save();
 
-           		return redirect()->route('event_open')
+           		return redirect()->route('event_open', $event->code)
                         	->withErrors($errors)
                         	->withInput();
         		}

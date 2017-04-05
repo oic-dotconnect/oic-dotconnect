@@ -122,8 +122,8 @@ Route::get('/err/access_noauth',['as' => 'access_noauth',function(){
 }]);
 
 // イベント公開エラーページ(イベント公開時にイベント公開に必要な情報が入力されていなかった場合)
-Route::get('/err/event_open',['as' => 'event_open',function(){
-    return view('errors/err-event-open');
+Route::get('/err/event_open/{code}',['as' => 'event_open',function($code){
+    return view('errors/err-event-open', [ "code" => $code ]);
 }]);
 
 //-------------------------ユーザー登録-----------------------------------
