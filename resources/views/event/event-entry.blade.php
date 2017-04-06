@@ -12,8 +12,9 @@
         <div class="row">
             <div class="col top-left">
                 <div class="entry-event-name box">
-                    <h2 class="form-header box-title red">イベント名</h2>
+                    <h2 class="form-header box-title red">イベント名<span class="required-label">必須</span></h2>
                     <input class="entry-input" type="text" name="name">
+                    {{ $errors->first('name') }}
                 </div>
                 <!-- entry-form -->
                 <div class="tag-field box">
@@ -34,22 +35,23 @@
             </div>
             <div class="col top-right">
                 <div class="entry-date box">
-                    <h2 class="box-title blue">開催日時</h2>
+                    <h2 class="box-title blue">開催日時<span class="required-label">公開時必須</span></h2>
                     <div class="entry-opendate-date">
                         <div class="entry-date-group">
                             <h3 class="form-header">開催日</h3>
-                            <input class="entry-input-date" type="date" name="opening_date">
+                            <input class="entry-input-date" type="date" name="opening_date" value="{{ date('Y-m-d') }}">
                         </div>
+                        
                     </div>
                     <!-- entry-item-date -->
                     <div class="entry-opendate-time">                        
                         <div class="entry-opendate-starttime">
                             <h3 class="form-header">開始時間</h3>
-                            <input class="entry-input-date" type="time" name="start_at">
+                            <input class="entry-input-date" type="time" name="start_at" value="{{ date('H:i') }}">
                         </div>
                         <div class="entry-opendate-endtime">
                             <h3 class="form-header">終了時間</h3>
-                            <input class="entry-input-date" type="time" name="end_at">
+                            <input class="entry-input-date" type="time" name="end_at" value="{{ date('H:i', strtotime('+2 hour'))}}">
                         </div>
                         <!-- entry-date-group -->
                     </div>
@@ -57,17 +59,17 @@
                 </div>
                 <!-- entry-date -->        
                 <div class="entry-recruitment box">
-                    <h2 class="form-header box-title purple">募集期間</h2>
+                    <h2 class="form-header box-title purple">募集期間<span class="required-label">公開時必須</span></h2>
                     <div class="">
                         <div class="entry-recruitmen-start-group entry-recruitmen-group">
                             <div class="entry-recruitmen-start-date">
                                 <h3 class="form-header">開始日</h3>
-                                <input class="start-date" type="date" name="recruit_start_date">
+                                <input class="start-date" type="date" name="recruit_start_date" value="{{ date('Y-m-d') }}">
                             </div>
                             <!-- entry-start-date -->
                             <div class="entry-recruitmen-start-time">
                                 <h3 class="form-header">開始時間</h3>
-                                <input class="start-time" type="time" name="recruit_start_time">
+                                <input class="start-time" type="time" name="recruit_start_time" value="{{ date('H:i') }}">
                             </div>
                             <!-- entry-start-time -->
                         </div>
@@ -93,12 +95,12 @@
         </div>
         <!-- entry-tag -->
         <div class="box">
-            <h2 class="box-title orange">開催教室</h2>
+            <h2 class="box-title orange">開催教室<span class="required-label">公開時必須</span></h2>
             <room-choice></room-choice>
         </div>
         <!-- entry-room -->
         <div class="entry-capcity box">
-            <h2 class="form-header box-title cyan">定員</h2>
+            <h2 class="form-header box-title cyan">定員<span class="required-label">公開時必須</span></h2>
             <input class="entry-input entry-capcity-input" type="number" min="1" name="capacity">
             <span>人</span>
         </div>

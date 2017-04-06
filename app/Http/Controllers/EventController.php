@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller; 
 use App\Http\Requests;
+use App\Http\Requests\EventOpenRequest;
 use App\Http\Requests\EventEntryRequest;
 use Illuminate\Http\Request;
 use App\Models\Event;
@@ -74,7 +75,7 @@ class EventController extends Controller
 		return view('event/event-edit', $data);
 	}
 
-	public function entry(Request $request)
+	public function entry(EventEntryRequest $request)
 	{
 
 		$data = $request->except(['status', 'tags']);		
@@ -155,7 +156,7 @@ class EventController extends Controller
 		{
 			$event = Event::FindCode($event_code)->first();
 
-			$validator = new EventEntryRequest();
+			$validator = new EventOpenRequest();
 
 			$rules = $validator->rules();
 

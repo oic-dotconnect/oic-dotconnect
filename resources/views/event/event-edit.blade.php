@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col top-left">
                 <div class="entry-event-name box">
-                    <h2 class="form-header box-title red">イベント名</h2>
+                    <h2 class="form-header box-title red">イベント名<span class="required-label">必須</span></h2>
                     <input class="entry-input" type="text" name="name" value="{{ $event->name }}">
                 </div>
                 <!-- entry-form -->
@@ -35,7 +35,7 @@
             </div>
             <div class="col top-right">
                 <div class="entry-date box">
-                    <h2 class="box-title blue">開催日時</h2>
+                    <h2 class="box-title blue">開催日時<span class="required-label">公開時必須</span></h2>
                     <div class="entry-opendate-date">
                         <div class="entry-date-group">
                             <h3 class="form-header">開催日</h3>
@@ -58,7 +58,7 @@
                 </div>
                 <!-- entry-date -->        
                 <div class="entry-recruitment box">
-                    <h2 class="form-header box-title purple">募集期間</h2>
+                    <h2 class="form-header box-title purple">募集期間<span class="required-label">公開時必須</span></h2>
                     <div class="">
                         <div class="entry-recruitmen-start-group entry-recruitmen-group">
                             <div class="entry-recruitmen-start-date">
@@ -94,12 +94,12 @@
         </div>
         <!-- entry-tag -->
         <div class="box">
-            <h2 class="box-title orange">開催教室</h2>            
+            <h2 class="box-title orange">開催教室<span class="required-label">公開時必須</span></h2>            
             <room-choice floor-num={{ str_split($event->place)[0] }} room-name={{ $event->place }}></room-choice>
         </div>
         <!-- entry-room -->
         <div class="entry-capcity box">
-            <h2 class="form-header box-title cyan">定員</h2>
+            <h2 class="form-header box-title cyan">定員<span class="required-label">公開時必須</span></h2>
             <input class="entry-input entry-capcity-input" id="capcity" type="number" min="1" name="capacity" value={{ $event->capacity }}>
             <span>人</span>
         </div>
