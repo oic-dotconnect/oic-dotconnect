@@ -197,21 +197,23 @@ h1.form-title{
     text-align: center;
     padding: 6px;
     font-size: 1rem;
+    width: 150px;
+    cursor: pointer;
 }
 
 button[disabled] {
     background: #bbb;
 }
 
-.cancell {
+.button.cancell, .button.delete {
     background-color: #E5004F;
 }
 
-.save, .edit {
+.button.save, .button.edit {
     background-color: #8FC31F
 }
 
-.conf, .open {
+.button.conf, .button.open {
     background: #F39800;
 }
 
@@ -312,6 +314,7 @@ main {
     height: 200px;
     padding-top: 20px;
     margin-top: 60px;
+    min-width: 1060px;
 }
 
 .footer-content{
@@ -381,4 +384,9 @@ main {
 
 .other {
     background-color: #A64A97;
+}
+
+/**/
+.marginB20 {
+    margin-bottom: 20px;
 }

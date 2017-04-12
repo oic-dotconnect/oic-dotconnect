@@ -23,11 +23,11 @@ class Tag extends Model
     }
     public function events()
     {
-        return $this->belongsToMany('App\Models\Event','event_tag');
+        return $this->belongsToMany('App\Models\Event','EVENT_TAG');
     }
     public function users()
     {
-        return $this->belongsToMany('App\Models\User','user_tag');
+        return $this->belongsToMany('App\Models\User','USER_TAG');
     }
 
     protected $appends = ['search_url']; 

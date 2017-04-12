@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import $ from 'jquery'
 
 import roomChoice from './components/room-choice.vue'
 import tagSelect from './components/tag-select.vue'
@@ -23,3 +24,13 @@ const app = new Vue({
         HeaderIcon
     }
 })
+
+
+$(".tagsubmit").keypress(function(ev) {
+    console.log(ev);
+    if ((ev.which && ev.which === 13) || (ev.keyCode && ev.keyCode === 13)) {
+        return false;
+    } else {
+        return true;
+    }
+});

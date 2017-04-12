@@ -1,0 +1,127 @@
+[
+  {
+    "code": "o112277",
+    "name": "マキブやるやつ",
+    "field": "other",
+    "description": "アテナで貸し切ってマキブします、先着2名のみ",
+    "opening_date": "2017-05-28",
+    "start_at": "17:30:00",
+    "end_at": "18:30:00",
+    "place": "3A",
+    "capacity": "2",
+    "open_date": "2017-05-01",
+    "organaizer_code": "kai_den",
+    "recruit_start_date": "2017-05-01",
+    "recruit_end_date": "2017-05-27",
+    "recruit_start_time": "00:00:00",
+    "recruit_end_time": "00:00:00",
+    "tags": [
+      "マキブ",
+      "ゲーセン"      
+    ],
+    "members": [
+      "takesi0",
+      "honda_1"    
+    ]
+  },
+  {
+    "code": "d123845",
+    "name": "SAI使い方講座",
+    "field": "design",
+    "description": "先生を呼んでSAIの使い方講座を開きます、デザイン科以外の人もＯＫです",
+    "opening_date": "2017-06-15",
+    "start_at": "16:30:00",
+    "end_at": "18:00:00",
+    "place": "6A",
+    "capacity": "20",
+    "open_date": "2017-04-01",
+    "organaizer_code": "kinpatu",
+    "recruit_start_date": "2017-05-21",
+    "recruit_end_date": "2017-06-01",
+    "recruit_start_time": "00:00:00",
+    "recruit_end_time": "00:00:00",
+    "tags": [
+      "SAI",
+      "デザイン"
+    ],
+    "members":[
+      "moon_88",      
+      "lkeg728"
+    ]
+  },
+  {
+    "code": "m193945",
+    "name": "映像編集勉強会",
+    "field": "movie",
+    "description": "映像編集勉強会を開きます、同学年と下級生のみ対象です",
+    "opening_date": "2017-02-18",
+    "start_at": "16:30:00",
+    "end_at": "17:00:00",
+    "place": "5C",
+    "capacity": "10",
+    "open_date": "2017-01-20",
+    "organaizer_code": "takesi0",
+    "recruit_start_date": "2017-01-21",
+    "recruit_end_date": "2017-02-17",
+    "recruit_start_time": "00:00:00",
+    "recruit_end_time": "00:00:00",
+    "tags": [
+      "Photoshop",
+      "映像部"
+    ],
+    "members":[
+      "TACHANK"      
+    ]
+  },
+  {
+    "code": "i133945",
+    "name": "JavaScript勉強会",
+    "field": "it",
+    "description": "JavaScript勉強会を開催します、未経験者でもわかるような内容です",
+    "opening_date": "2017-03-20",
+    "start_at": "15:50:00",
+    "end_at": "16:20:00",
+    "place": "7A",
+    "capacity": "20",
+    "open_date": "2017-01-15",
+    "organaizer_code": "black_L",
+    "recruit_start_date": "2017-02-15",
+    "recruit_end_date": "2017-03-15",
+    "recruit_start_time": "00:00:00",
+    "recruit_end_time": "00:00:00",
+    "tags": [
+      "JavaScript",
+      "jQuery",
+      "HTML",
+      "CSS"
+    ],
+    "members":[      
+      "Crow_S"
+    ]
+  },
+  {
+    "code": "g1789045",
+    "name": "3Dモデリング基礎勉強会",
+    "field": "game",
+    "description": "3Dモデリングの基礎の勉強会を開催します、未経験＆別の科の人も大歓迎です",
+    "opening_date": "2017-08-19",
+    "start_at": "12:30:00",
+    "end_at": "15:00:00",
+    "place": "5B",
+    "capacity": "30",
+    "open_date": "2017-05-01",
+    "organaizer_code": "TACHANK",
+    "recruit_start_date": "2017-06-21",
+    "recruit_end_date": "2017-08-17",
+    "recruit_start_time": "00:00:00",
+    "recruit_end_time": "00:00:00",
+    "tags": [
+			"3DCG",
+			"MAYA2015",
+			"3ds max"
+		],
+    "members": [
+      "takesi0"      
+    ]
+  }
+]

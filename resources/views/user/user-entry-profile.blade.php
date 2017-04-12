@@ -32,17 +32,35 @@
             <div class="user-name box input-form required">          
               <h2 class="box-title yellow">ニックネーム</h2>          
               <div class="name-input">
-                <input type="text" class="border form-input" name="name" value={{$name}}>
+                <input type="text" class="border form-input" name="name" value="{{$name}}">
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('name') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
               </div>
             </div>
             <div class="user-code box input-form required">          
               <h2 class="box-title green">ユーザコード</h2>        
               <div class="code-input">
                 <input type="text" class="border form-input " name="code" value={{$code}}>
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('code') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
                 <div class="caution">
-                    <p class="caution-mark">※文言</p>
-                    <p class="caution-mark">※文言</p>
-                    <p class="caution-mark">※文言</p>
+                    <p class="caution-mark">※ユーザーコードは登録後変更できません</p>                    
+                    <p class="caution-mark">※使用できる文字は英数字(-)(_)のみです。</p>
+                    <p class="caution-mark">※20文字以内</p>
                 </div>
               </div>
             </div>
@@ -52,9 +70,19 @@
         <div class="introduction box">    
           <h2 class="box-title blue">紹介文</h2>    
           <div class="introduction-input">
-            <textarea class="border" rows="10" cols="60" name="introduction">
-              {{$introduction}}
-            </textarea>
+            <textarea class="border" rows="10" cols="60" name="introduction">{{$introduction}}</textarea>
+            <div class="caution">
+              <p class="caution-mark">※200文字以内</p>
+            </div>
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->get('introduction') as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
           </div>
         </div>
 
@@ -62,11 +90,11 @@
           <div class="col">
             <div class="fav">
               <button type="submit" name="submit" value="toTag" class="fav-register button">お気に入りタグ登録へ</button>
-              <p class="caution-mark">※文言</p>
+              <p class="caution-mark">※お気に入りタグは登録後、ユーザー設定から登録・変更できます。</p>
             </div>
             <div class="row">
               <div class="info-left">
-                <a href="#" class="button cancell left">キャンセル</a>
+                <a href="{{ route('user-entry-cancel') }}" class="button cancell left">キャンセル</a>
               </div>
               <div class="info-right">
                 <button type="submit" name="submit" value="toConfirm" class="conf button right">入力確認へ</button>

@@ -8,17 +8,11 @@
 <p>
   公開に必要な情報が入力されていません。 以下の項目を入力してください。
 </p>
-<ul>
-  <li>開催日</li>
-  <li>空き教室</li>
-  <li>開始日</li>
-  <li>定員</li>
-</ul>
+@foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+@endforeach
 @endsection
 
 @section("err-btn")
-<a href="#">編集ページへ</a>
-<div class="paging">
-  <a href="#">トップへ戻る</a>
-</div>
+<a href="{{ route('event-edit', ['event_code' => $code]) }}" class="button save">編集ページへ</a>
 @endsection

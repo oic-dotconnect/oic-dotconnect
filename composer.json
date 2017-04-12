@@ -7,12 +7,13 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "laravel/socialite": "^2.0",
-        "thedevsaddam/multiple_route": "1.0",
+        "laravel/socialite": "^2.0",        
         "fzaninotto/faker": "v1.6.0",
         "laravelcollective/html": "5.2.*",
         "intervention/image": "^2.3",
-        "aws/aws-sdk-php-laravel": "~3.0"
+        "aws/aws-sdk-php-laravel": "~3.0",     
+        "ext-gd": "*",
+        "vlucas/valitron": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

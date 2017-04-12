@@ -13,6 +13,8 @@ use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Http\Requests\UserSettingProfileRequest;
+
 
 
 class UserController extends Controller
@@ -33,7 +35,7 @@ class UserController extends Controller
 
 	public function mypageRecommend() {
 		$user = Auth::user();
-		$data['events'] = $user->recommende_events()->paginate(10);	
+		$data['events'] = $user->recommende_events()->where('organizer_id','!=',$user->id)->paginate(10);	
         return view('user/user-mypage-recommend', $data);    
 	}
 
@@ -52,6 +54,10 @@ class UserController extends Controller
 	public function userpageJoin(Request $request, $userCode) {
 		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-join');
 		$user = User::findCode($userCode);
+		if(is_null($user)){	//ユーザーが見つからなかった時のエラー回避処理
+			return view('errors/404');
+		}
+
 		$data['user'] = $user;
 		$data['events'] = $user->joined_events()->paginate(10);		
         return view('user/user-userpage-join', $data);    
@@ -60,8 +66,11 @@ class UserController extends Controller
 	public function userpageHold(Request $request, $userCode) {
 		if(Auth::check() && Auth::user()->code === $userCode) return redirect()->route('user-mypage-hold');
 		$user = User::findCode($userCode);
+		if(is_null($user)){	//ユーザーが見つからなかった時のエラー回避処理
+			return view('errors/404');
+		}
 		$data['user'] = $user;
-		$data['events'] = $user->hold_events()->paginate(10);		
+		$data['events'] = $user->hold_events()->paginate(10);
         return view('user/user-userpage-hold', $data);    
 	}
 
@@ -90,7 +99,7 @@ class UserController extends Controller
 		return view('user/user-setting-leave');
 	}
 
-	public function saveProfile(Request $request)
+	public function saveProfile(UserSettingProfileRequest $request)
 	{
 		$user = Auth::user();
 		$data = $request->all();
@@ -129,11 +138,17 @@ class UserController extends Controller
 		$regularNoticed = isset($notices['notice-regular']);
 		$user->update(['regular_notice' => $regularNoticed]);
 
+		if(isset($notices['tag-notice'])){
 		$requestTags = array_keys($notices['tag-notice']);
 
 		$user->getPivotTags($user->id)->update(['noticed' => false]);
 
 		$user->getPivotTags($user->id)->whereIn('tag_id',$requestTags)->update(['noticed' => true]);
+		}
+		else
+		{
+			$user->getPivotTags($user->id)->update(['noticed' => false]);
+		}
 
 		return redirect()->route('user-mypage-recommend');
 
@@ -144,4 +159,17 @@ class UserController extends Controller
 		return redirect()->route('landing');
 	}
 
+	public function eventControl(){
+		$user = Auth::user();
+		$data['user'] = $user;
+		$data['organize_event'] = $user->organize()->orderBy('opening_date', 'DESC')->paginate(10);
+
+		return view('user.user-eventcontrol', $data);
+	}
+
+	public function leave(){
+		$user = Auth::user();
+		$user->delete();
+		return redirect()->route('landing');
+	}
 }

@@ -5,22 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller; 
 use App\Http\Requests;
+use App\Http\Requests\EventOpenRequest;
+use App\Http\Requests\EventEntryRequest;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Tag;
 use Auth;
 use Route;
 use App\Models\User;
+use Validator;
+use Valitron;
 
 class EventController extends Controller
 {
 	public function detail(Request $request,$event_code)
 	{
 		$user = Auth::User();
-
-		$capacity = Event::FindCode($event_code)->first()->capacity;
-
+		try{	//イベントが見つからなかった時のエラー回避処理
+			$capacity = Event::FindCode($event_code)->first()->capacity;
+		}catch(\Exception $e){
+			return view('errors/404');
+		}
 		$data['event'] = Event::FindCode($event_code)->with('organizer')->first();
+		$order   = array("\r\n", "\n", "\r");
+		$data['event']->description = str_replace($order, '<br>', $data['event']->description);	
 	
 		$data['tags'] = Event::FindCode($event_code)->first()->tags;
 
@@ -62,20 +70,21 @@ class EventController extends Controller
 	public function edit(Request $request,$event_code)
 	{
 		$data['event'] = Event::FindCode($event_code)->first();
+		$data['event']->description = str_replace('<br>', '\r' ,$data['event']->description);	
 
 		return view('event/event-edit', $data);
 	}
 
-	public function entry(Request $request)
+	public function entry(EventEntryRequest $request)
 	{
 
 		$data = $request->except(['status', 'tags']);		
 		$data['code'] = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7);
 
-		$data['organizer_id'] = Auth::user()->id;
-		
+		$data['organizer_id'] = Auth::user()->id;	
+	
 		$tags = $request->has('tags')? $request->get('tags') : []; 
-		$event = Event::create($data);		
+		$event = Event::create($data);
 		
 		foreach($tags as $tag){
 			$t = Tag::where('name', $tag)->first();
@@ -104,7 +113,7 @@ class EventController extends Controller
 	{
 
 		$data = $request->except(['status', 'tags', '_token', '_place', 'roomType']);				
-		$event = Event::findCode($event_code)->first();		
+		$event = Event::findCode($event_code)->first();								
 		$event->update($data);
 
 		$tags = $request->has('tags')? $request->get('tags') : []; 
@@ -136,11 +145,45 @@ class EventController extends Controller
 	}
 
 	public function status(Request $request,$event_code)
-	{
+	{		
 		$status = $request->get('status');
+		$open_date = date('Y-m-d');
 
 		$event = Event::FindCode($event_code)->first();
 		$event->update(['status' => $status]);
+
+		if($status == 'open')
+		{
+			$event = Event::FindCode($event_code)->first();
+
+			$validator = new EventOpenRequest();
+
+			$rules = $validator->rules();
+
+			$messages = $validator->messages();
+
+			$validatorResult = Validator::make($event->toArray(), $rules,$messages);
+
+			$errors = $validatorResult->errors();
+
+			if ($validatorResult->fails()) {
+
+				$event->status = 'close';
+
+				$event->save();
+
+           		return redirect()->route('event_open', $event->code)
+                        	->withErrors($errors)
+                        	->withInput();
+        		}
+
+
+			$event->open_date = $open_date;
+
+			$event->status = $status;
+
+			$event->save();
+		}
 
 		return redirect()->route('event-detail', [ 'event_code' => $event->code ]);	
 	}
@@ -185,5 +228,11 @@ class EventController extends Controller
 		$data['tag'] = $request->has('tags')? $request->get('tags') : '';
 		$data['title'] = $request->has('title')? $request->get('title') : '';
 		return view('event/event-search', $data);
+	}
+
+	public function delete($event_code){
+		$event = Event::FindCode($event_code)->first();
+		$event->delete();
+		return redirect()->route('user-event-control');	
 	}
 }

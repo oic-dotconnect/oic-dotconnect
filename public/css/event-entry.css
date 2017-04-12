@@ -66,3 +66,13 @@
 	margin-top: 60px;
 	display: flex;
 }
+
+.description-form {
+	width: 100%;
+}
+
+.required-label {
+	font-size: 12px;
+	margin-left: 20px;
+	color: #646766;
+}

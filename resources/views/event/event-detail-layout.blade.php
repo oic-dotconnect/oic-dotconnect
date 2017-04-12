@@ -14,6 +14,8 @@
           <div class="inner">
             @if($event->status === 'stop')
               <div class="stop-message">このイベントは中止されました。</div>
+            @elseif($eventservice->conditionClass($event) === 'finished')
+              <div class="stop-message">このイベントは終了しました。</div>
             @endif
             <div class="heading">
               <div class="filed-box">

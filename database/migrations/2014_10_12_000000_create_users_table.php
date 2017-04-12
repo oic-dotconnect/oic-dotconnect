@@ -24,10 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('image_pass')->nullable();
             $table->boolean('regular_notice')->default(true);
             $table->boolean('event_join_notice')->default(true);
-            $table->boolean('event_cancel_notice')->default(true);
-            $table->softDeletes();
+            $table->boolean('event_cancel_notice')->default(true);            
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps();     
+            $table->timestamp('deleted_at')->nullable();       
         });
     }
 
