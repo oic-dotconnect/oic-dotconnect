@@ -8,9 +8,13 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 
 class Handler extends ExceptionHandler
 {
+    protected $except = [
+        '/*'
+    ];
     /**
      * A list of the exception types that should not be reported.
      *
@@ -44,7 +48,10 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
-    {
+    {   
+        // if ($e instanceof TokenMismatchException){
+        //     return redirect()->back()->with('csrf_error','ページを長時間開いていた為、<br />セッションが切れました。<br />もう一度最初から入力してください。');
+        // }
         return parent::render($request, $e);
     }
 }

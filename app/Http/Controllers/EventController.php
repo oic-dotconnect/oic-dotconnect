@@ -76,9 +76,8 @@ class EventController extends Controller
 	}
 
 	public function entry(EventEntryRequest $request)
-	{
-
-		$data = $request->except(['status', 'tags']);		
+	{		
+		$data = $request->except(['status', 'tags']);
 		$data['code'] = substr(md5($request->get('name').str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')),0,7);
 
 		$data['organizer_id'] = Auth::user()->id;	
@@ -99,9 +98,10 @@ class EventController extends Controller
 		}
 
 		if($request->get('status') == 'open')
-		{
+		{	
+			
 			$request = Request::create(route('post-event-status',['event_code' => $event->code]),'POST',['status' => 'open']);
-			return Route::dispatch($request);    
+			return Route::dispatch($request);  
 		} else 
 		if($request->get('status') == 'close')
 		{							
@@ -109,7 +109,7 @@ class EventController extends Controller
 		}
 	}
 
-	public function postEdit(Request $request, $event_code)
+	public function postEdit(EventEntryRequest $request, $event_code)
 	{
 
 		$data = $request->except(['status', 'tags', '_token', '_place', 'roomType']);				
@@ -150,33 +150,28 @@ class EventController extends Controller
 		$open_date = date('Y-m-d');
 
 		$event = Event::FindCode($event_code)->first();
-		$event->update(['status' => $status]);
-
+		
 		if($status == 'open')
-		{
-			$event = Event::FindCode($event_code)->first();
-
+		{			
 			$validator = new EventOpenRequest();
 
 			$rules = $validator->rules();
-
 			$messages = $validator->messages();
+			$validatorResult = Validator::make($event->toArray(), $rules, $messages);
 
-			$validatorResult = Validator::make($event->toArray(), $rules,$messages);
-
-			$errors = $validatorResult->errors();
-
+			
 			if ($validatorResult->fails()) {
 
 				$event->status = 'close';
-
 				$event->save();
+
+				$errors = $validatorResult->errors();
+				//dd($errors);
 
            		return redirect()->route('event_open', $event->code)
                         	->withErrors($errors)
                         	->withInput();
-        		}
-
+			}
 
 			$event->open_date = $open_date;
 
@@ -184,6 +179,8 @@ class EventController extends Controller
 
 			$event->save();
 		}
+
+		$event->update(['status' => $status]);
 
 		return redirect()->route('event-detail', [ 'event_code' => $event->code ]);	
 	}
