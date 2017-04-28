@@ -13,7 +13,7 @@ class LandingController extends Controller
     	$data = [];
 
 		$data["new_events"] = \App\Models\Event::orderby('open_date','desc')
-			->where('status','!=','stop')
+			->where('status','=','open')
 			->take(5)
 			->with('Tags')
 			->get()
@@ -22,7 +22,7 @@ class LandingController extends Controller
 			});
 			
 		$data["hold_events"] = \App\Models\Event::Beforehold()
-			->where('status','!=','stop')
+			->where('status','=','open')
 			->take(5)
 			->with('Tags')
 			->orderby('opening_date')
