@@ -14,7 +14,11 @@
                 <div class="entry-event-name box">
                     <h2 class="form-header box-title red">イベント名<span class="required-label">必須</span></h2>
                     <input class="entry-input" type="text" name="name">
-                    {{ $errors->first('name') }}
+                    <p>
+                        @foreach ($errors->all() as $message)
+                            {{ $message  }}
+                        @endforeach
+                    </p>
                 </div>
                 <!-- entry-form -->
                 <div class="tag-field box">

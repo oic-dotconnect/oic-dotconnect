@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 class EventEntryRequest extends Request
 {
@@ -30,9 +31,14 @@ class EventEntryRequest extends Request
 
     public function messages()
     {
-        return[
+        return [
             'name.max' => 'タイトルは50文字以下で入力してください。',
             'name.required' => 'タイトルは必ず入力してください。',
         ];
+    }
+
+    protected function formatErrors(Validator $validator)
+    {
+        return $validator->errors()->all();
     }
 }
