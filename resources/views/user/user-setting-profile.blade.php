@@ -34,8 +34,7 @@
                   Form::text('name', $user->name, [
                     "class" => "border form-input"
                   ])
-                }}
-                <input type="text" class="border form-input" name="name" value={{ $user->name }}>
+                }}                
               </div>
             </div>
             @if (count($errors) > 0)
