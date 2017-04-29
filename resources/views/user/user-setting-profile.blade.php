@@ -30,6 +30,11 @@
             <div class="user-name box input-form">          
               <h2 class="box-title yellow">ニックネーム</h2>          
               <div class="name-input">
+                {{
+                  Form::text('name', $user->name, [
+                    "class" => "border form-input"
+                  ])
+                }}
                 <input type="text" class="border form-input" name="name" value={{ $user->name }}>
               </div>
             </div>
@@ -54,9 +59,13 @@
         <div class="introduction box">    
           <h2 class="box-title blue">紹介文</h2>    
           <div class="introduction-input">
-            <textarea class="border" rows="10" cols="60" name="introduction">
-              {{ $user->introduction }}
-            </textarea>
+          {{
+            Form::textarea('introduction', $user->introduction, [
+                'class' => 'border',
+                'row' => 10,
+                'col' => 60
+            ])
+          }}
           </div>
           @if (count($errors) > 0)
                     <div class="alert alert-danger">
