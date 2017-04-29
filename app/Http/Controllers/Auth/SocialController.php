@@ -42,7 +42,7 @@ class SocialController extends Controller
       if( $uniqueValdator->fails() ){
         /*既にユーザー登録されている場合*/
         $user = User::Google($data['google_id'])->first();
-        Auth::login($user);        
+        Auth::login($user, true);        
         if (Session::has('redirect_url')) return redirect()->to(Session::pull('redirect_url'));
         return redirect()->route('user-mypage-recommend');
 
