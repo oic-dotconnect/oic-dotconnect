@@ -69,7 +69,11 @@ class EventController extends Controller
 
 	public function edit(Request $request,$event_code)
 	{
-		$data['event'] = Event::FindCode($event_code)->first();
+	    $event = Event::FindCode($event_code)->first();
+        if ($request->user()->cannot('update-event', $event)) {
+            abort(404);
+        }
+		$data['event'] = $event;
 		$data['event']->description = str_replace('<br>', '\r' ,$data['event']->description);	
 
 		return view('event/event-edit', $data);
