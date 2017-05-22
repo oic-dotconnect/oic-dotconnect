@@ -76,11 +76,7 @@
                 let opendate = this.dateFormat(date)
                 let today = new Date();
 
-                var dateZellFill = function(number) {
-                    return ("0" + number).substr(-2);
-                }
-
-                today = dateZellFill(today.getFullYear()) + '' + dateZellFill((today.getMonth() + 1)) + '' + dateZellFill(today.getDate())
+                today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
 
                 if (today < opendate) {
                     str = '開催前'
