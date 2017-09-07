@@ -55,10 +55,6 @@ trait EntityAttributeAccessible
 
     public function __set($strName, $mxdValue)
     {
-        if (in_array($strName, $this->identifierKeys)) {
-            throw new Exception("SET ".$strName." は識別子に利用されているため、書き換えることはできません");
-        }
-
         //use先でフィールド名が存在しているか
         if (!in_array($strName,$this->attributes)) {
             throw new Exception("SET Entityに ".$strName." が存在していない");
