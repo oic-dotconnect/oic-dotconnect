@@ -8,8 +8,8 @@ class WantedPeriodTest extends TestCase
     public function test正常系()
     {
         $data = [
-            'startDateTime' => new Carbon('2016-05-01 12:30:00'),
-            'endDateTime' => new Carbon('2016-06-01 12:30:00'),
+            'startDateTime' => Carbon::now(),
+            'endDateTime' => Carbon::now()->addMonth(1),
         ];
 
         new WantedPeriod($data);
@@ -20,8 +20,8 @@ class WantedPeriodTest extends TestCase
     public function test異常系()
     {
         $data = [
-            'startDateTime' => new Carbon('2016-05-01 12:30:00'),
-            'endDateTime' => new Carbon('2016-04-01 12:30:00'),
+            'startDateTime' => Carbon::now(),
+            'endDateTime' => Carbon::now()->subDay(1),
         ];
 
         try {
@@ -32,9 +32,22 @@ class WantedPeriodTest extends TestCase
         }
 
         $data = [
-            'startDateTime' => '2016-05-01 12:30:00',
-            'endDateTime' => new Carbon('2016-06-01 12:30:00'),
+            'startDateTime' => Carbon::now(),
+            'endDateTime' => Carbon::now()->addMonth(1),
         ];
+
+        try {
+            new WantedPeriod($data);
+            $this->fail('例外発生なし');
+        } catch (Exception $e) {
+            $this->assertTrue(true);
+        }
+
+        $data = [
+            'startDateTime' => Carbon::now()->subDay(1),
+            'endDateTime' => Carbon::now()->addMonth(1),
+        ];
+
         try {
             new WantedPeriod($data);
             $this->fail('例外発生なし');

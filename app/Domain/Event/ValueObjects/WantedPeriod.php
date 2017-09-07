@@ -33,5 +33,8 @@ class WantedPeriod extends AbstractValueObject
         $this->setValidate('AfterDate', function() {
             return $this->startDateTime->lt($this->endDateTime);
         });
+        $this->setValidate('AfterNow', function() {
+            return Carbon::today()->lt($this->startDateTime);
+        });
     }
 }
