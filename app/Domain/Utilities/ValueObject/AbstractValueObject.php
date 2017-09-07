@@ -53,7 +53,7 @@ abstract class AbstractValueObject implements ValueObjectInterface
         if($validator->fails()) {
             throw new ValidationException($validator);
         }
-        
+
         foreach ($this->validates as $key => $validate) {
             $func = new ReflectionFunction($validate);
             $parameters = $func->getParameters();
