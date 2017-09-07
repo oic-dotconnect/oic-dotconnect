@@ -5,13 +5,26 @@ namespace App\Domain\Event\ValueObjects;
 use App\Domain\Utilities\ValueObject\AbstractValueObject;
 use Carbon\Carbon;
 
+/**
+ * 募集期間
+ * Class WantedPeriod
+ * @package App\Domain\Event\ValueObjects
+ */
 class WantedPeriod extends AbstractValueObject
 {
-    /* @var Carbon $startDateTime */
-    public $startDateTime;
-    /* @var Carbon $endDateTime */
-    public $endDateTime;
 
+    /**
+     * 募集開始日時
+     * @var Carbon $startDateTime
+     */
+    public $startDateTime;
+
+    /**
+     * 募集終了日時
+     * @var Carbon $endDateTime
+     */
+    public $endDateTime;
+    
     public function setUpValidate()
     {
         $this->setValidate('TypeIsCarbon', function() {
