@@ -3,6 +3,7 @@
 namespace App\Domain\Utilities\ValueObject;
 
 use Exception;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Factory;
 use Illuminate\Validation\ValidationException;
 use ReflectionFunction;
@@ -49,11 +50,10 @@ abstract class AbstractValueObject implements ValueObjectInterface
         /* @var Factory $factory */
         $factory = app(Factory::class);
         $validator = $factory->make($data, $this->rules);
-        if(!$validator->passes()) {
+        if($validator->fails()) {
             throw new ValidationException($validator);
         }
-
-        $errors = [];
+        
         foreach ($this->validates as $key => $validate) {
             $func = new ReflectionFunction($validate);
             $parameters = $func->getParameters();
