@@ -1,11 +1,7 @@
 <?php
 
-namespace Tests\ValueObjects\Student;
-
 use App\Domain\Event\ValueObjects\WantedPeriod;
 use Carbon\Carbon;
-use Exception;
-use TestCase;
 
 class WantedPeriodTest extends TestCase
 {

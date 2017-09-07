@@ -24,7 +24,7 @@ class WantedPeriod extends AbstractValueObject
      * @var Carbon $endDateTime
      */
     public $endDateTime;
-    
+
     public function setUpValidate()
     {
         $this->setValidate('TypeIsCarbon', function() {
