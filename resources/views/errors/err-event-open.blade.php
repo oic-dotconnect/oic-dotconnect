@@ -8,7 +8,6 @@
 <p>
   公開に必要な情報が入力されていません。 以下の項目を入力してください。
 </p>
-{{dd($errors)}}
 @foreach ($errors->all() as $error)
     <li>{{ $error }}</li>
 @endforeach
