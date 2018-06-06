@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "prod": "gulp --production",    
+    "prod": "gulp --production",
     "dev:php": "php artisan serve --host=0.0.0.0",
     "dev:gulp": "gulp watch",
     "dev": "run-p dev:*"

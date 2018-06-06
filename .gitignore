@@ -7,3 +7,7 @@ Homestead.json
 /public/js/bundle.js
 /public/css/app.css
 /public/css/app.css.map
+.idea/*
+.vscode/*
+.DS_Store
+Thumbs.db
