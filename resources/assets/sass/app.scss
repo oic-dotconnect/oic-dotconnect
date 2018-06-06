@@ -1,9 +1,35 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/bootflat/bootflat/scss/bootflat.scss";
+
 @import "./_utiles.scss";
 @import "./_values.scss";
+
 @import "./components/_index.scss";
 @import "./components/_buttons.scss";
+@import "./components/_user.scss";
+
+@import "./pages/_color.scss";
+@import "./pages/_common.scss";
+@import "./pages/_error-pages.scss";
+@import "./pages/_event.scss";
+@import "./pages/_event-entry.scss";
+@import "./pages/_event-search.scss";
+@import "./pages/_header.scss";
+@import "./pages/_landing.scss";
+@import "./pages/_normalize.scss";
+@import "./pages/_pagenation.scss";
+@import "./pages/_user-entry-profile.scss";
+@import "./pages/_user-eventcontrol.scss";
+@import "./pages/_my-page.scss";
+
+@import "./pages/user-entry/user-entry-common";
+@import "./pages/user-entry/user-entry-conf";
+@import "./pages/user-entry/user-entry-profile";
+@import "./pages/user-entry/user-entry-tag";
+
+@import "./pages/user-setting/_user-setting-common.scss";
+@import "./pages/user-setting/_user-setting-notice.scss";
+@import "./pages/user-setting/_user-setting-profile.scss";
 
 body {
     background-color: #F1F2F6;
@@ -44,5 +70,3 @@ h5 {
 h6 {
     font-size: 12px;
 }
-@import "./pages/_event-detail.scss";
-@import "./pages/_my-page.scss";
