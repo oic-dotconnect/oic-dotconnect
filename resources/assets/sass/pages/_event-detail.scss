@@ -204,3 +204,251 @@
         width: 150px;
     }
 }
+
+.secondary {
+    display: flex;
+    margin-top: 40px;
+}
+
+/* 分野 イベント名 タグ*/
+.heading {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+.inner{
+    margin: 0;
+}
+
+.filed-box{
+    margin-bottom: 10px;
+}
+.field {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    width: 107px;
+    height: 107px;
+}
+
+.field p {
+    width: 100%;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+}
+
+
+.event-detail-header{
+    padding: 0;
+    padding-left: 15px;
+}
+.title {
+    width: 100%;
+}
+.title p {
+    margin: 0;
+    font-size: 2.4rem;
+}
+.tags p {
+    font-size: 10px;
+}
+.tag {
+    margin: 10px 5px 0 0;
+    display: none;
+    box-sizing: border-box;
+    -webkit-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f6f7f8;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+/*イベント詳細*/
+.event-detail-table{
+    margin-top: 80px;
+    border: solid 1px #eee;
+    border-radius: 5px
+}
+.table_title p{
+    display: inline-block;
+    font-size: 1rem;
+}
+.event-detail-table tr{
+    margin: 0 auto;
+    width:90%;
+    border-bottom: dotted 2px #eee;
+}
+.event-detail-table th{
+    padding: 10px;
+    width:20%;
+}
+.event-detail-table td{
+    padding: 10px;
+    width:80%;
+}
+.event-detail-table .td-box{
+}
+.th-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.event-detail-table .icon-box{
+    display: inline-block;
+}
+
+.icon-box {
+    width: 20px;
+    position: absolute;
+    left: 10px;
+}
+.event-detail-table th p{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.event-entry{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.event-entry .button {
+    min-width: 150px;
+}
+
+.description-box {
+    flex: 3;
+}
+
+/* 説明蘭 */
+.description {
+}
+.description h2{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #FFF9B1;
+    font-weight: 500;
+}
+.description h3{
+    border-bottom: solid 3px #FFF9B1;
+    margin-bottom: 10px
+}
+
+.description .sentence{
+    padding: 20px;
+}
+
+/* 参加者.補欠者一覧 */
+.user-group {
+    flex: 1;
+    margin-left: 15px;
+    background-color: white;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.participant,
+.substitate{
+    box-shadow: 0px 0px 6px 1px #e6e6e6;
+    border-radius: 5px;
+}
+
+.user {
+    padding: 5px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.user .icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+}
+
+.user a{
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.participant-list .user:not(:last-child), .substitate-list .user:not(:last-child) {
+    border-bottom: 1px dashed #00873C;
+}
+.user-group .user p {
+    margin-right: 20px
+}
+.substitate {
+    margin-top: 8px;
+}
+.participant-title,
+.substitate-title {
+    display: flex;
+    padding: 0 10px;
+    background: #A5D4AD;
+    flex-direction: row;
+    font-weight: 500;
+    border-bottom: solid 1px #00873C;
+}
+.amount {
+    margin-left: auto;
+}
+.more {
+    transition: background-color 0.2s linear;
+    display: flex;
+    width: 100%;
+    background-color: #69BD83;
+    justify-content: center;
+    cursor: pointer;
+}
+.more:hover{
+    background-color: #39A869;
+}
+
+.participant-list, .substitate-list{
+    margin: 0px -20px -20px -20px;
+    min-height: 40px;
+}
+
+/*button*/
+
+.join {
+    background-color: #F6AD3C;
+}
+
+/*主催者メニュー*/
+.hold-menu {
+    margin-bottom: 20px;
+}
+
+.hold-event-status {
+    font-size: 1.2rem
+}
+
+.hold-menu-content {
+    display: flex;
+    align-items: center;
+}
+
+.hold-event-control {
+    margin-left: auto;
+}
+
+.hold-event-control form, .hold-event-control {
+    display: inline-block;
+}
+
+.stop-message {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
