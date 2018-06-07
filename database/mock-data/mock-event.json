@@ -44,7 +44,7 @@
       "SAI",
       "デザイン"
     ],
-    "members":[
+    "members": [
       "moon_88",      
       "lkeg728"
     ]
@@ -69,7 +69,7 @@
       "Photoshop",
       "映像部"
     ],
-    "members":[
+    "members": [
       "TACHANK"      
     ]
   },
@@ -95,7 +95,7 @@
       "HTML",
       "CSS"
     ],
-    "members":[      
+    "members": [
       "Crow_S"
     ]
   },
@@ -116,10 +116,10 @@
     "recruit_start_time": "00:00:00",
     "recruit_end_time": "00:00:00",
     "tags": [
-			"3DCG",
-			"MAYA2015",
-			"3ds max"
-		],
+      "3DCG",
+      "MAYA2015",
+      "3ds max"
+    ],
     "members": [
       "takesi0"      
     ]

@@ -1,129 +1,129 @@
-[    
-    {
-        "name": "しま",
-        "tags": [
-            "Adobe",
-            "Photoshop",
-            "Illustrator",
-            "Web",
-            "デザイン",
-            "JavaScript",
-            "HTML5",
-            "CSS"
-        ],
-        "student_name": "島田",
-        "google_id": "1",
-        "email": "b7001@oic.jp",
-        "code": "lkeg728",
-        "introduction": "Webデザインを専攻しています。デザインだけでなくWebプログラミングにも興味があります。"
-    },
-    	{
-		"name": "こけし",
-		"tags": [
-			"デザイン",
-			"Photoshop",
-			"CLIP_STADIO_PAINT"
-		],
-        "student_name": "小松",
-        "google_id": "2",
-		"email": "b7065@oic.jp",
-		"code": "kinpatu",
-		"introduction": "デザイン選考しています。海外に興味があります"
-	},
-
-    	{
-		"name": "黒雪姫",
-		"tags": [
-			"Lalavel",
-			"PHP",
-			"C言語",
-			"Java",
-			"BrainBurst2039"
-		],
-        "student_name": "黒田",
-        "google_id": "3",
-		"email": "b7196@oic.jp",
-		"code": "black_L",
-		"introduction": "情報系先行、部長をやっている"
-	},
-    	{
-		"name": "アレク",
-		"tags": [
-			"3DCG",
-			"MAYA2015",
-			"3ds max",
-			"LMG"
-		],
-        "student_name": "アレックス",
-        "google_id": "4",
-		"email": "@oic.jp",
-		"code": "TACHANK",
-		"introduction": "映像系先行、3DCGが得意、"
-	},
-    {
-        "name": "ブタ君",
-        "tags": [
-            "Java",
-            "C言語",
-            "格闘ゲーム",
-            "シューティングゲーム",
-            "BrainBurst2039"
-        ],
-        "student_name": "富林",
-        "google_id": "5",
-        "email": "b7029@oic.jp",
-        "code": "Crow_S",
-        "introduction": "情報系先行、ゲーム全般大好きです、対戦相手待ってます"
-    },
-    {
-        "name": "ケン",
-        "tags": [
-            "Photoshop",
-            "3DCG",
-            "マキブ",
-            "モンスト",
-            "格闘ゲーム"
-        ],
-        "student_name": "健介",
-        "google_id": "6",
-        "email": "b7022@oic.jp",
-        "code": "takesi0",
-        "introduction": "映像専攻です。対戦相手待ってます"
-    },
-    {
-        "name": "ウサギ",
-        "tags": [
-            "SAI",
-            "Phhotoshop"
-        ],
-        "student_name": "宇佐美",
-        "google_id": "7",
-        "email": "b7322@oic.jp",
-        "code": "moon_88",
-        "introduction": "デザイン専攻の2年です"
-    },
-    {
-        "name": "ミラノ",
-        "tags": [
-            "モンスト",
-            "パズドラ",
-            "マキブ"
-        ],
-        "student_name": "板野",
-        "google_id": "8",
-        "email": "b7800@oic.jp",
-        "code": "honda_1",
-        "introduction": "ゲーム科です。ゲーム好きです"
-    },        {
-        "name": "小指",
-        "tags": [
-            "マキブ",
-            "音ゲー"
-        ],
-        "student_name": "指原",
-        "google_id": "9",
-        "email": "b7989@oic.jp",
-        "code": "kai_den",
-        "introduction": "皆伝とれました"
-    }
+[
+  {
+    "name": "しま",
+    "tags": [
+      "Adobe",
+      "Photoshop",
+      "Illustrator",
+      "Web",
+      "デザイン",
+      "JavaScript",
+      "HTML5",
+      "CSS"
+    ],
+    "student_name": "島田",
+    "google_id": "1",
+    "email": "b7001@oic.jp",
+    "code": "lkeg728",
+    "introduction": "Webデザインを専攻しています。デザインだけでなくWebプログラミングにも興味があります。"
+  },
+  {
+    "name": "こけし",
+    "tags": [
+      "デザイン",
+      "Photoshop",
+      "CLIP_STADIO_PAINT"
+    ],
+    "student_name": "小松",
+    "google_id": "2",
+    "email": "b7065@oic.jp",
+    "code": "kinpatu",
+    "introduction": "デザイン選考しています。海外に興味があります"
+  },
+  {
+    "name": "黒雪姫",
+    "tags": [
+      "Lalavel",
+      "PHP",
+      "C言語",
+      "Java",
+      "BrainBurst2039"
+    ],
+    "student_name": "黒田",
+    "google_id": "3",
+    "email": "b7196@oic.jp",
+    "code": "black_L",
+    "introduction": "情報系先行、部長をやっている"
+  },
+  {
+    "name": "アレク",
+    "tags": [
+      "3DCG",
+      "MAYA2015",
+      "3ds max",
+      "LMG"
+    ],
+    "student_name": "アレックス",
+    "google_id": "4",
+    "email": "b0000@oic.jp",
+    "code": "TACHANK",
+    "introduction": "映像系先行、3DCGが得意、"
+  },
+  {
+    "name": "ブタ君",
+    "tags": [
+      "Java",
+      "C言語",
+      "格闘ゲーム",
+      "シューティングゲーム",
+      "BrainBurst2039"
+    ],
+    "student_name": "富林",
+    "google_id": "5",
+    "email": "b7029@oic.jp",
+    "code": "Crow_S",
+    "introduction": "情報系先行、ゲーム全般大好きです、対戦相手待ってます"
+  },
+  {
+    "name": "ケン",
+    "tags": [
+      "Photoshop",
+      "3DCG",
+      "マキブ",
+      "モンスト",
+      "格闘ゲーム"
+    ],
+    "student_name": "健介",
+    "google_id": "6",
+    "email": "b7022@oic.jp",
+    "code": "takesi0",
+    "introduction": "映像専攻です。対戦相手待ってます"
+  },
+  {
+    "name": "ウサギ",
+    "tags": [
+      "SAI",
+      "Phhotoshop"
+    ],
+    "student_name": "宇佐美",
+    "google_id": "7",
+    "email": "b7322@oic.jp",
+    "code": "moon_88",
+    "introduction": "デザイン専攻の2年です"
+  },
+  {
+    "name": "ミラノ",
+    "tags": [
+      "モンスト",
+      "パズドラ",
+      "マキブ"
+    ],
+    "student_name": "板野",
+    "google_id": "8",
+    "email": "b7800@oic.jp",
+    "code": "honda_1",
+    "introduction": "ゲーム科です。ゲーム好きです"
+  },
+  {
+    "name": "小指",
+    "tags": [
+      "マキブ",
+      "音ゲー"
+    ],
+    "student_name": "指原",
+    "google_id": "9",
+    "email": "b7989@oic.jp",
+    "code": "kai_den",
+    "introduction": "皆伝とれました"
+  }
 ]
