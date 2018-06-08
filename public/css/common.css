@@ -217,6 +217,10 @@ button[disabled] {
     background: #F39800;
 }
 
+.button.button-orange {
+    background: #F39800;
+}
+
 .tag {
     margin: 4px 4px 0 0;
     display: none;
@@ -389,4 +393,17 @@ main {
 /**/
 .marginB20 {
     margin-bottom: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.d-block {
+    display: block;
+}
+
+.block-center {
+    margin-left: auto;
+    margin-right: auto;
 }

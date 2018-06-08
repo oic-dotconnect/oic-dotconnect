@@ -76,6 +76,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // イベント
     Route::post('/event/{event_code}/delete', ['as' => 'event-delete', 'uses' => 'EventController@delete']);
+
+    // お気に入りユーザーを追加
+    Route::get('/user/{user_code}/add_favorite', ['as' => 'add-favorite-user', 'uses' => 'UserController@addFavoriteUser']);
+    
+    // お気に入りユーザーを削除
+    Route::get('/user/{user_code}/remove_favorite', ['as' => 'remove-favorite-user', 'uses' => 'UserController@removeFavoriteUser']);
 // ②
 });
 

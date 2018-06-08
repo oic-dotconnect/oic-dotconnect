@@ -172,4 +172,14 @@ class UserController extends Controller
 		$user->delete();
 		return redirect()->route('landing');
 	}
+
+	public function addFavoriteUser($user_code){
+		Auth::user()->favoriteUsers()->attach(User::findCode($user_code)->id);
+		return redirect()->back();
+	}
+
+	public function removeFavoriteUser($user_code){
+		Auth::user()->favoriteUsers()->detach(User::findCode($user_code)->id);
+		return redirect()->back();
+	}
 }
